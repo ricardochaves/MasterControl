@@ -19,6 +19,7 @@
     
         <center><img alt="" class="style1" src="Imagem/logonerd.jpg"/></center><br />
         <br />
+        <center><img alt="" class="style1" src="Imagem/contatoNerd.jpg"/></center><br />
         <br />
         <br />
         <br />

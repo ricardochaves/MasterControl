@@ -18,7 +18,9 @@ namespace ServidorWeb.ML.Paginas
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            NSAADMEntities n = EntityContextML.GetContext;
+            
+
+            NSAADMEntities n = new NSAADMEntities();
 
 
             //string teste = "{\"user_id\":\"66129937\",\"resource\":\"/questions/2681174350\",\"topic\":\"questions\",\"received\":\"2013-04-01T17:15:47.823Z\",\"application_id\":5971480328026573,\"sent\":\"2013-04-01T17:15:48.282Z\",\"attempts\":0}";
