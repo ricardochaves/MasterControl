@@ -21,32 +21,24 @@ namespace ServidorWeb.ML.Paginas
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            try
-            {
-                //if ((Meli)Session["M"] == null)
-                //{
-                //    Response.Redirect("InicioML.aspx");
+            if (!Page.IsPostBack){
 
-                //}
-                //else
-                //{
-                //    m = (Meli)Session["M"];
+                try
+                {
+                    if ((Meli)Session["M"] != null)
+                    {
+                        TextBox2.Text = m.AccessToken;
+                    }
 
-                TextBox1.Text = ServidorWeb.Properties.Settings.Default.URL_Login;
-                //   // TextBox2.Text = m.RefreshToken;
+                    TextBox1.Text = ServidorWeb.Properties.Settings.Default.URL_Login;
 
-                //}
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro no load do TrataCallBack", ex);
+                }
 
             }
-            catch (Exception)
-            {
-                
-                //throw new Exception(ex.Message, ex);
-
-                
-            }
-
-
 
         }
 
@@ -54,7 +46,10 @@ namespace ServidorWeb.ML.Paginas
         {
             Meli m = (Meli)Session["M"];
 
-            NSAADMEntities n = new NSAADMEntities();
+
+            ConstruirEF cf = new ConstruirEF();
+
+            NSAADMEntities n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
 
             LerML ler = new LerML(m);
             ConverterObjetoMLparaEF conv = new ConverterObjetoMLparaEF();
@@ -81,13 +76,25 @@ namespace ServidorWeb.ML.Paginas
         protected void Button2_Click(object sender, EventArgs e)
         {
 
-            Session["pagina"] = "TratarCallBack.aspx";
-            m = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
+            try
+            {
+                Session["pagina"] = "TratarCallBack.aspx";
+                m = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
 
-            Response.Redirect(m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login));
+                Response.Redirect(m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login));
 
-            TextBox1.Text = m.AccessToken;
-            TextBox2.Text = m.RefreshToken;
+                Session["M"] = m;
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Erro ao relogar no TrataCallBack", ex);
+            }
+
+
 
         }
     }
