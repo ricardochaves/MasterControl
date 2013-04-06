@@ -36,6 +36,13 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_FeedbackBuyer_ML_Order", "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.ML_Order), "ML_FeedbackBuyer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_FeedbackBuyer), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_FeedbackSeller_ML_Order", "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.ML_Order), "ML_FeedbackSeller", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_FeedbackSeller), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Item_ML_ItemOrganizacao", "ML_ItemOrganizacao", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_ItemOrganizacao), "ML_Item", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Item), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_Caixa_categoria", "categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.categoria), "Caixa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Caixa), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_Caixa_TipoCaixa", "TipoCaixa", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.TipoCaixa), "Caixa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Caixa), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_venda_cliente", "cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.cliente), "venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.venda), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_item_produto", "produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.produto), "item", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.item), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_venda_item", "item", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.item), "venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.venda), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_LojaProduto_loja", "Loja", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Loja), "LojaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.LojaProduto), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_LojaProduto_produto", "produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.produto), "LojaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.LojaProduto), true)]
 
 #endregion
 
@@ -422,6 +429,166 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<ML_Question> _ML_Question;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Caixa> Caixas
+        {
+            get
+            {
+                if ((_Caixas == null))
+                {
+                    _Caixas = base.CreateObjectSet<Caixa>("Caixas");
+                }
+                return _Caixas;
+            }
+        }
+        private ObjectSet<Caixa> _Caixas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<categoria> categorias
+        {
+            get
+            {
+                if ((_categorias == null))
+                {
+                    _categorias = base.CreateObjectSet<categoria>("categorias");
+                }
+                return _categorias;
+            }
+        }
+        private ObjectSet<categoria> _categorias;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<cliente> clientes
+        {
+            get
+            {
+                if ((_clientes == null))
+                {
+                    _clientes = base.CreateObjectSet<cliente>("clientes");
+                }
+                return _clientes;
+            }
+        }
+        private ObjectSet<cliente> _clientes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<item> items
+        {
+            get
+            {
+                if ((_items == null))
+                {
+                    _items = base.CreateObjectSet<item>("items");
+                }
+                return _items;
+            }
+        }
+        private ObjectSet<item> _items;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Loja> Lojas
+        {
+            get
+            {
+                if ((_Lojas == null))
+                {
+                    _Lojas = base.CreateObjectSet<Loja>("Lojas");
+                }
+                return _Lojas;
+            }
+        }
+        private ObjectSet<Loja> _Lojas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<LojaProduto> LojaProdutoes
+        {
+            get
+            {
+                if ((_LojaProdutoes == null))
+                {
+                    _LojaProdutoes = base.CreateObjectSet<LojaProduto>("LojaProdutoes");
+                }
+                return _LojaProdutoes;
+            }
+        }
+        private ObjectSet<LojaProduto> _LojaProdutoes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<produto> produtoes
+        {
+            get
+            {
+                if ((_produtoes == null))
+                {
+                    _produtoes = base.CreateObjectSet<produto>("produtoes");
+                }
+                return _produtoes;
+            }
+        }
+        private ObjectSet<produto> _produtoes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<taxa> taxas
+        {
+            get
+            {
+                if ((_taxas == null))
+                {
+                    _taxas = base.CreateObjectSet<taxa>("taxas");
+                }
+                return _taxas;
+            }
+        }
+        private ObjectSet<taxa> _taxas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TipoCaixa> TipoCaixas
+        {
+            get
+            {
+                if ((_TipoCaixas == null))
+                {
+                    _TipoCaixas = base.CreateObjectSet<TipoCaixa>("TipoCaixas");
+                }
+                return _TipoCaixas;
+            }
+        }
+        private ObjectSet<TipoCaixa> _TipoCaixas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<venda> vendas
+        {
+            get
+            {
+                if ((_vendas == null))
+                {
+                    _vendas = base.CreateObjectSet<venda>("vendas");
+                }
+                return _vendas;
+            }
+        }
+        private ObjectSet<venda> _vendas;
 
         #endregion
         #region AddTo Methods
@@ -593,6 +760,86 @@ namespace ServidorWeb.BD
         {
             base.AddObject("ML_Question", mL_Question);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Caixas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCaixas(Caixa caixa)
+        {
+            base.AddObject("Caixas", caixa);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the categorias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTocategorias(categoria categoria)
+        {
+            base.AddObject("categorias", categoria);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the clientes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToclientes(cliente cliente)
+        {
+            base.AddObject("clientes", cliente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the items EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToitems(item item)
+        {
+            base.AddObject("items", item);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Lojas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLojas(Loja loja)
+        {
+            base.AddObject("Lojas", loja);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the LojaProdutoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLojaProdutoes(LojaProduto lojaProduto)
+        {
+            base.AddObject("LojaProdutoes", lojaProduto);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the produtoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToprodutoes(produto produto)
+        {
+            base.AddObject("produtoes", produto);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the taxas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotaxas(taxa taxa)
+        {
+            base.AddObject("taxas", taxa);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TipoCaixas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTipoCaixas(TipoCaixa tipoCaixa)
+        {
+            base.AddObject("TipoCaixas", tipoCaixa);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the vendas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTovendas(venda venda)
+        {
+            base.AddObject("vendas", venda);
+        }
 
         #endregion
     }
@@ -601,6 +848,212 @@ namespace ServidorWeb.BD
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="Caixa")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Caixa : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Caixa object.
+        /// </summary>
+        /// <param name="cod_Mov">Initial value of the Cod_Mov property.</param>
+        public static Caixa CreateCaixa(global::System.Int32 cod_Mov)
+        {
+            Caixa caixa = new Caixa();
+            caixa.Cod_Mov = cod_Mov;
+            return caixa;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cod_Mov
+        {
+            get
+            {
+                return _Cod_Mov;
+            }
+            set
+            {
+                if (_Cod_Mov != value)
+                {
+                    OnCod_MovChanging(value);
+                    ReportPropertyChanging("Cod_Mov");
+                    _Cod_Mov = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Cod_Mov");
+                    OnCod_MovChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Cod_Mov;
+        partial void OnCod_MovChanging(global::System.Int32 value);
+        partial void OnCod_MovChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Cod_Caixa
+        {
+            get
+            {
+                return _Cod_Caixa;
+            }
+            set
+            {
+                OnCod_CaixaChanging(value);
+                ReportPropertyChanging("Cod_Caixa");
+                _Cod_Caixa = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Cod_Caixa");
+                OnCod_CaixaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Cod_Caixa;
+        partial void OnCod_CaixaChanging(Nullable<global::System.Int32> value);
+        partial void OnCod_CaixaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Cod_Categ
+        {
+            get
+            {
+                return _Cod_Categ;
+            }
+            set
+            {
+                OnCod_CategChanging(value);
+                ReportPropertyChanging("Cod_Categ");
+                _Cod_Categ = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Cod_Categ");
+                OnCod_CategChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Cod_Categ;
+        partial void OnCod_CategChanging(Nullable<global::System.Decimal> value);
+        partial void OnCod_CategChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> valor
+        {
+            get
+            {
+                return _valor;
+            }
+            set
+            {
+                OnvalorChanging(value);
+                ReportPropertyChanging("valor");
+                _valor = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("valor");
+                OnvalorChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _valor;
+        partial void OnvalorChanging(Nullable<global::System.Decimal> value);
+        partial void OnvalorChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_Caixa_categoria", "categoria")]
+        public categoria categoria
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<categoria>("NSAADMModel.FK_Caixa_categoria", "categoria").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<categoria>("NSAADMModel.FK_Caixa_categoria", "categoria").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<categoria> categoriaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<categoria>("NSAADMModel.FK_Caixa_categoria", "categoria");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<categoria>("NSAADMModel.FK_Caixa_categoria", "categoria", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_Caixa_TipoCaixa", "TipoCaixa")]
+        public TipoCaixa TipoCaixa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TipoCaixa>("NSAADMModel.FK_Caixa_TipoCaixa", "TipoCaixa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TipoCaixa>("NSAADMModel.FK_Caixa_TipoCaixa", "TipoCaixa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TipoCaixa> TipoCaixaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TipoCaixa>("NSAADMModel.FK_Caixa_TipoCaixa", "TipoCaixa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TipoCaixa>("NSAADMModel.FK_Caixa_TipoCaixa", "TipoCaixa", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -775,6 +1228,799 @@ namespace ServidorWeb.BD
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="categoria")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class categoria : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new categoria object.
+        /// </summary>
+        /// <param name="cod_categ">Initial value of the cod_categ property.</param>
+        public static categoria Createcategoria(global::System.Decimal cod_categ)
+        {
+            categoria categoria = new categoria();
+            categoria.cod_categ = cod_categ;
+            return categoria;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal cod_categ
+        {
+            get
+            {
+                return _cod_categ;
+            }
+            set
+            {
+                if (_cod_categ != value)
+                {
+                    Oncod_categChanging(value);
+                    ReportPropertyChanging("cod_categ");
+                    _cod_categ = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("cod_categ");
+                    Oncod_categChanged();
+                }
+            }
+        }
+        private global::System.Decimal _cod_categ;
+        partial void Oncod_categChanging(global::System.Decimal value);
+        partial void Oncod_categChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descr_categ
+        {
+            get
+            {
+                return _descr_categ;
+            }
+            set
+            {
+                Ondescr_categChanging(value);
+                ReportPropertyChanging("descr_categ");
+                _descr_categ = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descr_categ");
+                Ondescr_categChanged();
+            }
+        }
+        private global::System.String _descr_categ;
+        partial void Ondescr_categChanging(global::System.String value);
+        partial void Ondescr_categChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_Caixa_categoria", "Caixa")]
+        public EntityCollection<Caixa> Caixas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Caixa>("NSAADMModel.FK_Caixa_categoria", "Caixa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Caixa>("NSAADMModel.FK_Caixa_categoria", "Caixa", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="cliente")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class cliente : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new cliente object.
+        /// </summary>
+        /// <param name="cod_cliente">Initial value of the cod_cliente property.</param>
+        public static cliente Createcliente(global::System.Int32 cod_cliente)
+        {
+            cliente cliente = new cliente();
+            cliente.cod_cliente = cod_cliente;
+            return cliente;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cod_cliente
+        {
+            get
+            {
+                return _cod_cliente;
+            }
+            set
+            {
+                if (_cod_cliente != value)
+                {
+                    Oncod_clienteChanging(value);
+                    ReportPropertyChanging("cod_cliente");
+                    _cod_cliente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("cod_cliente");
+                    Oncod_clienteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _cod_cliente;
+        partial void Oncod_clienteChanging(global::System.Int32 value);
+        partial void Oncod_clienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nome
+        {
+            get
+            {
+                return _nome;
+            }
+            set
+            {
+                OnnomeChanging(value);
+                ReportPropertyChanging("nome");
+                _nome = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nome");
+                OnnomeChanged();
+            }
+        }
+        private global::System.String _nome;
+        partial void OnnomeChanging(global::System.String value);
+        partial void OnnomeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                OnemailChanging(value);
+                ReportPropertyChanging("email");
+                _email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("email");
+                OnemailChanged();
+            }
+        }
+        private global::System.String _email;
+        partial void OnemailChanging(global::System.String value);
+        partial void OnemailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String telefone
+        {
+            get
+            {
+                return _telefone;
+            }
+            set
+            {
+                OntelefoneChanging(value);
+                ReportPropertyChanging("telefone");
+                _telefone = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("telefone");
+                OntelefoneChanged();
+            }
+        }
+        private global::System.String _telefone;
+        partial void OntelefoneChanging(global::System.String value);
+        partial void OntelefoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String endereco
+        {
+            get
+            {
+                return _endereco;
+            }
+            set
+            {
+                OnenderecoChanging(value);
+                ReportPropertyChanging("endereco");
+                _endereco = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("endereco");
+                OnenderecoChanged();
+            }
+        }
+        private global::System.String _endereco;
+        partial void OnenderecoChanging(global::System.String value);
+        partial void OnenderecoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "fk_venda_cliente", "venda")]
+        public EntityCollection<venda> vendas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<venda>("NSAADMModel.fk_venda_cliente", "venda");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<venda>("NSAADMModel.fk_venda_cliente", "venda", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="item")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class item : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new item object.
+        /// </summary>
+        /// <param name="cod_item">Initial value of the cod_item property.</param>
+        /// <param name="cod_produto">Initial value of the cod_produto property.</param>
+        /// <param name="dt_compra">Initial value of the dt_compra property.</param>
+        public static item Createitem(global::System.Int32 cod_item, global::System.Int32 cod_produto, global::System.DateTime dt_compra)
+        {
+            item item = new item();
+            item.cod_item = cod_item;
+            item.cod_produto = cod_produto;
+            item.dt_compra = dt_compra;
+            return item;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cod_item
+        {
+            get
+            {
+                return _cod_item;
+            }
+            set
+            {
+                if (_cod_item != value)
+                {
+                    Oncod_itemChanging(value);
+                    ReportPropertyChanging("cod_item");
+                    _cod_item = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("cod_item");
+                    Oncod_itemChanged();
+                }
+            }
+        }
+        private global::System.Int32 _cod_item;
+        partial void Oncod_itemChanging(global::System.Int32 value);
+        partial void Oncod_itemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cod_produto
+        {
+            get
+            {
+                return _cod_produto;
+            }
+            set
+            {
+                Oncod_produtoChanging(value);
+                ReportPropertyChanging("cod_produto");
+                _cod_produto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cod_produto");
+                Oncod_produtoChanged();
+            }
+        }
+        private global::System.Int32 _cod_produto;
+        partial void Oncod_produtoChanging(global::System.Int32 value);
+        partial void Oncod_produtoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime dt_compra
+        {
+            get
+            {
+                return _dt_compra;
+            }
+            set
+            {
+                Ondt_compraChanging(value);
+                ReportPropertyChanging("dt_compra");
+                _dt_compra = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dt_compra");
+                Ondt_compraChanged();
+            }
+        }
+        private global::System.DateTime _dt_compra;
+        partial void Ondt_compraChanging(global::System.DateTime value);
+        partial void Ondt_compraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> preco
+        {
+            get
+            {
+                return _preco;
+            }
+            set
+            {
+                OnprecoChanging(value);
+                ReportPropertyChanging("preco");
+                _preco = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("preco");
+                OnprecoChanged();
+            }
+        }
+        private Nullable<global::System.Single> _preco;
+        partial void OnprecoChanging(Nullable<global::System.Single> value);
+        partial void OnprecoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "fk_item_produto", "produto")]
+        public produto produto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produto>("NSAADMModel.fk_item_produto", "produto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produto>("NSAADMModel.fk_item_produto", "produto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<produto> produtoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produto>("NSAADMModel.fk_item_produto", "produto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<produto>("NSAADMModel.fk_item_produto", "produto", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "fk_venda_item", "venda")]
+        public EntityCollection<venda> vendas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<venda>("NSAADMModel.fk_venda_item", "venda");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<venda>("NSAADMModel.fk_venda_item", "venda", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="Loja")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Loja : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Loja object.
+        /// </summary>
+        /// <param name="cod_Loja">Initial value of the Cod_Loja property.</param>
+        /// <param name="nome">Initial value of the Nome property.</param>
+        public static Loja CreateLoja(global::System.Int32 cod_Loja, global::System.String nome)
+        {
+            Loja loja = new Loja();
+            loja.Cod_Loja = cod_Loja;
+            loja.Nome = nome;
+            return loja;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cod_Loja
+        {
+            get
+            {
+                return _Cod_Loja;
+            }
+            set
+            {
+                if (_Cod_Loja != value)
+                {
+                    OnCod_LojaChanging(value);
+                    ReportPropertyChanging("Cod_Loja");
+                    _Cod_Loja = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Cod_Loja");
+                    OnCod_LojaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Cod_Loja;
+        partial void OnCod_LojaChanging(global::System.Int32 value);
+        partial void OnCod_LojaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Nome
+        {
+            get
+            {
+                return _Nome;
+            }
+            set
+            {
+                OnNomeChanging(value);
+                ReportPropertyChanging("Nome");
+                _Nome = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Nome");
+                OnNomeChanged();
+            }
+        }
+        private global::System.String _Nome;
+        partial void OnNomeChanging(global::System.String value);
+        partial void OnNomeChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_LojaProduto_loja", "LojaProduto")]
+        public EntityCollection<LojaProduto> LojaProdutoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<LojaProduto>("NSAADMModel.FK_LojaProduto_loja", "LojaProduto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LojaProduto>("NSAADMModel.FK_LojaProduto_loja", "LojaProduto", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="LojaProduto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class LojaProduto : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new LojaProduto object.
+        /// </summary>
+        /// <param name="cod_Produto">Initial value of the Cod_Produto property.</param>
+        /// <param name="cod_Loja">Initial value of the Cod_Loja property.</param>
+        /// <param name="preco">Initial value of the Preco property.</param>
+        public static LojaProduto CreateLojaProduto(global::System.Int32 cod_Produto, global::System.Int32 cod_Loja, global::System.Decimal preco)
+        {
+            LojaProduto lojaProduto = new LojaProduto();
+            lojaProduto.Cod_Produto = cod_Produto;
+            lojaProduto.Cod_Loja = cod_Loja;
+            lojaProduto.Preco = preco;
+            return lojaProduto;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cod_Produto
+        {
+            get
+            {
+                return _Cod_Produto;
+            }
+            set
+            {
+                if (_Cod_Produto != value)
+                {
+                    OnCod_ProdutoChanging(value);
+                    ReportPropertyChanging("Cod_Produto");
+                    _Cod_Produto = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Cod_Produto");
+                    OnCod_ProdutoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Cod_Produto;
+        partial void OnCod_ProdutoChanging(global::System.Int32 value);
+        partial void OnCod_ProdutoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cod_Loja
+        {
+            get
+            {
+                return _Cod_Loja;
+            }
+            set
+            {
+                if (_Cod_Loja != value)
+                {
+                    OnCod_LojaChanging(value);
+                    ReportPropertyChanging("Cod_Loja");
+                    _Cod_Loja = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Cod_Loja");
+                    OnCod_LojaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Cod_Loja;
+        partial void OnCod_LojaChanging(global::System.Int32 value);
+        partial void OnCod_LojaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Preco
+        {
+            get
+            {
+                return _Preco;
+            }
+            set
+            {
+                OnPrecoChanging(value);
+                ReportPropertyChanging("Preco");
+                _Preco = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Preco");
+                OnPrecoChanged();
+            }
+        }
+        private global::System.Decimal _Preco;
+        partial void OnPrecoChanging(global::System.Decimal value);
+        partial void OnPrecoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Tarifa
+        {
+            get
+            {
+                return _Tarifa;
+            }
+            set
+            {
+                OnTarifaChanging(value);
+                ReportPropertyChanging("Tarifa");
+                _Tarifa = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Tarifa");
+                OnTarifaChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Tarifa;
+        partial void OnTarifaChanging(Nullable<global::System.Decimal> value);
+        partial void OnTarifaChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_LojaProduto_loja", "Loja")]
+        public Loja Loja
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Loja>("NSAADMModel.FK_LojaProduto_loja", "Loja").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Loja>("NSAADMModel.FK_LojaProduto_loja", "Loja").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Loja> LojaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Loja>("NSAADMModel.FK_LojaProduto_loja", "Loja");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Loja>("NSAADMModel.FK_LojaProduto_loja", "Loja", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_LojaProduto_produto", "produto")]
+        public produto produto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produto>("NSAADMModel.FK_LojaProduto_produto", "produto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produto>("NSAADMModel.FK_LojaProduto_produto", "produto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<produto> produtoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produto>("NSAADMModel.FK_LojaProduto_produto", "produto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<produto>("NSAADMModel.FK_LojaProduto_produto", "produto", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -5609,6 +6855,132 @@ namespace ServidorWeb.BD
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="produto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class produto : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new produto object.
+        /// </summary>
+        /// <param name="cod_produto">Initial value of the cod_produto property.</param>
+        public static produto Createproduto(global::System.Int32 cod_produto)
+        {
+            produto produto = new produto();
+            produto.cod_produto = cod_produto;
+            return produto;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cod_produto
+        {
+            get
+            {
+                return _cod_produto;
+            }
+            set
+            {
+                if (_cod_produto != value)
+                {
+                    Oncod_produtoChanging(value);
+                    ReportPropertyChanging("cod_produto");
+                    _cod_produto = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("cod_produto");
+                    Oncod_produtoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _cod_produto;
+        partial void Oncod_produtoChanging(global::System.Int32 value);
+        partial void Oncod_produtoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nome
+        {
+            get
+            {
+                return _nome;
+            }
+            set
+            {
+                OnnomeChanging(value);
+                ReportPropertyChanging("nome");
+                _nome = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nome");
+                OnnomeChanged();
+            }
+        }
+        private global::System.String _nome;
+        partial void OnnomeChanging(global::System.String value);
+        partial void OnnomeChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "fk_item_produto", "item")]
+        public EntityCollection<item> items
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<item>("NSAADMModel.fk_item_produto", "item");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item>("NSAADMModel.fk_item_produto", "item", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_LojaProduto_produto", "LojaProduto")]
+        public EntityCollection<LojaProduto> LojaProdutoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<LojaProduto>("NSAADMModel.FK_LojaProduto_produto", "LojaProduto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LojaProduto>("NSAADMModel.FK_LojaProduto_produto", "LojaProduto", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="Request")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -5685,6 +7057,252 @@ namespace ServidorWeb.BD
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="taxa")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class taxa : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new taxa object.
+        /// </summary>
+        /// <param name="preco_kg">Initial value of the preco_kg property.</param>
+        /// <param name="icms">Initial value of the icms property.</param>
+        /// <param name="paypal">Initial value of the paypal property.</param>
+        /// <param name="dARJ">Initial value of the DARJ property.</param>
+        public static taxa Createtaxa(global::System.Single preco_kg, global::System.Single icms, global::System.Single paypal, global::System.Single dARJ)
+        {
+            taxa taxa = new taxa();
+            taxa.preco_kg = preco_kg;
+            taxa.icms = icms;
+            taxa.paypal = paypal;
+            taxa.DARJ = dARJ;
+            return taxa;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Single preco_kg
+        {
+            get
+            {
+                return _preco_kg;
+            }
+            set
+            {
+                if (_preco_kg != value)
+                {
+                    Onpreco_kgChanging(value);
+                    ReportPropertyChanging("preco_kg");
+                    _preco_kg = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("preco_kg");
+                    Onpreco_kgChanged();
+                }
+            }
+        }
+        private global::System.Single _preco_kg;
+        partial void Onpreco_kgChanging(global::System.Single value);
+        partial void Onpreco_kgChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Single icms
+        {
+            get
+            {
+                return _icms;
+            }
+            set
+            {
+                if (_icms != value)
+                {
+                    OnicmsChanging(value);
+                    ReportPropertyChanging("icms");
+                    _icms = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("icms");
+                    OnicmsChanged();
+                }
+            }
+        }
+        private global::System.Single _icms;
+        partial void OnicmsChanging(global::System.Single value);
+        partial void OnicmsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Single paypal
+        {
+            get
+            {
+                return _paypal;
+            }
+            set
+            {
+                if (_paypal != value)
+                {
+                    OnpaypalChanging(value);
+                    ReportPropertyChanging("paypal");
+                    _paypal = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("paypal");
+                    OnpaypalChanged();
+                }
+            }
+        }
+        private global::System.Single _paypal;
+        partial void OnpaypalChanging(global::System.Single value);
+        partial void OnpaypalChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Single DARJ
+        {
+            get
+            {
+                return _DARJ;
+            }
+            set
+            {
+                if (_DARJ != value)
+                {
+                    OnDARJChanging(value);
+                    ReportPropertyChanging("DARJ");
+                    _DARJ = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("DARJ");
+                    OnDARJChanged();
+                }
+            }
+        }
+        private global::System.Single _DARJ;
+        partial void OnDARJChanging(global::System.Single value);
+        partial void OnDARJChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="TipoCaixa")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TipoCaixa : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TipoCaixa object.
+        /// </summary>
+        /// <param name="cod_Caixa">Initial value of the Cod_Caixa property.</param>
+        public static TipoCaixa CreateTipoCaixa(global::System.Int32 cod_Caixa)
+        {
+            TipoCaixa tipoCaixa = new TipoCaixa();
+            tipoCaixa.Cod_Caixa = cod_Caixa;
+            return tipoCaixa;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Cod_Caixa
+        {
+            get
+            {
+                return _Cod_Caixa;
+            }
+            set
+            {
+                if (_Cod_Caixa != value)
+                {
+                    OnCod_CaixaChanging(value);
+                    ReportPropertyChanging("Cod_Caixa");
+                    _Cod_Caixa = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Cod_Caixa");
+                    OnCod_CaixaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Cod_Caixa;
+        partial void OnCod_CaixaChanging(global::System.Int32 value);
+        partial void OnCod_CaixaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Desc_Caixa
+        {
+            get
+            {
+                return _Desc_Caixa;
+            }
+            set
+            {
+                OnDesc_CaixaChanging(value);
+                ReportPropertyChanging("Desc_Caixa");
+                _Desc_Caixa = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Desc_Caixa");
+                OnDesc_CaixaChanged();
+            }
+        }
+        private global::System.String _Desc_Caixa;
+        partial void OnDesc_CaixaChanging(global::System.String value);
+        partial void OnDesc_CaixaChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_Caixa_TipoCaixa", "Caixa")]
+        public EntityCollection<Caixa> Caixas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Caixa>("NSAADMModel.FK_Caixa_TipoCaixa", "Caixa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Caixa>("NSAADMModel.FK_Caixa_TipoCaixa", "Caixa", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -5792,6 +7410,217 @@ namespace ServidorWeb.BD
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="venda")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class venda : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new venda object.
+        /// </summary>
+        /// <param name="cod_venda">Initial value of the cod_venda property.</param>
+        /// <param name="cod_item">Initial value of the cod_item property.</param>
+        public static venda Createvenda(global::System.Int32 cod_venda, global::System.Int32 cod_item)
+        {
+            venda venda = new venda();
+            venda.cod_venda = cod_venda;
+            venda.cod_item = cod_item;
+            return venda;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cod_venda
+        {
+            get
+            {
+                return _cod_venda;
+            }
+            set
+            {
+                if (_cod_venda != value)
+                {
+                    Oncod_vendaChanging(value);
+                    ReportPropertyChanging("cod_venda");
+                    _cod_venda = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("cod_venda");
+                    Oncod_vendaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _cod_venda;
+        partial void Oncod_vendaChanging(global::System.Int32 value);
+        partial void Oncod_vendaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cod_item
+        {
+            get
+            {
+                return _cod_item;
+            }
+            set
+            {
+                if (_cod_item != value)
+                {
+                    Oncod_itemChanging(value);
+                    ReportPropertyChanging("cod_item");
+                    _cod_item = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("cod_item");
+                    Oncod_itemChanged();
+                }
+            }
+        }
+        private global::System.Int32 _cod_item;
+        partial void Oncod_itemChanging(global::System.Int32 value);
+        partial void Oncod_itemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> cod_cliente
+        {
+            get
+            {
+                return _cod_cliente;
+            }
+            set
+            {
+                Oncod_clienteChanging(value);
+                ReportPropertyChanging("cod_cliente");
+                _cod_cliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cod_cliente");
+                Oncod_clienteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _cod_cliente;
+        partial void Oncod_clienteChanging(Nullable<global::System.Int32> value);
+        partial void Oncod_clienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> dt_venda
+        {
+            get
+            {
+                return _dt_venda;
+            }
+            set
+            {
+                Ondt_vendaChanging(value);
+                ReportPropertyChanging("dt_venda");
+                _dt_venda = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dt_venda");
+                Ondt_vendaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _dt_venda;
+        partial void Ondt_vendaChanging(Nullable<global::System.DateTime> value);
+        partial void Ondt_vendaChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "fk_venda_cliente", "cliente")]
+        public cliente cliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<cliente>("NSAADMModel.fk_venda_cliente", "cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<cliente>("NSAADMModel.fk_venda_cliente", "cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<cliente> clienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<cliente>("NSAADMModel.fk_venda_cliente", "cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<cliente>("NSAADMModel.fk_venda_cliente", "cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "fk_venda_item", "item")]
+        public item item
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<item>("NSAADMModel.fk_venda_item", "item").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<item>("NSAADMModel.fk_venda_item", "item").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<item> itemReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<item>("NSAADMModel.fk_venda_item", "item");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<item>("NSAADMModel.fk_venda_item", "item", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion

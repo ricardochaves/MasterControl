@@ -17,9 +17,6 @@ namespace ServidorWeb.ML.Paginas
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-            
-
             try
             {
 
@@ -27,16 +24,8 @@ namespace ServidorWeb.ML.Paginas
                 if ((Meli)Session["M"] == null)
                 {
 
-
-
                     Session["M"] = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
-                    
-
-                    //if ((Meli)Session["M"] == null)
-                    //{
-                    //    throw new Exception("Primeiro teste");
-                    //}
-
+                   
                 }
 
                 m = (Meli)Session["M"];
@@ -46,13 +35,10 @@ namespace ServidorWeb.ML.Paginas
 
                     Session["pagina"] = "InicioML.aspx";
 
-                    //if (Session["M"] == null)
-                    //{
-                    //    throw new Exception("Session M está null");
-                    //}
+                    string url = m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login);
 
-
-                    Response.Redirect(m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login));
+                    //Server.Transfer(url,true);
+                    Response.Redirect(url,false);
 
                 }
 
@@ -66,8 +52,6 @@ namespace ServidorWeb.ML.Paginas
                 
                 throw new Exception("Erro no Load",ex) ;
             }
-
-
 
 
         }

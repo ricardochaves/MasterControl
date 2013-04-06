@@ -44,7 +44,7 @@ namespace ServidorWeb.ML.Paginas
 
                 Session["M"] = m;
 
-                Response.Redirect(pg);
+                Response.Redirect(pg, false);
 
             }
             catch (Exception ex)
