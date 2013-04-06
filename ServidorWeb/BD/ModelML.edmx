@@ -1,0 +1,1500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NSAADMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NSAADMModelStoreContainer">
+          <EntitySet Name="CallBackML" EntityType="NSAADMModel.Store.CallBackML" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_BuyerReputation" EntityType="NSAADMModel.Store.ML_BuyerReputation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_FeedbackBuyer" EntityType="NSAADMModel.Store.ML_FeedbackBuyer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_FeedbackSeller" EntityType="NSAADMModel.Store.ML_FeedbackSeller" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Identification" EntityType="NSAADMModel.Store.ML_Identification" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Item" EntityType="NSAADMModel.Store.ML_Item" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_ItemOrganizacao" EntityType="NSAADMModel.Store.ML_ItemOrganizacao" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Order" EntityType="NSAADMModel.Store.ML_Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_OrderItem" EntityType="NSAADMModel.Store.ML_OrderItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Payment" EntityType="NSAADMModel.Store.ML_Payment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Phone" EntityType="NSAADMModel.Store.ML_Phone" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Question" EntityType="NSAADMModel.Store.ML_Question" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Ratings" EntityType="NSAADMModel.Store.ML_Ratings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_ResumoTransBuyer" EntityType="NSAADMModel.Store.ML_ResumoTransBuyer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_SellerReputation" EntityType="NSAADMModel.Store.ML_SellerReputation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_TransactionsBuyer" EntityType="NSAADMModel.Store.ML_TransactionsBuyer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_TransactionsSeller" EntityType="NSAADMModel.Store.ML_TransactionsSeller" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Usuario" EntityType="NSAADMModel.Store.ML_Usuario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MP_Payments" EntityType="NSAADMModel.Store.MP_Payments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Requests" EntityType="NSAADMModel.Store.Requests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsuarioAdm" EntityType="NSAADMModel.Store.UsuarioAdm" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ML_BuyerReputation_ML_Usuario" Association="NSAADMModel.Store.FK_ML_BuyerReputation_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Identification_ML_Usuario" Association="NSAADMModel.Store.FK_ML_Identification_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Identification" EntitySet="ML_Identification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Item_ML_ItemOrganizacao" Association="NSAADMModel.Store.FK_ML_Item_ML_ItemOrganizacao">
+            <End Role="ML_ItemOrganizacao" EntitySet="ML_ItemOrganizacao" />
+            <End Role="ML_Item" EntitySet="ML_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Order_ML_Usuario" Association="NSAADMModel.Store.FK_ML_Order_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Order" EntitySet="ML_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Order_ML_Usuario1" Association="NSAADMModel.Store.FK_ML_Order_ML_Usuario1">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Order" EntitySet="ML_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_OrderItem_ML_Item" Association="NSAADMModel.Store.FK_ML_OrderItem_ML_Item">
+            <End Role="ML_Item" EntitySet="ML_Item" />
+            <End Role="ML_OrderItem" EntitySet="ML_OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_OrderItem_ML_Order" Association="NSAADMModel.Store.FK_ML_OrderItem_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_OrderItem" EntitySet="ML_OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Payment_ML_Order" Association="NSAADMModel.Store.FK_ML_Payment_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_Payment" EntitySet="ML_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Phone_ML_Usuario" Association="NSAADMModel.Store.FK_ML_Phone_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Phone" EntitySet="ML_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Ratings_ML_TransactionsSeller" Association="NSAADMModel.Store.FK_ML_Ratings_ML_TransactionsSeller">
+            <End Role="ML_TransactionsSeller" EntitySet="ML_TransactionsSeller" />
+            <End Role="ML_Ratings" EntitySet="ML_Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_SellerReputation_ML_Usuario" Association="NSAADMModel.Store.FK_ML_SellerReputation_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_SellerReputation" EntitySet="ML_SellerReputation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_BuyerReputation" Association="NSAADMModel.Store.FK_ML_TransactionsBuyer_ML_BuyerReputation">
+            <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer" Association="NSAADMModel.Store.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer">
+            <End Role="ML_ResumoTransBuyer" EntitySet="ML_ResumoTransBuyer" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1" Association="NSAADMModel.Store.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1">
+            <End Role="ML_ResumoTransBuyer" EntitySet="ML_ResumoTransBuyer" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2" Association="NSAADMModel.Store.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2">
+            <End Role="ML_ResumoTransBuyer" EntitySet="ML_ResumoTransBuyer" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsSeller_ML_SellerReputation" Association="NSAADMModel.Store.FK_ML_TransactionsSeller_ML_SellerReputation">
+            <End Role="ML_SellerReputation" EntitySet="ML_SellerReputation" />
+            <End Role="ML_TransactionsSeller" EntitySet="ML_TransactionsSeller" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CallBackML">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="nvarchar" MaxLength="50" />
+          <Property Name="resource" Type="nvarchar" MaxLength="50" />
+          <Property Name="topic" Type="nvarchar" MaxLength="50" />
+          <Property Name="received" Type="datetime" />
+          <Property Name="sent" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ML_BuyerReputation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="canceled_transactions" Type="decimal" />
+          <Property Name="id_Usuario" Type="decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ML_FeedbackBuyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_order" Type="numeric" Nullable="false" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="fulfilled" Type="nvarchar(max)" />
+          <Property Name="rating" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ML_FeedbackSeller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_order" Type="numeric" Nullable="false" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="fulfilled" Type="nvarchar(max)" />
+          <Property Name="rating" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ML_Identification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_Usuario" Type="decimal" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="number" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ML_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="variation_id" Type="nvarchar(max)" />
+          <Property Name="id_org" Type="numeric" />
+        </EntityType>
+        <EntityType Name="ML_ItemOrganizacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ML_Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="status_detail" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="date_closed" Type="datetime" />
+          <Property Name="total_amount" Type="float" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_buyer" Type="decimal" />
+          <Property Name="id_seller" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_OrderItem">
+          <Key>
+            <PropertyRef Name="id_item" />
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_item" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="id_order" Type="decimal" Nullable="false" />
+          <Property Name="quantity" Type="decimal" />
+          <Property Name="unit_price" Type="float" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ML_Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="transaction_amount" Type="float" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="date_last_updated" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_order" Type="decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ML_Phone">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_Usuario" Type="decimal" Nullable="false" />
+          <Property Name="area_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="number" Type="nvarchar" MaxLength="50" />
+          <Property Name="extension" Type="nvarchar" MaxLength="50" />
+          <Property Name="varified" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ML_Question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="item_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="seller_id" Type="numeric" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="text" Type="nvarchar" MaxLength="50" />
+          <Property Name="answered_questions" Type="numeric" />
+          <Property Name="Answer_date_created" Type="datetime" />
+          <Property Name="Answer_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Answer_text" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_question" Type="numeric" />
+          <Property Name="id_from" Type="numeric" />
+        </EntityType>
+        <EntityType Name="ML_Ratings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="positive" Type="float" />
+          <Property Name="negative" Type="float" />
+          <Property Name="neutral" Type="float" />
+          <Property Name="id_TransactionsSeller" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_ResumoTransBuyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="paid" Type="decimal" />
+          <Property Name="total" Type="decimal" />
+          <Property Name="units" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_SellerReputation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="level_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="power_seller_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_Usuario" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_TransactionsBuyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="period" Type="nvarchar" MaxLength="50" />
+          <Property Name="total" Type="decimal" />
+          <Property Name="completed" Type="decimal" />
+          <Property Name="id_Usuario" Type="decimal" />
+          <Property Name="id_BuyerReputation" Type="decimal" />
+          <Property Name="id_canceled" Type="decimal" />
+          <Property Name="id_unrated" Type="decimal" />
+          <Property Name="id_not_yet_rated" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_TransactionsSeller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="period" Type="nvarchar" MaxLength="50" />
+          <Property Name="total" Type="decimal" />
+          <Property Name="completed" Type="decimal" />
+          <Property Name="canceled" Type="decimal" />
+          <Property Name="id_SellerReputation" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" />
+          <Property Name="nickname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="registration_date" Type="datetime" />
+          <Property Name="first_name" Type="nvarchar(max)" />
+          <Property Name="last_name" Type="nvarchar(max)" />
+          <Property Name="country_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="user_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="logo" Type="nvarchar(max)" />
+          <Property Name="points" Type="decimal" />
+          <Property Name="site_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="permalink" Type="nvarchar(max)" />
+          <Property Name="seller_experience" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MP_Payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" />
+          <Property Name="site_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="date_approved" Type="datetime" />
+          <Property Name="last_modified" Type="datetime" />
+          <Property Name="money_release_date" Type="datetime" />
+          <Property Name="operation_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="collector_id" Type="numeric" />
+          <Property Name="sponsor_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_usuario" Type="numeric" />
+          <Property Name="external_reference" Type="numeric" />
+          <Property Name="reason" Type="nvarchar(max)" />
+          <Property Name="currency_id" Type="numeric" />
+          <Property Name="transaction_amount" Type="money" />
+          <Property Name="total_paid_amount" Type="money" />
+          <Property Name="shipping_cost" Type="money" />
+          <Property Name="account_money_amount" Type="money" />
+          <Property Name="mercadopago_fee" Type="money" />
+          <Property Name="net_received_amount" Type="money" />
+          <Property Name="marketplace_fee" Type="money" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="status_detail" Type="nvarchar" MaxLength="50" />
+          <Property Name="status_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="released" Type="nvarchar" MaxLength="50" />
+          <Property Name="payment_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="installments" Type="nvarchar" MaxLength="50" />
+          <Property Name="marketplace" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Requests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Request" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioAdm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="senha" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ML_BuyerReputation_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="1" />
+          <End Role="ML_BuyerReputation" Type="NSAADMModel.Store.ML_BuyerReputation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_BuyerReputation">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Identification_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="1" />
+          <End Role="ML_Identification" Type="NSAADMModel.Store.ML_Identification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Identification">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Item_ML_ItemOrganizacao">
+          <End Role="ML_ItemOrganizacao" Type="NSAADMModel.Store.ML_ItemOrganizacao" Multiplicity="0..1" />
+          <End Role="ML_Item" Type="NSAADMModel.Store.ML_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ItemOrganizacao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Item">
+              <PropertyRef Name="id_org" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Order_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="0..1" />
+          <End Role="ML_Order" Type="NSAADMModel.Store.ML_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Order">
+              <PropertyRef Name="id_seller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Order_ML_Usuario1">
+          <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="0..1" />
+          <End Role="ML_Order" Type="NSAADMModel.Store.ML_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Order">
+              <PropertyRef Name="id_buyer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_OrderItem_ML_Item">
+          <End Role="ML_Item" Type="NSAADMModel.Store.ML_Item" Multiplicity="1" />
+          <End Role="ML_OrderItem" Type="NSAADMModel.Store.ML_OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_OrderItem">
+              <PropertyRef Name="id_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_OrderItem_ML_Order">
+          <End Role="ML_Order" Type="NSAADMModel.Store.ML_Order" Multiplicity="1" />
+          <End Role="ML_OrderItem" Type="NSAADMModel.Store.ML_OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_OrderItem">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Payment_ML_Order">
+          <End Role="ML_Order" Type="NSAADMModel.Store.ML_Order" Multiplicity="1" />
+          <End Role="ML_Payment" Type="NSAADMModel.Store.ML_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Payment">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Phone_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="1" />
+          <End Role="ML_Phone" Type="NSAADMModel.Store.ML_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Phone">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Ratings_ML_TransactionsSeller">
+          <End Role="ML_TransactionsSeller" Type="NSAADMModel.Store.ML_TransactionsSeller" Multiplicity="0..1" />
+          <End Role="ML_Ratings" Type="NSAADMModel.Store.ML_Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_TransactionsSeller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Ratings">
+              <PropertyRef Name="id_TransactionsSeller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_SellerReputation_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="0..1" />
+          <End Role="ML_SellerReputation" Type="NSAADMModel.Store.ML_SellerReputation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_SellerReputation">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_BuyerReputation">
+          <End Role="ML_BuyerReputation" Type="NSAADMModel.Store.ML_BuyerReputation" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.Store.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_BuyerReputation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_BuyerReputation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer">
+          <End Role="ML_ResumoTransBuyer" Type="NSAADMModel.Store.ML_ResumoTransBuyer" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.Store.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ResumoTransBuyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_not_yet_rated" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1">
+          <End Role="ML_ResumoTransBuyer" Type="NSAADMModel.Store.ML_ResumoTransBuyer" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.Store.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ResumoTransBuyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_unrated" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2">
+          <End Role="ML_ResumoTransBuyer" Type="NSAADMModel.Store.ML_ResumoTransBuyer" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.Store.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ResumoTransBuyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_canceled" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsSeller_ML_SellerReputation">
+          <End Role="ML_SellerReputation" Type="NSAADMModel.Store.ML_SellerReputation" Multiplicity="0..1" />
+          <End Role="ML_TransactionsSeller" Type="NSAADMModel.Store.ML_TransactionsSeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_SellerReputation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsSeller">
+              <PropertyRef Name="id_SellerReputation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NSAADMModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NSAADMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ML_BuyerReputation" EntityType="NSAADMModel.ML_BuyerReputation" />
+          <EntitySet Name="ML_Identification" EntityType="NSAADMModel.ML_Identification" />
+          <EntitySet Name="ML_Item" EntityType="NSAADMModel.ML_Item" />
+          <EntitySet Name="ML_Order" EntityType="NSAADMModel.ML_Order" />
+          <EntitySet Name="ML_OrderItem" EntityType="NSAADMModel.ML_OrderItem" />
+          <EntitySet Name="ML_Payment" EntityType="NSAADMModel.ML_Payment" />
+          <EntitySet Name="ML_Phone" EntityType="NSAADMModel.ML_Phone" />
+          <EntitySet Name="ML_Ratings" EntityType="NSAADMModel.ML_Ratings" />
+          <EntitySet Name="ML_ResumoTransBuyer" EntityType="NSAADMModel.ML_ResumoTransBuyer" />
+          <EntitySet Name="ML_SellerReputation" EntityType="NSAADMModel.ML_SellerReputation" />
+          <EntitySet Name="ML_TransactionsBuyer" EntityType="NSAADMModel.ML_TransactionsBuyer" />
+          <EntitySet Name="ML_TransactionsSeller" EntityType="NSAADMModel.ML_TransactionsSeller" />
+          <EntitySet Name="ML_Usuario" EntityType="NSAADMModel.ML_Usuario" />
+          <EntitySet Name="MP_Payments" EntityType="NSAADMModel.MP_Payments" />
+          <AssociationSet Name="FK_ML_BuyerReputation_ML_Usuario" Association="NSAADMModel.FK_ML_BuyerReputation_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_BuyerReputation" Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_BuyerReputation">
+            <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Identification_ML_Usuario" Association="NSAADMModel.FK_ML_Identification_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Identification" EntitySet="ML_Identification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_OrderItem_ML_Item" Association="NSAADMModel.FK_ML_OrderItem_ML_Item">
+            <End Role="ML_Item" EntitySet="ML_Item" />
+            <End Role="ML_OrderItem" EntitySet="ML_OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Order_ML_Usuario" Association="NSAADMModel.FK_ML_Order_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Order" EntitySet="ML_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Order_ML_Usuario1" Association="NSAADMModel.FK_ML_Order_ML_Usuario1">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Order" EntitySet="ML_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_OrderItem_ML_Order" Association="NSAADMModel.FK_ML_OrderItem_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_OrderItem" EntitySet="ML_OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Payment_ML_Order" Association="NSAADMModel.FK_ML_Payment_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_Payment" EntitySet="ML_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Phone_ML_Usuario" Association="NSAADMModel.FK_ML_Phone_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_Phone" EntitySet="ML_Phone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Ratings_ML_TransactionsSeller" Association="NSAADMModel.FK_ML_Ratings_ML_TransactionsSeller">
+            <End Role="ML_TransactionsSeller" EntitySet="ML_TransactionsSeller" />
+            <End Role="ML_Ratings" EntitySet="ML_Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer" Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer">
+            <End Role="ML_ResumoTransBuyer" EntitySet="ML_ResumoTransBuyer" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1" Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1">
+            <End Role="ML_ResumoTransBuyer" EntitySet="ML_ResumoTransBuyer" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2" Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2">
+            <End Role="ML_ResumoTransBuyer" EntitySet="ML_ResumoTransBuyer" />
+            <End Role="ML_TransactionsBuyer" EntitySet="ML_TransactionsBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_SellerReputation_ML_Usuario" Association="NSAADMModel.FK_ML_SellerReputation_ML_Usuario">
+            <End Role="ML_Usuario" EntitySet="ML_Usuario" />
+            <End Role="ML_SellerReputation" EntitySet="ML_SellerReputation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_TransactionsSeller_ML_SellerReputation" Association="NSAADMModel.FK_ML_TransactionsSeller_ML_SellerReputation">
+            <End Role="ML_SellerReputation" EntitySet="ML_SellerReputation" />
+            <End Role="ML_TransactionsSeller" EntitySet="ML_TransactionsSeller" />
+          </AssociationSet>
+          <EntitySet Name="UsuarioAdms" EntityType="NSAADMModel.UsuarioAdm" />
+          <EntitySet Name="ML_FeedbackBuyer" EntityType="NSAADMModel.ML_FeedbackBuyer" />
+          <EntitySet Name="ML_FeedbackSeller" EntityType="NSAADMModel.ML_FeedbackSeller" />
+          <AssociationSet Name="FK_ML_FeedbackBuyer_ML_Order" Association="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_FeedbackBuyer" EntitySet="ML_FeedbackBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_FeedbackSeller_ML_Order" Association="NSAADMModel.FK_ML_FeedbackSeller_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_FeedbackSeller" EntitySet="ML_FeedbackSeller" />
+          </AssociationSet>
+          <EntitySet Name="ML_ItemOrganizacao" EntityType="NSAADMModel.ML_ItemOrganizacao" />
+          <AssociationSet Name="FK_ML_Item_ML_ItemOrganizacao" Association="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao">
+            <End Role="ML_ItemOrganizacao" EntitySet="ML_ItemOrganizacao" />
+            <End Role="ML_Item" EntitySet="ML_Item" />
+          </AssociationSet>
+          <EntitySet Name="Requests" EntityType="NSAADMModel.Request" />
+          <EntitySet Name="CallBackMLs" EntityType="NSAADMModel.CallBackML" />
+          <EntitySet Name="ML_Question" EntityType="NSAADMModel.ML_Question" />
+        </EntityContainer>
+        <EntityType Name="ML_BuyerReputation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="canceled_transactions" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_Usuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_Usuario" Relationship="NSAADMModel.FK_ML_BuyerReputation_ML_Usuario" FromRole="ML_BuyerReputation" ToRole="ML_Usuario" />
+          <NavigationProperty Name="ML_TransactionsBuyer" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_BuyerReputation" FromRole="ML_BuyerReputation" ToRole="ML_TransactionsBuyer" />
+        </EntityType>
+        <EntityType Name="ML_Identification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Usuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="number" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_Usuario" Relationship="NSAADMModel.FK_ML_Identification_ML_Usuario" FromRole="ML_Identification" ToRole="ML_Usuario" />
+        </EntityType>
+        <EntityType Name="ML_Item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="variation_id" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_OrderItem" Relationship="NSAADMModel.FK_ML_OrderItem_ML_Item" FromRole="ML_Item" ToRole="ML_OrderItem" />
+          <Property Type="Decimal" Name="id_org" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_ItemOrganizacao" Relationship="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" FromRole="ML_Item" ToRole="ML_ItemOrganizacao" />
+        </EntityType>
+        <EntityType Name="ML_Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="status_detail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="date_created" Type="DateTime" />
+          <Property Name="date_closed" Type="DateTime" />
+          <Property Name="total_amount" Type="Double" />
+          <Property Name="currency_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="id_buyer" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_seller" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_Usuario" Relationship="NSAADMModel.FK_ML_Order_ML_Usuario" FromRole="ML_Order" ToRole="ML_Usuario" />
+          <NavigationProperty Name="ML_Usuario1" Relationship="NSAADMModel.FK_ML_Order_ML_Usuario1" FromRole="ML_Order" ToRole="ML_Usuario" />
+          <NavigationProperty Name="ML_OrderItem" Relationship="NSAADMModel.FK_ML_OrderItem_ML_Order" FromRole="ML_Order" ToRole="ML_OrderItem" />
+          <NavigationProperty Name="ML_Payment" Relationship="NSAADMModel.FK_ML_Payment_ML_Order" FromRole="ML_Order" ToRole="ML_Payment" />
+          <NavigationProperty Name="ML_FeedbackBuyer" Relationship="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order" FromRole="ML_Order" ToRole="ML_FeedbackBuyer" />
+          <NavigationProperty Name="ML_FeedbackSeller" Relationship="NSAADMModel.FK_ML_FeedbackSeller_ML_Order" FromRole="ML_Order" ToRole="ML_FeedbackSeller" />
+        </EntityType>
+        <EntityType Name="ML_OrderItem">
+          <Key>
+            <PropertyRef Name="id_item" />
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_item" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="id_order" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="quantity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="unit_price" Type="Double" />
+          <Property Name="currency_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_Item" Relationship="NSAADMModel.FK_ML_OrderItem_ML_Item" FromRole="ML_OrderItem" ToRole="ML_Item" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_OrderItem_ML_Order" FromRole="ML_OrderItem" ToRole="ML_Order" />
+        </EntityType>
+        <EntityType Name="ML_Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="transaction_amount" Type="Double" />
+          <Property Name="currency_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="date_created" Type="DateTime" />
+          <Property Name="date_last_updated" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="id_order" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_Payment_ML_Order" FromRole="ML_Payment" ToRole="ML_Order" />
+        </EntityType>
+        <EntityType Name="ML_Phone">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Usuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="area_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="number" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="extension" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="varified" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_Usuario" Relationship="NSAADMModel.FK_ML_Phone_ML_Usuario" FromRole="ML_Phone" ToRole="ML_Usuario" />
+        </EntityType>
+        <EntityType Name="ML_Ratings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="positive" Type="Double" />
+          <Property Name="negative" Type="Double" />
+          <Property Name="neutral" Type="Double" />
+          <Property Name="id_TransactionsSeller" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_TransactionsSeller" Relationship="NSAADMModel.FK_ML_Ratings_ML_TransactionsSeller" FromRole="ML_Ratings" ToRole="ML_TransactionsSeller" />
+        </EntityType>
+        <EntityType Name="ML_ResumoTransBuyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paid" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="units" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_TransactionsBuyer" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer" FromRole="ML_ResumoTransBuyer" ToRole="ML_TransactionsBuyer" />
+          <NavigationProperty Name="ML_TransactionsBuyer1" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1" FromRole="ML_ResumoTransBuyer" ToRole="ML_TransactionsBuyer" />
+          <NavigationProperty Name="ML_TransactionsBuyer2" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2" FromRole="ML_ResumoTransBuyer" ToRole="ML_TransactionsBuyer" />
+        </EntityType>
+        <EntityType Name="ML_SellerReputation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="level_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="power_seller_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="id_Usuario" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_Usuario" Relationship="NSAADMModel.FK_ML_SellerReputation_ML_Usuario" FromRole="ML_SellerReputation" ToRole="ML_Usuario" />
+          <NavigationProperty Name="ML_TransactionsSeller" Relationship="NSAADMModel.FK_ML_TransactionsSeller_ML_SellerReputation" FromRole="ML_SellerReputation" ToRole="ML_TransactionsSeller" />
+        </EntityType>
+        <EntityType Name="ML_TransactionsBuyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="period" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="completed" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_Usuario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_BuyerReputation" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_canceled" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_unrated" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_not_yet_rated" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_BuyerReputation" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_BuyerReputation" FromRole="ML_TransactionsBuyer" ToRole="ML_BuyerReputation" />
+          <NavigationProperty Name="ML_ResumoTransBuyer" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer" FromRole="ML_TransactionsBuyer" ToRole="ML_ResumoTransBuyer" />
+          <NavigationProperty Name="ML_ResumoTransBuyer1" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1" FromRole="ML_TransactionsBuyer" ToRole="ML_ResumoTransBuyer" />
+          <NavigationProperty Name="ML_ResumoTransBuyer2" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2" FromRole="ML_TransactionsBuyer" ToRole="ML_ResumoTransBuyer" />
+        </EntityType>
+        <EntityType Name="ML_TransactionsSeller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="period" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="completed" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="canceled" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_SellerReputation" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_Ratings" Relationship="NSAADMModel.FK_ML_Ratings_ML_TransactionsSeller" FromRole="ML_TransactionsSeller" ToRole="ML_Ratings" />
+          <NavigationProperty Name="ML_SellerReputation" Relationship="NSAADMModel.FK_ML_TransactionsSeller_ML_SellerReputation" FromRole="ML_TransactionsSeller" ToRole="ML_SellerReputation" />
+        </EntityType>
+        <EntityType Name="ML_Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="nickname" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="registration_date" Type="DateTime" />
+          <Property Name="first_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="last_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="country_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="user_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="logo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="points" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="site_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="permalink" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="seller_experience" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_BuyerReputation" Relationship="NSAADMModel.FK_ML_BuyerReputation_ML_Usuario" FromRole="ML_Usuario" ToRole="ML_BuyerReputation" />
+          <NavigationProperty Name="ML_Identification" Relationship="NSAADMModel.FK_ML_Identification_ML_Usuario" FromRole="ML_Usuario" ToRole="ML_Identification" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_Order_ML_Usuario" FromRole="ML_Usuario" ToRole="ML_Order" />
+          <NavigationProperty Name="ML_Order1" Relationship="NSAADMModel.FK_ML_Order_ML_Usuario1" FromRole="ML_Usuario" ToRole="ML_Order" />
+          <NavigationProperty Name="ML_Phone" Relationship="NSAADMModel.FK_ML_Phone_ML_Usuario" FromRole="ML_Usuario" ToRole="ML_Phone" />
+          <NavigationProperty Name="ML_SellerReputation" Relationship="NSAADMModel.FK_ML_SellerReputation_ML_Usuario" FromRole="ML_Usuario" ToRole="ML_SellerReputation" />
+        </EntityType>
+        <EntityType Name="MP_Payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="site_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="date_created" Type="DateTime" />
+          <Property Name="date_approved" Type="DateTime" />
+          <Property Name="last_modified" Type="DateTime" />
+          <Property Name="money_release_date" Type="DateTime" />
+          <Property Name="operation_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="collector_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sponsor_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="id_usuario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="external_reference" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="reason" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="currency_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="transaction_amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="total_paid_amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="shipping_cost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="account_money_amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mercadopago_fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="net_received_amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="marketplace_fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="status_detail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="status_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="released" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="payment_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="installments" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="marketplace" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ML_BuyerReputation_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.ML_Usuario" Multiplicity="1" />
+          <End Role="ML_BuyerReputation" Type="NSAADMModel.ML_BuyerReputation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_BuyerReputation">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_BuyerReputation">
+          <End Role="ML_BuyerReputation" Type="NSAADMModel.ML_BuyerReputation" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_BuyerReputation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_BuyerReputation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Identification_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.ML_Usuario" Multiplicity="1" />
+          <End Role="ML_Identification" Type="NSAADMModel.ML_Identification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Identification">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_OrderItem_ML_Item">
+          <End Role="ML_Item" Type="NSAADMModel.ML_Item" Multiplicity="1" />
+          <End Role="ML_OrderItem" Type="NSAADMModel.ML_OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_OrderItem">
+              <PropertyRef Name="id_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Order_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.ML_Usuario" Multiplicity="0..1" />
+          <End Role="ML_Order" Type="NSAADMModel.ML_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Order">
+              <PropertyRef Name="id_seller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Order_ML_Usuario1">
+          <End Role="ML_Usuario" Type="NSAADMModel.ML_Usuario" Multiplicity="0..1" />
+          <End Role="ML_Order" Type="NSAADMModel.ML_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Order">
+              <PropertyRef Name="id_buyer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_OrderItem_ML_Order">
+          <End Role="ML_Order" Type="NSAADMModel.ML_Order" Multiplicity="1" />
+          <End Role="ML_OrderItem" Type="NSAADMModel.ML_OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_OrderItem">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Payment_ML_Order">
+          <End Role="ML_Order" Type="NSAADMModel.ML_Order" Multiplicity="1" />
+          <End Role="ML_Payment" Type="NSAADMModel.ML_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Payment">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Phone_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.ML_Usuario" Multiplicity="1" />
+          <End Role="ML_Phone" Type="NSAADMModel.ML_Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Phone">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Ratings_ML_TransactionsSeller">
+          <End Role="ML_TransactionsSeller" Type="NSAADMModel.ML_TransactionsSeller" Multiplicity="0..1" />
+          <End Role="ML_Ratings" Type="NSAADMModel.ML_Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_TransactionsSeller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Ratings">
+              <PropertyRef Name="id_TransactionsSeller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer">
+          <End Role="ML_ResumoTransBuyer" Type="NSAADMModel.ML_ResumoTransBuyer" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ResumoTransBuyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_not_yet_rated" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1">
+          <End Role="ML_ResumoTransBuyer" Type="NSAADMModel.ML_ResumoTransBuyer" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ResumoTransBuyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_unrated" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2">
+          <End Role="ML_ResumoTransBuyer" Type="NSAADMModel.ML_ResumoTransBuyer" Multiplicity="0..1" />
+          <End Role="ML_TransactionsBuyer" Type="NSAADMModel.ML_TransactionsBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ResumoTransBuyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsBuyer">
+              <PropertyRef Name="id_canceled" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_SellerReputation_ML_Usuario">
+          <End Role="ML_Usuario" Type="NSAADMModel.ML_Usuario" Multiplicity="0..1" />
+          <End Role="ML_SellerReputation" Type="NSAADMModel.ML_SellerReputation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_SellerReputation">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_TransactionsSeller_ML_SellerReputation">
+          <End Role="ML_SellerReputation" Type="NSAADMModel.ML_SellerReputation" Multiplicity="0..1" />
+          <End Role="ML_TransactionsSeller" Type="NSAADMModel.ML_TransactionsSeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_SellerReputation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_TransactionsSeller">
+              <PropertyRef Name="id_SellerReputation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UsuarioAdm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nome" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="senha" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ML_FeedbackBuyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="id_order" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="date_created" />
+          <Property Type="String" Name="fulfilled" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rating" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order" FromRole="ML_FeedbackBuyer" ToRole="ML_Order" />
+        </EntityType>
+        <EntityType Name="ML_FeedbackSeller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="id_order" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="date_created" />
+          <Property Type="String" Name="fulfilled" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rating" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_FeedbackSeller_ML_Order" FromRole="ML_FeedbackSeller" ToRole="ML_Order" />
+        </EntityType>
+        <Association Name="FK_ML_FeedbackBuyer_ML_Order">
+          <End Type="NSAADMModel.ML_Order" Role="ML_Order" Multiplicity="1" />
+          <End Type="NSAADMModel.ML_FeedbackBuyer" Role="ML_FeedbackBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_FeedbackBuyer">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_FeedbackSeller_ML_Order">
+          <End Type="NSAADMModel.ML_Order" Role="ML_Order" Multiplicity="1" />
+          <End Type="NSAADMModel.ML_FeedbackSeller" Role="ML_FeedbackSeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_FeedbackSeller">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ML_ItemOrganizacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ML_Item" Relationship="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" FromRole="ML_ItemOrganizacao" ToRole="ML_Item" />
+        </EntityType>
+        <Association Name="FK_ML_Item_ML_ItemOrganizacao">
+          <End Type="NSAADMModel.ML_ItemOrganizacao" Role="ML_ItemOrganizacao" Multiplicity="0..1" />
+          <End Type="NSAADMModel.ML_Item" Role="ML_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ItemOrganizacao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Item">
+              <PropertyRef Name="id_org" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Request1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CallBackML">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="userID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="resource" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="topic" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="received" />
+          <Property Type="DateTime" Name="sent" />
+        </EntityType>
+        <EntityType Name="ML_Question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="date_created" />
+          <Property Type="String" Name="item_id" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="seller_id" Precision="18" Scale="0" />
+          <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="text" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="answered_questions" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="Answer_date_created" />
+          <Property Type="String" Name="Answer_status" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer_text" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="id_question" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="id_from" Precision="18" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NSAADMModelStoreContainer" CdmEntityContainer="NSAADMEntities">
+          <EntitySetMapping Name="ML_BuyerReputation"><EntityTypeMapping TypeName="NSAADMModel.ML_BuyerReputation"><MappingFragment StoreEntitySet="ML_BuyerReputation">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="canceled_transactions" ColumnName="canceled_transactions" />
+            <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Identification"><EntityTypeMapping TypeName="NSAADMModel.ML_Identification"><MappingFragment StoreEntitySet="ML_Identification">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+            <ScalarProperty Name="type" ColumnName="type" />
+            <ScalarProperty Name="number" ColumnName="number" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Item"><EntityTypeMapping TypeName="NSAADMModel.ML_Item"><MappingFragment StoreEntitySet="ML_Item">
+            <ScalarProperty Name="id_org" ColumnName="id_org" />
+                <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="title" ColumnName="title" />
+            <ScalarProperty Name="variation_id" ColumnName="variation_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Order"><EntityTypeMapping TypeName="NSAADMModel.ML_Order"><MappingFragment StoreEntitySet="ML_Order">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="status" ColumnName="status" />
+            <ScalarProperty Name="status_detail" ColumnName="status_detail" />
+            <ScalarProperty Name="date_created" ColumnName="date_created" />
+            <ScalarProperty Name="date_closed" ColumnName="date_closed" />
+            <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+            <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+            <ScalarProperty Name="id_buyer" ColumnName="id_buyer" />
+            <ScalarProperty Name="id_seller" ColumnName="id_seller" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_OrderItem"><EntityTypeMapping TypeName="NSAADMModel.ML_OrderItem"><MappingFragment StoreEntitySet="ML_OrderItem">
+            <ScalarProperty Name="id_item" ColumnName="id_item" />
+            <ScalarProperty Name="id_order" ColumnName="id_order" />
+            <ScalarProperty Name="quantity" ColumnName="quantity" />
+            <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+            <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Payment"><EntityTypeMapping TypeName="NSAADMModel.ML_Payment"><MappingFragment StoreEntitySet="ML_Payment">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="status" ColumnName="status" />
+            <ScalarProperty Name="transaction_amount" ColumnName="transaction_amount" />
+            <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+            <ScalarProperty Name="date_created" ColumnName="date_created" />
+            <ScalarProperty Name="date_last_updated" ColumnName="date_last_updated" />
+            <ScalarProperty Name="id_order" ColumnName="id_order" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Phone"><EntityTypeMapping TypeName="NSAADMModel.ML_Phone"><MappingFragment StoreEntitySet="ML_Phone">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+            <ScalarProperty Name="area_code" ColumnName="area_code" />
+            <ScalarProperty Name="number" ColumnName="number" />
+            <ScalarProperty Name="extension" ColumnName="extension" />
+            <ScalarProperty Name="varified" ColumnName="varified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Ratings"><EntityTypeMapping TypeName="NSAADMModel.ML_Ratings"><MappingFragment StoreEntitySet="ML_Ratings">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="positive" ColumnName="positive" />
+            <ScalarProperty Name="negative" ColumnName="negative" />
+            <ScalarProperty Name="neutral" ColumnName="neutral" />
+            <ScalarProperty Name="id_TransactionsSeller" ColumnName="id_TransactionsSeller" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_ResumoTransBuyer"><EntityTypeMapping TypeName="NSAADMModel.ML_ResumoTransBuyer"><MappingFragment StoreEntitySet="ML_ResumoTransBuyer">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="paid" ColumnName="paid" />
+            <ScalarProperty Name="total" ColumnName="total" />
+            <ScalarProperty Name="units" ColumnName="units" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_SellerReputation"><EntityTypeMapping TypeName="NSAADMModel.ML_SellerReputation"><MappingFragment StoreEntitySet="ML_SellerReputation">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="level_id" ColumnName="level_id" />
+            <ScalarProperty Name="power_seller_status" ColumnName="power_seller_status" />
+            <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_TransactionsBuyer"><EntityTypeMapping TypeName="NSAADMModel.ML_TransactionsBuyer"><MappingFragment StoreEntitySet="ML_TransactionsBuyer">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="period" ColumnName="period" />
+            <ScalarProperty Name="total" ColumnName="total" />
+            <ScalarProperty Name="completed" ColumnName="completed" />
+            <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+            <ScalarProperty Name="id_BuyerReputation" ColumnName="id_BuyerReputation" />
+            <ScalarProperty Name="id_canceled" ColumnName="id_canceled" />
+            <ScalarProperty Name="id_unrated" ColumnName="id_unrated" />
+            <ScalarProperty Name="id_not_yet_rated" ColumnName="id_not_yet_rated" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_TransactionsSeller"><EntityTypeMapping TypeName="NSAADMModel.ML_TransactionsSeller"><MappingFragment StoreEntitySet="ML_TransactionsSeller">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="period" ColumnName="period" />
+            <ScalarProperty Name="total" ColumnName="total" />
+            <ScalarProperty Name="completed" ColumnName="completed" />
+            <ScalarProperty Name="canceled" ColumnName="canceled" />
+            <ScalarProperty Name="id_SellerReputation" ColumnName="id_SellerReputation" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Usuario"><EntityTypeMapping TypeName="NSAADMModel.ML_Usuario"><MappingFragment StoreEntitySet="ML_Usuario">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="nickname" ColumnName="nickname" />
+            <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+            <ScalarProperty Name="first_name" ColumnName="first_name" />
+            <ScalarProperty Name="last_name" ColumnName="last_name" />
+            <ScalarProperty Name="country_id" ColumnName="country_id" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="user_type" ColumnName="user_type" />
+            <ScalarProperty Name="logo" ColumnName="logo" />
+            <ScalarProperty Name="points" ColumnName="points" />
+            <ScalarProperty Name="site_id" ColumnName="site_id" />
+            <ScalarProperty Name="permalink" ColumnName="permalink" />
+            <ScalarProperty Name="seller_experience" ColumnName="seller_experience" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MP_Payments"><EntityTypeMapping TypeName="NSAADMModel.MP_Payments"><MappingFragment StoreEntitySet="MP_Payments">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="site_id" ColumnName="site_id" />
+            <ScalarProperty Name="date_created" ColumnName="date_created" />
+            <ScalarProperty Name="date_approved" ColumnName="date_approved" />
+            <ScalarProperty Name="last_modified" ColumnName="last_modified" />
+            <ScalarProperty Name="money_release_date" ColumnName="money_release_date" />
+            <ScalarProperty Name="operation_type" ColumnName="operation_type" />
+            <ScalarProperty Name="collector_id" ColumnName="collector_id" />
+            <ScalarProperty Name="sponsor_id" ColumnName="sponsor_id" />
+            <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+            <ScalarProperty Name="external_reference" ColumnName="external_reference" />
+            <ScalarProperty Name="reason" ColumnName="reason" />
+            <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+            <ScalarProperty Name="transaction_amount" ColumnName="transaction_amount" />
+            <ScalarProperty Name="total_paid_amount" ColumnName="total_paid_amount" />
+            <ScalarProperty Name="shipping_cost" ColumnName="shipping_cost" />
+            <ScalarProperty Name="account_money_amount" ColumnName="account_money_amount" />
+            <ScalarProperty Name="mercadopago_fee" ColumnName="mercadopago_fee" />
+            <ScalarProperty Name="net_received_amount" ColumnName="net_received_amount" />
+            <ScalarProperty Name="marketplace_fee" ColumnName="marketplace_fee" />
+            <ScalarProperty Name="status" ColumnName="status" />
+            <ScalarProperty Name="status_detail" ColumnName="status_detail" />
+            <ScalarProperty Name="status_code" ColumnName="status_code" />
+            <ScalarProperty Name="released" ColumnName="released" />
+            <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+            <ScalarProperty Name="installments" ColumnName="installments" />
+            <ScalarProperty Name="marketplace" ColumnName="marketplace" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UsuarioAdms">
+            <EntityTypeMapping TypeName="NSAADMModel.UsuarioAdm">
+              <MappingFragment StoreEntitySet="UsuarioAdm">
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ML_FeedbackBuyer">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_FeedbackBuyer">
+              <MappingFragment StoreEntitySet="ML_FeedbackBuyer">
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="fulfilled" ColumnName="fulfilled" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="id_order" ColumnName="id_order" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ML_FeedbackSeller">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_FeedbackSeller">
+              <MappingFragment StoreEntitySet="ML_FeedbackSeller">
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="fulfilled" ColumnName="fulfilled" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="id_order" ColumnName="id_order" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ML_ItemOrganizacao">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_ItemOrganizacao">
+              <MappingFragment StoreEntitySet="ML_ItemOrganizacao">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="NSAADMModel.Request">
+              <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="Request1" ColumnName="Request" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CallBackMLs">
+            <EntityTypeMapping TypeName="NSAADMModel.CallBackML">
+              <MappingFragment StoreEntitySet="CallBackML">
+                <ScalarProperty Name="sent" ColumnName="sent" />
+                <ScalarProperty Name="received" ColumnName="received" />
+                <ScalarProperty Name="topic" ColumnName="topic" />
+                <ScalarProperty Name="resource" ColumnName="resource" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ML_Question">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_Question">
+              <MappingFragment StoreEntitySet="ML_Question">
+                <ScalarProperty Name="id_from" ColumnName="id_from" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+                <ScalarProperty Name="Answer_text" ColumnName="Answer_text" />
+                <ScalarProperty Name="Answer_status" ColumnName="Answer_status" />
+                <ScalarProperty Name="Answer_date_created" ColumnName="Answer_date_created" />
+                <ScalarProperty Name="answered_questions" ColumnName="answered_questions" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ModelML" ZoomLevel="75">
+        <EntityTypeShape EntityType="NSAADMModel.ML_BuyerReputation" Width="1.5" PointX="3" PointY="4" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Identification" Width="1.5" PointX="3" PointY="6.625" Height="1.9802864583333344" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Item" Width="1.5" PointX="3" PointY="20.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Order" Width="1.5" PointX="3" PointY="9.375" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_OrderItem" Width="1.5" PointX="5.25" PointY="9" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Payment" Width="1.5" PointX="5.25" PointY="13" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Phone" Width="1.5" PointX="3" PointY="13.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Ratings" Width="1.5" PointX="7.5" PointY="17" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_ResumoTransBuyer" Width="1.5" PointX="3" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_SellerReputation" Width="1.5" PointX="3" PointY="17" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_TransactionsBuyer" Width="1.5" PointX="5.25" PointY="3.125" Height="3.5186979166666745" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_TransactionsSeller" Width="1.5" PointX="5.25" PointY="16.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Usuario" Width="1.5" PointX="0.75" PointY="9.25" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.MP_Payments" Width="1.5" PointX="7.75" PointY="1.125" Height="6.2109179687500031" IsExpanded="true" />
+        <AssociationConnector Association="NSAADMModel.FK_ML_BuyerReputation_ML_Usuario" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="9.25" />
+          <ConnectorPoint PointX="1.5" PointY="4.9901432291666667" />
+          <ConnectorPoint PointX="3" PointY="4.9901432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_BuyerReputation" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.96108072916667" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="5.9610807291666692" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="5.96108072916667" />
+          <ConnectorPoint PointX="5.25" PointY="5.96108072916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_Identification_ML_Usuario" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="9.25" />
+          <ConnectorPoint PointX="1.9062525" PointY="7.6151432291666676" />
+          <ConnectorPoint PointX="3" PointY="7.6151432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_OrderItem_ML_Item" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="20.251152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="19.876152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="9.7336187158203114" />
+          <ConnectorPoint PointX="5.25" PointY="9.7336187158203114" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_Order_ML_Usuario" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="11.797737630208333" />
+          <ConnectorPoint PointX="3" PointY="11.797737630208333" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_Order_ML_Usuario1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.523868815104166" />
+          <ConnectorPoint PointX="3" PointY="10.523868815104166" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_OrderItem_ML_Order" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.529741431640625" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="10.529741431640625" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="10.529741431640625" />
+          <ConnectorPoint PointX="5.25" PointY="10.529741431640625" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_Payment_ML_Order" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="13.252915165865385" />
+          <ConnectorPoint PointX="4.8160744349011217" PointY="13.568989600766505" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="13.686840730964264" />
+          <ConnectorPoint PointX="5.03125" PointY="13.784165165865385" />
+          <ConnectorPoint PointX="5.03125" PointY="12.780097153846153" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="13" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_Phone_ML_Usuario" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="13.922506510416667" />
+          <ConnectorPoint PointX="1.5" PointY="14.956198416666666" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="14.956198416666666" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="14.956198416666666" />
+          <ConnectorPoint PointX="3" PointY="14.956198416666666" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_Ratings_ML_TransactionsSeller" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="7.5" PointY="18.086293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.0779652459935902" />
+          <ConnectorPoint PointX="4.8473244349011217" PointY="3.4252896808947106" />
+          <ConnectorPoint PointX="4.9651755650988791" PointY="3.5431408110924694" />
+          <ConnectorPoint PointX="5.125" PointY="3.7029652459935902" />
+          <ConnectorPoint PointX="5.125" PointY="2.9630779230769235" />
+          <ConnectorPoint PointX="5.2869220769230765" PointY="3.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.1148893229166674" />
+          <ConnectorPoint PointX="4.8473244349011217" PointY="3.4622137578177878" />
+          <ConnectorPoint PointX="4.9651755650988791" PointY="3.5800648880155466" />
+          <ConnectorPoint PointX="4.96875" PointY="3.5836393229166674" />
+          <ConnectorPoint PointX="4.96875" PointY="2.84375" />
+          <ConnectorPoint PointX="5.25" PointY="3.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.4630769230769234" PointY="3.1148893229166674" />
+          <ConnectorPoint PointX="4.875" PointY="3.526812399839744" />
+          <ConnectorPoint PointX="4.875" PointY="2.7869230769230771" />
+          <ConnectorPoint PointX="5.25" PointY="3.1619230769230771" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_SellerReputation_ML_Usuario" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="13.922506510416667" />
+          <ConnectorPoint PointX="1.9062525" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="3" PointY="18.086293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsSeller_ML_SellerReputation" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="5.052083333333333" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="5.25" PointY="18.086293945312498" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NSAADMModel.UsuarioAdm" Width="1.5" PointX="7.375" PointY="8.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_FeedbackBuyer" Width="1.5" PointX="5.25" PointY="0.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_FeedbackSeller" Width="1.5" PointX="5.25" PointY="21.625" Height="2.1725878906250031" />
+        <AssociationConnector Association="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order" >
+          <ConnectorPoint PointX="4.5" PointY="9.407306692307694" />
+          <ConnectorPoint PointX="4.90625" PointY="9.001056692307694" />
+          <ConnectorPoint PointX="4.90625" PointY="1.8362939453125016" />
+          <ConnectorPoint PointX="5.25" PointY="1.8362939453125016" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_FeedbackSeller_ML_Order" >
+          <ConnectorPoint PointX="4.5" PointY="13.271376704326922" />
+          <ConnectorPoint PointX="4.8160744349011217" PointY="13.587451139228042" />
+          <ConnectorPoint PointX="4.9339255650988791" PointY="13.7053022694258" />
+          <ConnectorPoint PointX="4.96875" PointY="13.740126704326922" />
+          <ConnectorPoint PointX="4.96875" PointY="22.7112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="22.7112939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NSAADMModel.ML_ItemOrganizacao" Width="1.5" PointX="0.75" PointY="20.5" Height="1.5956835937500031" />
+        <AssociationConnector Association="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" >
+          <ConnectorPoint PointX="2.25" PointY="21.297841796875" />
+          <ConnectorPoint PointX="3" PointY="21.297841796875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NSAADMModel.Request" Width="1.5" PointX="9.375" PointY="8.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="NSAADMModel.CallBackML" Width="1.5" PointX="10.375" PointY="0.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Question" Width="1.5" PointX="10.375" PointY="3.75" Height="3.3263964843749996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

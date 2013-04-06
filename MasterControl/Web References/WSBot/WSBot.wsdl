@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RecebeDados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="datax" type="tns:estDados" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="estDados">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="xp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="xp_needed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RecebeDadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecebeDadosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IniciaSessao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:estSessao" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="estSessao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="dtInicio" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bot" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="profile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="server" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lvl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="versao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dirWoW" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IniciaSessaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IniciaSessaoResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinalizaSessao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:estSessao" />
+            <s:element minOccurs="1" maxOccurs="1" name="d" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinalizaSessaoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IncluiNovaMorte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:estSessao" />
+            <s:element minOccurs="0" maxOccurs="1" name="m" type="tns:estMorte" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="estMorte">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="mortes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="morteshora" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="dt" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RealZoneText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubZoneText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluiNovaMorteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IncluirLevelUp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:estSessao" />
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:estLevelUp" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="estLevelUp">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="data" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="lvl" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirLevelUpResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IncluirLoot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:estSessao" />
+            <s:element minOccurs="0" maxOccurs="1" name="l" type="tns:estLoot" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="estLoot">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="data" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idItem" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="qtd" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirLootResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IncluirDetalhe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:estSessao" />
+            <s:element minOccurs="0" maxOccurs="1" name="d" type="tns:estDetalhe" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="estDetalhe">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="runningtime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="xp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="xp_needed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="xph" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="timetolevel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="kills" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="killsh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="honor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="honorh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gold" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bgwin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bglost" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lvl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RealZoneText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubZoneText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IncluirDetalheResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Teste">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TesteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TesteResult" type="tns:Morte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Morte">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="id" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="id_sessao" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="mortes" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="morteshora" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="dt" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="RealZoneText" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SubZoneText" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SessaoReference" type="tns:EntityReferenceOfSessao" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityObject" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StructuralObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StructuralObject" abstract="true" />
+      <s:complexType name="EntityKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EntitySetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityContainerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityKeyValues" type="tns:ArrayOfEntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityKeyMember" nillable="true" type="tns:EntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityReferenceOfSessao">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityReference" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityReference" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RelatedEnd">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RelatedEnd" abstract="true" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RecebeDadosSoapIn">
+    <wsdl:part name="parameters" element="tns:RecebeDados" />
+  </wsdl:message>
+  <wsdl:message name="RecebeDadosSoapOut">
+    <wsdl:part name="parameters" element="tns:RecebeDadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IniciaSessaoSoapIn">
+    <wsdl:part name="parameters" element="tns:IniciaSessao" />
+  </wsdl:message>
+  <wsdl:message name="IniciaSessaoSoapOut">
+    <wsdl:part name="parameters" element="tns:IniciaSessaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="FinalizaSessaoSoapIn">
+    <wsdl:part name="parameters" element="tns:FinalizaSessao" />
+  </wsdl:message>
+  <wsdl:message name="FinalizaSessaoSoapOut">
+    <wsdl:part name="parameters" element="tns:FinalizaSessaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncluiNovaMorteSoapIn">
+    <wsdl:part name="parameters" element="tns:IncluiNovaMorte" />
+  </wsdl:message>
+  <wsdl:message name="IncluiNovaMorteSoapOut">
+    <wsdl:part name="parameters" element="tns:IncluiNovaMorteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncluirLevelUpSoapIn">
+    <wsdl:part name="parameters" element="tns:IncluirLevelUp" />
+  </wsdl:message>
+  <wsdl:message name="IncluirLevelUpSoapOut">
+    <wsdl:part name="parameters" element="tns:IncluirLevelUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncluirLootSoapIn">
+    <wsdl:part name="parameters" element="tns:IncluirLoot" />
+  </wsdl:message>
+  <wsdl:message name="IncluirLootSoapOut">
+    <wsdl:part name="parameters" element="tns:IncluirLootResponse" />
+  </wsdl:message>
+  <wsdl:message name="IncluirDetalheSoapIn">
+    <wsdl:part name="parameters" element="tns:IncluirDetalhe" />
+  </wsdl:message>
+  <wsdl:message name="IncluirDetalheSoapOut">
+    <wsdl:part name="parameters" element="tns:IncluirDetalheResponse" />
+  </wsdl:message>
+  <wsdl:message name="TesteSoapIn">
+    <wsdl:part name="parameters" element="tns:Teste" />
+  </wsdl:message>
+  <wsdl:message name="TesteSoapOut">
+    <wsdl:part name="parameters" element="tns:TesteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSBotSoap">
+    <wsdl:operation name="RecebeDados">
+      <wsdl:input message="tns:RecebeDadosSoapIn" />
+      <wsdl:output message="tns:RecebeDadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IniciaSessao">
+      <wsdl:input message="tns:IniciaSessaoSoapIn" />
+      <wsdl:output message="tns:IniciaSessaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinalizaSessao">
+      <wsdl:input message="tns:FinalizaSessaoSoapIn" />
+      <wsdl:output message="tns:FinalizaSessaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncluiNovaMorte">
+      <wsdl:input message="tns:IncluiNovaMorteSoapIn" />
+      <wsdl:output message="tns:IncluiNovaMorteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncluirLevelUp">
+      <wsdl:input message="tns:IncluirLevelUpSoapIn" />
+      <wsdl:output message="tns:IncluirLevelUpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncluirLoot">
+      <wsdl:input message="tns:IncluirLootSoapIn" />
+      <wsdl:output message="tns:IncluirLootSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IncluirDetalhe">
+      <wsdl:input message="tns:IncluirDetalheSoapIn" />
+      <wsdl:output message="tns:IncluirDetalheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Teste">
+      <wsdl:input message="tns:TesteSoapIn" />
+      <wsdl:output message="tns:TesteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSBotSoap" type="tns:WSBotSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RecebeDados">
+      <soap:operation soapAction="http://tempuri.org/RecebeDados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciaSessao">
+      <soap:operation soapAction="http://tempuri.org/IniciaSessao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinalizaSessao">
+      <soap:operation soapAction="http://tempuri.org/FinalizaSessao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluiNovaMorte">
+      <soap:operation soapAction="http://tempuri.org/IncluiNovaMorte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirLevelUp">
+      <soap:operation soapAction="http://tempuri.org/IncluirLevelUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirLoot">
+      <soap:operation soapAction="http://tempuri.org/IncluirLoot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirDetalhe">
+      <soap:operation soapAction="http://tempuri.org/IncluirDetalhe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teste">
+      <soap:operation soapAction="http://tempuri.org/Teste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSBotSoap12" type="tns:WSBotSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RecebeDados">
+      <soap12:operation soapAction="http://tempuri.org/RecebeDados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciaSessao">
+      <soap12:operation soapAction="http://tempuri.org/IniciaSessao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinalizaSessao">
+      <soap12:operation soapAction="http://tempuri.org/FinalizaSessao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluiNovaMorte">
+      <soap12:operation soapAction="http://tempuri.org/IncluiNovaMorte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirLevelUp">
+      <soap12:operation soapAction="http://tempuri.org/IncluirLevelUp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirLoot">
+      <soap12:operation soapAction="http://tempuri.org/IncluirLoot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IncluirDetalhe">
+      <soap12:operation soapAction="http://tempuri.org/IncluirDetalhe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Teste">
+      <soap12:operation soapAction="http://tempuri.org/Teste" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSBot">
+    <wsdl:port name="WSBotSoap" binding="tns:WSBotSoap">
+      <soap:address location="http://nerdsa.com.br/WSBot.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSBotSoap12" binding="tns:WSBotSoap12">
+      <soap12:address location="http://nerdsa.com.br/WSBot.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
