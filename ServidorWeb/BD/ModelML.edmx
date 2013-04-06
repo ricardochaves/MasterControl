@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NSAADMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="NSAADMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="NSAADMModelStoreContainer">
           <EntitySet Name="CallBackML" EntityType="NSAADMModel.Store.CallBackML" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_BuyerReputation" EntityType="NSAADMModel.Store.ML_BuyerReputation" store:Type="Tables" Schema="dbo" />
@@ -213,13 +213,13 @@
           <Property Name="item_id" Type="nvarchar" MaxLength="50" />
           <Property Name="seller_id" Type="numeric" />
           <Property Name="status" Type="nvarchar" MaxLength="50" />
-          <Property Name="text" Type="nvarchar" MaxLength="50" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="id_from" Type="numeric" />
           <Property Name="answered_questions" Type="numeric" />
           <Property Name="Answer_date_created" Type="datetime" />
           <Property Name="Answer_status" Type="nvarchar" MaxLength="50" />
-          <Property Name="Answer_text" Type="nvarchar" MaxLength="50" />
+          <Property Name="Answer_text" Type="nvarchar(max)" />
           <Property Name="id_question" Type="numeric" />
-          <Property Name="id_from" Type="numeric" />
         </EntityType>
         <EntityType Name="ML_Ratings">
           <Key>

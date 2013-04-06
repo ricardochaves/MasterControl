@@ -14,11 +14,15 @@ namespace ServidorWeb.ML.Paginas
     public partial class Perguntas : System.Web.UI.Page
     {
 
-        NSAADMEntities n = new NSAADMEntities();
+        NSAADMEntities n;
         Meli m;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            ConstruirEF cs = new ConstruirEF();
+            n = (NSAADMEntities)cs.RecuperaEntity(Entities.MercadoLivre);
+
 
             if ((Meli)Session["M"] == null)
             {

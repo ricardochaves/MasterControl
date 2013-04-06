@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ServidorWeb.BD;
+using System.Configuration;
+using System.Threading;
+
 
 namespace ServidorWeb.ML.Classes
 {
@@ -25,12 +28,12 @@ namespace ServidorWeb.ML.Classes
 
             if (en == Entities.MercadoLivre)
             {
-                EF = new NSAADMEntities("");
+                EF = new NSAADMEntities(stringdeconexao());
                 return (NSAADMEntities)EF;
             }
             else if (en == Entities.Bot)
             {
-                EF = new BotWoWEntities("");
+                EF = new BotWoWEntities(stringdeconexao());
                 return (BotWoWEntities)EF;
             }
             else
@@ -40,10 +43,20 @@ namespace ServidorWeb.ML.Classes
 
         }
 
+        
         private string stringdeconexao()
         {
+            try
+            {
+                string NomePC = System.Net.Dns.GetHostName();
+                string strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
+                return strConexao;
 
-             System.Threading.Thread.CurrentThread.CurrentPrincipal.Identity.Name
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina stringdeconexao",ex);
+            }
 
         }
 
