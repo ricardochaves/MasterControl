@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
 using ServidorWeb.ML.Classes;
 using MercadoLibre.SDK;
 
@@ -13,11 +12,14 @@ namespace ServidorWeb.ML.Paginas
 {
     public partial class Pergunta : System.Web.UI.Page
     {
-        NSAADMEntities n = EntityContextML.GetContext;
+        NSAADMEntities n;
         Decimal codigo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
 
             if ((Meli)Session["M"] == null)
             {

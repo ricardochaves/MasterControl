@@ -133,7 +133,6 @@
       <DependentUpon>ModelML.edmx</DependentUpon>
     </Compile>
     <Compile Include="EntityContext\EntityContextBot.cs" />
-    <Compile Include="EntityContext\EntityContextML.cs" />
     <Compile Include="Estruturas\estDados.cs" />
     <Compile Include="Estruturas\estDetalhe.cs" />
     <Compile Include="Estruturas\estItem.cs" />

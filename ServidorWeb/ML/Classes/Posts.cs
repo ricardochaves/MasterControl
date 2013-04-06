@@ -6,7 +6,6 @@ using MercadoLibre.SDK;
 using RestSharp;
 using Newtonsoft.Json;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
 
 namespace ServidorWeb.ML.Classes
 {
@@ -31,7 +30,11 @@ namespace ServidorWeb.ML.Classes
         public void ResponderPergunta(decimal id, string texto)
         {
 
-            NSAADMEntities n = EntityContextML.GetContext;
+            NSAADMEntities n;
+
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+
 
             try
             {

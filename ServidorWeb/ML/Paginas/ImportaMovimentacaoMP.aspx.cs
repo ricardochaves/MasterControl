@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json.Linq;
 using ServidorWeb.ML.Classes;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
 
 namespace ServidorWeb.ML.Paginas
 {
@@ -32,7 +31,11 @@ namespace ServidorWeb.ML.Paginas
         }
         private void InserirMOvimentos(JObject t)
         {
-            NSAADMEntities n = EntityContextML.GetContext;
+            NSAADMEntities n;
+            
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+
             decimal temp;
             Nullable<DateTime> tempd;
 
@@ -152,8 +155,6 @@ namespace ServidorWeb.ML.Paginas
         {
             MP m = new MP("5963566471355778", "iw3YTvnu7oTT5pQFzuww5SBgvfP9or3X");
 
-            
-
             for (int i = 0; i < 100; i++)
             {
 
@@ -161,9 +162,6 @@ namespace ServidorWeb.ML.Paginas
                 InserirMOvimentos(teste);
 
             }
-
-
-            
 
         }
 
@@ -173,7 +171,11 @@ namespace ServidorWeb.ML.Paginas
         public bool VerificaPay(JToken t)
         {
 
-            NSAADMEntities n = EntityContextML.GetContext;
+            NSAADMEntities n;
+
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+
 
             try
             {
@@ -190,7 +192,11 @@ namespace ServidorWeb.ML.Paginas
         public bool VerificaUser(JToken t)
         {
 
-            NSAADMEntities n = EntityContextML.GetContext;
+            NSAADMEntities n;
+
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+
 
             try
             {

@@ -5,7 +5,7 @@ using System.Web;
 using MercadoLibre.SDK;
 using RestSharp;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
+using ServidorWeb.ML.Classes;
 
 namespace ServidorWeb.ML.Classes
 {

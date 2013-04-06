@@ -55,6 +55,10 @@ namespace ServidorWeb.ML.Classes
                 {
                     strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
                 }
+                else if (NomePC == "PC_O1")
+                {
+                    strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
+                }
                 else
                 {
                     strConexao = ConfigurationManager.ConnectionStrings["NSAADMEntitiesProducao"].ConnectionString;

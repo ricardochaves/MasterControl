@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MercadoLibre.SDK;
 using ServidorWeb.ML.Classes;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
+
 
 namespace ServidorWeb.ML.Paginas
 {
@@ -40,7 +40,11 @@ namespace ServidorWeb.ML.Paginas
             LerML l = new LerML(m);
             Usuario u = l.RetornaUsuarioLogado();
 
-            NSAADMEntities n = EntityContextML.GetContext;
+            NSAADMEntities n;
+            
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+
             ConverterObjetoMLparaEF c = new ConverterObjetoMLparaEF();
 
             ListOrder o = l.RetornarOrdens(u, 0);
