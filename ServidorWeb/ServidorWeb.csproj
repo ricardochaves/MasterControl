@@ -64,8 +64,15 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Imagem\canon50mm.jpg" />
     <Content Include="Imagem\contatoNerd.jpg" />
     <Content Include="Imagem\logonerd.jpg" />
+    <Content Include="Imagem\mercadopago.jpg" />
+    <Content Include="Imagem\Nerd.jpg" />
+    <Content Include="Imagem\nikon50mm.jpg" />
+    <Content Include="Imagem\nikon70300mm.jpeg" />
+    <Content Include="Imagem\nikonsb910.jpg" />
+    <Content Include="Imagem\santander.jpg" />
     <Content Include="Index.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Login.aspx" />
