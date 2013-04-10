@@ -11,7 +11,5 @@
         Text="Executar" />
     <br />
     <br />
-    <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
-        Text="ReLogar" />
     <br />
 </asp:Content>

@@ -589,6 +589,22 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<venda> _vendas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<DadosML> DadosMLs
+        {
+            get
+            {
+                if ((_DadosMLs == null))
+                {
+                    _DadosMLs = base.CreateObjectSet<DadosML>("DadosMLs");
+                }
+                return _DadosMLs;
+            }
+        }
+        private ObjectSet<DadosML> _DadosMLs;
 
         #endregion
         #region AddTo Methods
@@ -839,6 +855,14 @@ namespace ServidorWeb.BD
         public void AddTovendas(venda venda)
         {
             base.AddObject("vendas", venda);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the DadosMLs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDadosMLs(DadosML dadosML)
+        {
+            base.AddObject("DadosMLs", dadosML);
         }
 
         #endregion
@@ -1508,6 +1532,157 @@ namespace ServidorWeb.BD
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="DadosML")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class DadosML : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new DadosML object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static DadosML CreateDadosML(global::System.String id)
+        {
+            DadosML dadosML = new DadosML();
+            dadosML.id = id;
+            return dadosML;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.String _id;
+        partial void OnidChanging(global::System.String value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String AccessToken
+        {
+            get
+            {
+                return _AccessToken;
+            }
+            set
+            {
+                OnAccessTokenChanging(value);
+                ReportPropertyChanging("AccessToken");
+                _AccessToken = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("AccessToken");
+                OnAccessTokenChanged();
+            }
+        }
+        private global::System.String _AccessToken;
+        partial void OnAccessTokenChanging(global::System.String value);
+        partial void OnAccessTokenChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ClientId
+        {
+            get
+            {
+                return _ClientId;
+            }
+            set
+            {
+                OnClientIdChanging(value);
+                ReportPropertyChanging("ClientId");
+                _ClientId = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ClientId");
+                OnClientIdChanged();
+            }
+        }
+        private global::System.String _ClientId;
+        partial void OnClientIdChanging(global::System.String value);
+        partial void OnClientIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ClientSecret
+        {
+            get
+            {
+                return _ClientSecret;
+            }
+            set
+            {
+                OnClientSecretChanging(value);
+                ReportPropertyChanging("ClientSecret");
+                _ClientSecret = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ClientSecret");
+                OnClientSecretChanged();
+            }
+        }
+        private global::System.String _ClientSecret;
+        partial void OnClientSecretChanging(global::System.String value);
+        partial void OnClientSecretChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RefreshToken
+        {
+            get
+            {
+                return _RefreshToken;
+            }
+            set
+            {
+                OnRefreshTokenChanging(value);
+                ReportPropertyChanging("RefreshToken");
+                _RefreshToken = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RefreshToken");
+                OnRefreshTokenChanged();
+            }
+        }
+        private global::System.String _RefreshToken;
+        partial void OnRefreshTokenChanging(global::System.String value);
+        partial void OnRefreshTokenChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

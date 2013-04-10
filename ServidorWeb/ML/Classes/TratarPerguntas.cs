@@ -97,7 +97,7 @@ namespace ServidorWeb.ML.Classes
 
         private void ValidaMeli(Meli meli)
         {
-            if (meli.AccessToken != null)
+            if (meli.AccessToken == null)
             {
                 throw new Exception("AtualizaPerguntaBD. AccessToken nulo.");
             }

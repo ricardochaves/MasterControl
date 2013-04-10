@@ -185,6 +185,7 @@
     </Compile>
     <Compile Include="ML\Classes\Classes.cs" />
     <Compile Include="ML\Classes\ConstruirEF.cs" />
+    <Compile Include="ML\Classes\ControlaMeli.cs" />
     <Compile Include="ML\Classes\ConverterObjetoMLparaEF.cs" />
     <Compile Include="ML\Classes\LerML.cs" />
     <Compile Include="ML\Classes\MP.cs" />

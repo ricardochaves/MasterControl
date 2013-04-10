@@ -17,41 +17,41 @@ namespace ServidorWeb.ML.Paginas
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            try
-            {
+            //try
+            //{
 
 
-                if ((Meli)Session["M"] == null)
-                {
+            //    if ((Meli)Session["M"] == null)
+            //    {
 
-                    Session["M"] = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
+            //        Session["M"] = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
                    
-                }
+            //    }
 
-                m = (Meli)Session["M"];
+            //    m = (Meli)Session["M"];
 
-                if (m.AccessToken == null)
-                {
+            //    if (m.AccessToken == null)
+            //    {
 
-                    Session["pagina"] = "InicioML.aspx";
+            //        Session["pagina"] = "InicioML.aspx";
 
-                    string url = m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login);
+            //        string url = m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login);
 
-                    //Server.Transfer(url,true);
-                    Response.Redirect(url,false);
+            //        //Server.Transfer(url,true);
+            //        Response.Redirect(url,false);
 
-                }
+            //    }
 
-                TextBox1.Text = m.AccessToken;
-                //m.refreshToken();
-                //TextBox2.Text = m.RefreshToken;
+            //    TextBox1.Text = m.AccessToken;
+            //    //m.refreshToken();
+            //    //TextBox2.Text = m.RefreshToken;
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
                 
-                throw new Exception("Erro no Load",ex) ;
-            }
+            //    throw new Exception("Erro no Load",ex) ;
+            //}
 
 
         }
@@ -102,13 +102,11 @@ namespace ServidorWeb.ML.Paginas
         {
             Session["pagina"] = "InicioML.aspx";
 
-            //if (Session["M"] == null)
-            //{
-            //    throw new Exception("Session M está null");
-            //}
-
+            m = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
 
             Response.Redirect(m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login));
+
+
 
         }
 

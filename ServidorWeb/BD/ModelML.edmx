@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NSAADMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="NSAADMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="NSAADMModelStoreContainer">
           <EntitySet Name="Caixa" EntityType="NSAADMModel.Store.Caixa" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CallBackML" EntityType="NSAADMModel.Store.CallBackML" store:Type="Tables" Schema="dbo" />
@@ -15,6 +15,7 @@
       FROM [dbo].[categoria] AS [categoria]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="cliente" EntityType="NSAADMModel.Store.cliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DadosML" EntityType="NSAADMModel.Store.DadosML" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="item" EntityType="NSAADMModel.Store.item" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Loja" EntityType="NSAADMModel.Store.Loja" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LojaProduto" EntityType="NSAADMModel.Store.LojaProduto" store:Type="Tables" Schema="dbo" />
@@ -174,6 +175,16 @@
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="telefone" Type="varchar" MaxLength="15" />
           <Property Name="endereco" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="DadosML">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AccessToken" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientSecret" Type="nvarchar" MaxLength="50" />
+          <Property Name="RefreshToken" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="item">
           <Key>
@@ -885,6 +896,7 @@
             <End Role="produto" EntitySet="produtoes" />
             <End Role="LojaProduto" EntitySet="LojaProdutoes" />
           </AssociationSet>
+          <EntitySet Name="DadosMLs" EntityType="NSAADMModel.DadosML" />
         </EntityContainer>
         <EntityType Name="ML_BuyerReputation">
           <Key>
@@ -1571,6 +1583,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DadosML">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AccessToken" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ClientId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ClientSecret" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RefreshToken" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1881,6 +1903,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DadosMLs">
+            <EntityTypeMapping TypeName="NSAADMModel.DadosML">
+              <MappingFragment StoreEntitySet="DadosML">
+                <ScalarProperty Name="RefreshToken" ColumnName="RefreshToken" />
+                <ScalarProperty Name="ClientSecret" ColumnName="ClientSecret" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2080,6 +2113,7 @@
           <ConnectorPoint PointX="13.333333333333334" PointY="9.1606934179687514" />
           <ConnectorPoint PointX="13.625" PointY="9.1606934179687514" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="NSAADMModel.DadosML" Width="1.5" PointX="12.375" PointY="4.75" Height="1.9802864583333246" />
       </Diagram>
     </Diagrams>
   </Designer>
