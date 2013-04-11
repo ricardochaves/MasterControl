@@ -13,45 +13,36 @@ namespace ServidorWeb.ML.Paginas
     public partial class Perguntas : System.Web.UI.Page
     {
 
-        NSAADMEntities n;
-        Meli m;
+        ControlaPerguntas cp = new ControlaPerguntas();
+        ControlaMeli cm;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            ConstruirEF cs = new ConstruirEF();
-            n = (NSAADMEntities)cs.RecuperaEntity(Entities.MercadoLivre);
+            cm = new ControlaMeli();
 
 
-            if ((Meli)Session["M"] == null)
-            {
-                Response.Redirect("InicioML.aspx");
+            List<ML_Question> x = cp.RetornaPerguntas(TipoRetornaPerguntas.NaoRespondidas, cm.n);
 
-            }
-            else
-            {
-                Meli m1 = (Meli)Session["M"];
-                if (m1.AccessToken == null)
-                {
-                    Response.Redirect("InicioML.aspx");
-                }
-            }
+            var a = (from p in x select new { p.id, p.text });
 
-            m = (Meli)Session["M"];
-            TextBox1.Text = m.AccessToken;
-
-            var x = (from p in n.ML_Question where p.answered_questions == 0 select new { p.id, p.text });
-
-            GridView1.DataSource = x;
+            GridView1.DataSource = a;
             GridView1.DataBind();
         }
 
-
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["pagina"] = "Perguntas.aspx";
-            
-            Response.Redirect(m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login));
+
+            List<ML_Question> x = cp.RetornaPerguntas(TipoRetornaPerguntas.NaoRespondidas, cm.n);
+
+            foreach (ML_Question item in x)
+            {
+
+                cp.GravaPergunta(item, cm.n); 
+
+            }
+
         }
+
     }
 }

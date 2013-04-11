@@ -12,55 +12,34 @@ namespace ServidorWeb.ML.Paginas
 {
     public partial class Pergunta : System.Web.UI.Page
     {
-        NSAADMEntities n;
+        
         Decimal codigo;
         ML_Question mlq;
+        ControlaMeli cm;
+        ControlaPerguntas cp = new ControlaPerguntas();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            ConstruirEF cf = new ConstruirEF();
-            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
 
-            if ((Meli)Session["M"] == null)
-            {
-                Response.Redirect("InicioML.aspx");
-
-            }
-            else
-            {
-                Meli m1 = (Meli)Session["M"];
-                if (m1.AccessToken == null)
-                {
-                    Response.Redirect("InicioML.aspx");
-                }
-            }
-
-
-            TextBox2.Text = " Não deixe de ver nossos outros produto. Muito Obrigado.";
-            
-
+            cm = new ControlaMeli();
             codigo = Convert.ToDecimal(Request.QueryString["code"]);
+            TextBox2.Text = " Não deixe de ver nossos outros produto. Muito Obrigado.";
 
-            mlq = (from p in n.ML_Question where p.id == codigo select p).First();
-
+            mlq = cp.RetornaQuestion(codigo, cm.n);
 
             txtPergunta.Text = mlq.text;
 
-            try
-            {
-                var y = (from a in n.ML_Usuario where a.id == mlq.id_from select a).First();
-                TextBox1.Text = "Olá " + y.nickname + ". ";
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    var y = (from a in n.ML_Usuario where a.id == mlq.id_from select a).First();
+            //    TextBox1.Text = "Olá " + y.nickname + ". ";
+            //}
+            //catch (Exception)
+            //{
 
                 TextBox1.Text = "Olá amigo, ";
-            }
+            //}
             
-
-            
-
 
         }
 
@@ -70,9 +49,6 @@ namespace ServidorWeb.ML.Paginas
             Posts p = new Posts(Session["M"]);
             p.ResponderPergunta(codigo, TextBox1.Text + txtResposta.Text + TextBox2.Text);
 
-
-
-        
         }
     }
 }
