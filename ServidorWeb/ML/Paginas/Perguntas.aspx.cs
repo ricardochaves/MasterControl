@@ -46,24 +46,6 @@ namespace ServidorWeb.ML.Paginas
             GridView1.DataBind();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-
-            var x =  (from p in n.ML_Question where p.status == "UNANSWERED" select p );
-
-
-            foreach (ML_Question item in x.ToList())
-            {
-
-                TratarPerguntas t = new TratarPerguntas(m, n, Convert.ToDecimal(item.id_question));
-
-                t.executa();
-
-            }
-
-
-        }
 
         protected void Button2_Click(object sender, EventArgs e)
         {

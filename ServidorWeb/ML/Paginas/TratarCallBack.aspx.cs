@@ -39,8 +39,9 @@ namespace ServidorWeb.ML.Paginas
 
                     Question q = cm.RetonarQuestion(c.resource);
 
-                    TratarPerguntas t = new TratarPerguntas(cm.m, cm.n, c);
-                    t.executa();
+                    ControlaPerguntas p = new ControlaPerguntas();
+                    p.GravaPergunta(q, cm.n);
+                    
 
                 }
             }

@@ -88,46 +88,7 @@ namespace ServidorWeb.ML.Classes
 
 
         }
-
-        public Question RetonarQuestion(string resource)
-        {
-
-            try
-            {
-                Question q;
-                Parameter at = new Parameter();
-                List<Parameter> param = new List<Parameter>();
-
-
-                //Alimentando parametros
-                at.Name = "access_token";
-                at.Value = m.AccessToken;
-
-                param.Add(at);
-
-                RestResponse resp = (RestResponse)m.Get(resource, param);
-
-                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    var a = new JsonSerializerSettings();
-                    q = JsonConvert.DeserializeObject<Question>(resp.Content);
-
-                    return q;
-                }
-                else
-                {
-                    throw new Exception("Falha ao tentar recuperar a pergunta");
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(String.Format("Erro na rotina RetonarQuestion {0} resource: {1} {0}", Environment.NewLine, resource), ex);
-            }
-
-
-        }
-
+        
         public Usuario RetornaUsuario(string id)
         {
             Usuario u;

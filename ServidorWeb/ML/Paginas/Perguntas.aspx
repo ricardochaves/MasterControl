@@ -5,8 +5,6 @@
         <asp:TextBox ID="TextBox1" runat="server" Width="358px"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
-            Text="atualiza" />
         <br />
         <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
             Text="relogar" />

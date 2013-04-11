@@ -27,7 +27,7 @@ namespace ServidorWeb.ML.Classes
                 u = (from p in n.ML_Usuario where p.id == us.id select p).First();
                 return u;
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
 
                 u.country_id = us.country_id;

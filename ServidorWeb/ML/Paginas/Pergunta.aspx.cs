@@ -14,6 +14,7 @@ namespace ServidorWeb.ML.Paginas
     {
         NSAADMEntities n;
         Decimal codigo;
+        ML_Question mlq;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,14 +42,14 @@ namespace ServidorWeb.ML.Paginas
 
             codigo = Convert.ToDecimal(Request.QueryString["code"]);
 
-            var x = (from p in n.ML_Question where p.id == codigo select p).First();
+            mlq = (from p in n.ML_Question where p.id == codigo select p).First();
 
 
-            txtPergunta.Text = x.text;
+            txtPergunta.Text = mlq.text;
 
             try
             {
-                var y = (from a in n.ML_Usuario where a.id == x.id_from select a).First();
+                var y = (from a in n.ML_Usuario where a.id == mlq.id_from select a).First();
                 TextBox1.Text = "Olá " + y.nickname + ". ";
             }
             catch (Exception)
@@ -68,6 +69,9 @@ namespace ServidorWeb.ML.Paginas
 
             Posts p = new Posts(Session["M"]);
             p.ResponderPergunta(codigo, TextBox1.Text + txtResposta.Text + TextBox2.Text);
+
+
+
         
         }
     }

@@ -189,8 +189,8 @@
     <Compile Include="ML\Classes\ConverterObjetoMLparaEF.cs" />
     <Compile Include="ML\Classes\LerML.cs" />
     <Compile Include="ML\Classes\MP.cs" />
+    <Compile Include="ML\Classes\ControlaPerguntas.cs" />
     <Compile Include="ML\Classes\Posts.cs" />
-    <Compile Include="ML\Classes\TratarPerguntas.cs" />
     <Compile Include="ML\Paginas\CallBack.aspx.cs">
       <DependentUpon>CallBack.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

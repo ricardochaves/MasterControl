@@ -183,7 +183,7 @@ namespace ServidorWeb.ML.Paginas
                 MP_Payments pa = (from p in n.MP_Payments where p.id == d select p).First();
                 return true;
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 return false;
 
@@ -206,7 +206,7 @@ namespace ServidorWeb.ML.Paginas
                 return true;
 
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 if (t["nickname"].ToString() == "")
                 {
