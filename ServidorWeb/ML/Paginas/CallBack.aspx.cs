@@ -50,12 +50,14 @@ namespace ServidorWeb.ML.Paginas
                 n.SaveChanges();
 
 
-                ControlaMeli cm = new ControlaMeli();
+                if (c.topic == "questions")
+                {
+                    ControlaMeli cm = new ControlaMeli();
 
-                ControlaPerguntas cp = new ControlaPerguntas();
+                    ControlaPerguntas cp = new ControlaPerguntas();
 
-                cp.GravaPergunta(cm.RetonarQuestion(c.resource), cm.n);
-
+                    cp.GravaPergunta(cm.RetonarQuestion(c.resource), cm.n);
+                }
             }
         }
     }
