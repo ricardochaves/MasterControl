@@ -13,16 +13,15 @@ namespace ServidorWeb.ML.Paginas
     public partial class Perguntas : System.Web.UI.Page
     {
 
-        ControlaPerguntas cp = new ControlaPerguntas();
         ControlaMeli cm;
+        ControlaPerguntas cp = new ControlaPerguntas();
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             cm = new ControlaMeli();
 
-
-            List<ML_Question> x = cp.RetornaPerguntas(TipoRetornaPerguntas.NaoRespondidas, cm.n);
+            var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
 
             var a = (from p in x select new { p.id, p.text });
 
@@ -33,16 +32,15 @@ namespace ServidorWeb.ML.Paginas
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            List<ML_Question> x = cp.RetornaPerguntas(TipoRetornaPerguntas.NaoRespondidas, cm.n);
+            var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
 
             foreach (ML_Question item in x)
             {
 
-                cp.GravaPergunta(item, cm.n); 
+                cp.GravaPergunta(item, cm.n);
 
             }
 
         }
-
     }
 }

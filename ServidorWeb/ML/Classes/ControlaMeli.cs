@@ -16,6 +16,7 @@ namespace ServidorWeb.ML.Classes
         public Meli m;
         private DadosML d;
 
+        #region Basico
         public ControlaMeli()
         {
 
@@ -32,8 +33,29 @@ namespace ServidorWeb.ML.Classes
             }
 
 
-            
+
         }
+        private void FinalizaML(string aToken, string aRefres)
+        {
+            try
+            {
+                d.AccessToken = aToken;
+                d.RefreshToken = aRefres;
+
+                n.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro no FinalizaML.", ex);
+            }
+
+
+
+        }
+        #endregion
+
+        #region Perguntas
 
         public Question RetonarQuestion(string resource)
         {
@@ -61,7 +83,7 @@ namespace ServidorWeb.ML.Classes
                     FinalizaML(m.AccessToken, m.RefreshToken);
 
                     return q;
-                    
+
 
                 }
                 else
@@ -69,8 +91,8 @@ namespace ServidorWeb.ML.Classes
                     throw new Exception("Falha ao tentar recuperar a pergunta");
                 }
 
-                
-                
+
+
             }
             catch (Exception ex)
             {
@@ -80,27 +102,37 @@ namespace ServidorWeb.ML.Classes
 
 
         }
-
-        private void FinalizaML ( string aToken, string aRefres)
+        public void RespondeQuestion(decimal id, string texto)
         {
+            Posts p = new Posts(m, n);
+
+            p.ResponderPergunta(id, texto);
+
+        }
+
+        #endregion
+
+        #region usuario
+        public Usuario RetornaUsuario(string codigo)
+        {
+
+            Usuario u;
+
             try
             {
-                d.AccessToken = aToken;
-                d.RefreshToken = aRefres;
 
-                n.SaveChanges();
+                u = new Usuario();
+                throw new Exception("Usuario não encontrado, falta desenvolver a rotina.");
+
+                return u;
             }
             catch (Exception ex)
             {
 
-                throw new Exception("Erro no FinalizaML.", ex);
+                throw new Exception(String.Format("Erro na rotina RetornaUsuario. {0} codigo: {1} {0}", Environment.NewLine), ex);
             }
-
-
-
         }
-
-
+        #endregion
 
     }
 }
