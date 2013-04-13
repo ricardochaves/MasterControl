@@ -23,7 +23,7 @@ namespace ServidorWeb.ML.Paginas
 
             var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
 
-            var a = (from p in x select new { p.id, p.text });
+            var a = (from p in x select new { p.id_question, p.text });
 
             GridView1.DataSource = a;
             GridView1.DataBind();
@@ -32,13 +32,27 @@ namespace ServidorWeb.ML.Paginas
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
-
-            foreach (ML_Question item in x)
+            try
             {
+                var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
 
-                cp.GravaPergunta(item, cm.n);
+                foreach (ML_Question item in x)
+                {
 
+                    cp.GravaPergunta(cm.RetonarQuestion("/questions/" + item.id_question), cm.n);
+
+                }
+
+            }
+            catch(InvalidOperationException iex)
+            {
+                throw new Exception("Nada para atualizar.", iex);
+            
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Erro ao atualizar perguntas.",ex);
             }
 
         }

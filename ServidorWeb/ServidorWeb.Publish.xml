@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
   <publishProfile publishUrl="E:\PublicarWS\Bot" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="Imagem/Nerd.jpg" publishTime="04/06/2013 19:14:33" />
     <file relUrl="Imagem/nikon50mm.jpg" publishTime="04/06/2013 22:06:23" />
-    <file relUrl="ML/Paginas/Pergunta.aspx" publishTime="04/06/2013 12:49:42" />
+    <file relUrl="ML/Paginas/Pergunta.aspx" publishTime="04/12/2013 19:45:29" />
     <file relUrl="Imagem/logonerd.jpg" publishTime="04/06/2013 13:06:27" />
     <file relUrl="Global.asax" publishTime="04/06/2013 12:49:42" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Site.Master" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Styles/Site.css" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="bin/ServidorWeb.pdb" publishTime="04/12/2013 01:59:30" />
+    <file relUrl="bin/ServidorWeb.pdb" publishTime="04/13/2013 04:20:44" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="04/06/2013 12:49:42" />
+    <file relUrl="ML/Paginas/LoginML.aspx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="ML/Paginas/Cliente.aspx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Imagem/contatoNerd.jpg" publishTime="04/06/2013 13:30:03" />
+    <file relUrl="WSBot.asmx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="ML/Paginas/ImportaMovimentacaoMP.aspx" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="bin/RestSharp.dll" publishTime="01/19/2013 17:53:22" />
-    <file relUrl="bin/net-sdk.dll" publishTime="04/11/2013 21:13:11" />
-    <file relUrl="bin/net-sdk.pdb" publishTime="04/11/2013 21:13:11" />
+    <file relUrl="bin/net-sdk.dll" publishTime="04/12/2013 22:51:07" />
+    <file relUrl="bin/net-sdk.pdb" publishTime="04/12/2013 22:51:07" />
     <file relUrl="ML/Paginas/InicioML.aspx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Account/Web.config" publishTime="04/06/2013 12:49:41" />
     <file relUrl="Account/Register.aspx" publishTime="04/06/2013 12:49:41" />
@@ -23,22 +24,21 @@
     <file relUrl="ML/Paginas/TratarCallBack.aspx" publishTime="04/09/2013 21:11:12" />
     <file relUrl="Imagem/nikon70300mm.jpeg" publishTime="04/06/2013 21:16:31" />
     <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="bin/ServidorWeb.dll" publishTime="04/12/2013 01:59:30" />
+    <file relUrl="bin/ServidorWeb.dll" publishTime="04/13/2013 04:20:44" />
     <file relUrl="ML/Paginas/ImportaVendasML.aspx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Imagem/nikonsb910.jpg" publishTime="04/06/2013 22:11:51" />
     <file relUrl="bin/Newtonsoft.Json.dll" publishTime="01/19/2013 17:53:22" />
     <file relUrl="ML/Paginas/CallBackRelatorio.aspx" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="Imagem/mercadopago.jpg" publishTime="04/06/2013 19:13:23" />
     <file relUrl="Inicio.aspx" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="ML/Paginas/LoginML.aspx" publishTime="04/06/2013 12:49:42" />
+    <file relUrl="bin/RestSharp.dll" publishTime="01/19/2013 17:53:22" />
     <file relUrl="ML/Paginas/Pagamento.aspx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Logout.aspx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Imagem/canon50mm.jpg" publishTime="04/06/2013 17:41:29" />
     <file relUrl="Account/ChangePassword.aspx" publishTime="04/06/2013 12:49:41" />
     <file relUrl="ML/Paginas/VendasProduto.aspx" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="WSBot.asmx" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="ML/Paginas/Perguntas.aspx" publishTime="04/11/2013 20:04:34" />
-    <file relUrl="Web.config" publishTime="04/11/2013 21:13:19" />
+    <file relUrl="Imagem/mercadopago.jpg" publishTime="04/06/2013 19:13:23" />
+    <file relUrl="ML/Paginas/Perguntas.aspx" publishTime="04/13/2013 03:48:44" />
+    <file relUrl="Web.config" publishTime="04/12/2013 22:51:12" />
     <file relUrl="Imagem/santander.jpg" publishTime="04/06/2013 19:05:44" />
     <file relUrl="Index.aspx" publishTime="04/06/2013 13:31:26" />
     <file relUrl="ML/Paginas/ResumoPagamentoItem.aspx" publishTime="04/06/2013 12:49:42" />
@@ -46,6 +46,6 @@
     <file relUrl="Login.aspx" publishTime="04/06/2013 12:49:42" />
     <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="04/06/2013 12:49:41" />
     <file relUrl="ML/Paginas/CallBack.aspx" publishTime="04/06/2013 12:49:42" />
-    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="04/06/2013 12:49:42" />
+    <file relUrl="Imagem/Nerd.jpg" publishTime="04/06/2013 19:14:33" />
   </publishProfile>
 </publishData>

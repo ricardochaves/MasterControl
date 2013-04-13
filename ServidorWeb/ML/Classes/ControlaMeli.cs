@@ -84,11 +84,10 @@ namespace ServidorWeb.ML.Classes
 
                     return q;
 
-
                 }
                 else
                 {
-                    throw new Exception("Falha ao tentar recuperar a pergunta");
+                    throw new Exception(string.Format("Falha ao tentar recuperar a pergunta {0}  resp.StatusCode = {1} {0} resource = {2} {0}", Environment.NewLine, resp.StatusCode, resource));
                 }
 
 
@@ -102,11 +101,13 @@ namespace ServidorWeb.ML.Classes
 
 
         }
-        public void RespondeQuestion(decimal id, string texto)
+        public void RespondeQuestion(decimal idQuestion, string texto)
         {
             Posts p = new Posts(m, n);
 
-            p.ResponderPergunta(id, texto);
+            p.ResponderPergunta(idQuestion, texto);
+            
+            FinalizaML(m.AccessToken, m.RefreshToken);
 
         }
 

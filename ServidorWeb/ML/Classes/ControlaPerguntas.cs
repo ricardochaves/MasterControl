@@ -10,6 +10,8 @@ namespace ServidorWeb.ML.Classes
     public class ControlaPerguntas
     {
 
+        const string PERGUNTA_NAO_RESPONDIDA = "UNANSWERED";
+
         private ConverterObjetoMLparaEF conv = new ConverterObjetoMLparaEF();
 
         public void GravaPergunta(Question q, NSAADMEntities n)
@@ -52,7 +54,7 @@ namespace ServidorWeb.ML.Classes
 
             try
             {
-                var i = (from p in n.ML_Question where p.id_question == q.id select p).First();
+                var i = (from p in n.ML_Question where p.id == q.id select p).First();
 
                 i.Answer_date_created = q.Answer_date_created;
                 i.Answer_status = q.Answer_status;
@@ -107,14 +109,14 @@ namespace ServidorWeb.ML.Classes
 
         }
 
-        public ML_Question RetornaPergunta(decimal id, NSAADMEntities n)
+        public ML_Question RetornaPergunta(decimal idQuestion, NSAADMEntities n)
         {
 
             ML_Question q;
 
             try
             {
-                q = (from p in n.ML_Question where p.id == id select p).First();
+                q = (from p in n.ML_Question where p.id_question == idQuestion select p).First();
 
                 return q;
 
@@ -125,30 +127,38 @@ namespace ServidorWeb.ML.Classes
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("Erro na rotina RetornaPergunta. {0} id: {1} {0}", Environment.NewLine, id), ex);
+                throw new Exception(String.Format("Erro na rotina RetornaPergunta. {0} idQuestion: {1} {0}", Environment.NewLine, idQuestion), ex);
             }
         }
 
         public List<ML_Question> RetonaPerguntas(TipoRetonaPerguntas t, NSAADMEntities n)
         {
 
-            if (t == TipoRetonaPerguntas.NAORESPONDIDA)
+            try
             {
-                List<ML_Question> q = (from p in n.ML_Question select p).ToList();
+                if (t == TipoRetonaPerguntas.NAORESPONDIDA)
+                {
+                    List<ML_Question> q = (from p in n.ML_Question where p.status == PERGUNTA_NAO_RESPONDIDA select p).ToList();
 
-                return q;
+                    return q;
+                }
+                else
+                {
+                    throw new Exception("Tipo de Retona Pergunta não implementado ou inválido.");
+                }
             }
-            else
+            catch (InvalidOperationException)
             {
-                throw new Exception("Tipo de Retona Pergunta não implementado ou inválido.");
+
+                return new List<ML_Question>();
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina RetonaPerguntas.", ex);
+            }
+
 
         }
-
-
-
-
-
 
     }
 

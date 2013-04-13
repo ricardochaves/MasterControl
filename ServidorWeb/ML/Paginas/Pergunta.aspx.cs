@@ -14,7 +14,9 @@ namespace ServidorWeb.ML.Paginas
     {
         Decimal codigo;
         ML_Question mlq;
+        ML_Item mlItem;
         ControlaPerguntas cp = new ControlaPerguntas();
+        ControlaProdutos cprod = new ControlaProdutos();
         ControlaMeli cm;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -31,7 +33,9 @@ namespace ServidorWeb.ML.Paginas
 
 
                 mlq = cp.RetornaPergunta(codigo, cm.n);
+                mlItem = cprod.RetornaProduto(mlq.item_id, cm.n);
 
+                Label1.Text = mlItem.title;
 
                 txtPergunta.Text = mlq.text;
 
@@ -59,7 +63,17 @@ namespace ServidorWeb.ML.Paginas
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            cm.RespondeQuestion(codigo, TextBox1.Text + txtResposta.Text + TextBox2.Text);
+            try
+            {
+                cm.RespondeQuestion(codigo, TextBox1.Text + txtResposta.Text + TextBox2.Text);
+                Response.Redirect("Perguntas.aspx");
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception(String.Format("Erro ao tentar responder pergunta. {0} codigo: {1} {0}",Environment.NewLine,codigo),ex);
+            }
+
 
         }
     }

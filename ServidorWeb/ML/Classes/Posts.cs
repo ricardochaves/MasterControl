@@ -21,7 +21,7 @@ namespace ServidorWeb.ML.Classes
             n = nsaadm;
         }
 
-        public void ResponderPergunta(decimal id, string texto)
+        public void ResponderPergunta(decimal idQuestion, string texto)
         {
 
             try
@@ -29,16 +29,13 @@ namespace ServidorWeb.ML.Classes
                 Parameter at = new Parameter();
                 List<Parameter> param = new List<Parameter>();
 
-                ML_Question mlQ = (from p in n.ML_Question where p.id == id select p).First();
-
-
                 //Alimentando parametros
                 at.Name = "access_token";
                 at.Value = m.AccessToken;
 
                 param.Add(at);
 
-                m.Post("/answers", param, new { question_id = mlQ.id_question, text = texto });
+                m.Post("/answers", param, new { question_id = idQuestion, text = texto });
 
 
             }

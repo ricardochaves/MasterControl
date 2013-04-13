@@ -10,9 +10,9 @@
      <asp:TemplateField HeaderText="ID_Pergunta" InsertVisible="False" 
             SortExpression="cmpName">
        <ItemTemplate>
-          <asp:HyperLink ID="id" runat="server" 
-               NavigateUrl='<%# Eval("id", "pergunta.aspx?code={0}") %>'
-               Text='<%# Eval("id") %>'>
+          <asp:HyperLink ID="id_question" runat="server" 
+               NavigateUrl='<%# Eval("id_question", "pergunta.aspx?code={0}") %>'
+               Text='<%# Eval("id_question") %>'>
           </asp:HyperLink>
        </ItemTemplate>
      </asp:TemplateField>
