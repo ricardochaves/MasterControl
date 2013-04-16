@@ -29,7 +29,7 @@ namespace ServidorWeb.ML.Paginas
                 codigo = Convert.ToDecimal(Request.QueryString["code"]);
 
 
-                TextBox2.Text = " Não deixe de ver nossos outros produto. Muito Obrigado.";
+                TextBox2.Text = " Não deixe de ver nossos outros produtos. Muito Obrigado.";
 
 
                 mlq = cp.RetornaPergunta(codigo, cm.n);
@@ -52,6 +52,11 @@ namespace ServidorWeb.ML.Paginas
                 }
 
 
+                var OutrasPerguntas = cp.RetonaPerguntas(Convert.ToDecimal(mlq.id_from), cm.n);
+                var a = (from p in OutrasPerguntas select new { p.text, p.Answer_text });
+                GridView1.DataSource = a;
+                GridView1.DataBind();
+
             }
             catch (Exception ex)
             {
@@ -67,6 +72,9 @@ namespace ServidorWeb.ML.Paginas
             {
                 cm.RespondeQuestion(codigo, TextBox1.Text + txtResposta.Text + TextBox2.Text);
                 Response.Redirect("Perguntas.aspx");
+
+
+
             }
             catch (Exception ex)
             {
@@ -76,5 +84,7 @@ namespace ServidorWeb.ML.Paginas
 
 
         }
+
+ 
     }
 }

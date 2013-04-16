@@ -74,40 +74,33 @@ namespace ServidorWeb.ML.Classes
 
         }
 
-        public void AtualizaPergunta(long codigo, NSAADMEntities n)
-        {
-            Question q = new Question();
-            q.id = codigo;
+        //private void AtualizaDados(ML_Question q, NSAADMEntities n)
+        //{
 
-        }
+        //    try
+        //    {
+        //        var i = (from p in n.ML_Question where p.id_question == q.id_question select p).First();
 
-        private void AtualizaDados(ML_Question q, NSAADMEntities n)
-        {
+        //        i.status = q.status;
 
-            try
-            {
-                var i = (from p in n.ML_Question where p.id_question == q.id_question select p).First();
+        //        i.Answer_date_created = q.Answer_date_created;
+        //        i.Answer_status = q.Answer_status;
+        //        i.Answer_text = q.Answer_text;
+        //        i.answered_questions = q.answered_questions;
+        //        i.date_created = q.date_created;
+        //        i.id_from = q.id_from;
 
-                i.status = q.status;
+        //        n.SaveChanges();
 
-                i.Answer_date_created = q.Answer_date_created;
-                i.Answer_status = q.Answer_status;
-                i.Answer_text = q.Answer_text;
-                i.answered_questions = q.answered_questions;
-                i.date_created = q.date_created;
-                i.id_from = q.id_from;
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                n.SaveChanges();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception("Erro na rotina AtualizaDados", ex);
-            }
+        //        throw new Exception("Erro na rotina AtualizaDados", ex);
+        //    }
 
 
-        }
+        //}
 
         public ML_Question RetornaPergunta(decimal idQuestion, NSAADMEntities n)
         {
@@ -158,6 +151,27 @@ namespace ServidorWeb.ML.Classes
             }
 
 
+        }
+
+        public List<ML_Question> RetonaPerguntas(decimal IDUsuario, NSAADMEntities n)
+        {
+            try
+            {
+
+                List<ML_Question> q = (from p in n.ML_Question where p.id_from == IDUsuario select p).ToList();
+
+                return q;
+                
+            }
+            catch (InvalidOperationException)
+            {
+
+                return new List<ML_Question>();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina RetonaPerguntas.", ex);
+            }
         }
 
     }

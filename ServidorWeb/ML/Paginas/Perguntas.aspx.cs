@@ -15,11 +15,15 @@ namespace ServidorWeb.ML.Paginas
 
         ControlaMeli cm;
         ControlaPerguntas cp = new ControlaPerguntas();
+        ControlaCallBack cb = new ControlaCallBack();
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             cm = new ControlaMeli();
+
+            TrataPerguntasDoCallBack();
+            cb.LimpaCallBack();
 
             var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
 
@@ -34,6 +38,21 @@ namespace ServidorWeb.ML.Paginas
 
             try
             {
+                AtualizaPerguntas();
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Erro ao atualizar perguntas.",ex);
+            }
+
+        }
+
+        private void AtualizaPerguntas()
+        {
+            try
+            {
                 var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
 
                 foreach (ML_Question item in x)
@@ -44,17 +63,41 @@ namespace ServidorWeb.ML.Paginas
                 }
 
             }
-            catch(InvalidOperationException iex)
+            catch (InvalidOperationException iex)
             {
                 throw new Exception("Nada para atualizar.", iex);
-            
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro ao atualizar perguntas.", ex);
+            }
+        }
+
+        private void TrataPerguntasDoCallBack()
+        {
+
+            try
+            {
+                
+                List<CallBackML> a = cb.RetornaCallBacks(ControlaCallBack.TipoRetonaCallBacks.PERGUNTAS, cm.n);
+
+                foreach (CallBackML item in a)
+                {
+
+                    cp.GravaPergunta(cm.RetonarQuestion(item.resource),cm.n);
+
+                }
+
             }
             catch (Exception ex)
             {
                 
-                throw new Exception("Erro ao atualizar perguntas.",ex);
+                throw new Exception("Erro na rotina TrataPerguntasDoCallBack.",ex);
             }
 
         }
+        
     }
 }

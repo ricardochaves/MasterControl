@@ -24,4 +24,13 @@
     <asp:Button ID="Button1" runat="server" Text="Responder" 
         onclick="Button1_Click" />
     <br />
+    <br />
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="Outras perguntas do mesmo usuário"></asp:Label>
+    <asp:GridView ID="GridView1" runat="server" 
+        onselectedindexchanged="GridView1_SelectedIndexChanged">
+    </asp:GridView>
+    <br />
+    <br />
+    <br />
 </asp:Content>
