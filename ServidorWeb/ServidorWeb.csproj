@@ -89,6 +89,7 @@
     <Content Include="ML\Paginas\Perguntas.aspx" />
     <Content Include="ML\Paginas\ResumoPagamentoItem.aspx" />
     <Content Include="ML\Paginas\TratarCallBack.aspx" />
+    <Content Include="ML\Paginas\VendasEmAberto.aspx" />
     <Content Include="ML\Paginas\VendasProduto.aspx" />
     <Content Include="PgBot\Relatorio.aspx" />
     <Content Include="Styles\Site.css" />
@@ -187,6 +188,7 @@
     <Compile Include="ML\Classes\ConstruirEF.cs" />
     <Compile Include="ML\Classes\ControlaCallBack.cs" />
     <Compile Include="ML\Classes\ControlaMeli.cs" />
+    <Compile Include="ML\Classes\ControlaOrdens.cs" />
     <Compile Include="ML\Classes\ControlaProdutos.cs" />
     <Compile Include="ML\Classes\ConverterObjetoMLparaEF.cs" />
     <Compile Include="ML\Classes\LerML.cs" />
@@ -276,6 +278,13 @@
     </Compile>
     <Compile Include="ML\Paginas\TratarCallBack.aspx.designer.cs">
       <DependentUpon>TratarCallBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\VendasEmAberto.aspx.cs">
+      <DependentUpon>VendasEmAberto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\VendasEmAberto.aspx.designer.cs">
+      <DependentUpon>VendasEmAberto.aspx</DependentUpon>
     </Compile>
     <Compile Include="ML\Paginas\VendasProduto.aspx.cs">
       <DependentUpon>VendasProduto.aspx</DependentUpon>
