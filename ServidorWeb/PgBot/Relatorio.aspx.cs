@@ -16,9 +16,11 @@ namespace ServidorWeb
         
         protected int[] ItensRelatorio()
         {
-             int[] ids = { 72092, 72094, 72103, 72238, 79011, 79010, 72235, 72234, 72237 };
+            int[] ids = { 72092, 72094, 72103, 72238, 79011, 79010, 72235, 72234, 72237, 214510 };
              return ids;
         }
+
+        double ValorFinal;
 
         protected Dictionary<Int32, Int32> NovoDicionario()
         {
@@ -94,10 +96,56 @@ namespace ServidorWeb
                 if (il.Value > 0)
                 {
                     ListBox2.Items.Add(new ListItem(String.Format("Item id: {0} qtd: {1}",((estItem)il.Key).nome, il.Value)));
+
+                    if (((estItem)il.Key).nome == "Ghost Iron Ore")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35)/1000)*1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Black Trillium Ore")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 100) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "White Trillium Ore")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 100) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Golden Lotus")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 800) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Golden Lotus")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 800) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Fool's Cap")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Snow Lily")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Silkweed")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Green Tea Leaf")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Rain Poppy")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                    }
+                    if (((estItem)il.Key).nome == "Sha-Touched Herb")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+
+                    }
                 }
             }
 
-
+            Label2.Text = string.Format("O Valor em reais é: {0}", ValorFinal);
 
 
         }
@@ -219,7 +267,10 @@ namespace ServidorWeb
                     i.id = id;
                     i.nome = "Rain Poppy";
                     break;
-
+                case 214510:
+                    i.id = id;
+                    i.nome = "Sha-Touched Herb";
+                    break;
                 default:
                     break;
             }

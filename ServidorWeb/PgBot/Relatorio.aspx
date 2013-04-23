@@ -32,6 +32,9 @@
         </asp:ListBox>
         <br />
         <br />
+        <asp:Label ID="Label2" runat="server"></asp:Label>
+        <br />
+        <br />
         <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
     
       </div>
