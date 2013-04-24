@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2C153F90-E7B3-4DF6-B7A5-39E589D20B94}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServidorWeb</RootNamespace>
+    <AssemblyName>ServidorWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\SDK\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\SDK\bin\Debug\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+<<<<<<< HEAD
+=======
+    <Content Include="Imagem\canon50mm.jpg" />
+    <Content Include="Imagem\contatoNerd.jpg" />
+    <Content Include="Imagem\logonerd.jpg" />
+    <Content Include="Imagem\mercadopago.jpg" />
+    <Content Include="Imagem\Nerd.jpg" />
+    <Content Include="Imagem\nikon50mm.jpg" />
+    <Content Include="Imagem\nikon70300mm.jpeg" />
+    <Content Include="Imagem\nikonsb910.jpg" />
+    <Content Include="Imagem\santander.jpg" />
+    <Content Include="Index.aspx" />
+>>>>>>> 09f01fb1d500139f1b9b5bd6e2e02e498ca6b0e4
+    <Content Include="Inicio.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="ML\Paginas\CallBack.aspx" />
+    <Content Include="ML\Paginas\CallBackRelatorio.aspx" />
+    <Content Include="ML\Paginas\Cliente.aspx" />
+    <Content Include="ML\Paginas\ImportaMovimentacaoMP.aspx" />
+    <Content Include="ML\Paginas\ImportaVendasML.aspx" />
+    <Content Include="ML\Paginas\InicioML.aspx" />
+    <Content Include="ML\Paginas\LoginML.aspx" />
+    <Content Include="ML\Paginas\Pagamento.aspx" />
+    <Content Include="ML\Paginas\Pergunta.aspx" />
+    <Content Include="ML\Paginas\Perguntas.aspx" />
+    <Content Include="ML\Paginas\ResumoPagamentoItem.aspx" />
+    <Content Include="ML\Paginas\TratarCallBack.aspx" />
+    <Content Include="ML\Paginas\VendasEmAberto.aspx" />
+    <Content Include="ML\Paginas\VendasProduto.aspx" />
+    <Content Include="PgBot\Relatorio.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="WSBot.asmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BD\ModelML.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelML.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityContext\EntityContextBot.cs" />
+    <Compile Include="Estruturas\estDados.cs" />
+    <Compile Include="Estruturas\estDetalhe.cs" />
+    <Compile Include="Estruturas\estItem.cs" />
+    <Compile Include="Estruturas\estLevelUp.cs" />
+    <Compile Include="Estruturas\estLoot.cs" />
+    <Compile Include="Estruturas\estSessao.cs" />
+    <Compile Include="Estruturas\estMorte.cs" />
+    <Compile Include="Financeiro\estoque.cs" />
+    <Compile Include="Financeiro\movimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\vendas.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="BD\ModelBot.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBot.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Classes\Classes.cs" />
+    <Compile Include="ML\Classes\ConstruirEF.cs" />
+    <Compile Include="ML\Classes\ControlaCallBack.cs" />
+    <Compile Include="ML\Classes\ControlaMeli.cs" />
+    <Compile Include="ML\Classes\ControlaOrdens.cs" />
+    <Compile Include="ML\Classes\ControlaProdutos.cs" />
+    <Compile Include="ML\Classes\ConverterObjetoMLparaEF.cs" />
+    <Compile Include="ML\Classes\LerML.cs" />
+    <Compile Include="ML\Classes\MP.cs" />
+    <Compile Include="ML\Classes\ControlaPerguntas.cs" />
+    <Compile Include="ML\Classes\Posts.cs" />
+    <Compile Include="ML\Paginas\CallBack.aspx.cs">
+      <DependentUpon>CallBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\CallBack.aspx.designer.cs">
+      <DependentUpon>CallBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\CallBackRelatorio.aspx.cs">
+      <DependentUpon>CallBackRelatorio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\CallBackRelatorio.aspx.designer.cs">
+      <DependentUpon>CallBackRelatorio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\Cliente.aspx.cs">
+      <DependentUpon>Cliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\Cliente.aspx.designer.cs">
+      <DependentUpon>Cliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\ImportaMovimentacaoMP.aspx.cs">
+      <DependentUpon>ImportaMovimentacaoMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\ImportaMovimentacaoMP.aspx.designer.cs">
+      <DependentUpon>ImportaMovimentacaoMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\ImportaVendasML.aspx.cs">
+      <DependentUpon>ImportaVendasML.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\ImportaVendasML.aspx.designer.cs">
+      <DependentUpon>ImportaVendasML.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\InicioML.aspx.cs">
+      <DependentUpon>InicioML.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\InicioML.aspx.designer.cs">
+      <DependentUpon>InicioML.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\LoginML.aspx.cs">
+      <DependentUpon>LoginML.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\LoginML.aspx.designer.cs">
+      <DependentUpon>LoginML.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\Pagamento.aspx.cs">
+      <DependentUpon>Pagamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\Pagamento.aspx.designer.cs">
+      <DependentUpon>Pagamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\Pergunta.aspx.cs">
+      <DependentUpon>Pergunta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\Pergunta.aspx.designer.cs">
+      <DependentUpon>Pergunta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\Perguntas.aspx.cs">
+      <DependentUpon>Perguntas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\Perguntas.aspx.designer.cs">
+      <DependentUpon>Perguntas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\ResumoPagamentoItem.aspx.cs">
+      <DependentUpon>ResumoPagamentoItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\ResumoPagamentoItem.aspx.designer.cs">
+      <DependentUpon>ResumoPagamentoItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\TratarCallBack.aspx.cs">
+      <DependentUpon>TratarCallBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\TratarCallBack.aspx.designer.cs">
+      <DependentUpon>TratarCallBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\VendasEmAberto.aspx.cs">
+      <DependentUpon>VendasEmAberto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\VendasEmAberto.aspx.designer.cs">
+      <DependentUpon>VendasEmAberto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ML\Paginas\VendasProduto.aspx.cs">
+      <DependentUpon>VendasProduto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\VendasProduto.aspx.designer.cs">
+      <DependentUpon>VendasProduto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PgBot\Relatorio.aspx.cs">
+      <DependentUpon>Relatorio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PgBot\Relatorio.aspx.designer.cs">
+      <DependentUpon>Relatorio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\Classes\movimentacaoCaixa.cs" />
+    <Compile Include="Sistema\Classes\Produto.cs" />
+    <Compile Include="Sistema\Classes\vendas.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WSBot.asmx.cs">
+      <DependentUpon>WSBot.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="BD\ModelBot.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelBot.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SDK\SDK.csproj">
+      <Project>{25FDC25B-0BB1-4D13-BAD3-C7CAF22B9F70}</Project>
+      <Name>SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="BD\ModelML.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelML.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45506</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

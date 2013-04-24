@@ -16,7 +16,7 @@ namespace Financeiro
             Mercadolivre = (int)1,
             BomNegocio = (int)2,
             OLX = (int)3,
-            TodOferta = (int)4,
+            TodOferta = (int)6,
             Miguel = (int)5
         }
 
