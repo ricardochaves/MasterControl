@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
 using ServidorWeb.ML.Classes;
 using MercadoLibre.SDK;
 
@@ -13,60 +12,79 @@ namespace ServidorWeb.ML.Paginas
 {
     public partial class Pergunta : System.Web.UI.Page
     {
-        NSAADMEntities n = EntityContextML.GetContext;
         Decimal codigo;
+        ML_Question mlq;
+        ML_Item mlItem;
+        ControlaPerguntas cp = new ControlaPerguntas();
+        ControlaProdutos cprod = new ControlaProdutos();
+        ControlaMeli cm;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if ((Meli)Session["M"] == null)
-            {
-                Response.Redirect("InicioML.aspx");
-
-            }
-            else
-            {
-                Meli m1 = (Meli)Session["M"];
-                if (m1.AccessToken == null)
-                {
-                    Response.Redirect("InicioML.aspx");
-                }
-            }
-
-
-            TextBox2.Text = " Não deixe de ver nossos outros produto. Muito Obrigado.";
-            
-
-            codigo = Convert.ToDecimal(Request.QueryString["code"]);
-
-            var x = (from p in n.ML_Question where p.id == codigo select p).First();
-
-
-            txtPergunta.Text = x.text;
-
             try
             {
-                var y = (from a in n.ML_Usuario where a.id == x.id_from select a).First();
-                TextBox1.Text = "Olá " + y.nickname + ". ";
+
+                cm = new ControlaMeli();
+                codigo = Convert.ToDecimal(Request.QueryString["code"]);
+
+
+                TextBox2.Text = " Não deixe de ver nossos outros produtos. Muito Obrigado.";
+
+
+                mlq = cp.RetornaPergunta(codigo, cm.n);
+                mlItem = cprod.RetornaProduto(mlq.item_id, cm.n);
+
+                Label1.Text = mlItem.title;
+
+                txtPergunta.Text = mlq.text;
+
+
+                try
+                {
+                    var y = cm.RetornaUsuario(mlq.id_from.ToString());
+                    TextBox1.Text = "Olá " + y.nickname + ". ";
+                }
+                catch (Exception)
+                {
+
+                    TextBox1.Text = "Olá amigo, ";
+                }
+
+
+                var OutrasPerguntas = cp.RetonaPerguntas(Convert.ToDecimal(mlq.id_from), cm.n);
+                var a = (from p in OutrasPerguntas select new { p.text, p.Answer_text });
+                GridView1.DataSource = a;
+                GridView1.DataBind();
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                TextBox1.Text = "Olá amigo, ";
+                throw new Exception("Erro na rotina Page_Load", ex);
             }
-            
-
-            
-
 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                cm.RespondeQuestion(codigo, TextBox1.Text + txtResposta.Text + TextBox2.Text);
+                Response.Redirect("Perguntas.aspx");
 
-            Posts p = new Posts(Session["M"]);
-            p.ResponderPergunta(codigo, TextBox1.Text + txtResposta.Text + TextBox2.Text);
-        
+
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception(String.Format("Erro ao tentar responder pergunta. {0} codigo: {1} {0}",Environment.NewLine,codigo),ex);
+            }
+
+
         }
+
+ 
     }
 }

@@ -4,21 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ServidorWeb.EntityContext;
 using ServidorWeb.BD;
+using ServidorWeb.ML.Classes;
 
 namespace ServidorWeb.ML.Paginas
 {
     public partial class CallBackRelatorio : System.Web.UI.Page
     {
 
-        NSAADMEntities n = EntityContextML.GetContext;
+        NSAADMEntities n;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-
+                ConstruirEF cf = new ConstruirEF();
+                n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
             }
         }
 

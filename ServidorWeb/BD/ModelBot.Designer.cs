@@ -76,22 +76,6 @@ namespace ServidorWeb.BD
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<dado> dados
-        {
-            get
-            {
-                if ((_dados == null))
-                {
-                    _dados = base.CreateObjectSet<dado>("dados");
-                }
-                return _dados;
-            }
-        }
-        private ObjectSet<dado> _dados;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Sessao> Sessaos
         {
             get
@@ -168,17 +152,25 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<loot> _loots;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<dado> dados
+        {
+            get
+            {
+                if ((_dados == null))
+                {
+                    _dados = base.CreateObjectSet<dado>("dados");
+                }
+                return _dados;
+            }
+        }
+        private ObjectSet<dado> _dados;
 
         #endregion
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the dados EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTodados(dado dado)
-        {
-            base.AddObject("dados", dado);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the Sessaos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -218,6 +210,14 @@ namespace ServidorWeb.BD
         public void AddToloots(loot loot)
         {
             base.AddObject("loots", loot);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the dados EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTodados(dado dado)
+        {
+            base.AddObject("dados", dado);
         }
 
         #endregion

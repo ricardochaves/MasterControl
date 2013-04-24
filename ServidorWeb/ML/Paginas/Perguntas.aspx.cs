@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ServidorWeb.EntityContext;
 using ServidorWeb.BD;
 using ServidorWeb.ML.Classes;
 using MercadoLibre.SDK;
@@ -14,63 +13,91 @@ namespace ServidorWeb.ML.Paginas
     public partial class Perguntas : System.Web.UI.Page
     {
 
-        NSAADMEntities n;
-        Meli m;
+        ControlaMeli cm;
+        ControlaPerguntas cp = new ControlaPerguntas();
+        ControlaCallBack cb = new ControlaCallBack();
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            ConstruirEF cs = new ConstruirEF();
-            n = (NSAADMEntities)cs.RecuperaEntity(Entities.MercadoLivre);
+            cm = new ControlaMeli();
 
+            TrataPerguntasDoCallBack();
+            cb.LimpaCallBack();
 
-            if ((Meli)Session["M"] == null)
-            {
-                Response.Redirect("InicioML.aspx");
+            var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
 
-            }
-            else
-            {
-                Meli m1 = (Meli)Session["M"];
-                if (m1.AccessToken == null)
-                {
-                    Response.Redirect("InicioML.aspx");
-                }
-            }
+            var a = (from p in x select new { p.id_question, p.text });
 
-            m = (Meli)Session["M"];
-            TextBox1.Text = m.AccessToken;
-
-            var x = (from p in n.ML_Question where p.answered_questions == 0 select new { p.id, p.text });
-
-            GridView1.DataSource = x;
+            GridView1.DataSource = a;
             GridView1.DataBind();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-
-            var x =  (from p in n.ML_Question where p.status == "UNANSWERED" select p );
-
-
-            foreach (ML_Question item in x.ToList())
+            try
             {
-
-                TratarPerguntas t = new TratarPerguntas(m, n, Convert.ToDecimal(item.id_question));
-
-                t.executa();
+                AtualizaPerguntas();
 
             }
-
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Erro ao atualizar perguntas.",ex);
+            }
 
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        private void AtualizaPerguntas()
         {
-            Session["pagina"] = "Perguntas.aspx";
-            
-            Response.Redirect(m.GetAuthUrl(ServidorWeb.Properties.Settings.Default.URL_Login));
+            try
+            {
+                var x = cp.RetonaPerguntas(TipoRetonaPerguntas.NAORESPONDIDA, cm.n);
+
+                foreach (ML_Question item in x)
+                {
+
+                    cp.GravaPergunta(cm.RetonarQuestion("/questions/" + item.id_question), cm.n);
+
+                }
+
+            }
+            catch (InvalidOperationException iex)
+            {
+                throw new Exception("Nada para atualizar.", iex);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro ao atualizar perguntas.", ex);
+            }
         }
+
+        private void TrataPerguntasDoCallBack()
+        {
+
+            try
+            {
+                
+                List<CallBackML> a = cb.RetornaCallBacks(ControlaCallBack.TipoRetonaCallBacks.PERGUNTAS, cm.n);
+
+                foreach (CallBackML item in a)
+                {
+
+                    cp.GravaPergunta(cm.RetonarQuestion(item.resource),cm.n);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Erro na rotina TrataPerguntasDoCallBack.",ex);
+            }
+
+        }
+        
     }
 }

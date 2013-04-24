@@ -64,6 +64,13 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Imagem\canon50mm.jpg" />
+    <Content Include="Imagem\mercadopago.jpg" />
+    <Content Include="Imagem\Nerd.jpg" />
+    <Content Include="Imagem\nikon50mm.jpg" />
+    <Content Include="Imagem\nikon70300mm.jpeg" />
+    <Content Include="Imagem\nikonsb910.jpg" />
+    <Content Include="Imagem\santander.jpg" />
     <Content Include="Inicio.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
@@ -79,6 +86,7 @@
     <Content Include="ML\Paginas\Perguntas.aspx" />
     <Content Include="ML\Paginas\ResumoPagamentoItem.aspx" />
     <Content Include="ML\Paginas\TratarCallBack.aspx" />
+    <Content Include="ML\Paginas\VendasEmAberto.aspx" />
     <Content Include="ML\Paginas\VendasProduto.aspx" />
     <Content Include="PgBot\Relatorio.aspx" />
     <Content Include="Styles\Site.css" />
@@ -132,7 +140,6 @@
       <DependentUpon>ModelML.edmx</DependentUpon>
     </Compile>
     <Compile Include="EntityContext\EntityContextBot.cs" />
-    <Compile Include="EntityContext\EntityContextML.cs" />
     <Compile Include="Estruturas\estDados.cs" />
     <Compile Include="Estruturas\estDetalhe.cs" />
     <Compile Include="Estruturas\estItem.cs" />
@@ -174,11 +181,15 @@
     </Compile>
     <Compile Include="ML\Classes\Classes.cs" />
     <Compile Include="ML\Classes\ConstruirEF.cs" />
+    <Compile Include="ML\Classes\ControlaCallBack.cs" />
+    <Compile Include="ML\Classes\ControlaMeli.cs" />
+    <Compile Include="ML\Classes\ControlaOrdens.cs" />
+    <Compile Include="ML\Classes\ControlaProdutos.cs" />
     <Compile Include="ML\Classes\ConverterObjetoMLparaEF.cs" />
     <Compile Include="ML\Classes\LerML.cs" />
     <Compile Include="ML\Classes\MP.cs" />
+    <Compile Include="ML\Classes\ControlaPerguntas.cs" />
     <Compile Include="ML\Classes\Posts.cs" />
-    <Compile Include="ML\Classes\TratarPerguntas.cs" />
     <Compile Include="ML\Paginas\CallBack.aspx.cs">
       <DependentUpon>CallBack.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -263,6 +274,13 @@
     <Compile Include="ML\Paginas\TratarCallBack.aspx.designer.cs">
       <DependentUpon>TratarCallBack.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ML\Paginas\VendasEmAberto.aspx.cs">
+      <DependentUpon>VendasEmAberto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\VendasEmAberto.aspx.designer.cs">
+      <DependentUpon>VendasEmAberto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ML\Paginas\VendasProduto.aspx.cs">
       <DependentUpon>VendasProduto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +301,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Sistema\Classes\movimentacaoCaixa.cs" />
+    <Compile Include="Sistema\Classes\Produto.cs" />
+    <Compile Include="Sistema\Classes\vendas.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

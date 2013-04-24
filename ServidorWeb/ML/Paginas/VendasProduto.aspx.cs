@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ServidorWeb.EntityContext;
+using ServidorWeb.ML.Classes;
 using ServidorWeb.BD;
 
 namespace ServidorWeb.ML.Paginas
@@ -12,12 +12,17 @@ namespace ServidorWeb.ML.Paginas
     public partial class VendasProduto : System.Web.UI.Page
     {
 
-        NSAADMEntities n = EntityContextML.GetContext;
+        NSAADMEntities n;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+
+                ConstruirEF cf = new ConstruirEF();
+                n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+
+
                 var x = (from p in n.ML_ItemOrganizacao select p);
 
                 DropDownList1.Items.Clear();

@@ -2,14 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-        <asp:TextBox ID="TextBox1" runat="server" Width="358px"></asp:TextBox>
-        <br />
-        <br />
-        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
-            Text="atualiza" />
-        <br />
-        <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
-            Text="relogar" />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
         <br />
         <asp:GridView ID="GridView1" runat="server">
     
@@ -17,9 +10,9 @@
      <asp:TemplateField HeaderText="ID_Pergunta" InsertVisible="False" 
             SortExpression="cmpName">
        <ItemTemplate>
-          <asp:HyperLink ID="id" runat="server" 
-               NavigateUrl='<%# Eval("id", "pergunta.aspx?code={0}") %>'
-               Text='<%# Eval("id") %>'>
+          <asp:HyperLink ID="id_question" runat="server" 
+               NavigateUrl='<%# Eval("id_question", "pergunta.aspx?code={0}") %>'
+               Text='<%# Eval("id_question") %>'>
           </asp:HyperLink>
        </ItemTemplate>
      </asp:TemplateField>

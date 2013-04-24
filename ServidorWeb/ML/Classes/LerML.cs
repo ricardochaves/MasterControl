@@ -16,10 +16,10 @@ namespace ServidorWeb.ML.Classes
         {
             m = new Meli(ClientId, ClientSecret);
         }
+
         public LerML(Meli meli)
         {
             m = meli;
-            //m.refreshToken();
         }
 
         public Usuario RetornaUsuarioLogado()
@@ -88,36 +88,7 @@ namespace ServidorWeb.ML.Classes
 
 
         }
-
-        public Question RetonarQuestion(string resource)
-        {
-            Question q;
-            Parameter at = new Parameter();
-            List<Parameter> param = new List<Parameter>();
-
-            
-            //Alimentando parametros
-            at.Name = "access_token";
-            at.Value = m.AccessToken;
-
-            param.Add(at);
-
-            RestResponse resp = (RestResponse)m.Get(resource, param);
-
-            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                var a = new JsonSerializerSettings();
-                q = JsonConvert.DeserializeObject<Question>(resp.Content);
-
-                return q;
-            }
-            else
-            {
-                throw new Exception("Falha ao tentar recuperar a pergunta");
-            }
-
-        }
-
+        
         public Usuario RetornaUsuario(string id)
         {
             Usuario u;

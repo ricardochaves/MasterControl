@@ -6,7 +6,6 @@ using MercadoLibre.SDK;
 using RestSharp;
 using Newtonsoft.Json;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
 
 namespace ServidorWeb.ML.Classes
 {
@@ -14,32 +13,21 @@ namespace ServidorWeb.ML.Classes
     {
 
         private Meli m;
+        private NSAADMEntities n;
 
-        public Posts(Meli meli)
+        public Posts(Meli meli, NSAADMEntities nsaadm)
         {
             m = meli;
-            m.refreshToken();
-        }
-        
-        public Posts(Object meli)
-        {
-            m = (Meli)meli;
-            m.refreshToken();
+            n = nsaadm;
         }
 
-
-        public void ResponderPergunta(decimal id, string texto)
+        public void ResponderPergunta(decimal idQuestion, string texto)
         {
-
-            NSAADMEntities n = EntityContextML.GetContext;
 
             try
             {
                 Parameter at = new Parameter();
                 List<Parameter> param = new List<Parameter>();
-
-                ML_Question mlQ = (from p in n.ML_Question where p.id == id select p).First();
-
 
                 //Alimentando parametros
                 at.Name = "access_token";
@@ -47,28 +35,23 @@ namespace ServidorWeb.ML.Classes
 
                 param.Add(at);
 
-                m.Post("/answers", param, new { question_id = mlQ.id_question, text = texto });
+                m.Post("/answers", param, new { question_id = idQuestion, text = texto });
 
-                //DEPOIS DA CONVERSA ATUALIZAR O BD, VERIFICAR SE NÃO SERIA MELHOR PEGAR DE NOVO NO ML
-                ML_Question q = (from p in n.ML_Question where p.id == id select p).First();
-                q.answered_questions = 1;
-                q.Answer_text = texto;
-                q.Answer_status = "active";
-
-                n.SaveChanges();
 
             }
             catch (Exception ex)
             {
-                
-                throw ex;
+
+                throw new Exception("Erro na rotina ResponderPergunta", ex);
             }
 
-  
+
 
 
 
         }
-    
+
+
+
     }
 }

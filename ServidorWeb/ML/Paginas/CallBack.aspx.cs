@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
 using Newtonsoft.Json;
 using ServidorWeb.ML.Classes;
 using MercadoLibre.SDK;
@@ -18,24 +17,18 @@ namespace ServidorWeb.ML.Paginas
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            
+            NSAADMEntities n;
 
-            NSAADMEntities n = new NSAADMEntities();
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
 
-
-            //string teste = "{\"user_id\":\"66129937\",\"resource\":\"/questions/2681174350\",\"topic\":\"questions\",\"received\":\"2013-04-01T17:15:47.823Z\",\"application_id\":5971480328026573,\"sent\":\"2013-04-01T17:15:48.282Z\",\"attempts\":0}";
-
-
-            
             //*****************************************
             Request.InputStream.Position = 0;
             System.IO.StreamReader str = new System.IO.StreamReader(Request.InputStream);
                         
             CallBackTemp c = new CallBackTemp();
             c = JsonConvert.DeserializeObject<CallBackTemp>(str.ReadToEnd());
-            //c = JsonConvert.DeserializeObject<CallBackTemp>(teste);
             //*****************************************
-
 
             try
             {
@@ -56,9 +49,16 @@ namespace ServidorWeb.ML.Paginas
             
                 n.SaveChanges();
 
+
+                if (c.topic == "questions")
+                {
+                    ControlaMeli cm = new ControlaMeli();
+
+                    ControlaPerguntas cp = new ControlaPerguntas();
+
+                    cp.GravaPergunta(cm.RetonarQuestion(c.resource), cm.n);
+                }
             }
-
-
         }
     }
 }

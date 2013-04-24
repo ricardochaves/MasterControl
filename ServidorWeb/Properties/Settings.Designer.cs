@@ -25,7 +25,7 @@ namespace ServidorWeb.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.nerdsa.com.br/ML/Paginas/LoginML.aspx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://nerdsa.com.br/ML/Paginas/LoginML.aspx")]
         public string URL_Login {
             get {
                 return ((string)(this["URL_Login"]));

@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ServidorWeb.BD;
-using ServidorWeb.EntityContext;
 
 namespace ServidorWeb.ML.Classes
 {
     public class ConverterObjetoMLparaEF
     {
 
-        NSAADMEntities n = EntityContextML.GetContext;
+        NSAADMEntities n ;
 
         public ML_Usuario ConverteUsuario(Usuario us)
         {
 
+
+            ConstruirEF cf = new ConstruirEF();
+            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
 
             //DADOS DA BASE DA CLASSE
             ML_Usuario u = new ML_Usuario();
@@ -25,7 +27,7 @@ namespace ServidorWeb.ML.Classes
                 u = (from p in n.ML_Usuario where p.id == us.id select p).First();
                 return u;
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
 
                 u.country_id = us.country_id;

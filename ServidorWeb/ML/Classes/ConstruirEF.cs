@@ -48,8 +48,22 @@ namespace ServidorWeb.ML.Classes
         {
             try
             {
+                string strConexao;
                 string NomePC = System.Net.Dns.GetHostName();
-                string strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
+
+                if (NomePC == "Ricardo-PC")
+                {
+                    strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
+                }
+                else if (NomePC == "PC_O1")
+                {
+                    strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
+                }
+                else
+                {
+                    strConexao = ConfigurationManager.ConnectionStrings["NSAADMEntitiesProducao"].ConnectionString;
+                }
+
                 return strConexao;
 
             }
