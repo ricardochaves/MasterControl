@@ -147,9 +147,6 @@
     <Compile Include="Estruturas\estLoot.cs" />
     <Compile Include="Estruturas\estSessao.cs" />
     <Compile Include="Estruturas\estMorte.cs" />
-    <Compile Include="Financeiro\estoque.cs" />
-    <Compile Include="Financeiro\movimentacaoCaixa.cs" />
-    <Compile Include="Financeiro\vendas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

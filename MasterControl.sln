@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorWeb", "ServidorWeb\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDK", "SDK\SDK.csproj", "{25FDC25B-0BB1-4D13-BAD3-C7CAF22B9F70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Financeiro", "Financeiro\Financeiro.csproj", "{79FB97BD-3D54-480E-BEB7-90D76683EFDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{25FDC25B-0BB1-4D13-BAD3-C7CAF22B9F70}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{25FDC25B-0BB1-4D13-BAD3-C7CAF22B9F70}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{25FDC25B-0BB1-4D13-BAD3-C7CAF22B9F70}.Release|x86.ActiveCfg = Release|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
