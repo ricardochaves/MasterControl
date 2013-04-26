@@ -11,6 +11,12 @@ namespace ServidorWeb.ML.Classes
     {
         private ConverterObjetoMLparaEF conv = new ConverterObjetoMLparaEF();
 
+        /// <summary>
+        /// Recebe uma Order e Retona um ML_Order cadastrado no EF
+        /// </summary>
+        /// <param name="o">Objeto Order usado na pesquisa</param>
+        /// <param name="n">Objeto NSAADMEntities onde vai ser pesquisado</param>
+        /// <returns>Retorna o objeto ML_Order casdastrado no EF</returns>
         public ML_Order RetonarOrder(Order o, NSAADMEntities n)
         {
             try
@@ -23,11 +29,17 @@ namespace ServidorWeb.ML.Classes
             }
             catch (Exception ex)
             {
-                
-                throw new Exception ("Erro na rotina RetonarOrder.",ex);
+
+                throw new Exception("Erro na rotina RetonarOrder.", ex);
             }
         }
 
+        /// <summary>
+        /// Retorna todas as ordens baseadas no filtro informado.
+        /// </summary>
+        /// <param name="to">TipoRetornaOrdens, informa quais as ordens devem ser retornadas</param>
+        /// <param name="n">Objeto NSAADMEntities usado para selecionar as ordens</param>
+        /// <returns>Retorna um List<ML_Order> com todas as ordens selecionadas</returns>
         public List<ML_Order> RetornaOrdens(TipoRetonaOrdens to, NSAADMEntities n)
         {
             try
@@ -46,11 +58,16 @@ namespace ServidorWeb.ML.Classes
             }
             catch (Exception ex)
             {
-                
-                throw new Exception ("Erro na rotina RetornaOrdens.",ex);
+
+                throw new Exception("Erro na rotina RetornaOrdens.", ex);
             }
         }
 
+        /// <summary>
+        /// Inclui ou Altera uma ML_Order no banco de dados.
+        /// </summary>
+        /// <param name="o">Objeto ML_Order que vai ser inserido ou alterado</param>
+        /// <param name="n">Objeto NSAADMEntities que vai ser usado para fazer a inclusão ou alteração.</param>
         public void GravaOrdem(ML_Order o, NSAADMEntities n)
         {
             try
@@ -65,7 +82,7 @@ namespace ServidorWeb.ML.Classes
 
                 //if (o.ML_Payment != null)
                 //{
-                    
+
                 //}
 
                 n.SaveChanges();
@@ -73,11 +90,17 @@ namespace ServidorWeb.ML.Classes
             }
             catch (Exception ex)
             {
-                
+
                 throw new Exception("Erro na rotina GravaOrdem.", ex);
             }
         }
-        public void GravaOrdem(Order o, NSAADMEntities n)
+
+        /// <summary>
+        /// NÃO IMPLEMENTADO - COLOCAR ELE COMO PUBLICO DEPOIS.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="n"></param>
+        private void GravaOrdem(Order o, NSAADMEntities n)
         {
             try
             {
@@ -85,10 +108,12 @@ namespace ServidorWeb.ML.Classes
             }
             catch (Exception ex)
             {
-                
+
                 throw new Exception("Erro na rotina GravaOrdem.", ex);
             }
         }
+
+
 
     }
 

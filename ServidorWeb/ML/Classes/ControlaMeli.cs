@@ -80,8 +80,6 @@ namespace ServidorWeb.ML.Classes
                     var a = new JsonSerializerSettings();
                     q = JsonConvert.DeserializeObject<Question>(resp.Content);
 
-                    FinalizaML(m.AccessToken, m.RefreshToken);
-
                     return q;
 
                 }
@@ -90,7 +88,7 @@ namespace ServidorWeb.ML.Classes
                     throw new Exception(string.Format("Falha ao tentar recuperar a pergunta {0}  resp.StatusCode = {1} {0} resource = {2} {0}", Environment.NewLine, resp.StatusCode, resource));
                 }
 
-
+                FinalizaML(m.AccessToken, m.RefreshToken);
 
             }
             catch (Exception ex)
@@ -106,7 +104,7 @@ namespace ServidorWeb.ML.Classes
             Posts p = new Posts(m, n);
 
             p.ResponderPergunta(idQuestion, texto);
-            
+
             FinalizaML(m.AccessToken, m.RefreshToken);
 
         }
@@ -133,6 +131,56 @@ namespace ServidorWeb.ML.Classes
                 throw new Exception(String.Format("Erro na rotina RetornaUsuario. {0} codigo: {1} {0}", Environment.NewLine), ex);
             }
         }
+        #endregion
+
+        #region Ordens
+        public Order RetornaOrder(string codigo)
+        {
+            try
+            {
+
+                Order q;
+                Parameter at = new Parameter();
+                Parameter OrdID = new Parameter();
+                List<Parameter> param = new List<Parameter>();
+
+                //Alimentando parametros
+                at.Name = "access_token";
+                at.Value = m.AccessToken;
+
+                OrdID.Name = "order_id";
+                OrdID.Value = codigo;
+
+                //Adicionando na lista
+                param.Add(OrdID);
+                param.Add(at);
+
+                RestResponse resp = (RestResponse)m.Get("orders/order_id", param);
+
+                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var a = new JsonSerializerSettings();
+                    q = JsonConvert.DeserializeObject<Order>(resp.Content);
+
+                    FinalizaML(m.AccessToken, m.RefreshToken);
+
+                    return q;
+                }
+                else
+                {
+                    throw new Exception(String.Format("Ordem não encontrada. {0} codigo: {1} {0}",Environment.NewLine, codigo));
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(String.Format("Erro na rotina RetornaOrder: {0} codigo: {1} {0}", Environment.NewLine, codigo), ex);
+            }
+        }
+
+
+
         #endregion
 
     }

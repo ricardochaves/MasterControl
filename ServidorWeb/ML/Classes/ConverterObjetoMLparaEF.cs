@@ -9,7 +9,7 @@ namespace ServidorWeb.ML.Classes
     public class ConverterObjetoMLparaEF
     {
 
-        NSAADMEntities n ;
+        NSAADMEntities n;
 
         public ML_Usuario ConverteUsuario(Usuario us)
         {
@@ -177,7 +177,7 @@ namespace ServidorWeb.ML.Classes
             foreach (OrderItem item in o.order_items)
             {
                 oi = new ML_OrderItem();
-                oi.currency_id = item.currency_id; 
+                oi.currency_id = item.currency_id;
                 oi.quantity = item.quantity;
                 oi.unit_price = item.unit_price;
 
@@ -279,45 +279,10 @@ namespace ServidorWeb.ML.Classes
             AtualizaFeedBackSeller(o, oML);
 
             n.SaveChanges();
-            
+
         }
 
-        private Purchase RetornaFeedBackPurchase(Order o)
-        {
-            if (o.feedback != null)
-            {
-                if (o.feedback.purchase != null)
-                {
-                    return o.feedback.purchase;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
-        private Sale RetornaFeedBackSeller(Order o)
-        {
-            if (o.feedback != null)
-            {
-                if (o.feedback.sale != null)
-                {
-                    return o.feedback.sale;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
-        }
+
         private void AtualizaFeedBackBuyer(ML_Order o, Order oML)
         {
             if (o.ML_FeedbackBuyer.Count > 0)
@@ -355,6 +320,7 @@ namespace ServidorWeb.ML.Classes
 
             }
         }
+
         private void AtualizaFeedBackSeller(ML_Order o, Order oML)
         {
             if (o.ML_FeedbackSeller.Count > 0)
@@ -393,34 +359,8 @@ namespace ServidorWeb.ML.Classes
             }
         }
 
-        public ML_Item ConverteItem(Item i)
-        {
-            ML_Item it = new ML_Item();
 
-
-            try
-            {
-                it = (from p in n.ML_Item where p.id == i.id select p).First();
-                return it;
-
-            }
-            catch (InvalidOperationException)
-            {
-
-                it.id = i.id;
-                it.title = i.title;
-                it.variation_id = i.variation_id;
-
-                n.ML_Item.AddObject(it);
-                n.SaveChanges();
-
-                return it;
-
-            }
-
-
-
-        }
+        #region Corretos
 
         public ML_Question ConverteQuestion(Question q)
         {
@@ -454,5 +394,181 @@ namespace ServidorWeb.ML.Classes
 
         }
 
+        public ML_Item ConverteItem(Item i)
+        {
+            ML_Item it = new ML_Item();
+
+
+            try
+            {
+                it = (from p in n.ML_Item where p.id == i.id select p).First();
+                return it;
+
+            }
+            catch (InvalidOperationException)
+            {
+
+                it.id = i.id;
+                it.title = i.title;
+                it.variation_id = i.variation_id;
+
+                n.ML_Item.AddObject(it);
+                n.SaveChanges();
+
+                return it;
+
+            }
+
+
+
+        }
+
+        private Purchase RetornaFeedBackPurchase(Order o)
+        {
+            if (o.feedback != null)
+            {
+                if (o.feedback.purchase != null)
+                {
+                    return o.feedback.purchase;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private Sale RetornaFeedBackSeller(Order o)
+        {
+            if (o.feedback != null)
+            {
+                if (o.feedback.sale != null)
+                {
+                    return o.feedback.sale;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ML_Order ConverteOrdem(Order o)
+        {
+
+            try
+            {
+
+                //CONVERTENDO COMPRADOR E VENDEDOR
+                ML_Usuario buy = ConverteUsuario(o.buyer);
+                ML_Usuario sel = ConverteUsuario(o.seller);
+
+
+                ML_Order ord = new ML_Order();
+                //ITENS DA ORDEM
+                ML_OrderItem oi;
+                foreach (OrderItem item in o.order_items)
+                {
+                    oi = new ML_OrderItem();
+                    oi.currency_id = item.currency_id;
+                    oi.quantity = item.quantity;
+                    oi.unit_price = item.unit_price;
+
+                    oi.ML_Item = ConverteItem(o.order_items[0].item);
+
+                    ord.ML_OrderItem.Add(oi);
+                }
+
+
+                ML_Payment pa;
+                foreach (Payment p in o.payments)
+                {
+                    pa = new ML_Payment();
+                    pa.currency_id = p.currency_id;
+                    pa.date_created = p.date_created;
+                    pa.date_last_updated = p.date_last_updated;
+                    pa.status = p.status;
+                    pa.transaction_amount = p.transaction_amount;
+
+                    pa.id = p.id;
+
+                    n.ML_Payment.AddObject(pa);
+
+                    ord.ML_Payment.Add(pa);
+
+
+                }
+
+
+                if (o.feedback != null)
+                {
+                    if (o.feedback.purchase != null)
+                    {
+                        ML_FeedbackBuyer feeb = new ML_FeedbackBuyer();
+                        feeb.date_created = o.feedback.purchase.date_created;
+                        feeb.fulfilled = o.feedback.purchase.fulfilled.ToString();
+                        feeb.rating = o.feedback.purchase.rating;
+                        feeb.id_order = o.id;
+
+                        n.ML_FeedbackBuyer.AddObject(feeb);
+
+                        ord.ML_FeedbackBuyer.Add(feeb);
+
+                    }
+
+                    if (o.feedback != null)
+                    {
+                        if (o.feedback.sale != null)
+                        {
+                            ML_FeedbackSeller fees = new ML_FeedbackSeller();
+                            fees.date_created = o.feedback.sale.date_created;
+                            fees.fulfilled = o.feedback.sale.fulfilled.ToString();
+                            fees.rating = o.feedback.sale.rating;
+                            fees.id_order = o.id;
+
+                            n.ML_FeedbackSeller.AddObject(fees);
+
+                            ord.ML_FeedbackSeller.Add(fees);
+                        }
+                    }
+
+
+                }
+
+
+
+                ord.ML_Usuario = sel;
+                ord.ML_Usuario1 = buy;
+
+                //DADOS DA ORDEM
+                ord.id = o.id;
+                ord.currency_id = o.currency_id;
+                ord.date_closed = o.date_closed;
+                ord.date_created = o.date_created;
+                ord.status = o.status;
+                //ord.status_detail = o.status_detail.description;
+                ord.total_amount = o.total_amount;
+
+                return ord;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na rotina de ConverteOrdem.", ex);
+            }
+
+
+
+        }
+        #endregion
     }
 }
