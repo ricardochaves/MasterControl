@@ -80,6 +80,8 @@ namespace ServidorWeb.ML.Classes
                     var a = new JsonSerializerSettings();
                     q = JsonConvert.DeserializeObject<Question>(resp.Content);
 
+                    FinalizaML(m.AccessToken, m.RefreshToken);
+
                     return q;
 
                 }
@@ -88,7 +90,7 @@ namespace ServidorWeb.ML.Classes
                     throw new Exception(string.Format("Falha ao tentar recuperar a pergunta {0}  resp.StatusCode = {1} {0} resource = {2} {0}", Environment.NewLine, resp.StatusCode, resource));
                 }
 
-                FinalizaML(m.AccessToken, m.RefreshToken);
+                
 
             }
             catch (Exception ex)

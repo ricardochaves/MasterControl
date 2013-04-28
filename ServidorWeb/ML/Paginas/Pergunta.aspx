@@ -28,6 +28,7 @@
     <br />
     <asp:Label ID="Label2" runat="server" Text="Outras perguntas do mesmo usuário"></asp:Label>
     <asp:GridView ID="GridView1" runat="server" 
+        nselectedindexchanged="GridView1_SelectedIndexChanged" 
         onselectedindexchanged="GridView1_SelectedIndexChanged">
     </asp:GridView>
     <br />

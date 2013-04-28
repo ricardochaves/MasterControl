@@ -51,9 +51,10 @@ namespace ServidorWeb.ML.Paginas
                     TextBox1.Text = "Olá amigo, ";
                 }
 
-
+                decimal[] ids = {codigo};
+                
                 var OutrasPerguntas = cp.RetonaPerguntas(Convert.ToDecimal(mlq.id_from), cm.n);
-                var a = (from p in OutrasPerguntas select new { p.text, p.Answer_text });
+                var a = (from p in OutrasPerguntas where !ids.Contains(Convert.ToDecimal(p.id_question)) select new { p.text, p.Answer_text });
                 GridView1.DataSource = a;
                 GridView1.DataBind();
 
@@ -82,6 +83,11 @@ namespace ServidorWeb.ML.Paginas
                 throw new Exception(String.Format("Erro ao tentar responder pergunta. {0} codigo: {1} {0}",Environment.NewLine,codigo),ex);
             }
 
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 

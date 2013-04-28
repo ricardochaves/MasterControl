@@ -16,7 +16,7 @@ namespace ServidorWeb
         
         protected int[] ItensRelatorio()
         {
-            int[] ids = { 72092, 72094, 72103, 72238, 79011, 79010, 72235, 72234, 72237, 214510 };
+            int[] ids = { 72092, 72094, 72103, 72238, 79011, 79010, 72235, 72234, 72237, 214510, 89640 };
              return ids;
         }
 
@@ -119,28 +119,32 @@ namespace ServidorWeb
                     }
                     if (((estItem)il.Key).nome == "Fool's Cap")
                     {
-                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 45) / 1000) * 1.5);
                     }
                     if (((estItem)il.Key).nome == "Snow Lily")
                     {
-                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 45) / 1000) * 1.5);
                     }
                     if (((estItem)il.Key).nome == "Silkweed")
                     {
-                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 45) / 1000) * 1.5);
                     }
                     if (((estItem)il.Key).nome == "Green Tea Leaf")
                     {
-                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 45) / 1000) * 1.5);
                     }
                     if (((estItem)il.Key).nome == "Rain Poppy")
                     {
-                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 45) / 1000) * 1.5);
                     }
                     if (((estItem)il.Key).nome == "Sha-Touched Herb")
                     {
-                        ValorFinal = ValorFinal + ((((il.Value / 20) * 35) / 1000) * 1.5);
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 45) / 1000) * 1.5);
 
+                    }
+                    if (((estItem)il.Key).nome == "Life Spirit")
+                    {
+                        ValorFinal = ValorFinal + ((((il.Value / 20) * 12) / 1000) * 1.5);
                     }
                 }
             }
@@ -270,6 +274,10 @@ namespace ServidorWeb
                 case 214510:
                     i.id = id;
                     i.nome = "Sha-Touched Herb";
+                    break;
+                case 89640:
+                    i.id = id;
+                    i.nome = "Life Spirit";
                     break;
                 default:
                     break;

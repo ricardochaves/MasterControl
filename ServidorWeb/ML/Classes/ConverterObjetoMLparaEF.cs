@@ -461,114 +461,114 @@ namespace ServidorWeb.ML.Classes
             }
         }
 
-        public ML_Order ConverteOrdem(Order o)
-        {
+        //public ML_Order ConverteOrdem(Order o)
+        //{
 
-            try
-            {
+        //    try
+        //    {
 
-                //CONVERTENDO COMPRADOR E VENDEDOR
-                ML_Usuario buy = ConverteUsuario(o.buyer);
-                ML_Usuario sel = ConverteUsuario(o.seller);
-
-
-                ML_Order ord = new ML_Order();
-                //ITENS DA ORDEM
-                ML_OrderItem oi;
-                foreach (OrderItem item in o.order_items)
-                {
-                    oi = new ML_OrderItem();
-                    oi.currency_id = item.currency_id;
-                    oi.quantity = item.quantity;
-                    oi.unit_price = item.unit_price;
-
-                    oi.ML_Item = ConverteItem(o.order_items[0].item);
-
-                    ord.ML_OrderItem.Add(oi);
-                }
+        //        //CONVERTENDO COMPRADOR E VENDEDOR
+        //        ML_Usuario buy = ConverteUsuario(o.buyer);
+        //        ML_Usuario sel = ConverteUsuario(o.seller);
 
 
-                ML_Payment pa;
-                foreach (Payment p in o.payments)
-                {
-                    pa = new ML_Payment();
-                    pa.currency_id = p.currency_id;
-                    pa.date_created = p.date_created;
-                    pa.date_last_updated = p.date_last_updated;
-                    pa.status = p.status;
-                    pa.transaction_amount = p.transaction_amount;
+        //        ML_Order ord = new ML_Order();
+        //        //ITENS DA ORDEM
+        //        ML_OrderItem oi;
+        //        foreach (OrderItem item in o.order_items)
+        //        {
+        //            oi = new ML_OrderItem();
+        //            oi.currency_id = item.currency_id;
+        //            oi.quantity = item.quantity;
+        //            oi.unit_price = item.unit_price;
 
-                    pa.id = p.id;
+        //            oi.ML_Item = ConverteItem(o.order_items[0].item);
 
-                    n.ML_Payment.AddObject(pa);
-
-                    ord.ML_Payment.Add(pa);
-
-
-                }
+        //            ord.ML_OrderItem.Add(oi);
+        //        }
 
 
-                if (o.feedback != null)
-                {
-                    if (o.feedback.purchase != null)
-                    {
-                        ML_FeedbackBuyer feeb = new ML_FeedbackBuyer();
-                        feeb.date_created = o.feedback.purchase.date_created;
-                        feeb.fulfilled = o.feedback.purchase.fulfilled.ToString();
-                        feeb.rating = o.feedback.purchase.rating;
-                        feeb.id_order = o.id;
+        //        ML_Payment pa;
+        //        foreach (Payment p in o.payments)
+        //        {
+        //            pa = new ML_Payment();
+        //            pa.currency_id = p.currency_id;
+        //            pa.date_created = p.date_created;
+        //            pa.date_last_updated = p.date_last_updated;
+        //            pa.status = p.status;
+        //            pa.transaction_amount = p.transaction_amount;
 
-                        n.ML_FeedbackBuyer.AddObject(feeb);
+        //            pa.id = p.id;
 
-                        ord.ML_FeedbackBuyer.Add(feeb);
+        //            n.ML_Payment.AddObject(pa);
 
-                    }
-
-                    if (o.feedback != null)
-                    {
-                        if (o.feedback.sale != null)
-                        {
-                            ML_FeedbackSeller fees = new ML_FeedbackSeller();
-                            fees.date_created = o.feedback.sale.date_created;
-                            fees.fulfilled = o.feedback.sale.fulfilled.ToString();
-                            fees.rating = o.feedback.sale.rating;
-                            fees.id_order = o.id;
-
-                            n.ML_FeedbackSeller.AddObject(fees);
-
-                            ord.ML_FeedbackSeller.Add(fees);
-                        }
-                    }
+        //            ord.ML_Payment.Add(pa);
 
 
-                }
+        //        }
 
 
+        //        if (o.feedback != null)
+        //        {
+        //            if (o.feedback.purchase != null)
+        //            {
+        //                ML_FeedbackBuyer feeb = new ML_FeedbackBuyer();
+        //                feeb.date_created = o.feedback.purchase.date_created;
+        //                feeb.fulfilled = o.feedback.purchase.fulfilled.ToString();
+        //                feeb.rating = o.feedback.purchase.rating;
+        //                feeb.id_order = o.id;
 
-                ord.ML_Usuario = sel;
-                ord.ML_Usuario1 = buy;
+        //                n.ML_FeedbackBuyer.AddObject(feeb);
 
-                //DADOS DA ORDEM
-                ord.id = o.id;
-                ord.currency_id = o.currency_id;
-                ord.date_closed = o.date_closed;
-                ord.date_created = o.date_created;
-                ord.status = o.status;
-                //ord.status_detail = o.status_detail.description;
-                ord.total_amount = o.total_amount;
+        //                ord.ML_FeedbackBuyer.Add(feeb);
 
-                return ord;
+        //            }
 
-            }
-            catch (Exception ex)
-            {
+        //            if (o.feedback != null)
+        //            {
+        //                if (o.feedback.sale != null)
+        //                {
+        //                    ML_FeedbackSeller fees = new ML_FeedbackSeller();
+        //                    fees.date_created = o.feedback.sale.date_created;
+        //                    fees.fulfilled = o.feedback.sale.fulfilled.ToString();
+        //                    fees.rating = o.feedback.sale.rating;
+        //                    fees.id_order = o.id;
 
-                throw new Exception("Erro na rotina de ConverteOrdem.", ex);
-            }
+        //                    n.ML_FeedbackSeller.AddObject(fees);
+
+        //                    ord.ML_FeedbackSeller.Add(fees);
+        //                }
+        //            }
+
+
+        //        }
 
 
 
-        }
+        //        ord.ML_Usuario = sel;
+        //        ord.ML_Usuario1 = buy;
+
+        //        //DADOS DA ORDEM
+        //        ord.id = o.id;
+        //        ord.currency_id = o.currency_id;
+        //        ord.date_closed = o.date_closed;
+        //        ord.date_created = o.date_created;
+        //        ord.status = o.status;
+        //        //ord.status_detail = o.status_detail.description;
+        //        ord.total_amount = o.total_amount;
+
+        //        return ord;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw new Exception("Erro na rotina de ConverteOrdem.", ex);
+        //    }
+
+
+
+        //}
         #endregion
     }
 }
