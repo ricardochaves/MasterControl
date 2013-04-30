@@ -17,6 +17,8 @@ namespace ServidorWeb.ML.Paginas
         ML_Item mlItem;
         ControlaPerguntas cp = new ControlaPerguntas();
         ControlaProdutos cprod = new ControlaProdutos();
+        ControlaItens cItens = new ControlaItens();
+        ConverterObjetoMLparaEF conv = new ConverterObjetoMLparaEF();
         ControlaMeli cm;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -33,11 +35,11 @@ namespace ServidorWeb.ML.Paginas
 
 
                 mlq = cp.RetornaPergunta(codigo, cm.n);
-                mlItem = cprod.RetornaProduto(mlq.item_id, cm.n);
 
-                Label1.Text = mlItem.title;
 
                 txtPergunta.Text = mlq.text;
+
+                CasdastraExibiItem();
 
 
                 try
@@ -91,6 +93,23 @@ namespace ServidorWeb.ML.Paginas
 
         }
 
- 
+        protected void CasdastraExibiItem()
+        {
+            try
+            {
+                cItens.GravaItem(conv.ConverteItemParaML_Item(cm.RetornaItem(mlq.item_id)), cm.n);
+
+                mlItem = cprod.RetornaProduto(mlq.item_id, cm.n);
+
+                Label1.Text = mlItem.title;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na rotina CasdastraExibiItem", ex);
+            }
+
+
+        }
     }
 }

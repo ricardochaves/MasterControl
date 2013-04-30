@@ -179,6 +179,7 @@
     <Compile Include="ML\Classes\Classes.cs" />
     <Compile Include="ML\Classes\ConstruirEF.cs" />
     <Compile Include="ML\Classes\ControlaCallBack.cs" />
+    <Compile Include="ML\Classes\ControlaItens.cs" />
     <Compile Include="ML\Classes\ControlaMeli.cs" />
     <Compile Include="ML\Classes\ControlaOrdens.cs" />
     <Compile Include="ML\Classes\ControlaProdutos.cs" />

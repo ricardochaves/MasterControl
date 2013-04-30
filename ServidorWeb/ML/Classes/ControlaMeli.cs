@@ -185,5 +185,55 @@ namespace ServidorWeb.ML.Classes
 
         #endregion
 
+        #region Itens
+
+        public Item RetornaItem(string codigo)
+        {
+            try
+            {
+
+                Item q;
+                Parameter at = new Parameter();
+                //Parameter ItemID = new Parameter();
+                List<Parameter> param = new List<Parameter>();
+
+                //Alimentando parametros
+                at.Name = "access_token";
+                at.Value = m.AccessToken;
+
+                //ItemID.Name = "item_id";
+                //ItemID.Value = codigo;
+
+                //Adicionando na lista
+                //param.Add(ItemID);
+                param.Add(at);
+
+                RestResponse resp = (RestResponse)m.Get("items/" + codigo, param);
+
+                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var a = new JsonSerializerSettings();
+                    q = JsonConvert.DeserializeObject<Item>(resp.Content);
+
+                    FinalizaML(m.AccessToken, m.RefreshToken);
+
+                    return q;
+                }
+                else
+                {
+                    throw new Exception(String.Format("Item não encontrado. {0} codigo: {1} {0} resp.Content: {2}  {0} ", Environment.NewLine, codigo, resp.Content));
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(String.Format("Erro na rotina RetornaItem: {0} codigo: {1} {0}", Environment.NewLine, codigo), ex);
+            }
+
+        }
+
+        #endregion
+
     }
 }

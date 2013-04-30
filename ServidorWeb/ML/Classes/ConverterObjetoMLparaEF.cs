@@ -281,8 +281,7 @@ namespace ServidorWeb.ML.Classes
             n.SaveChanges();
 
         }
-
-
+        
         private void AtualizaFeedBackBuyer(ML_Order o, Order oML)
         {
             if (o.ML_FeedbackBuyer.Count > 0)
@@ -359,6 +358,35 @@ namespace ServidorWeb.ML.Classes
             }
         }
 
+        public ML_Item ConverteItem(Item i)
+        {
+            ML_Item it = new ML_Item();
+
+
+            try
+            {
+                it = (from p in n.ML_Item where p.id == i.id select p).First();
+                return it;
+
+            }
+            catch (InvalidOperationException)
+            {
+
+                it.id = i.id;
+                it.title = i.title;
+                it.variation_id = i.variation_id;
+
+                n.ML_Item.AddObject(it);
+                n.SaveChanges();
+
+                return it;
+
+            }
+
+
+
+        }
+
 
         #region Corretos
 
@@ -394,32 +422,25 @@ namespace ServidorWeb.ML.Classes
 
         }
 
-        public ML_Item ConverteItem(Item i)
+        public ML_Item ConverteItemParaML_Item(Item i)
         {
             ML_Item it = new ML_Item();
 
-
             try
             {
-                it = (from p in n.ML_Item where p.id == i.id select p).First();
-                return it;
-
-            }
-            catch (InvalidOperationException)
-            {
-
                 it.id = i.id;
                 it.title = i.title;
                 it.variation_id = i.variation_id;
 
-                n.ML_Item.AddObject(it);
-                n.SaveChanges();
-
                 return it;
 
             }
+            catch (Exception ex)
+            {
 
+                throw new Exception("Erro na rotina ConverteItemParaML_Item", ex);
 
+            }
 
         }
 
