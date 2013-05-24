@@ -13,37 +13,21 @@ namespace ServidorWeb.ML.Paginas
 {
     public partial class ImportaVendasML : System.Web.UI.Page
     {
-        
+
+        ControlaMeli cm;
+        ControlaPerguntas cp = new ControlaPerguntas();
+        ControlaCallBack cb = new ControlaCallBack();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((Meli)Session["M"] == null)
-            {
-                Response.Redirect("InicioML.aspx");
-
-            }
-            else
-            {
-                Meli m1 = (Meli)Session["M"];
-                if (m1.AccessToken == null)
-                {
-                    Response.Redirect("InicioML.aspx");
-                }
-            }
+            cm = new ControlaMeli();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            Meli m = (Meli)Session["M"];
-
-            LerML l = new LerML(m);
-            Usuario u = l.RetornaUsuarioLogado();
-
-            NSAADMEntities n;
-            
-            ConstruirEF cf = new ConstruirEF();
-            n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+            LerML l = new LerML(cm.m);
+            Usuario u = cm.RetornaUsuario( );
 
             ConverterObjetoMLparaEF c = new ConverterObjetoMLparaEF();
 
@@ -53,7 +37,7 @@ namespace ServidorWeb.ML.Paginas
             {
                 try
                 {
-                    ML_Order orde = (from p in n.ML_Order where p.id == or.id select p).First();
+                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
                     c.AtualizaOrdem(orde, or);
                 }
                 catch (InvalidOperationException)
@@ -70,7 +54,7 @@ namespace ServidorWeb.ML.Paginas
             {
                 try
                 {
-                    ML_Order orde = (from p in n.ML_Order where p.id == or.id select p).First();
+                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
                     c.AtualizaOrdem(orde, or);
                 }
                 catch (InvalidOperationException)
@@ -85,7 +69,7 @@ namespace ServidorWeb.ML.Paginas
             {
                 try
                 {
-                    ML_Order orde = (from p in n.ML_Order where p.id == or.id select p).First();
+                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
                     c.AtualizaOrdem(orde, or);
                 }
                 catch (InvalidOperationException)
@@ -100,7 +84,7 @@ namespace ServidorWeb.ML.Paginas
             {
                 try
                 {
-                    ML_Order orde = (from p in n.ML_Order where p.id == or.id select p).First();
+                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
                     c.AtualizaOrdem(orde, or);
                 }
                 catch (InvalidOperationException)
@@ -115,7 +99,7 @@ namespace ServidorWeb.ML.Paginas
             {
                 try
                 {
-                    ML_Order orde = (from p in n.ML_Order where p.id == or.id select p).First();
+                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
                     c.AtualizaOrdem(orde, or);
                 }
                 catch (InvalidOperationException)
@@ -130,7 +114,7 @@ namespace ServidorWeb.ML.Paginas
             {
                 try
                 {
-                    ML_Order orde = (from p in n.ML_Order where p.id == or.id select p).First();
+                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
                     c.AtualizaOrdem(orde, or);
                 }
                 catch (InvalidOperationException)

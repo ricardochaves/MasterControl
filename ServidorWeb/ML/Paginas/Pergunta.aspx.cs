@@ -44,7 +44,7 @@ namespace ServidorWeb.ML.Paginas
 
                 try
                 {
-                    var y = cm.RetornaUsuario(mlq.id_from.ToString());
+                    var y = cm.RetornaUsuario( mlq.id_from.ToString());
                     TextBox1.Text = "Olá " + y.nickname + ". ";
                 }
                 catch (Exception)

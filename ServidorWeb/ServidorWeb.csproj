@@ -84,6 +84,7 @@
     <Content Include="ML\Paginas\Pagamento.aspx" />
     <Content Include="ML\Paginas\Pergunta.aspx" />
     <Content Include="ML\Paginas\Perguntas.aspx" />
+    <Content Include="ML\Paginas\ResumodePerda.aspx" />
     <Content Include="ML\Paginas\ResumoPagamentoItem.aspx" />
     <Content Include="ML\Paginas\TratarCallBack.aspx" />
     <Content Include="ML\Paginas\VendasEmAberto.aspx" />
@@ -258,6 +259,13 @@
     <Compile Include="ML\Paginas\Perguntas.aspx.designer.cs">
       <DependentUpon>Perguntas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ML\Paginas\ResumodePerda.aspx.cs">
+      <DependentUpon>ResumodePerda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ML\Paginas\ResumodePerda.aspx.designer.cs">
+      <DependentUpon>ResumodePerda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ML\Paginas\ResumoPagamentoItem.aspx.cs">
       <DependentUpon>ResumoPagamentoItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -286,6 +294,10 @@
     <Compile Include="ML\Paginas\VendasProduto.aspx.designer.cs">
       <DependentUpon>VendasProduto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PgBot\AcessoWEB.cs" />
+    <Compile Include="PgBot\ClassesBlizzard.cs" />
+    <Compile Include="PgBot\PKGItens.cs" />
+    <Compile Include="PgBot\StaticDados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PgBot\Relatorio.aspx.cs">
       <DependentUpon>Relatorio.aspx</DependentUpon>

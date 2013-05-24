@@ -114,24 +114,48 @@ namespace ServidorWeb.ML.Classes
         #endregion
 
         #region usuario
-        public Usuario RetornaUsuario(string codigo)
+        public Usuario RetornaUsuario()
         {
-
-            Usuario u;
 
             try
             {
 
-                u = new Usuario();
-                throw new Exception("Usuario não encontrado, falta desenvolver a rotina.");
+                Usuario u = new Usuario();
+                Parameter at = new Parameter();
+                List<Parameter> param = new List<Parameter>();
 
-                return u;
+                //Alimentando parametros
+                at.Name = "access_token";
+                at.Value = m.AccessToken;
+
+                //Adicionando na lista
+                param.Add(at);
+
+                RestResponse resp = (RestResponse)m.Get("/users/me", param);
+
+                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var a = new JsonSerializerSettings();
+                    u = JsonConvert.DeserializeObject<Usuario>(resp.Content);
+
+                    FinalizaML(m.AccessToken, m.RefreshToken);
+                    return u;
+                }
+                else
+                {
+                    throw new Exception(String.Format("Usuario não encontrado. {0} codigo: {1} {0}", Environment.NewLine));
+                }
+
             }
             catch (Exception ex)
             {
 
                 throw new Exception(String.Format("Erro na rotina RetornaUsuario. {0} codigo: {1} {0}", Environment.NewLine), ex);
             }
+        }
+        public Usuario RetornaUsuario(string codigo)
+        {
+            return new Usuario();
         }
         #endregion
 
