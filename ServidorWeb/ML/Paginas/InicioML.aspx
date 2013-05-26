@@ -33,6 +33,9 @@
         Text="Importar MercadoPago" />
     <br />
     <br />
+    <asp:Button ID="Button8" runat="server" onclick="Button8_Click" 
+        Text="Perda com Prata" />
+    <br />
     <br />
     <asp:Button ID="Button7" runat="server" onclick="Button7_Click" Text="Logar" />
     <br />

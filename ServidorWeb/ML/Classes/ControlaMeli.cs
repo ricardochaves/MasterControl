@@ -205,7 +205,50 @@ namespace ServidorWeb.ML.Classes
             }
         }
 
+        public ListOrder RetornarOrdens(Usuario u, Int32 ofset)
+        {
+            ListOrder o;
+            Parameter at = new Parameter();
+            Parameter seller = new Parameter();
+            Parameter offset = new Parameter();
+            List<Parameter> param = new List<Parameter>();
 
+            //Alimentando parametros
+            at.Name = "access_token";
+            at.Value = m.AccessToken;
+
+            seller.Name = "seller";
+            seller.Value = u.id;
+
+            offset.Name = "offset";
+            offset.Value = ofset;
+
+            //Adicionando na lista
+            param.Add(seller);
+            param.Add(at);
+            param.Add(offset);
+
+
+
+            RestResponse resp = (RestResponse)m.Get("/orders/search", param);
+            //offset
+            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+
+                var a = new JsonSerializerSettings();
+                o = JsonConvert.DeserializeObject<ListOrder>(resp.Content);
+
+                FinalizaML(m.AccessToken, m.RefreshToken);
+
+                return o;
+            }
+            else
+            {
+                throw new Exception("Falha ao tentar recuperar a lista de ordens");
+            }
+
+
+        }
 
         #endregion
 

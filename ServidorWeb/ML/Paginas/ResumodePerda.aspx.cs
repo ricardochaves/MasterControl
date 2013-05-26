@@ -20,14 +20,14 @@ namespace ServidorWeb.ML.Paginas
             cm = new ControlaMeli();
 
 
-            var a = (from p in cm.n.ML_Payment where p.status != "approved" select p);
+            var a = (from p in cm.n.ML_Order where !p.ML_FeedbackSeller.Any(x => x.rating != "positive") select p);
 
             GridView1.DataSource = a;
             GridView1.DataBind();
 
 
 
-
+            Label1.Text = (a.Sum(x => x.total_amount) * 0.01).ToString();
 
 
 

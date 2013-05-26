@@ -110,6 +110,11 @@ namespace ServidorWeb.ML.Paginas
 
         }
 
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ResumodePerda.aspx");
+        }
+
  
     }
 }

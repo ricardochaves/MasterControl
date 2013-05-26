@@ -20,107 +20,123 @@ namespace ServidorWeb.ML.Paginas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cm = new ControlaMeli();
+            try
+            {
+                cm = new ControlaMeli();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro no Load do ImportaVendasML.aspx.", ex);
+            }
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            LerML l = new LerML(cm.m);
-            Usuario u = cm.RetornaUsuario( );
-
-            ConverterObjetoMLparaEF c = new ConverterObjetoMLparaEF();
-
-            ListOrder o = l.RetornarOrdens(u, 0);
-
-            foreach (Order or in o.results)
+            try
             {
-                try
+                Usuario u = cm.RetornaUsuario();
+
+                ConverterObjetoMLparaEF c = new ConverterObjetoMLparaEF();
+
+                ListOrder o = cm.RetornarOrdens(u, 0);
+
+                foreach (Order or in o.results)
                 {
-                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                    c.AtualizaOrdem(orde, or);
+                    try
+                    {
+                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
+                        c.AtualizaOrdem(orde, or, cm.n);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        c.ConverteOrdem(or, cm.n);
+                    }
+
                 }
-                catch (InvalidOperationException)
+
+
+                o = cm.RetornarOrdens(u, 50);
+
+                foreach (Order or in o.results)
                 {
-                    c.ConverteOrdem(or);
+                    try
+                    {
+                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
+                        c.AtualizaOrdem(orde, or, cm.n);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        c.ConverteOrdem(or, cm.n);
+                    }
+                }
+
+                o = cm.RetornarOrdens(u, 100);
+
+                foreach (Order or in o.results)
+                {
+                    try
+                    {
+                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
+                        c.AtualizaOrdem(orde, or, cm.n);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        c.ConverteOrdem(or, cm.n);
+                    }
+                }
+
+                o = cm.RetornarOrdens(u, 150);
+
+                foreach (Order or in o.results)
+                {
+                    try
+                    {
+                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
+                        c.AtualizaOrdem(orde, or, cm.n);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        c.ConverteOrdem(or, cm.n);
+                    }
+                }
+
+                o = cm.RetornarOrdens(u, 200);
+
+                foreach (Order or in o.results)
+                {
+                    try
+                    {
+                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
+                        c.AtualizaOrdem(orde, or, cm.n);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        c.ConverteOrdem(or, cm.n);
+                    }
+                }
+
+                o = cm.RetornarOrdens(u, 250);
+
+                foreach (Order or in o.results)
+                {
+                    try
+                    {
+                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
+                        c.AtualizaOrdem(orde, or, cm.n);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        c.ConverteOrdem(or, cm.n);
+                    }
                 }
 
             }
-
-
-            o = l.RetornarOrdens(u, 50);
-
-            foreach (Order or in o.results)
+            catch (Exception ex)
             {
-                try
-                {
-                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                    c.AtualizaOrdem(orde, or);
-                }
-                catch (InvalidOperationException)
-                {
-                    c.ConverteOrdem(or);
-                }
-            }
 
-            o = l.RetornarOrdens(u, 100);
-
-            foreach (Order or in o.results)
-            {
-                try
-                {
-                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                    c.AtualizaOrdem(orde, or);
-                }
-                catch (InvalidOperationException)
-                {
-                    c.ConverteOrdem(or);
-                }
-            }
-
-            o = l.RetornarOrdens(u, 150);
-
-            foreach (Order or in o.results)
-            {
-                try
-                {
-                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                    c.AtualizaOrdem(orde, or);
-                }
-                catch (InvalidOperationException)
-                {
-                    c.ConverteOrdem(or);
-                }
-            }
-
-            o = l.RetornarOrdens(u, 200);
-
-            foreach (Order or in o.results)
-            {
-                try
-                {
-                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                    c.AtualizaOrdem(orde, or);
-                }
-                catch (InvalidOperationException)
-                {
-                    c.ConverteOrdem(or);
-                }
-            }
-
-            o = l.RetornarOrdens(u, 250);
-
-            foreach (Order or in o.results)
-            {
-                try
-                {
-                    ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                    c.AtualizaOrdem(orde, or);
-                }
-                catch (InvalidOperationException)
-                {
-                    c.ConverteOrdem(or);
-                }
+                throw new Exception("Erro no rotina Button1_Click.", ex);
             }
 
         }
