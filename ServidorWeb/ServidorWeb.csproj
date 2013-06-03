@@ -295,6 +295,8 @@
       <DependentUpon>VendasProduto.aspx</DependentUpon>
     </Compile>
     <Compile Include="PgBot\AcessoWEB.cs" />
+    <Compile Include="PgBot\BotControlaEstoque.cs" />
+    <Compile Include="PgBot\BotItemEstoque.cs" />
     <Compile Include="PgBot\ClassesBlizzard.cs" />
     <Compile Include="PgBot\PKGItens.cs" />
     <Compile Include="PgBot\StaticDados.cs" />

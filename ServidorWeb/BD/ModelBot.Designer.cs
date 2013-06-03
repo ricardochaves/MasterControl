@@ -168,6 +168,38 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<dado> _dados;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Estoque> Estoques
+        {
+            get
+            {
+                if ((_Estoques == null))
+                {
+                    _Estoques = base.CreateObjectSet<Estoque>("Estoques");
+                }
+                return _Estoques;
+            }
+        }
+        private ObjectSet<Estoque> _Estoques;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Item> Items
+        {
+            get
+            {
+                if ((_Items == null))
+                {
+                    _Items = base.CreateObjectSet<Item>("Items");
+                }
+                return _Items;
+            }
+        }
+        private ObjectSet<Item> _Items;
 
         #endregion
         #region AddTo Methods
@@ -218,6 +250,22 @@ namespace ServidorWeb.BD
         public void AddTodados(dado dado)
         {
             base.AddObject("dados", dado);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Estoques EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToEstoques(Estoque estoque)
+        {
+            base.AddObject("Estoques", estoque);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Items EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToItems(Item item)
+        {
+            base.AddObject("Items", item);
         }
 
         #endregion
@@ -837,6 +885,229 @@ namespace ServidorWeb.BD
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BotWoWModel", Name="Estoque")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Estoque : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Estoque object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="idItem">Initial value of the idItem property.</param>
+        /// <param name="nomePersonagem">Initial value of the NomePersonagem property.</param>
+        /// <param name="qtd">Initial value of the Qtd property.</param>
+        public static Estoque CreateEstoque(global::System.Decimal id, global::System.Decimal idItem, global::System.String nomePersonagem, global::System.Decimal qtd)
+        {
+            Estoque estoque = new Estoque();
+            estoque.id = id;
+            estoque.idItem = idItem;
+            estoque.NomePersonagem = nomePersonagem;
+            estoque.Qtd = qtd;
+            return estoque;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal idItem
+        {
+            get
+            {
+                return _idItem;
+            }
+            set
+            {
+                if (_idItem != value)
+                {
+                    OnidItemChanging(value);
+                    ReportPropertyChanging("idItem");
+                    _idItem = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idItem");
+                    OnidItemChanged();
+                }
+            }
+        }
+        private global::System.Decimal _idItem;
+        partial void OnidItemChanging(global::System.Decimal value);
+        partial void OnidItemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NomePersonagem
+        {
+            get
+            {
+                return _NomePersonagem;
+            }
+            set
+            {
+                if (_NomePersonagem != value)
+                {
+                    OnNomePersonagemChanging(value);
+                    ReportPropertyChanging("NomePersonagem");
+                    _NomePersonagem = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("NomePersonagem");
+                    OnNomePersonagemChanged();
+                }
+            }
+        }
+        private global::System.String _NomePersonagem;
+        partial void OnNomePersonagemChanging(global::System.String value);
+        partial void OnNomePersonagemChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Qtd
+        {
+            get
+            {
+                return _Qtd;
+            }
+            set
+            {
+                if (_Qtd != value)
+                {
+                    OnQtdChanging(value);
+                    ReportPropertyChanging("Qtd");
+                    _Qtd = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Qtd");
+                    OnQtdChanged();
+                }
+            }
+        }
+        private global::System.Decimal _Qtd;
+        partial void OnQtdChanging(global::System.Decimal value);
+        partial void OnQtdChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BotWoWModel", Name="Item")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Item : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Item object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="desc">Initial value of the Desc property.</param>
+        public static Item CreateItem(global::System.Decimal id, global::System.String desc)
+        {
+            Item item = new Item();
+            item.id = id;
+            item.Desc = desc;
+            return item;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Desc
+        {
+            get
+            {
+                return _Desc;
+            }
+            set
+            {
+                OnDescChanging(value);
+                ReportPropertyChanging("Desc");
+                _Desc = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Desc");
+                OnDescChanged();
+            }
+        }
+        private global::System.String _Desc;
+        partial void OnDescChanging(global::System.String value);
+        partial void OnDescChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
