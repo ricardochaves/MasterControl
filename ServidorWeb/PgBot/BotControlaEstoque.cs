@@ -37,5 +37,18 @@ namespace ServidorWeb.PgBot
                 throw new Exception(String.Format("Erro na rotina BotControlaEstoque.AtualizarEstoque. {0} itemID: {1} {0}",Environment.NewLine, estoque.itemID), ex);
             }
         }
+
+        public int RetornaQTDaProduzir(int idItem, string NomePersonagem)
+        {
+            BotWoWEntities n = new BotWoWEntities();
+
+            var x = (from p in n.Estoques where p.idItem == idItem && p.NomePersonagem == NomePersonagem select p).First();
+
+            var y = (from p in n.ConfiguracaoEstoques where p.idItem == idItem && p.NomePersonagem == NomePersonagem select p).First();
+
+            return (int)y.Qtd - (int)x.Qtd;
+
+        }
+
     }
 }

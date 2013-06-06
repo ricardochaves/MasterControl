@@ -204,9 +204,25 @@ namespace ServidorWeb
                 throw new Exception("Chave inválida");
             }
 
-            
+            BotControlaEstoque contrEst = new BotControlaEstoque();
+
+            contrEst.AtualizarEstoque(estoque);
+
 
         }
 
+        [WebMethod]
+        public int RetornaQTDaProduzir(int idItem, string NomePersonagem, string key)
+        {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
+            BotControlaEstoque bot = new BotControlaEstoque();
+
+            return bot.RetornaQTDaProduzir(idItem, NomePersonagem);
+
+        }
     }
 }

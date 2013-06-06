@@ -6,14 +6,8 @@
     <edmx:StorageModels>
     <Schema Namespace="BotWoWModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BotWoWModelStoreContainer">
-          <EntitySet Name="Estoque" EntityType="BotWoWModel.Store.Estoque" store:Type="Tables" store:Schema="bot" store:Name="Estoque">
-            <DefiningQuery>SELECT 
-      [Estoque].[id] AS [id], 
-      [Estoque].[idItem] AS [idItem], 
-      [Estoque].[NomePersonagem] AS [NomePersonagem], 
-      [Estoque].[Qtd] AS [Qtd]
-      FROM [bot].[Estoque] AS [Estoque]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="ConfiguracaoEstoque" EntityType="BotWoWModel.Store.ConfiguracaoEstoque" store:Type="Tables" Schema="bot" />
+          <EntitySet Name="Estoque" EntityType="BotWoWModel.Store.Estoque" store:Type="Tables" Schema="bot" />
           <EntitySet Name="Item" EntityType="BotWoWModel.Store.Item" store:Type="Tables" Schema="bot" />
           <EntitySet Name="dados" EntityType="BotWoWModel.Store.dados" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="detalhes" EntityType="BotWoWModel.Store.detalhes" store:Type="Tables" Schema="dbo" />
@@ -38,17 +32,20 @@
             <End Role="Morte" EntitySet="Morte" />
           </AssociationSet>
         </EntityContainer>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'Bot.bot.Estoque' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+        <EntityType Name="ConfiguracaoEstoque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idItem" Type="numeric" Nullable="false" />
+          <Property Name="NomePersonagem" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Qtd" Type="numeric" Nullable="false" />
+        </EntityType>
         <EntityType Name="Estoque">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="idItem" />
-            <PropertyRef Name="NomePersonagem" />
-            <PropertyRef Name="Qtd" />
           </Key>
-          <Property Name="id" Type="numeric" Nullable="false" />
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idItem" Type="numeric" Nullable="false" />
           <Property Name="NomePersonagem" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Qtd" Type="numeric" Nullable="false" />
@@ -212,8 +209,9 @@
             <End Role="loot" EntitySet="loots" />
           </AssociationSet>
           <EntitySet Name="dados" EntityType="BotWoWModel.dado" />
-          <EntitySet Name="Estoques" EntityType="BotWoWModel.Estoque" />
           <EntitySet Name="Items" EntityType="BotWoWModel.Item" />
+          <EntitySet Name="Estoques" EntityType="BotWoWModel.Estoque" />
+          <EntitySet Name="ConfiguracaoEstoques" EntityType="BotWoWModel.ConfiguracaoEstoque" />
         </EntityContainer>
         <EntityType Name="Sessao">
           <Key>
@@ -348,24 +346,30 @@
           <Property Type="String" Name="xp_needed" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Estoque">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="idItem" />
-            <PropertyRef Name="NomePersonagem" />
-            <PropertyRef Name="Qtd" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="idItem" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="NomePersonagem" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Qtd" Nullable="false" Precision="18" Scale="0" />
-        </EntityType>
         <EntityType Name="Item">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="Desc" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Estoque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="idItem" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="NomePersonagem" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Qtd" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="ConfiguracaoEstoque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="idItem" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="NomePersonagem" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Qtd" Nullable="false" Precision="18" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -456,6 +460,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="BotWoWModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Estoques">
             <EntityTypeMapping TypeName="BotWoWModel.Estoque">
               <MappingFragment StoreEntitySet="Estoque">
@@ -466,10 +478,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="BotWoWModel.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <EntitySetMapping Name="ConfiguracaoEstoques">
+            <EntityTypeMapping TypeName="BotWoWModel.ConfiguracaoEstoque">
+              <MappingFragment StoreEntitySet="ConfiguracaoEstoque">
+                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
+                <ScalarProperty Name="NomePersonagem" ColumnName="NomePersonagem" />
+                <ScalarProperty Name="idItem" ColumnName="idItem" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -521,8 +535,9 @@
           <ConnectorPoint PointX="2.25" PointY="4.1054996744791659" />
         </AssociationConnector>
         <EntityTypeShape EntityType="BotWoWModel.dado" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BotWoWModel.Estoque" Width="1.5" PointX="0.75" PointY="6.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="BotWoWModel.Item" Width="1.5" PointX="2.75" PointY="6.75" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="BotWoWModel.Estoque" Width="1.5" PointX="8.375" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BotWoWModel.ConfiguracaoEstoque" Width="1.5" PointX="8.375" PointY="3.75" Height="1.7879850260416674" />
       </Diagram>
     </Diagrams>
   </Designer>
