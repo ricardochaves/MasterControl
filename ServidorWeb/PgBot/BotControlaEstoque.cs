@@ -19,6 +19,7 @@ namespace ServidorWeb.PgBot
                 est = (from p in n.Estoques where p.idItem == estoque.itemID && p.NomePersonagem == estoque.Personagem select p).First();
 
                 est.Qtd = estoque.Qtd;
+                est.dtAtualizado = DateTime.Now;
 
                 n.SaveChanges();
 
@@ -28,6 +29,7 @@ namespace ServidorWeb.PgBot
                 est.idItem = estoque.itemID;
                 est.NomePersonagem = estoque.Personagem;
                 est.Qtd = estoque.Qtd;
+                est.dtAtualizado = DateTime.Now;
 
                 n.Estoques.AddObject(est);
                 n.SaveChanges();
@@ -42,11 +44,26 @@ namespace ServidorWeb.PgBot
         {
             BotWoWEntities n = new BotWoWEntities();
 
-            var x = (from p in n.Estoques where p.idItem == idItem && p.NomePersonagem == NomePersonagem select p).First();
+            try
+            {
+                var x = (from p in n.Estoques where p.idItem == idItem && p.NomePersonagem == NomePersonagem && p.dtAtualizado > p.dtFabricado select p).First();
+                var y = (from p in n.ConfiguracaoEstoques where p.idItem == idItem && p.NomePersonagem == NomePersonagem select p).First();
 
-            var y = (from p in n.ConfiguracaoEstoques where p.idItem == idItem && p.NomePersonagem == NomePersonagem select p).First();
+                x.dtFabricado = DateTime.Now;
+                n.SaveChanges();
 
-            return (int)y.Qtd - (int)x.Qtd;
+
+                return (int)y.Qtd - (int)x.Qtd;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+
+
+
+
 
         }
 

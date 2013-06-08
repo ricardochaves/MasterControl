@@ -1172,6 +1172,54 @@ namespace ServidorWeb.BD
         private global::System.Decimal _Qtd;
         partial void OnQtdChanging(global::System.Decimal value);
         partial void OnQtdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> dtAtualizado
+        {
+            get
+            {
+                return _dtAtualizado;
+            }
+            set
+            {
+                OndtAtualizadoChanging(value);
+                ReportPropertyChanging("dtAtualizado");
+                _dtAtualizado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dtAtualizado");
+                OndtAtualizadoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _dtAtualizado;
+        partial void OndtAtualizadoChanging(Nullable<global::System.DateTime> value);
+        partial void OndtAtualizadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> dtFabricado
+        {
+            get
+            {
+                return _dtFabricado;
+            }
+            set
+            {
+                OndtFabricadoChanging(value);
+                ReportPropertyChanging("dtFabricado");
+                _dtFabricado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dtFabricado");
+                OndtFabricadoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _dtFabricado;
+        partial void OndtFabricadoChanging(Nullable<global::System.DateTime> value);
+        partial void OndtFabricadoChanged();
 
         #endregion
     
@@ -1253,6 +1301,366 @@ namespace ServidorWeb.BD
         private global::System.String _Desc;
         partial void OnDescChanging(global::System.String value);
         partial void OnDescChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String icon
+        {
+            get
+            {
+                return _icon;
+            }
+            set
+            {
+                OniconChanging(value);
+                ReportPropertyChanging("icon");
+                _icon = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("icon");
+                OniconChanged();
+            }
+        }
+        private global::System.String _icon;
+        partial void OniconChanging(global::System.String value);
+        partial void OniconChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String stackable
+        {
+            get
+            {
+                return _stackable;
+            }
+            set
+            {
+                OnstackableChanging(value);
+                ReportPropertyChanging("stackable");
+                _stackable = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("stackable");
+                OnstackableChanged();
+            }
+        }
+        private global::System.String _stackable;
+        partial void OnstackableChanging(global::System.String value);
+        partial void OnstackableChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String itemBind
+        {
+            get
+            {
+                return _itemBind;
+            }
+            set
+            {
+                OnitemBindChanging(value);
+                ReportPropertyChanging("itemBind");
+                _itemBind = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("itemBind");
+                OnitemBindChanged();
+            }
+        }
+        private global::System.String _itemBind;
+        partial void OnitemBindChanging(global::System.String value);
+        partial void OnitemBindChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> buyPrice
+        {
+            get
+            {
+                return _buyPrice;
+            }
+            set
+            {
+                OnbuyPriceChanging(value);
+                ReportPropertyChanging("buyPrice");
+                _buyPrice = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("buyPrice");
+                OnbuyPriceChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _buyPrice;
+        partial void OnbuyPriceChanging(Nullable<global::System.Decimal> value);
+        partial void OnbuyPriceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> itemClass
+        {
+            get
+            {
+                return _itemClass;
+            }
+            set
+            {
+                OnitemClassChanging(value);
+                ReportPropertyChanging("itemClass");
+                _itemClass = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("itemClass");
+                OnitemClassChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _itemClass;
+        partial void OnitemClassChanging(Nullable<global::System.Decimal> value);
+        partial void OnitemClassChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> itemSubClass
+        {
+            get
+            {
+                return _itemSubClass;
+            }
+            set
+            {
+                OnitemSubClassChanging(value);
+                ReportPropertyChanging("itemSubClass");
+                _itemSubClass = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("itemSubClass");
+                OnitemSubClassChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _itemSubClass;
+        partial void OnitemSubClassChanging(Nullable<global::System.Decimal> value);
+        partial void OnitemSubClassChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> containerSlots
+        {
+            get
+            {
+                return _containerSlots;
+            }
+            set
+            {
+                OncontainerSlotsChanging(value);
+                ReportPropertyChanging("containerSlots");
+                _containerSlots = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("containerSlots");
+                OncontainerSlotsChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _containerSlots;
+        partial void OncontainerSlotsChanging(Nullable<global::System.Decimal> value);
+        partial void OncontainerSlotsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> inventoryType
+        {
+            get
+            {
+                return _inventoryType;
+            }
+            set
+            {
+                OninventoryTypeChanging(value);
+                ReportPropertyChanging("inventoryType");
+                _inventoryType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("inventoryType");
+                OninventoryTypeChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _inventoryType;
+        partial void OninventoryTypeChanging(Nullable<global::System.Decimal> value);
+        partial void OninventoryTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> equippable
+        {
+            get
+            {
+                return _equippable;
+            }
+            set
+            {
+                OnequippableChanging(value);
+                ReportPropertyChanging("equippable");
+                _equippable = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("equippable");
+                OnequippableChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _equippable;
+        partial void OnequippableChanging(Nullable<global::System.Decimal> value);
+        partial void OnequippableChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> itemLevel
+        {
+            get
+            {
+                return _itemLevel;
+            }
+            set
+            {
+                OnitemLevelChanging(value);
+                ReportPropertyChanging("itemLevel");
+                _itemLevel = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("itemLevel");
+                OnitemLevelChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _itemLevel;
+        partial void OnitemLevelChanging(Nullable<global::System.Decimal> value);
+        partial void OnitemLevelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> maxCount
+        {
+            get
+            {
+                return _maxCount;
+            }
+            set
+            {
+                OnmaxCountChanging(value);
+                ReportPropertyChanging("maxCount");
+                _maxCount = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("maxCount");
+                OnmaxCountChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _maxCount;
+        partial void OnmaxCountChanging(Nullable<global::System.Decimal> value);
+        partial void OnmaxCountChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> maxDurability
+        {
+            get
+            {
+                return _maxDurability;
+            }
+            set
+            {
+                OnmaxDurabilityChanging(value);
+                ReportPropertyChanging("maxDurability");
+                _maxDurability = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("maxDurability");
+                OnmaxDurabilityChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _maxDurability;
+        partial void OnmaxDurabilityChanging(Nullable<global::System.Decimal> value);
+        partial void OnmaxDurabilityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> minFactionId
+        {
+            get
+            {
+                return _minFactionId;
+            }
+            set
+            {
+                OnminFactionIdChanging(value);
+                ReportPropertyChanging("minFactionId");
+                _minFactionId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("minFactionId");
+                OnminFactionIdChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _minFactionId;
+        partial void OnminFactionIdChanging(Nullable<global::System.Decimal> value);
+        partial void OnminFactionIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> minReputation
+        {
+            get
+            {
+                return _minReputation;
+            }
+            set
+            {
+                OnminReputationChanging(value);
+                ReportPropertyChanging("minReputation");
+                _minReputation = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("minReputation");
+                OnminReputationChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _minReputation;
+        partial void OnminReputationChanging(Nullable<global::System.Decimal> value);
+        partial void OnminReputationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> quality
+        {
+            get
+            {
+                return _quality;
+            }
+            set
+            {
+                OnqualityChanging(value);
+                ReportPropertyChanging("quality");
+                _quality = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("quality");
+                OnqualityChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _quality;
+        partial void OnqualityChanging(Nullable<global::System.Decimal> value);
+        partial void OnqualityChanged();
 
         #endregion
     

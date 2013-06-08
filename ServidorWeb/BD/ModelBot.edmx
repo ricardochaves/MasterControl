@@ -49,6 +49,8 @@
           <Property Name="idItem" Type="numeric" Nullable="false" />
           <Property Name="NomePersonagem" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Qtd" Type="numeric" Nullable="false" />
+          <Property Name="dtAtualizado" Type="datetime" />
+          <Property Name="dtFabricado" Type="datetime" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -56,6 +58,21 @@
           </Key>
           <Property Name="id" Type="numeric" Nullable="false" />
           <Property Name="Desc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="stackable" Type="nvarchar" MaxLength="2" />
+          <Property Name="itemBind" Type="nvarchar" MaxLength="2" />
+          <Property Name="buyPrice" Type="numeric" />
+          <Property Name="itemClass" Type="numeric" />
+          <Property Name="itemSubClass" Type="numeric" />
+          <Property Name="containerSlots" Type="numeric" />
+          <Property Name="inventoryType" Type="numeric" />
+          <Property Name="equippable" Type="numeric" />
+          <Property Name="itemLevel" Type="numeric" />
+          <Property Name="maxCount" Type="numeric" />
+          <Property Name="maxDurability" Type="numeric" />
+          <Property Name="minFactionId" Type="numeric" />
+          <Property Name="minReputation" Type="numeric" />
+          <Property Name="quality" Type="numeric" />
         </EntityType>
         <EntityType Name="dados">
           <Key>
@@ -352,6 +369,21 @@
           </Key>
           <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="Desc" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="icon" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="stackable" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="itemBind" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="buyPrice" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="itemClass" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="itemSubClass" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="containerSlots" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="inventoryType" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="equippable" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="itemLevel" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="maxCount" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="maxDurability" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="minFactionId" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="minReputation" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="quality" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Estoque">
           <Key>
@@ -361,6 +393,8 @@
           <Property Type="Decimal" Name="idItem" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="NomePersonagem" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Qtd" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="dtAtualizado" />
+          <Property Type="DateTime" Name="dtFabricado" />
         </EntityType>
         <EntityType Name="ConfiguracaoEstoque">
           <Key>
@@ -463,6 +497,21 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="BotWoWModel.Item">
               <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="quality" ColumnName="quality" />
+                <ScalarProperty Name="minReputation" ColumnName="minReputation" />
+                <ScalarProperty Name="minFactionId" ColumnName="minFactionId" />
+                <ScalarProperty Name="maxDurability" ColumnName="maxDurability" />
+                <ScalarProperty Name="maxCount" ColumnName="maxCount" />
+                <ScalarProperty Name="itemLevel" ColumnName="itemLevel" />
+                <ScalarProperty Name="equippable" ColumnName="equippable" />
+                <ScalarProperty Name="inventoryType" ColumnName="inventoryType" />
+                <ScalarProperty Name="containerSlots" ColumnName="containerSlots" />
+                <ScalarProperty Name="itemSubClass" ColumnName="itemSubClass" />
+                <ScalarProperty Name="itemClass" ColumnName="itemClass" />
+                <ScalarProperty Name="buyPrice" ColumnName="buyPrice" />
+                <ScalarProperty Name="itemBind" ColumnName="itemBind" />
+                <ScalarProperty Name="stackable" ColumnName="stackable" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
                 <ScalarProperty Name="Desc" ColumnName="Desc" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -471,6 +520,8 @@
           <EntitySetMapping Name="Estoques">
             <EntityTypeMapping TypeName="BotWoWModel.Estoque">
               <MappingFragment StoreEntitySet="Estoque">
+                <ScalarProperty Name="dtFabricado" ColumnName="dtFabricado" />
+                <ScalarProperty Name="dtAtualizado" ColumnName="dtAtualizado" />
                 <ScalarProperty Name="Qtd" ColumnName="Qtd" />
                 <ScalarProperty Name="NomePersonagem" ColumnName="NomePersonagem" />
                 <ScalarProperty Name="idItem" ColumnName="idItem" />
@@ -537,7 +588,7 @@
         <EntityTypeShape EntityType="BotWoWModel.dado" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="BotWoWModel.Item" Width="1.5" PointX="2.75" PointY="6.75" Height="1.4033821614583317" />
         <EntityTypeShape EntityType="BotWoWModel.Estoque" Width="1.5" PointX="8.375" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BotWoWModel.ConfiguracaoEstoque" Width="1.5" PointX="8.375" PointY="3.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BotWoWModel.ConfiguracaoEstoque" Width="1.5" PointX="8.375" PointY="3.75" Height="1.7879850260416665" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -211,6 +211,7 @@ namespace ServidorWeb
 
         }
 
+
         [WebMethod]
         public int RetornaQTDaProduzir(int idItem, string NomePersonagem, string key)
         {
@@ -224,5 +225,25 @@ namespace ServidorWeb
             return bot.RetornaQTDaProduzir(idItem, NomePersonagem);
 
         }
+
+        #region APIBlizzard
+
+        [WebMethod]
+        public void AtualizarItem(string codigo, string key)
+        {
+
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
+            PKGItens p = new PKGItens();
+
+            p.AtualizarItem(codigo);
+
+        }
+
+        #endregion
+
     }
 }
