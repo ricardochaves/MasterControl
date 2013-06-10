@@ -211,7 +211,6 @@ namespace ServidorWeb
 
         }
 
-
         [WebMethod]
         public int RetornaQTDaProduzir(int idItem, string NomePersonagem, string key)
         {
@@ -225,6 +224,41 @@ namespace ServidorWeb
             return bot.RetornaQTDaProduzir(idItem, NomePersonagem);
 
         }
+
+        [WebMethod]
+        public List<BotItemEstoque> RetornaQTDaProduzirGlyph(string NomePersonagem, string key)
+        {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
+            BotControlaEstoque bot = new BotControlaEstoque();
+
+            return bot.RetornaGrupoGlphy(NomePersonagem);
+
+        }
+
+
+        [WebMethod]
+        public void AtualizaEstoqueLote(List<BotItemEstoque> itens, string key)
+        {
+            if (itens.Count > 0)
+            {
+                BotControlaEstoque bot = new BotControlaEstoque();
+                BotItemEstoque b;
+
+                b = itens[0];
+
+                bot.ZeraEstoque(b.Personagem);
+            }
+            
+            foreach (BotItemEstoque item in itens)
+            {
+                AtualizaEstoque(item, key);
+            }
+        }
+
 
         #region APIBlizzard
 
@@ -243,6 +277,18 @@ namespace ServidorWeb
 
         }
 
+        [WebMethod]
+        public void AtualizaTodosItensBaseadoNaAH(string key)
+        {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
+            PKGAH p = new PKGAH();
+            p.AtualizaTudo();
+            
+        }
         #endregion
 
     }

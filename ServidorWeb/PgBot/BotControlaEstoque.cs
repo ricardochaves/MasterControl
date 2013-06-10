@@ -30,6 +30,7 @@ namespace ServidorWeb.PgBot
                 est.NomePersonagem = estoque.Personagem;
                 est.Qtd = estoque.Qtd;
                 est.dtAtualizado = DateTime.Now;
+                est.dtFabricado = DateTime.Now;
 
                 n.Estoques.AddObject(est);
                 n.SaveChanges();
@@ -67,5 +68,51 @@ namespace ServidorWeb.PgBot
 
         }
 
+        public void ZeraEstoque(string nome)
+        {
+            BotWoWEntities n = new BotWoWEntities();
+            
+            var x = (from p in n.Estoques where p.NomePersonagem == nome select p);
+            foreach (Estoque item in x)
+	        {
+                item.Qtd = 0;
+	        }
+            n.SaveChanges();
+
+        }
+
+        public List<BotItemEstoque> RetornaGrupoGlphy(string nome)
+        {
+            List<BotItemEstoque> l = new List<BotItemEstoque>();
+
+            BotWoWEntities n = new BotWoWEntities();
+
+            var x = (from p in n.Estoques where p.NomePersonagem == nome select p);
+
+            foreach (Estoque item in x)
+            {
+                try
+                {
+                
+                    var y = (from p in n.ConfiguracaoEstoques where p.idItem == item.idItem select p).First();
+
+                    BotItemEstoque b = new BotItemEstoque();
+                    if ((int)(y.Qtd - item.Qtd) > 0)
+                    {
+                        b.itemID = (int)item.idItem;
+                        b.Qtd = (int)(y.Qtd - item.Qtd);
+                        l.Add(b);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    
+                    
+                }
+            }
+
+            return l;
+        }
     }
 }

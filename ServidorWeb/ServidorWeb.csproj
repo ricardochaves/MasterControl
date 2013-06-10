@@ -298,6 +298,7 @@
     <Compile Include="PgBot\BotControlaEstoque.cs" />
     <Compile Include="PgBot\BotItemEstoque.cs" />
     <Compile Include="PgBot\ClassesBlizzard.cs" />
+    <Compile Include="PgBot\PKGAH.cs" />
     <Compile Include="PgBot\PKGItens.cs" />
     <Compile Include="PgBot\StaticDados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

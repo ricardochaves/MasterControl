@@ -60,4 +60,10 @@ namespace ServidorWeb.PgBot
         public bool heroicTooltip { get; set; }
     }
 
+    public class LastModified
+    {
+        public string url { get; set; }
+        public string lastModified { get; set; }
+    }
+
 }

@@ -10,7 +10,8 @@ namespace ServidorWeb.PgBot
         public string host = "http://us.battle.net";
         public string realmstatus = "/api/wow/realm/status";
         public string item = "/api/wow/item/";
-
+        public string AHData = "/api/wow/auction/data/";
+        public string NEMESIS = "Nemesis";
 
     }
 }
