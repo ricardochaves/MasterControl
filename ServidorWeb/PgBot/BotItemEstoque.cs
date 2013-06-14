@@ -10,6 +10,6 @@ namespace ServidorWeb.PgBot
         public Int32 itemID;
         public Int32 Qtd;
         public string Personagem;
-
+        public Int32 SpellQueCriaOItem;
     }
 }

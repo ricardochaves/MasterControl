@@ -9,6 +9,7 @@
           <EntitySet Name="ConfiguracaoEstoque" EntityType="BotWoWModel.Store.ConfiguracaoEstoque" store:Type="Tables" Schema="bot" />
           <EntitySet Name="Estoque" EntityType="BotWoWModel.Store.Estoque" store:Type="Tables" Schema="bot" />
           <EntitySet Name="Item" EntityType="BotWoWModel.Store.Item" store:Type="Tables" Schema="bot" />
+          <EntitySet Name="SpellItem" EntityType="BotWoWModel.Store.SpellItem" store:Type="Tables" Schema="bot" />
           <EntitySet Name="dados" EntityType="BotWoWModel.Store.dados" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="detalhes" EntityType="BotWoWModel.Store.detalhes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="levelup" EntityType="BotWoWModel.Store.levelup" store:Type="Tables" Schema="dbo" />
@@ -58,9 +59,9 @@
           </Key>
           <Property Name="id" Type="numeric" Nullable="false" />
           <Property Name="Desc" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="icon" Type="nvarchar" MaxLength="50" />
-          <Property Name="stackable" Type="nvarchar" MaxLength="2" />
-          <Property Name="itemBind" Type="nvarchar" MaxLength="2" />
+          <Property Name="icon" Type="nvarchar(max)" />
+          <Property Name="stackable" Type="nvarchar" MaxLength="5" />
+          <Property Name="itemBind" Type="nvarchar" MaxLength="5" />
           <Property Name="buyPrice" Type="numeric" />
           <Property Name="itemClass" Type="numeric" />
           <Property Name="itemSubClass" Type="numeric" />
@@ -73,6 +74,14 @@
           <Property Name="minFactionId" Type="numeric" />
           <Property Name="minReputation" Type="numeric" />
           <Property Name="quality" Type="numeric" />
+        </EntityType>
+        <EntityType Name="SpellItem">
+          <Key>
+            <PropertyRef Name="idSpell" />
+            <PropertyRef Name="idItem" />
+          </Key>
+          <Property Name="idSpell" Type="numeric" Nullable="false" />
+          <Property Name="idItem" Type="numeric" Nullable="false" />
         </EntityType>
         <EntityType Name="dados">
           <Key>
@@ -229,6 +238,7 @@
           <EntitySet Name="Items" EntityType="BotWoWModel.Item" />
           <EntitySet Name="Estoques" EntityType="BotWoWModel.Estoque" />
           <EntitySet Name="ConfiguracaoEstoques" EntityType="BotWoWModel.ConfiguracaoEstoque" />
+          <EntitySet Name="SpellItems" EntityType="BotWoWModel.SpellItem" />
         </EntityContainer>
         <EntityType Name="Sessao">
           <Key>
@@ -405,6 +415,14 @@
           <Property Type="String" Name="NomePersonagem" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Qtd" Nullable="false" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="SpellItem">
+          <Key>
+            <PropertyRef Name="idSpell" />
+            <PropertyRef Name="idItem" />
+          </Key>
+          <Property Type="Decimal" Name="idSpell" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="idItem" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -539,6 +557,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SpellItems">
+            <EntityTypeMapping TypeName="BotWoWModel.SpellItem">
+              <MappingFragment StoreEntitySet="SpellItem">
+                <ScalarProperty Name="idItem" ColumnName="idItem" />
+                <ScalarProperty Name="idSpell" ColumnName="idSpell" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -589,6 +615,7 @@
         <EntityTypeShape EntityType="BotWoWModel.Item" Width="1.5" PointX="2.75" PointY="6.75" Height="1.4033821614583317" />
         <EntityTypeShape EntityType="BotWoWModel.Estoque" Width="1.5" PointX="8.375" PointY="0.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="BotWoWModel.ConfiguracaoEstoque" Width="1.5" PointX="8.375" PointY="3.75" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="BotWoWModel.SpellItem" Width="1.5" PointX="8.375" PointY="6.75" Height="1.4033821614583317" />
       </Diagram>
     </Diagrams>
   </Designer>

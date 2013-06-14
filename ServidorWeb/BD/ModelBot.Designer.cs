@@ -216,6 +216,22 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<ConfiguracaoEstoque> _ConfiguracaoEstoques;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SpellItem> SpellItems
+        {
+            get
+            {
+                if ((_SpellItems == null))
+                {
+                    _SpellItems = base.CreateObjectSet<SpellItem>("SpellItems");
+                }
+                return _SpellItems;
+            }
+        }
+        private ObjectSet<SpellItem> _SpellItems;
 
         #endregion
         #region AddTo Methods
@@ -290,6 +306,14 @@ namespace ServidorWeb.BD
         public void AddToConfiguracaoEstoques(ConfiguracaoEstoque configuracaoEstoque)
         {
             base.AddObject("ConfiguracaoEstoques", configuracaoEstoque);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SpellItems EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSpellItems(SpellItem spellItem)
+        {
+            base.AddObject("SpellItems", spellItem);
         }
 
         #endregion
@@ -2660,6 +2684,90 @@ namespace ServidorWeb.BD
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BotWoWModel", Name="SpellItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SpellItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SpellItem object.
+        /// </summary>
+        /// <param name="idSpell">Initial value of the idSpell property.</param>
+        /// <param name="idItem">Initial value of the idItem property.</param>
+        public static SpellItem CreateSpellItem(global::System.Decimal idSpell, global::System.Decimal idItem)
+        {
+            SpellItem spellItem = new SpellItem();
+            spellItem.idSpell = idSpell;
+            spellItem.idItem = idItem;
+            return spellItem;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal idSpell
+        {
+            get
+            {
+                return _idSpell;
+            }
+            set
+            {
+                if (_idSpell != value)
+                {
+                    OnidSpellChanging(value);
+                    ReportPropertyChanging("idSpell");
+                    _idSpell = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idSpell");
+                    OnidSpellChanged();
+                }
+            }
+        }
+        private global::System.Decimal _idSpell;
+        partial void OnidSpellChanging(global::System.Decimal value);
+        partial void OnidSpellChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal idItem
+        {
+            get
+            {
+                return _idItem;
+            }
+            set
+            {
+                if (_idItem != value)
+                {
+                    OnidItemChanging(value);
+                    ReportPropertyChanging("idItem");
+                    _idItem = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idItem");
+                    OnidItemChanged();
+                }
+            }
+        }
+        private global::System.Decimal _idItem;
+        partial void OnidItemChanging(global::System.Decimal value);
+        partial void OnidItemChanged();
+
+        #endregion
+    
     }
 
     #endregion

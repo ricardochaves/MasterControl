@@ -86,33 +86,64 @@ namespace ServidorWeb.PgBot
             List<BotItemEstoque> l = new List<BotItemEstoque>();
 
             BotWoWEntities n = new BotWoWEntities();
+            BotWoWEntities n1 = new BotWoWEntities();
 
-            var x = (from p in n.Estoques where p.NomePersonagem == nome select p);
+            var a = (from i in n.Items
+                     join
+                         isp in n.SpellItems on i.id equals isp.idItem
+                     join
+                         est in n.Estoques on isp.idItem equals est.idItem
+                     where i.itemClass == 16 && est.Qtd < 5 && est.NomePersonagem == nome
+                           && est.dtFabricado < est.dtAtualizado
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (5 - est.Qtd) });
 
-            foreach (Estoque item in x)
+            foreach (var item in a)
             {
-                try
-                {
-                
-                    var y = (from p in n.ConfiguracaoEstoques where p.idItem == item.idItem select p).First();
+                BotItemEstoque b = new BotItemEstoque();
+                b.itemID =(int)item.idItem;
+                b.Personagem = nome;
+                b.Qtd = (int)item.qtd;
+                b.SpellQueCriaOItem = (int)item.idSpell;
+                l.Add(b);
 
-                    BotItemEstoque b = new BotItemEstoque();
-                    if ((int)(y.Qtd - item.Qtd) > 0)
-                    {
-                        b.itemID = (int)item.idItem;
-                        b.Qtd = (int)(y.Qtd - item.Qtd);
-                        l.Add(b);
-                    }
 
-                }
-                catch (Exception)
-                {
-                    
-                    
-                }
+                var x = (from p in n1.Estoques where p.idItem == item.idItem && p.NomePersonagem == nome select p).First();
+                x.dtFabricado = DateTime.Now;
+                n1.SaveChanges();
+            
             }
+
+
+
 
             return l;
         }
+
+        public void PegarSpelleItem(decimal spell, decimal item)
+        {
+            BotWoWEntities n = new BotWoWEntities();
+
+            try
+            {
+                var x = (from p in n.SpellItems where p.idItem == item && p.idSpell == spell select p).First();
+            }
+            catch (Exception)
+            {
+
+                SpellItem s = new SpellItem();
+
+                s.idSpell = spell;
+                s.idItem = item;
+
+                n.SpellItems.AddObject(s);
+                n.SaveChanges();
+
+
+            }
+
+        }
+    
+        
+    
     }
 }

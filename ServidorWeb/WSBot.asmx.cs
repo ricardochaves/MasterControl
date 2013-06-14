@@ -239,10 +239,14 @@ namespace ServidorWeb
 
         }
 
-
         [WebMethod]
         public void AtualizaEstoqueLote(List<BotItemEstoque> itens, string key)
         {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
             if (itens.Count > 0)
             {
                 BotControlaEstoque bot = new BotControlaEstoque();
@@ -259,7 +263,18 @@ namespace ServidorWeb
             }
         }
 
+        [WebMethod]
+        public void PegarSpelleItem(decimal spell, decimal item, string key)
+        {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
 
+            BotControlaEstoque b = new BotControlaEstoque();
+            b.PegarSpelleItem(spell, item);
+
+        }
         #region APIBlizzard
 
         [WebMethod]
