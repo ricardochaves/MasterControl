@@ -89,6 +89,9 @@
     <Content Include="ML\Paginas\TratarCallBack.aspx" />
     <Content Include="ML\Paginas\VendasEmAberto.aspx" />
     <Content Include="ML\Paginas\VendasProduto.aspx" />
+    <Content Include="PgBot\ConfigEstoque.aspx" />
+    <Content Include="PgBot\ConfigEstoqueAltera.aspx" />
+    <Content Include="PgBot\GemasFazer.aspx" />
     <Content Include="PgBot\Relatorio.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
@@ -298,6 +301,27 @@
     <Compile Include="PgBot\BotControlaEstoque.cs" />
     <Compile Include="PgBot\BotItemEstoque.cs" />
     <Compile Include="PgBot\ClassesBlizzard.cs" />
+    <Compile Include="PgBot\ConfigEstoque.aspx.cs">
+      <DependentUpon>ConfigEstoque.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PgBot\ConfigEstoque.aspx.designer.cs">
+      <DependentUpon>ConfigEstoque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PgBot\ConfigEstoqueAltera.aspx.cs">
+      <DependentUpon>ConfigEstoqueAltera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PgBot\ConfigEstoqueAltera.aspx.designer.cs">
+      <DependentUpon>ConfigEstoqueAltera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PgBot\GemasFazer.aspx.cs">
+      <DependentUpon>GemasFazer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PgBot\GemasFazer.aspx.designer.cs">
+      <DependentUpon>GemasFazer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PgBot\PKGAH.cs" />
     <Compile Include="PgBot\PKGItens.cs" />
     <Compile Include="PgBot\StaticDados.cs" />
