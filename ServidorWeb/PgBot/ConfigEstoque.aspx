@@ -36,8 +36,4 @@
 
     </asp:GridView>
     <br />
-    <a href="#" rel="item=87560"> <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a>
-    <br />
-    <a href="http://www.wowhead.com/item=25697" class="q3" rel="gems=23121&amp;ench=2647&amp;pcs=25695:25696:25697">[Felstalker Bracers]</a>
-    <br />
-</asp:Content>
+    </asp:Content>

@@ -240,6 +240,20 @@ namespace ServidorWeb
         }
 
         [WebMethod]
+        public List<BotItemEstoque> RetornaQTDaProduzirGema(string NomePersonagem, string key)
+        {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
+            BotControlaEstoque bot = new BotControlaEstoque();
+
+            return bot.RetornaGrupoGemas(NomePersonagem);
+
+        }
+
+        [WebMethod]
         public void AtualizaEstoqueLote(List<BotItemEstoque> itens, string key)
         {
             if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")

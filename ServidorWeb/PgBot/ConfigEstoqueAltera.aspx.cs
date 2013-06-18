@@ -17,15 +17,18 @@ namespace ServidorWeb.PgBot
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             codigo = Convert.ToDecimal(Request.QueryString["code"]);
 
+            if (!Page.IsPostBack)
+            {
+             
+                c = (from p in n.ConfiguracaoEstoques where p.id == codigo select p).First();
 
-            c = (from p in n.ConfiguracaoEstoques where p.id == codigo select p).First();
-
-            Label1.Text = c.NomePersonagem;
-            Label2.Text = c.idItem.ToString();
-            TextBox1.Text = c.Qtd.ToString();
-
+                Label1.Text = c.NomePersonagem;
+                Label2.Text = c.idItem.ToString();
+                TextBox1.Text = c.Qtd.ToString();
+            }
 
         }
 
@@ -35,7 +38,8 @@ namespace ServidorWeb.PgBot
             {
                 BotWoWEntities n1 = new BotWoWEntities();
                 c = (from p in n1.ConfiguracaoEstoques where p.id == codigo select p).First();
-                c.Qtd = Convert.ToDecimal(TextBox1.Text);
+                c.Qtd = Decimal.Parse(TextBox1.Text); 
+                
                 n1.SaveChanges();
 
                 Response.Redirect("ConfigEstoque.aspx");

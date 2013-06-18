@@ -113,8 +113,40 @@ namespace ServidorWeb.PgBot
             
             }
 
+            return l;
+        }
+
+        public List<BotItemEstoque> RetornaGrupoGemas(string nome)
+        {
+            List<BotItemEstoque> l = new List<BotItemEstoque>();
+
+            BotWoWEntities n = new BotWoWEntities();
+            BotWoWEntities n1 = new BotWoWEntities();
+
+            var a = (from i in n.Items
+                     join
+                         isp in n.SpellItems on i.id equals isp.idItem
+                     join
+                         est in n.Estoques on isp.idItem equals est.idItem
+                     where i.itemClass == 3 && est.Qtd < 5 && est.NomePersonagem == nome
+                           && est.dtFabricado < est.dtAtualizado
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (10 - est.Qtd) });
+
+            foreach (var item in a)
+            {
+                BotItemEstoque b = new BotItemEstoque();
+                b.itemID = (int)item.idItem;
+                b.Personagem = nome;
+                b.Qtd = (int)item.qtd;
+                b.SpellQueCriaOItem = (int)item.idSpell;
+                l.Add(b);
 
 
+                var x = (from p in n1.Estoques where p.idItem == item.idItem && p.NomePersonagem == nome select p).First();
+                x.dtFabricado = DateTime.Now;
+                n1.SaveChanges();
+
+            }
 
             return l;
         }
