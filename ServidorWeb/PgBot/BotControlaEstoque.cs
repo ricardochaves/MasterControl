@@ -128,7 +128,7 @@ namespace ServidorWeb.PgBot
                          isp in n.SpellItems on i.id equals isp.idItem
                      join
                          est in n.Estoques on isp.idItem equals est.idItem
-                     where i.itemClass == 3 && est.Qtd < 5 && est.NomePersonagem == nome
+                     where i.itemClass == 3 && est.Qtd < 10 && est.NomePersonagem == nome
                            && est.dtFabricado < est.dtAtualizado
                      select new { idItem = i.id, idSpell = isp.idSpell, qtd = (10 - est.Qtd) });
 
@@ -140,7 +140,7 @@ namespace ServidorWeb.PgBot
                 b.Qtd = (int)item.qtd;
                 b.SpellQueCriaOItem = (int)item.idSpell;
                 l.Add(b);
-
+                
 
                 var x = (from p in n1.Estoques where p.idItem == item.idItem && p.NomePersonagem == nome select p).First();
                 x.dtFabricado = DateTime.Now;
