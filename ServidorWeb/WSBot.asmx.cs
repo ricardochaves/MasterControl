@@ -318,6 +318,21 @@ namespace ServidorWeb
             p.AtualizaTudo();
             
         }
+
+        [WebMethod]
+        public void AtualizaValoresItensBaseadoNaAH(string key)
+        {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
+            PKGAH p = new PKGAH();
+            p.AtualizaTudoValorItens();
+
+        }
+        
+        
         #endregion
 
     }

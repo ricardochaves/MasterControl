@@ -66,4 +66,10 @@ namespace ServidorWeb.PgBot
         public string lastModified { get; set; }
     }
 
+    public class Auction
+    {
+        public decimal idItem { get; set; }
+        public decimal bid { get; set; }
+        public decimal buyout { get; set; }
+    }
 }

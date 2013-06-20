@@ -74,6 +74,7 @@
           <Property Name="minFactionId" Type="numeric" />
           <Property Name="minReputation" Type="numeric" />
           <Property Name="quality" Type="numeric" />
+          <Property Name="ValorMinnaAH" Type="numeric" />
         </EntityType>
         <EntityType Name="SpellItem">
           <Key>
@@ -394,6 +395,7 @@
           <Property Type="Decimal" Name="minFactionId" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="minReputation" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="quality" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="ValorMinnaAH" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Estoque">
           <Key>
@@ -515,6 +517,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="BotWoWModel.Item">
               <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ValorMinnaAH" ColumnName="ValorMinnaAH" />
                 <ScalarProperty Name="quality" ColumnName="quality" />
                 <ScalarProperty Name="minReputation" ColumnName="minReputation" />
                 <ScalarProperty Name="minFactionId" ColumnName="minFactionId" />

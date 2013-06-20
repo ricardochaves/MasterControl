@@ -145,7 +145,22 @@ namespace ServidorWeb.PgBot
 
         }
 
+        public void AtualizaValorItem(decimal idItem, decimal valor)
+        {
 
+            BotWoWEntities n = new BotWoWEntities();
+            Item i;
+
+            i = (from p in n.Items where p.id == idItem select p).FirstOrDefault();
+
+            if (i != null)
+            {
+                i.ValorMinnaAH = valor;
+                n.SaveChanges();
+            }
+
+
+        }
 
     }
 }

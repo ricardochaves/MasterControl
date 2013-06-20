@@ -1685,6 +1685,30 @@ namespace ServidorWeb.BD
         private Nullable<global::System.Decimal> _quality;
         partial void OnqualityChanging(Nullable<global::System.Decimal> value);
         partial void OnqualityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ValorMinnaAH
+        {
+            get
+            {
+                return _ValorMinnaAH;
+            }
+            set
+            {
+                OnValorMinnaAHChanging(value);
+                ReportPropertyChanging("ValorMinnaAH");
+                _ValorMinnaAH = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ValorMinnaAH");
+                OnValorMinnaAHChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ValorMinnaAH;
+        partial void OnValorMinnaAHChanging(Nullable<global::System.Decimal> value);
+        partial void OnValorMinnaAHChanged();
 
         #endregion
     
