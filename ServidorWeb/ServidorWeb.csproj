@@ -70,6 +70,7 @@
     <Content Include="Imagem\nikon50mm.jpg" />
     <Content Include="Imagem\nikon70300mm.jpeg" />
     <Content Include="Imagem\nikonsb910.jpg" />
+    <Content Include="Imagem\papel.jpg" />
     <Content Include="Imagem\santander.jpg" />
     <Content Include="Inicio.aspx" />
     <Content Include="Login.aspx" />
@@ -91,6 +92,7 @@
     <Content Include="ML\Paginas\VendasProduto.aspx" />
     <Content Include="PgBot\ConfigEstoque.aspx" />
     <Content Include="PgBot\ConfigEstoqueAltera.aspx" />
+    <Content Include="PgBot\ConfigEstoqueIncluir.aspx" />
     <Content Include="PgBot\GemasFazer.aspx" />
     <Content Include="PgBot\Relatorio.aspx" />
     <Content Include="Styles\Site.css" />
@@ -314,6 +316,13 @@
     </Compile>
     <Compile Include="PgBot\ConfigEstoqueAltera.aspx.designer.cs">
       <DependentUpon>ConfigEstoqueAltera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PgBot\ConfigEstoqueIncluir.aspx.cs">
+      <DependentUpon>ConfigEstoqueIncluir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PgBot\ConfigEstoqueIncluir.aspx.designer.cs">
+      <DependentUpon>ConfigEstoqueIncluir.aspx</DependentUpon>
     </Compile>
     <Compile Include="PgBot\GemasFazer.aspx.cs">
       <DependentUpon>GemasFazer.aspx</DependentUpon>

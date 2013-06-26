@@ -18,9 +18,10 @@ namespace ServidorWeb.PgBot
             var x = (from p in n.Estoques
                      join i in n.Items on p.idItem equals i.id
                      where p.NomePersonagem == "Sheraacs" && i.itemClass == 3
-                     select new { Nome = i.Desc, Qtd = p.Qtd, Cor = i.itemSubClass });
+                     select new { Nome = i.Desc, Qtd = p.Qtd, Cor = i.itemSubClass, Valor = (i.ValorMinnaAH/10000) }
+                     );
             
-            GridView1.DataSource = x;
+            GridView1.DataSource = x.OrderBy(z => z.Valor);
             GridView1.DataBind();
 
 
