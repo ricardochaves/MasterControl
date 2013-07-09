@@ -17,7 +17,7 @@ namespace ServidorWeb.PgBot
 
             var x = (from p in n.Estoques
                      join i in n.Items on p.idItem equals i.id
-                     where p.NomePersonagem == "Malucafx" && i.itemClass == 3
+                     where p.NomePersonagem == "Goldaqui" && i.itemClass == 3
                      select new { Nome = i.Desc, Qtd = p.Qtd, Cor = i.itemSubClass, Valor = (i.ValorMinnaAH/10000) }
                      );
             

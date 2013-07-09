@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Financeiro", "Financeiro\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBCAH", "RBCAH\RBCAH.csproj", "{BBD029C8-F521-4720-AB2D-0655AE1DF021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionWrapper", "AuctionWrapper\AuctionWrapper.csproj", "{E3F764C6-C204-462B-BF44-56165F01299D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,16 +71,6 @@ Global
 		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|Mixed Platforms.Build.0 = Release|x86
 		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|x86.ActiveCfg = Release|x86
 		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|x86.Build.0 = Release|x86
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{E3F764C6-C204-462B-BF44-56165F01299D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -60,13 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AhForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AhForm.designer.cs">
-      <DependentUpon>AhForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AhItem.cs" />
     <Compile Include="FlatNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -76,23 +69,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="ObjectXMLSerializer.cs" />
-    <Compile Include="Plugin.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources.cs" />
-    <Compile Include="Salesman.cs" />
-    <Compile Include="SalesmanForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SalesmanForm.designer.cs">
-      <DependentUpon>SalesmanForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SortableBindingList.cs" />
-    <Compile Include="UMJ.cs" />
-    <Compile Include="UMJItem.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -113,12 +93,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AuctionWrapper\AuctionWrapper.csproj">
-      <Project>{E3F764C6-C204-462B-BF44-56165F01299D}</Project>
-      <Name>AuctionWrapper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
