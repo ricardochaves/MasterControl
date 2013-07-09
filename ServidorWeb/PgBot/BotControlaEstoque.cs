@@ -95,6 +95,7 @@ namespace ServidorWeb.PgBot
                          est in n.Estoques on isp.idItem equals est.idItem
                      where i.itemClass == 16 && est.Qtd < 5 && est.NomePersonagem == nome
                            && est.dtFabricado < est.dtAtualizado
+                           && i.ValorMinnaAH > 219999
                      select new { idItem = i.id, idSpell = isp.idSpell, qtd = (5 - est.Qtd) });
 
             foreach (var item in a)
@@ -130,6 +131,7 @@ namespace ServidorWeb.PgBot
                          est in n.Estoques on isp.idItem equals est.idItem
                      where i.itemClass == 3 && est.Qtd < 10 && est.NomePersonagem == nome
                            && est.dtFabricado < est.dtAtualizado
+                           && i.ValorMinnaAH > 299999
                      select new { idItem = i.id, idSpell = isp.idSpell, qtd = (10 - est.Qtd) });
 
             foreach (var item in a)
