@@ -59,6 +59,10 @@ namespace ServidorWeb.ML.Classes
                 {
                     strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
                 }
+                else if (NomePC == "DGTEC-DESIS-RBC")
+                {
+                    strConexao = ConfigurationManager.ConnectionStrings[NomePC].ConnectionString;
+                }
                 else
                 {
                     strConexao = ConfigurationManager.ConnectionStrings["NSAADMEntitiesProducao"].ConnectionString;
