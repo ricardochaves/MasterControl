@@ -222,7 +222,7 @@ namespace ServidorWeb.PgBot
                 b.SpellQueCriaOItem = (int)item.idSpell;
                 l.Add(b);
 
-
+                 
                 var x = (from p in n1.Estoques where p.idItem == item.idItem && p.NomePersonagem == item.nome select p).First();
                 x.dtFabricado = DateTime.Now;
                 n1.SaveChanges();
