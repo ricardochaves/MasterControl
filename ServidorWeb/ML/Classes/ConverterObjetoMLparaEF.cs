@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -239,7 +239,35 @@ namespace ServidorWeb.ML.Classes
 
             }
 
+            //if (o.shipping != null)
+            //{
+            //    Shipping sp = new Shipping();
+            //    sp.cost = o.shipping.cost;
+            //    sp.currency_id = o.shipping.currency_id;
+            //    sp.date_created = o.shipping.date_created;
+            //    sp.id = o.shipping.id;
 
+            //    sp.shipment_type = o.shipping.shipment_type;
+            //    sp.status = o.shipping.status;
+
+            //    if (o.shipping.receiver_address != null)
+            //    {
+            //        ReceiverAddress ra = new ReceiverAddress();
+            //        ra.address_line = o.shipping.receiver_address.address_line;
+            //        ra.city = o.shipping.receiver_address.city;
+            //        ra.comment = o.shipping.receiver_address.comment;
+            //        ra.country = o.shipping.receiver_address.country;
+            //        ra.id = o.shipping.receiver_address.id;
+            //        ra.latitude = o.shipping.receiver_address.latitude;
+            //        ra.longitude = o.shipping.receiver_address.longitude;
+            //        ra.state = o.shipping.receiver_address.state;
+            //        ra.zip_code = o.shipping.receiver_address.zip_code;
+
+            //        sp.receiver_address = ra;
+
+            //    }
+
+            //}
 
             ord.ML_Usuario = sel;
             ord.ML_Usuario1 = buy;
@@ -282,7 +310,7 @@ namespace ServidorWeb.ML.Classes
                 {
                     o.status = oML.status;
                 }
-                
+
 
                 if (oML.status_detail != null)
                 {
@@ -302,7 +330,7 @@ namespace ServidorWeb.ML.Classes
 
 
         }
-        
+
         private void AtualizaFeedBackBuyer(ML_Order o, Order oML, NSAADMEntities n1)
         {
             try
@@ -355,7 +383,7 @@ namespace ServidorWeb.ML.Classes
 
             try
             {
-               if (o.ML_FeedbackSeller.Count > 0)
+                if (o.ML_FeedbackSeller.Count > 0)
                 {
                     if (RetornaFeedBackSeller(oML) != null)
                     {
@@ -395,7 +423,7 @@ namespace ServidorWeb.ML.Classes
 
                 throw new Exception("Erro na rotina AtualizaFeedBackSeller", ex);
             }
- 
+
         }
 
         public ML_Item ConverteItem(Item i, NSAADMEntities n1)
@@ -522,15 +550,16 @@ namespace ServidorWeb.ML.Classes
             }
         }
 
-        public ML_Order ConverteOrdem2(Order o)
+        public ML_Order ConverteOrdem2(Order o, NSAADMEntities n)
         {
 
             try
             {
 
                 ControlaUsuario ControlaUsu = new ControlaUsuario();
+                ControlaItem ControlaIt = new ControlaItem();
                 ConstruirEF cf = new ConstruirEF();
-                NSAADMEntities n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+                
                 ML_Order ord = new ML_Order();
 
 
@@ -563,6 +592,11 @@ namespace ServidorWeb.ML.Classes
                     oi.quantity = item.quantity;
                     oi.unit_price = item.unit_price;
 
+                    ML_Item mitem = ControlaIt.RetonarItem(o.order_items[0].item.id, n);
+                    if (mitem == null)
+                    {
+
+                    }
                     //oi.ML_Item = ConverteItem(o.order_items[0].item);
 
                     ord.ML_OrderItem.Add(oi);
@@ -646,8 +680,7 @@ namespace ServidorWeb.ML.Classes
 
 
         }
-        
-        
+
         public ML_Usuario ConverteUsuario2(Usuario us)
         {
 
@@ -781,8 +814,41 @@ namespace ServidorWeb.ML.Classes
 
 
         }
+
+
+        public ML_Item ConverteItem2(Item i, NSAADMEntities n1)
+        {
+            ML_Item it = new ML_Item();
+
+
+            try
+            {
+                it = (from p in n1.ML_Item where p.id == i.id select p).First();
+                return it;
+
+            }
+            catch (InvalidOperationException)
+            {
+
+                it.id = i.id;
+                it.title = i.title;
+                it.variation_id = i.variation_id;
+
+                n1.ML_Item.AddObject(it);
+                n1.SaveChanges();
+
+                return it;
+
+            }
+
+
+
+        }
+
         
-        
-        #endregion
+    
+    
     }
+        #endregion
+    
 }
