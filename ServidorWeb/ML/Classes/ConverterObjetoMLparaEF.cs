@@ -522,114 +522,267 @@ namespace ServidorWeb.ML.Classes
             }
         }
 
-        //public ML_Order ConverteOrdem(Order o)
-        //{
+        public ML_Order ConverteOrdem2(Order o)
+        {
 
-        //    try
-        //    {
+            try
+            {
 
-        //        //CONVERTENDO COMPRADOR E VENDEDOR
-        //        ML_Usuario buy = ConverteUsuario(o.buyer);
-        //        ML_Usuario sel = ConverteUsuario(o.seller);
-
-
-        //        ML_Order ord = new ML_Order();
-        //        //ITENS DA ORDEM
-        //        ML_OrderItem oi;
-        //        foreach (OrderItem item in o.order_items)
-        //        {
-        //            oi = new ML_OrderItem();
-        //            oi.currency_id = item.currency_id;
-        //            oi.quantity = item.quantity;
-        //            oi.unit_price = item.unit_price;
-
-        //            oi.ML_Item = ConverteItem(o.order_items[0].item);
-
-        //            ord.ML_OrderItem.Add(oi);
-        //        }
-
-
-        //        ML_Payment pa;
-        //        foreach (Payment p in o.payments)
-        //        {
-        //            pa = new ML_Payment();
-        //            pa.currency_id = p.currency_id;
-        //            pa.date_created = p.date_created;
-        //            pa.date_last_updated = p.date_last_updated;
-        //            pa.status = p.status;
-        //            pa.transaction_amount = p.transaction_amount;
-
-        //            pa.id = p.id;
-
-        //            n.ML_Payment.AddObject(pa);
-
-        //            ord.ML_Payment.Add(pa);
-
-
-        //        }
-
-
-        //        if (o.feedback != null)
-        //        {
-        //            if (o.feedback.purchase != null)
-        //            {
-        //                ML_FeedbackBuyer feeb = new ML_FeedbackBuyer();
-        //                feeb.date_created = o.feedback.purchase.date_created;
-        //                feeb.fulfilled = o.feedback.purchase.fulfilled.ToString();
-        //                feeb.rating = o.feedback.purchase.rating;
-        //                feeb.id_order = o.id;
-
-        //                n.ML_FeedbackBuyer.AddObject(feeb);
-
-        //                ord.ML_FeedbackBuyer.Add(feeb);
-
-        //            }
-
-        //            if (o.feedback != null)
-        //            {
-        //                if (o.feedback.sale != null)
-        //                {
-        //                    ML_FeedbackSeller fees = new ML_FeedbackSeller();
-        //                    fees.date_created = o.feedback.sale.date_created;
-        //                    fees.fulfilled = o.feedback.sale.fulfilled.ToString();
-        //                    fees.rating = o.feedback.sale.rating;
-        //                    fees.id_order = o.id;
-
-        //                    n.ML_FeedbackSeller.AddObject(fees);
-
-        //                    ord.ML_FeedbackSeller.Add(fees);
-        //                }
-        //            }
-
-
-        //        }
+                ControlaUsuario ControlaUsu = new ControlaUsuario();
+                ConstruirEF cf = new ConstruirEF();
+                NSAADMEntities n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
+                ML_Order ord = new ML_Order();
 
 
 
-        //        ord.ML_Usuario = sel;
-        //        ord.ML_Usuario1 = buy;
+                //CONVERTENDO COMPRADOR E VENDEDOR
+                ML_Usuario buy = ControlaUsu.RetonarUsuario(o.buyer.id, n);
+                if (buy == null)
+                {
+                    buy = ConverteUsuario2(o.buyer);
+                }
 
-        //        //DADOS DA ORDEM
-        //        ord.id = o.id;
-        //        ord.currency_id = o.currency_id;
-        //        ord.date_closed = o.date_closed;
-        //        ord.date_created = o.date_created;
-        //        ord.status = o.status;
-        //        //ord.status_detail = o.status_detail.description;
-        //        ord.total_amount = o.total_amount;
+                ML_Usuario sel = ControlaUsu.RetonarUsuario(o.seller.id, n);
+                if (sel == null)
+                {
+                    sel = ConverteUsuario2(o.seller);
+                }
 
-        //        return ord;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw new Exception("Erro na rotina de ConverteOrdem.", ex);
-        //    }
+                ord.ML_Usuario = sel;
+                ord.ML_Usuario1 = buy;
 
 
 
-        //}
+                
+                //ITENS DA ORDEM
+                ML_OrderItem oi;
+                foreach (OrderItem item in o.order_items)
+                {
+                    oi = new ML_OrderItem();
+                    oi.currency_id = item.currency_id;
+                    oi.quantity = item.quantity;
+                    oi.unit_price = item.unit_price;
+
+                    //oi.ML_Item = ConverteItem(o.order_items[0].item);
+
+                    ord.ML_OrderItem.Add(oi);
+                }
+
+
+                ML_Payment pa;
+                foreach (Payment p in o.payments)
+                {
+                    pa = new ML_Payment();
+                    pa.currency_id = p.currency_id;
+                    pa.date_created = p.date_created;
+                    pa.date_last_updated = p.date_last_updated;
+                    pa.status = p.status;
+                    pa.transaction_amount = p.transaction_amount;
+
+                    pa.id = p.id;
+
+
+                    ord.ML_Payment.Add(pa);
+
+
+                }
+
+
+                if (o.feedback != null)
+                {
+                    if (o.feedback.purchase != null)
+                    {
+                        ML_FeedbackBuyer feeb = new ML_FeedbackBuyer();
+                        feeb.date_created = o.feedback.purchase.date_created;
+                        feeb.fulfilled = o.feedback.purchase.fulfilled.ToString();
+                        feeb.rating = o.feedback.purchase.rating;
+                        feeb.id_order = o.id;
+
+
+                        ord.ML_FeedbackBuyer.Add(feeb);
+
+                    }
+
+                    if (o.feedback != null)
+                    {
+                        if (o.feedback.sale != null)
+                        {
+                            ML_FeedbackSeller fees = new ML_FeedbackSeller();
+                            fees.date_created = o.feedback.sale.date_created;
+                            fees.fulfilled = o.feedback.sale.fulfilled.ToString();
+                            fees.rating = o.feedback.sale.rating;
+                            fees.id_order = o.id;
+
+
+                            ord.ML_FeedbackSeller.Add(fees);
+                        }
+                    }
+
+
+                }
+
+
+
+
+
+                //DADOS DA ORDEM
+                ord.id = o.id;
+                ord.currency_id = o.currency_id;
+                ord.date_closed = o.date_closed;
+                ord.date_created = o.date_created;
+                ord.status = o.status;
+                //ord.status_detail = o.status_detail.description;
+                ord.total_amount = o.total_amount;
+
+                return ord;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na rotina de ConverteOrdem.", ex);
+            }
+
+
+
+        }
+        
+        
+        public ML_Usuario ConverteUsuario2(Usuario us)
+        {
+
+
+            //DADOS DA BASE DA CLASSE
+            ML_Usuario u = new ML_Usuario();
+
+
+            try
+            {
+
+
+
+                u.country_id = us.country_id;
+                u.email = us.email;
+                u.first_name = us.first_name;
+                u.id = us.id;
+                u.last_name = us.last_name;
+                u.logo = us.logo;
+                u.nickname = us.nickname;
+                u.permalink = us.permalink;
+                u.points = us.points;
+                //u.registration_date = us.registration_date;
+                u.seller_experience = us.seller_experience;
+                u.site_id = us.site_id;
+                u.user_type = us.user_type;
+
+
+                //IDENTIFICAÇÃO USUARIO
+                if (us.identification != null)
+                {
+                    ML_Identification ident = new ML_Identification();
+                    ident.number = us.identification.number;
+                    ident.type = us.identification.type;
+                    u.ML_Identification.Add(ident);
+                }
+
+                if (us.billing_info != null)
+                {
+                    ML_Identification ident = new ML_Identification();
+                    ident.type = us.billing_info.doc_type;
+                    ident.number = us.billing_info.doc_number;
+                    u.ML_Identification.Add(ident);
+                }
+
+
+                if (us.phone != null)
+                {
+                    //TELEFONES
+                    ML_Phone pho = new ML_Phone();
+                    pho.area_code = us.phone.area_code;
+                    pho.extension = us.phone.extension;
+                    pho.number = us.phone.number;
+                    pho.varified = us.phone.verified.ToString();
+                    u.ML_Phone.Add(pho);
+
+                    if (us.alternative_phone != null)
+                    {
+                        pho = new ML_Phone();
+                        pho.area_code = us.alternative_phone.area_code;
+                        pho.extension = us.alternative_phone.extension;
+                        pho.number = us.alternative_phone.number;
+                        u.ML_Phone.Add(pho);
+                    }
+                }
+
+                //TRATANDO REPUTAÇÃO DE VENDEDOR
+                if (us.seller_reputation != null)
+                {
+                    ML_SellerReputation sr = new ML_SellerReputation();
+                    sr.power_seller_status = us.seller_reputation.power_seller_status;
+                    sr.level_id = us.seller_reputation.level_id;
+                    u.ML_SellerReputation.Add(sr);
+
+                    ML_TransactionsSeller ts = new ML_TransactionsSeller();
+                    ts.canceled = us.seller_reputation.transactions.canceled;
+                    ts.completed = us.seller_reputation.transactions.completed;
+                    ts.period = us.seller_reputation.transactions.period;
+                    ts.total = us.seller_reputation.transactions.total;
+                    ts.ML_SellerReputation = sr;
+                    sr.ML_TransactionsSeller.Add(ts);
+
+                    ML_Ratings rt = new ML_Ratings();
+                    rt.ML_TransactionsSeller = ts;
+                    rt.negative = us.seller_reputation.transactions.ratings.negative;
+                    rt.neutral = us.seller_reputation.transactions.ratings.neutral;
+                    rt.positive = us.seller_reputation.transactions.ratings.positive;
+                    ts.ML_Ratings.Add(rt);
+                }
+
+
+                //TRATANDO REPUTAÇÃO COMPRADOR
+                if (us.buyer_reputation != null)
+                {
+                    ML_BuyerReputation mb = new ML_BuyerReputation();
+                    mb.canceled_transactions = us.buyer_reputation.canceled_transactions;
+                    u.ML_BuyerReputation.Add(mb);
+
+                    ML_TransactionsBuyer tb = new ML_TransactionsBuyer();
+                    tb.completed = us.buyer_reputation.transactions.completed;
+                    tb.period = us.buyer_reputation.transactions.period;
+                    tb.total = us.buyer_reputation.transactions.total;
+                    tb.ML_BuyerReputation = mb;
+
+                    ML_ResumoTransBuyer canceled = new ML_ResumoTransBuyer();
+                    canceled.paid = us.buyer_reputation.transactions.canceled.paid;
+                    canceled.total = us.buyer_reputation.transactions.canceled.total;
+                    canceled.units = us.buyer_reputation.transactions.canceled.units;
+                    tb.ML_ResumoTransBuyer2 = canceled;
+
+                    ML_ResumoTransBuyer unrated = new ML_ResumoTransBuyer();
+                    unrated.paid = us.buyer_reputation.transactions.unrated.paid;
+                    unrated.total = us.buyer_reputation.transactions.unrated.total;
+                    unrated.units = us.buyer_reputation.transactions.unrated.units;
+                    tb.ML_ResumoTransBuyer1 = unrated;
+
+                    ML_ResumoTransBuyer not_yet_rated = new ML_ResumoTransBuyer();
+                    not_yet_rated.paid = us.buyer_reputation.transactions.not_yet_rated.paid;
+                    not_yet_rated.total = us.buyer_reputation.transactions.not_yet_rated.total;
+                    not_yet_rated.units = us.buyer_reputation.transactions.not_yet_rated.units;
+                    tb.ML_ResumoTransBuyer = not_yet_rated;
+                }
+
+
+                return u;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina ConverteUsuario2.", ex);
+            }
+
+
+        }
+        
+        
         #endregion
     }
 }
