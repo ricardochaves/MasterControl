@@ -152,6 +152,86 @@ namespace ServidorWeb.PgBot
 
             return l;
         }
+        public List<BotItemEstoque> RetornaGrupoGemas()
+        {
+            List<BotItemEstoque> l = new List<BotItemEstoque>();
+
+            BotWoWEntities n = new BotWoWEntities();
+            BotWoWEntities n1 = new BotWoWEntities();
+
+            var a = (from i in n.Items
+                     join
+                         isp in n.SpellItems on i.id equals isp.idItem
+                     join
+                         est in n.Estoques on isp.idItem equals est.idItem
+                     where i.itemClass == 3 && est.Qtd < 10
+                           && est.dtFabricado < est.dtAtualizado
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (10 - est.Qtd), nome = est.NomePersonagem });
+
+            foreach (var item in a)
+            {
+                BotItemEstoque b = new BotItemEstoque();
+                b.itemID = (int)item.idItem;
+                b.Personagem = item.nome;
+                b.Qtd = (int)item.qtd;
+                b.SpellQueCriaOItem = (int)item.idSpell;
+                l.Add(b);
+
+
+                var x = (from p in n1.Estoques where p.idItem == item.idItem && p.NomePersonagem == item.nome select p).First();
+                x.dtFabricado = DateTime.Now;
+                n1.SaveChanges();
+
+            }
+
+            return l;
+        }
+
+        public List<BotItemEstoque> RetornaItensEnchantInscr(string Real, string Faccao)
+        {
+
+            List<BotItemEstoque> l = new List<BotItemEstoque>();
+            List<decimal> IDs = new List<decimal>();
+
+            const int VALOR_EM_ESTOQUE = 18;
+
+            IDs.Add(87559);
+            IDs.Add(87560);
+            IDs.Add(83007);
+            IDs.Add(83006);
+
+            BotWoWEntities n = new BotWoWEntities();
+            BotWoWEntities n1 = new BotWoWEntities();
+
+            var a = (from i in n.Items
+                     join
+                         isp in n.SpellItems on i.id equals isp.idItem
+                     join
+                         est in n.Estoques on isp.idItem equals est.idItem
+                     where IDs.Any(x => x == i.id)
+                           && est.Qtd < VALOR_EM_ESTOQUE
+                           && est.dtFabricado < est.dtAtualizado
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (VALOR_EM_ESTOQUE - est.Qtd), nome = est.NomePersonagem });
+
+            foreach (var item in a)
+            {
+                BotItemEstoque b = new BotItemEstoque();
+                b.itemID = (int)item.idItem;
+                b.Personagem = item.nome;
+                b.Qtd = (int)item.qtd;
+                b.SpellQueCriaOItem = (int)item.idSpell;
+                l.Add(b);
+
+
+                var x = (from p in n1.Estoques where p.idItem == item.idItem && p.NomePersonagem == item.nome select p).First();
+                x.dtFabricado = DateTime.Now;
+                n1.SaveChanges();
+
+            }
+
+            return l;
+
+        }
 
         public void PegarSpelleItem(decimal spell, decimal item)
         {
