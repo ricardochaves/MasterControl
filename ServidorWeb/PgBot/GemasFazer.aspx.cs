@@ -10,21 +10,43 @@ namespace ServidorWeb.PgBot
 {
     public partial class GemasFazer : System.Web.UI.Page
     {
+        BotWoWEntities n = new BotWoWEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            BotWoWEntities n = new BotWoWEntities();
+            
 
+            if (!Page.IsPostBack)
+            {
+                DropDownList1.Items.Clear();
+                var nomes = n.Estoques.Select(m => m.NomePersonagem).Distinct();
+
+                foreach (string item in nomes)
+                {
+                    DropDownList1.Items.Add(new ListItem(item));
+                }
+
+            }
+
+
+            
+
+
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            var nome = DropDownList1.SelectedItem.ToString();
             var x = (from p in n.Estoques
                      join i in n.Items on p.idItem equals i.id
-                     where p.NomePersonagem == "Goldaqui" && i.itemClass == 3
-                     select new { Nome = i.Desc, Qtd = p.Qtd, Cor = i.itemSubClass, Valor = (i.ValorMinnaAH/10000) }
+                     where p.NomePersonagem == nome && i.itemClass == 3
+                     select new { Nome = i.Desc, Qtd = p.Qtd, Cor = i.itemSubClass, Valor = (i.ValorMinnaAH / 10000) }
                      );
-            
+
             GridView1.DataSource = x.OrderBy(z => z.Valor);
             GridView1.DataBind();
-
-
         }
     }
 }

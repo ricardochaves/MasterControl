@@ -102,9 +102,9 @@ namespace ServidorWeb.ML.Paginas
         {
             Session["pagina"] = "InicioML.aspx";
 
-            m = new Meli(AplicacaoML.RetornaIDAplicacaoML(), AplicacaoML.RetornaKeyAplicacaoML());
+            //m = new Meli(AplicacaoML.RetornaIDAplicacaoML(), AplicacaoML.RetornaKeyAplicacaoML());
 
-            Response.Redirect(m.GetAuthUrl(AplicacaoML.RetornaURLLoginAplicacaoML()));
+            //Response.Redirect(m.GetAuthUrl(AplicacaoML.RetornaURLLoginAplicacaoML()));
 
 
 

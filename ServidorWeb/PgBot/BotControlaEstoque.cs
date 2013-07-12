@@ -133,6 +133,7 @@ namespace ServidorWeb.PgBot
                            && est.dtFabricado < est.dtAtualizado
                            && i.ValorMinnaAH > 299999
                      select new { idItem = i.id, idSpell = isp.idSpell, qtd = (10 - est.Qtd) });
+          
 
             foreach (var item in a)
             {
@@ -170,6 +171,7 @@ namespace ServidorWeb.PgBot
 
             foreach (var item in a)
             {
+
                 BotItemEstoque b = new BotItemEstoque();
                 b.itemID = (int)item.idItem;
                 b.Personagem = item.nome;

@@ -182,6 +182,7 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ML\Classes\AplicacaoML.cs" />
     <Compile Include="ML\Classes\Classes.cs" />
     <Compile Include="ML\Classes\ConstruirEF.cs" />
     <Compile Include="ML\Classes\ControlaCallBack.cs" />
