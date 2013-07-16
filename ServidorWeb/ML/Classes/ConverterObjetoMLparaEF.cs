@@ -560,7 +560,7 @@ namespace ServidorWeb.ML.Classes
                 ControlaItem ControlaIt = new ControlaItem();
                 ControlaEndereco ControlEnd = new ControlaEndereco();
                 ConstruirEF cf = new ConstruirEF();
-
+                
                 ML_Order ord = new ML_Order();
 
 
@@ -583,7 +583,7 @@ namespace ServidorWeb.ML.Classes
 
 
 
-
+                
                 //ITENS DA ORDEM
                 ML_OrderItem oi;
                 foreach (OrderItem item in o.order_items)
@@ -598,7 +598,7 @@ namespace ServidorWeb.ML.Classes
                     {
                         mitem = ConverteItem2(o.order_items[0].item);
                     }
-
+                    
                     oi.ML_Item = mitem;
                     ord.ML_OrderItem.Add(oi);
                 }
@@ -671,7 +671,7 @@ namespace ServidorWeb.ML.Classes
                 if (o.shipping.receiver_address != null)
                 {
                     ML_ReceiverAddress rc = new ML_ReceiverAddress();
-                    rc.address_line = o.shipping.receiver_address.address_line;
+                    rc.address_line = o.shipping.receiver_address.address_line ;
                     rc.comment = o.shipping.receiver_address.comment;
                     rc.ID = Convert.ToDecimal(o.shipping.receiver_address.id.ToString());
                     //rc.latitude = o.shipping.receiver_address.latitude.ToString(); Todos vem Null
@@ -679,12 +679,12 @@ namespace ServidorWeb.ML.Classes
                     rc.zip_code = o.shipping.receiver_address.zip_code;
 
 
-                    rc.ML_State = ControlEnd.RetonarStado(Convert.ToDecimal(o.shipping.receiver_address.state.id), n);
+                    rc.ML_State = ControlEnd.RetonarStado(o.shipping.receiver_address.state.id, n);
                     if (rc.ML_State == null)
                     {
                         rc.ML_State = ConverteState(o.shipping.receiver_address.state);
                     }
-
+                    
                     rc.ML_City = ControlEnd.RetonarCidade(Convert.ToDecimal(o.shipping.receiver_address.city.id), n);
                     if (rc.ML_City == null)
                     {
@@ -696,11 +696,11 @@ namespace ServidorWeb.ML.Classes
                     {
                         rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
                     }
-
-
+                    
+                    
                     s.ML_ReceiverAddress = rc;
                 }
-
+                
                 ord.ML_Shipping.Add(s);
 
 
@@ -892,7 +892,7 @@ namespace ServidorWeb.ML.Classes
             try
             {
 
-                st.id = Convert.ToDecimal(s.id);
+                st.id = s.id;
                 st.name = s.name;
 
                 return st;
@@ -944,9 +944,9 @@ namespace ServidorWeb.ML.Classes
 
             }
         }
-
-
+    
+    
     }
         #endregion
-
+    
 }
