@@ -912,7 +912,7 @@ namespace ServidorWeb.ML.Classes
             try
             {
 
-                st.id = Convert.ToDecimal(s.id);
+                st.id = s.id;
                 st.name = s.name;
 
                 return st;
@@ -932,7 +932,7 @@ namespace ServidorWeb.ML.Classes
             try
             {
 
-                st.id = Convert.ToDecimal(s.id);
+                st.id = s.id;
                 st.name = s.name;
 
                 return st;
