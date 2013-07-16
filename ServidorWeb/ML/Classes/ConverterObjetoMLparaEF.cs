@@ -688,7 +688,7 @@ namespace ServidorWeb.ML.Classes
                     rc.ML_City = ControlEnd.RetonarCidade(o.shipping.receiver_address.city.id, n);
                     if (rc.ML_City == null)
                     {
-                        rc.ML_City = ConverteCity(o.shipping.receiver_address.state);
+                        rc.ML_City = ConverteCity(o.shipping.receiver_address.city);
                     }
 
                     rc.ML_Country = ControlEnd.RetonarPais(o.shipping.receiver_address.country.id, n);
@@ -904,7 +904,7 @@ namespace ServidorWeb.ML.Classes
 
             }
         }
-        public ML_City ConverteCity(State s)
+        public ML_City ConverteCity(City s)
         {
             ML_City st = new ML_City();
 
