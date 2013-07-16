@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,112 +33,38 @@ namespace ServidorWeb.ML.Paginas
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
             try
             {
+
+                int cont = 0;
+                WSNerdMoney.NerdMoney w = new WSNerdMoney.NerdMoney();
+                ConstruirEF cef = new ConstruirEF();
+                NSAADMEntities n = (NSAADMEntities)cef.RecuperaEntity(Entities.MercadoLivre);
+                ConverterObjetoMLparaEF cf = new ConverterObjetoMLparaEF();
                 Usuario u = cm.RetornaUsuario();
-
                 ConverterObjetoMLparaEF c = new ConverterObjetoMLparaEF();
+                ListOrder o;
 
-                ListOrder o = cm.RetornarOrdens(u, 0);
-
-                foreach (Order or in o.results)
+                do
                 {
-                    try
-                    {
-                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                        c.AtualizaOrdem(orde, or, cm.n);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        c.ConverteOrdem(or, cm.n);
-                    }
+                    o = cm.RetornarOrdens(u, cont);
+                    cont = o.results.Count + cont;
 
-                }
-
-
-                o = cm.RetornarOrdens(u, 50);
-
-                foreach (Order or in o.results)
-                {
-                    try
+                    foreach (Order or in o.results)
                     {
-                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                        c.AtualizaOrdem(orde, or, cm.n);
+                        ML_Order teste =  cf.ConverteOrdem2(or, n);
+                        n.ML_Order.AddObject(teste);
+                        n.SaveChanges();
                     }
-                    catch (InvalidOperationException)
-                    {
-                        c.ConverteOrdem(or, cm.n);
-                    }
-                }
-
-                o = cm.RetornarOrdens(u, 100);
-
-                foreach (Order or in o.results)
-                {
-                    try
-                    {
-                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                        c.AtualizaOrdem(orde, or, cm.n);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        c.ConverteOrdem(or, cm.n);
-                    }
-                }
-
-                o = cm.RetornarOrdens(u, 150);
-
-                foreach (Order or in o.results)
-                {
-                    try
-                    {
-                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                        c.AtualizaOrdem(orde, or, cm.n);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        c.ConverteOrdem(or, cm.n);
-                    }
-                }
-
-                o = cm.RetornarOrdens(u, 200);
-
-                foreach (Order or in o.results)
-                {
-                    try
-                    {
-                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                        c.AtualizaOrdem(orde, or, cm.n);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        c.ConverteOrdem(or, cm.n);
-                    }
-                }
-
-                o = cm.RetornarOrdens(u, 250);
-
-                foreach (Order or in o.results)
-                {
-                    try
-                    {
-                        ML_Order orde = (from p in cm.n.ML_Order where p.id == or.id select p).First();
-                        c.AtualizaOrdem(orde, or, cm.n);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        c.ConverteOrdem(or, cm.n);
-                    }
-                }
+                } while (o.results.Count == 50);
+     
 
             }
             catch (Exception ex)
             {
-
-                throw new Exception("Erro no rotina Button1_Click.", ex);
+                
+                throw new Exception("Erro na rotina Button1_Click",ex);
             }
-
         }
     }
 }
