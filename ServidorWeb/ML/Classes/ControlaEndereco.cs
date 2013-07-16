@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +15,8 @@ namespace ServidorWeb.ML.Classes
         /// <param name="u">ID do Estado usado na pesquisa</param>
         /// <param name="n">Objeto NSAADMEntities onde vai ser pesquisado</param>
         /// <returns>Retorna o objeto ML_State casdastrado no EF</returns>
-        public ML_State RetonarStado(decimal ID, NSAADMEntities n)
-        {
-            try
+        public ML_State RetonarStado(string ID, NSAADMEntities n)
+        {            try
             {
                 ML_State m;
                 m = (from p in n.ML_State where p.id == ID select p).FirstOrDefault();
