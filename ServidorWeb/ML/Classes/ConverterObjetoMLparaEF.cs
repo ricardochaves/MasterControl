@@ -656,53 +656,55 @@ namespace ServidorWeb.ML.Classes
 
                 }
 
-                //IMPLEMENTAR ENDERECO
-                ML_Shipping s = new ML_Shipping();
-                s.cost = o.shipping.cost;
-                s.currency_id = o.shipping.currency_id;
-                if (o.shipping.date_created != null)
+                if (o.shipping.id != null)
                 {
-                    s.date_created = Convert.ToDateTime(o.shipping.date_created);
+                    //IMPLEMENTAR ENDERECO
+                    ML_Shipping s = new ML_Shipping();
+                    s.cost = o.shipping.cost;
+                    s.currency_id = o.shipping.currency_id;
+                    if (o.shipping.date_created != null)
+                    {
+                        s.date_created = Convert.ToDateTime(o.shipping.date_created);
+                    }
+                    s.id = Convert.ToDecimal(o.shipping.id);
+                    s.shipment_type = o.shipping.shipment_type;
+                    s.status = o.shipping.status;
+
+                    if (o.shipping.receiver_address != null)
+                    {
+                        ML_ReceiverAddress rc = new ML_ReceiverAddress();
+                        rc.address_line = o.shipping.receiver_address.address_line;
+                        rc.comment = o.shipping.receiver_address.comment;
+                        rc.ID = Convert.ToDecimal(o.shipping.receiver_address.id.ToString());
+                        //rc.latitude = o.shipping.receiver_address.latitude.ToString(); Todos vem Null
+                        //rc.longitude = o.shipping.receiver_address.longitude.ToString();
+                        rc.zip_code = o.shipping.receiver_address.zip_code;
+
+
+                        rc.ML_State = ControlEnd.RetonarStado(o.shipping.receiver_address.state.id, n);
+                        if (rc.ML_State == null && o.shipping.receiver_address.state.id != null)
+                        {
+                            rc.ML_State = ConverteState(o.shipping.receiver_address.state);
+                        }
+
+                        rc.ML_City = ControlEnd.RetonarCidade(o.shipping.receiver_address.city.id, n);
+                        if (rc.ML_City == null && o.shipping.receiver_address.city.id != null)
+                        {
+                            rc.ML_City = ConverteCity(o.shipping.receiver_address.city);
+                        }
+
+                        rc.ML_Country = ControlEnd.RetonarPais(o.shipping.receiver_address.country.id, n);
+                        if (rc.ML_Country == null && o.shipping.receiver_address.country.id != null)
+                        {
+                            rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
+                        }
+
+
+                        s.ML_ReceiverAddress = rc;
+                    }
+
+                    ord.ML_Shipping.Add(s);
                 }
-                s.id = Convert.ToDecimal(o.shipping.id);
-                s.shipment_type = o.shipping.shipment_type;
-                s.status = o.shipping.status;
-
-                if (o.shipping.receiver_address != null)
-                {
-                    ML_ReceiverAddress rc = new ML_ReceiverAddress();
-                    rc.address_line = o.shipping.receiver_address.address_line ;
-                    rc.comment = o.shipping.receiver_address.comment;
-                    rc.ID = Convert.ToDecimal(o.shipping.receiver_address.id.ToString());
-                    //rc.latitude = o.shipping.receiver_address.latitude.ToString(); Todos vem Null
-                    //rc.longitude = o.shipping.receiver_address.longitude.ToString();
-                    rc.zip_code = o.shipping.receiver_address.zip_code;
-
-
-                    rc.ML_State = ControlEnd.RetonarStado(o.shipping.receiver_address.state.id, n);
-                    if (rc.ML_State == null)
-                    {
-                        rc.ML_State = ConverteState(o.shipping.receiver_address.state);
-                    }
-                    
-                    rc.ML_City = ControlEnd.RetonarCidade(o.shipping.receiver_address.city.id, n);
-                    if (rc.ML_City == null)
-                    {
-                        rc.ML_City = ConverteCity(o.shipping.receiver_address.city);
-                    }
-
-                    rc.ML_Country = ControlEnd.RetonarPais(o.shipping.receiver_address.country.id, n);
-                    if (rc.ML_Country == null)
-                    {
-                        rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
-                    }
-                    
-                    
-                    s.ML_ReceiverAddress = rc;
-                }
-                
-                ord.ML_Shipping.Add(s);
-
 
 
                 //DADOS DA ORDEM
