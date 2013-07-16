@@ -35,7 +35,7 @@ namespace ServidorWeb.ML.Classes
         /// <param name="u">ID da Cidade usado na pesquisa</param>
         /// <param name="n">Objeto NSAADMEntities onde vai ser pesquisado</param>
         /// <returns>Retorna o objeto ML_City casdastrado no EF</returns>
-        public ML_City RetonarCidade(decimal ID, NSAADMEntities n)
+        public ML_City RetonarCidade(string ID, NSAADMEntities n)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace ServidorWeb.ML.Classes
         /// <param name="u">ID da País usado na pesquisa</param>
         /// <param name="n">Objeto NSAADMEntities onde vai ser pesquisado</param>
         /// <returns>Retorna o objeto ML_Country casdastrado no EF</returns>
-        public ML_Country RetonarPais(decimal ID, NSAADMEntities n)
+        public ML_Country RetonarPais(string ID, NSAADMEntities n)
         {
             try
             {
