@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDK", "SDK\SDK.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Financeiro", "Financeiro\Financeiro.csproj", "{79FB97BD-3D54-480E-BEB7-90D76683EFDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBCAH", "RBCAH\RBCAH.csproj", "{BBD029C8-F521-4720-AB2D-0655AE1DF021}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,16 +59,6 @@ Global
 		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{79FB97BD-3D54-480E-BEB7-90D76683EFDD}.Release|x86.ActiveCfg = Release|Any CPU
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Debug|x86.ActiveCfg = Debug|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Debug|x86.Build.0 = Debug|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|Any CPU.ActiveCfg = Release|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|Mixed Platforms.Build.0 = Release|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|x86.ActiveCfg = Release|x86
-		{BBD029C8-F521-4720-AB2D-0655AE1DF021}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

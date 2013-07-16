@@ -558,8 +558,9 @@ namespace ServidorWeb.ML.Classes
 
                 ControlaUsuario ControlaUsu = new ControlaUsuario();
                 ControlaItem ControlaIt = new ControlaItem();
+                ControlaEndereco ControlEnd = new ControlaEndereco();
                 ConstruirEF cf = new ConstruirEF();
-                
+
                 ML_Order ord = new ML_Order();
 
 
@@ -582,7 +583,7 @@ namespace ServidorWeb.ML.Classes
 
 
 
-                
+
                 //ITENS DA ORDEM
                 ML_OrderItem oi;
                 foreach (OrderItem item in o.order_items)
@@ -595,10 +596,10 @@ namespace ServidorWeb.ML.Classes
                     ML_Item mitem = ControlaIt.RetonarItem(o.order_items[0].item.id, n);
                     if (mitem == null)
                     {
-
+                        mitem = ConverteItem2(o.order_items[0].item);
                     }
-                    //oi.ML_Item = ConverteItem(o.order_items[0].item);
 
+                    oi.ML_Item = mitem;
                     ord.ML_OrderItem.Add(oi);
                 }
 
@@ -655,7 +656,52 @@ namespace ServidorWeb.ML.Classes
 
                 }
 
+                //IMPLEMENTAR ENDERECO
+                ML_Shipping s = new ML_Shipping();
+                s.cost = o.shipping.cost;
+                s.currency_id = o.shipping.currency_id;
+                if (o.shipping.date_created != null)
+                {
+                    s.date_created = Convert.ToDateTime(o.shipping.date_created);
+                }
+                s.id = Convert.ToDecimal(o.shipping.id);
+                s.shipment_type = o.shipping.shipment_type;
+                s.status = o.shipping.status;
 
+                if (o.shipping.receiver_address != null)
+                {
+                    ML_ReceiverAddress rc = new ML_ReceiverAddress();
+                    rc.address_line = o.shipping.receiver_address.address_line;
+                    rc.comment = o.shipping.receiver_address.comment;
+                    rc.ID = Convert.ToDecimal(o.shipping.receiver_address.id.ToString());
+                    //rc.latitude = o.shipping.receiver_address.latitude.ToString(); Todos vem Null
+                    //rc.longitude = o.shipping.receiver_address.longitude.ToString();
+                    rc.zip_code = o.shipping.receiver_address.zip_code;
+
+
+                    rc.ML_State = ControlEnd.RetonarStado(Convert.ToDecimal(o.shipping.receiver_address.state.id), n);
+                    if (rc.ML_State == null)
+                    {
+                        rc.ML_State = ConverteState(o.shipping.receiver_address.state);
+                    }
+
+                    rc.ML_City = ControlEnd.RetonarCidade(Convert.ToDecimal(o.shipping.receiver_address.city.id), n);
+                    if (rc.ML_City == null)
+                    {
+                        rc.ML_City = ConverteCity(o.shipping.receiver_address.state);
+                    }
+
+                    rc.ML_Country = ControlEnd.RetonarPais(Convert.ToDecimal(o.shipping.receiver_address.country.id), n);
+                    if (rc.ML_Country == null)
+                    {
+                        rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
+                    }
+
+
+                    s.ML_ReceiverAddress = rc;
+                }
+
+                ord.ML_Shipping.Add(s);
 
 
 
@@ -814,41 +860,93 @@ namespace ServidorWeb.ML.Classes
 
 
         }
-
-
-        public ML_Item ConverteItem2(Item i, NSAADMEntities n1)
+        public ML_Item ConverteItem2(Item i)
         {
             ML_Item it = new ML_Item();
 
 
             try
             {
-                it = (from p in n1.ML_Item where p.id == i.id select p).First();
-                return it;
-
-            }
-            catch (InvalidOperationException)
-            {
 
                 it.id = i.id;
                 it.title = i.title;
                 it.variation_id = i.variation_id;
 
-                n1.ML_Item.AddObject(it);
-                n1.SaveChanges();
-
                 return it;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina ConverteItem2.", ex);
 
             }
 
 
 
         }
+        public ML_State ConverteState(State s)
+        {
+            ML_State st = new ML_State();
 
-        
-    
-    
+
+            try
+            {
+
+                st.id = Convert.ToDecimal(s.id);
+                st.name = s.name;
+
+                return st;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina ConverteState.", ex);
+
+            }
+        }
+        public ML_City ConverteCity(State s)
+        {
+            ML_City st = new ML_City();
+
+
+            try
+            {
+
+                st.id = Convert.ToDecimal(s.id);
+                st.name = s.name;
+
+                return st;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina ConverteCity.", ex);
+
+            }
+        }
+        public ML_Country ConverteCountry(Country s)
+        {
+            ML_Country st = new ML_Country();
+
+
+            try
+            {
+
+                st.id = Convert.ToDecimal(s.id);
+                st.name = s.name;
+
+                return st;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na rotina ConverteCountry.", ex);
+
+            }
+        }
+
+
     }
         #endregion
-    
+
 }

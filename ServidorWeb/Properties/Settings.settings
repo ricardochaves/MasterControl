@@ -5,5 +5,20 @@
     <Setting Name="URL_Login" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://nerdsa.com.br/ML/Paginas/LoginML.aspx</Value>
     </Setting>
+    <Setting Name="IDAplicacaoML_PRD" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">5971480328026573</Value>
+    </Setting>
+    <Setting Name="IDAplicacaoML_HML" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">204535970023447</Value>
+    </Setting>
+    <Setting Name="SecretKeyML_PRD" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">HvQavElFhrbqlGCaTMWIrtQklsqnwlIM</Value>
+    </Setting>
+    <Setting Name="SecretKeyML_HML" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ELpYd8hEx0z0D9ZbGs87jm20qArSgAzb</Value>
+    </Setting>
+    <Setting Name="URL_Login_HML" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:45506/ML/Paginas/LoginML.aspx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
