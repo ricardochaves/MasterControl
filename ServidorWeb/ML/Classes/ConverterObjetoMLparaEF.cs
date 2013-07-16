@@ -685,13 +685,13 @@ namespace ServidorWeb.ML.Classes
                         rc.ML_State = ConverteState(o.shipping.receiver_address.state);
                     }
                     
-                    rc.ML_City = ControlEnd.RetonarCidade(Convert.ToDecimal(o.shipping.receiver_address.city.id), n);
+                    rc.ML_City = ControlEnd.RetonarCidade(o.shipping.receiver_address.city.id, n);
                     if (rc.ML_City == null)
                     {
                         rc.ML_City = ConverteCity(o.shipping.receiver_address.state);
                     }
 
-                    rc.ML_Country = ControlEnd.RetonarPais(Convert.ToDecimal(o.shipping.receiver_address.country.id), n);
+                    rc.ML_Country = ControlEnd.RetonarPais(o.shipping.receiver_address.country.id, n);
                     if (rc.ML_Country == null)
                     {
                         rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
