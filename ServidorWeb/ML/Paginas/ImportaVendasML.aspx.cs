@@ -44,6 +44,7 @@ namespace ServidorWeb.ML.Paginas
                 Usuario u = cm.RetornaUsuario();
                 ConverterObjetoMLparaEF c = new ConverterObjetoMLparaEF();
                 ListOrder o;
+                ML_Order Ordem;
 
                 do
                 {
@@ -52,8 +53,19 @@ namespace ServidorWeb.ML.Paginas
 
                     foreach (Order or in o.results)
                     {
-                        ML_Order teste =  cf.ConverteOrdem2(or, n);
-                        n.ML_Order.AddObject(teste);
+
+                        Ordem = (from p in n.ML_Order where p.id == or.id select p).FirstOrDefault();
+                        if (Ordem == null)
+                        {
+                            Ordem = cf.ConverteOrdem2(or, n);
+                            
+                        }
+                        else
+                        {
+
+                        }
+
+                        n.ML_Order.AddObject(Ordem);
                         n.SaveChanges();
                     }
                 } while (o.results.Count == 50);
