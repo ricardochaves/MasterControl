@@ -37,7 +37,7 @@ namespace ServidorWeb.ML.Paginas
             {
 
                 int cont = 0;
-                //WSNerdMoney.NerdMoney w = new WSNerdMoney.NerdMoney();
+                WSNerdMoney.NerdMoney w = new WSNerdMoney.NerdMoney();
                 ConstruirEF cef = new ConstruirEF();
                 NSAADMEntities n = (NSAADMEntities)cef.RecuperaEntity(Entities.MercadoLivre);
                 ConverterObjetoMLparaEF cf = new ConverterObjetoMLparaEF();
@@ -57,7 +57,7 @@ namespace ServidorWeb.ML.Paginas
                         Ordem = (from p in n.ML_Order where p.id == or.id select p).FirstOrDefault();
                         if (Ordem == null)
                         {
-                            Ordem = cf.ConverteOrdem2(or, n);
+                            Ordem = cf.ConverteOrdem(or, n);
                             
                         }
                         else
