@@ -940,7 +940,7 @@ namespace ServidorWeb.ML.Classes
             try
             {
 
-                //st.id = s.id;
+                st.id = s.id;
                 st.name = s.name;
 
                 return st;
