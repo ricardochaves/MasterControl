@@ -58,14 +58,13 @@ namespace ServidorWeb.ML.Paginas
                         if (Ordem == null)
                         {
                             Ordem = cf.ConverteOrdem(or, n);
-                            
+                            n.ML_Order.AddObject(Ordem);
                         }
                         else
                         {
-
+                            cf.AtualizaOrdem(Ordem, or, n);
                         }
-
-                        n.ML_Order.AddObject(Ordem);
+                        
                         n.SaveChanges();
                     }
                 } while (o.results.Count == 50);
