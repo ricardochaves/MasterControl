@@ -37,7 +37,7 @@ namespace ServidorWeb.ML.Paginas
             {
 
                 int cont = 0;
-                WSNerdMoney.NerdMoney w = new WSNerdMoney.NerdMoney();
+                //WSNerdMoney.NerdMoney w = new WSNerdMoney.NerdMoney();
                 ConstruirEF cef = new ConstruirEF();
                 NSAADMEntities n = (NSAADMEntities)cef.RecuperaEntity(Entities.MercadoLivre);
                 ConverterObjetoMLparaEF cf = new ConverterObjetoMLparaEF();

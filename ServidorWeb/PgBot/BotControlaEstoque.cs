@@ -95,8 +95,8 @@ namespace ServidorWeb.PgBot
                          est in n.Estoques on isp.idItem equals est.idItem
                      where i.itemClass == 16 && est.Qtd < 5 && est.NomePersonagem == nome
                            && est.dtFabricado < est.dtAtualizado
-                           && i.ValorMinnaAH > 219999
-                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (5 - est.Qtd) });
+                           && i.ValorMinnaAH > 199999
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (7 - est.Qtd) });
 
             foreach (var item in a)
             {
@@ -234,6 +234,47 @@ namespace ServidorWeb.PgBot
             return l;
 
         }
+
+        public List<BotItemEstoque> RetornaItensEnchant(string Real, string Faccao)
+        {
+
+            List<BotItemEstoque> l = new List<BotItemEstoque>();
+       
+            const int VALOR_EM_ESTOQUE = 18;
+
+            BotWoWEntities n = new BotWoWEntities();
+            BotWoWEntities n1 = new BotWoWEntities();
+
+            var a = (from i in n.Items
+                     join
+                         isp in n.SpellItems on i.id equals isp.idItem
+                     join
+                         est in n.Estoques on isp.idItem equals est.idItem
+                     where est.Qtd < VALOR_EM_ESTOQUE
+                           && est.dtFabricado < est.dtAtualizado
+                           && i.itemClass == 0
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (VALOR_EM_ESTOQUE - est.Qtd), nome = est.NomePersonagem });
+
+            foreach (var item in a)
+            {
+                BotItemEstoque b = new BotItemEstoque();
+                b.itemID = (int)item.idItem;
+                b.Personagem = item.nome;
+                b.Qtd = (int)item.qtd;
+                b.SpellQueCriaOItem = (int)item.idSpell;
+                l.Add(b);
+
+
+                var x = (from p in n1.Estoques where p.idItem == item.idItem && p.NomePersonagem == item.nome select p).First();
+                x.dtFabricado = DateTime.Now;
+                n1.SaveChanges();
+
+            }
+
+            return l;
+
+        }
+
 
         public void PegarSpelleItem(decimal spell, decimal item)
         {

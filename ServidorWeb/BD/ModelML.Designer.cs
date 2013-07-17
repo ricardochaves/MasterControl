@@ -18,9 +18,17 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_Caixa_categoria", "categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.categoria), "Caixa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Caixa), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_Caixa_TipoCaixa", "TipoCaixa", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.TipoCaixa), "Caixa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Caixa), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_venda_cliente", "cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.cliente), "venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.venda), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_item_produto", "produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.produto), "item", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.item), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_venda_item", "item", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.item), "venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.venda), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_LojaProduto_loja", "Loja", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Loja), "LojaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.LojaProduto), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_LojaProduto_produto", "produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.produto), "LojaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.LojaProduto), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_BuyerReputation_ML_Usuario", "ML_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.ML_Usuario), "ML_BuyerReputation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_BuyerReputation), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_TransactionsBuyer_ML_BuyerReputation", "ML_BuyerReputation", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_BuyerReputation), "ML_TransactionsBuyer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_TransactionsBuyer), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Identification_ML_Usuario", "ML_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.ML_Usuario), "ML_Identification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Identification), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Item_ML_ItemOrganizacao", "ML_ItemOrganizacao", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_ItemOrganizacao), "ML_Item", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Item), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_OrderItem_ML_Item", "ML_Item", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.ML_Item), "ML_OrderItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_OrderItem), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Order_ML_Usuario", "ML_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_Usuario), "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Order), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Order_ML_Usuario1", "ML_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_Usuario), "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Order), true)]
@@ -33,16 +41,13 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2", "ML_ResumoTransBuyer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_ResumoTransBuyer), "ML_TransactionsBuyer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_TransactionsBuyer), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_SellerReputation_ML_Usuario", "ML_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_Usuario), "ML_SellerReputation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_SellerReputation), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_TransactionsSeller_ML_SellerReputation", "ML_SellerReputation", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_SellerReputation), "ML_TransactionsSeller", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_TransactionsSeller), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_City", "ML_City", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_City), "ML_ReceiverAddress", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_ReceiverAddress), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_Country", "ML_Country", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_Country), "ML_ReceiverAddress", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_ReceiverAddress), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_FeedbackBuyer_ML_Order", "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.ML_Order), "ML_FeedbackBuyer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_FeedbackBuyer), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_FeedbackSeller_ML_Order", "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.ML_Order), "ML_FeedbackSeller", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_FeedbackSeller), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Item_ML_ItemOrganizacao", "ML_ItemOrganizacao", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_ItemOrganizacao), "ML_Item", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Item), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_Caixa_categoria", "categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.categoria), "Caixa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Caixa), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_Caixa_TipoCaixa", "TipoCaixa", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.TipoCaixa), "Caixa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Caixa), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_venda_cliente", "cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.cliente), "venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.venda), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_item_produto", "produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.produto), "item", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.item), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "fk_venda_item", "item", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.item), "venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.venda), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_LojaProduto_loja", "Loja", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Loja), "LojaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.LojaProduto), true)]
-[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_LojaProduto_produto", "produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.produto), "LojaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.LojaProduto), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Shipping_ML_Order", "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_Order), "ML_Shipping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Shipping), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_State", "ML_State", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_State), "ML_ReceiverAddress", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_ReceiverAddress), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Shipping_ML_ReceiverAddress", "ML_ReceiverAddress", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_ReceiverAddress), "ML_Shipping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Shipping), true)]
 
 #endregion
 
@@ -97,6 +102,150 @@ namespace ServidorWeb.BD
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<Caixa> Caixas
+        {
+            get
+            {
+                if ((_Caixas == null))
+                {
+                    _Caixas = base.CreateObjectSet<Caixa>("Caixas");
+                }
+                return _Caixas;
+            }
+        }
+        private ObjectSet<Caixa> _Caixas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CallBackML> CallBackMLs
+        {
+            get
+            {
+                if ((_CallBackMLs == null))
+                {
+                    _CallBackMLs = base.CreateObjectSet<CallBackML>("CallBackMLs");
+                }
+                return _CallBackMLs;
+            }
+        }
+        private ObjectSet<CallBackML> _CallBackMLs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CallBackML1> CallBackMLs1
+        {
+            get
+            {
+                if ((_CallBackMLs1 == null))
+                {
+                    _CallBackMLs1 = base.CreateObjectSet<CallBackML1>("CallBackMLs1");
+                }
+                return _CallBackMLs1;
+            }
+        }
+        private ObjectSet<CallBackML1> _CallBackMLs1;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<categoria> categorias
+        {
+            get
+            {
+                if ((_categorias == null))
+                {
+                    _categorias = base.CreateObjectSet<categoria>("categorias");
+                }
+                return _categorias;
+            }
+        }
+        private ObjectSet<categoria> _categorias;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<cliente> clientes
+        {
+            get
+            {
+                if ((_clientes == null))
+                {
+                    _clientes = base.CreateObjectSet<cliente>("clientes");
+                }
+                return _clientes;
+            }
+        }
+        private ObjectSet<cliente> _clientes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<DadosML> DadosMLs
+        {
+            get
+            {
+                if ((_DadosMLs == null))
+                {
+                    _DadosMLs = base.CreateObjectSet<DadosML>("DadosMLs");
+                }
+                return _DadosMLs;
+            }
+        }
+        private ObjectSet<DadosML> _DadosMLs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<item> items
+        {
+            get
+            {
+                if ((_items == null))
+                {
+                    _items = base.CreateObjectSet<item>("items");
+                }
+                return _items;
+            }
+        }
+        private ObjectSet<item> _items;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Loja> Lojas
+        {
+            get
+            {
+                if ((_Lojas == null))
+                {
+                    _Lojas = base.CreateObjectSet<Loja>("Lojas");
+                }
+                return _Lojas;
+            }
+        }
+        private ObjectSet<Loja> _Lojas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<LojaProduto> LojaProdutoes
+        {
+            get
+            {
+                if ((_LojaProdutoes == null))
+                {
+                    _LojaProdutoes = base.CreateObjectSet<LojaProduto>("LojaProdutoes");
+                }
+                return _LojaProdutoes;
+            }
+        }
+        private ObjectSet<LojaProduto> _LojaProdutoes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ML_BuyerReputation> ML_BuyerReputation
         {
             get
@@ -109,6 +258,38 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<ML_BuyerReputation> _ML_BuyerReputation;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_FeedbackBuyer> ML_FeedbackBuyer
+        {
+            get
+            {
+                if ((_ML_FeedbackBuyer == null))
+                {
+                    _ML_FeedbackBuyer = base.CreateObjectSet<ML_FeedbackBuyer>("ML_FeedbackBuyer");
+                }
+                return _ML_FeedbackBuyer;
+            }
+        }
+        private ObjectSet<ML_FeedbackBuyer> _ML_FeedbackBuyer;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_FeedbackSeller> ML_FeedbackSeller
+        {
+            get
+            {
+                if ((_ML_FeedbackSeller == null))
+                {
+                    _ML_FeedbackSeller = base.CreateObjectSet<ML_FeedbackSeller>("ML_FeedbackSeller");
+                }
+                return _ML_FeedbackSeller;
+            }
+        }
+        private ObjectSet<ML_FeedbackSeller> _ML_FeedbackSeller;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -141,6 +322,22 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<ML_Item> _ML_Item;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_ItemOrganizacao> ML_ItemOrganizacao
+        {
+            get
+            {
+                if ((_ML_ItemOrganizacao == null))
+                {
+                    _ML_ItemOrganizacao = base.CreateObjectSet<ML_ItemOrganizacao>("ML_ItemOrganizacao");
+                }
+                return _ML_ItemOrganizacao;
+            }
+        }
+        private ObjectSet<ML_ItemOrganizacao> _ML_ItemOrganizacao;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -205,6 +402,22 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<ML_Phone> _ML_Phone;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_Question> ML_Question
+        {
+            get
+            {
+                if ((_ML_Question == null))
+                {
+                    _ML_Question = base.CreateObjectSet<ML_Question>("ML_Question");
+                }
+                return _ML_Question;
+            }
+        }
+        private ObjectSet<ML_Question> _ML_Question;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -321,214 +534,6 @@ namespace ServidorWeb.BD
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<UsuarioAdm> UsuarioAdms
-        {
-            get
-            {
-                if ((_UsuarioAdms == null))
-                {
-                    _UsuarioAdms = base.CreateObjectSet<UsuarioAdm>("UsuarioAdms");
-                }
-                return _UsuarioAdms;
-            }
-        }
-        private ObjectSet<UsuarioAdm> _UsuarioAdms;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ML_FeedbackBuyer> ML_FeedbackBuyer
-        {
-            get
-            {
-                if ((_ML_FeedbackBuyer == null))
-                {
-                    _ML_FeedbackBuyer = base.CreateObjectSet<ML_FeedbackBuyer>("ML_FeedbackBuyer");
-                }
-                return _ML_FeedbackBuyer;
-            }
-        }
-        private ObjectSet<ML_FeedbackBuyer> _ML_FeedbackBuyer;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ML_FeedbackSeller> ML_FeedbackSeller
-        {
-            get
-            {
-                if ((_ML_FeedbackSeller == null))
-                {
-                    _ML_FeedbackSeller = base.CreateObjectSet<ML_FeedbackSeller>("ML_FeedbackSeller");
-                }
-                return _ML_FeedbackSeller;
-            }
-        }
-        private ObjectSet<ML_FeedbackSeller> _ML_FeedbackSeller;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ML_ItemOrganizacao> ML_ItemOrganizacao
-        {
-            get
-            {
-                if ((_ML_ItemOrganizacao == null))
-                {
-                    _ML_ItemOrganizacao = base.CreateObjectSet<ML_ItemOrganizacao>("ML_ItemOrganizacao");
-                }
-                return _ML_ItemOrganizacao;
-            }
-        }
-        private ObjectSet<ML_ItemOrganizacao> _ML_ItemOrganizacao;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Request> Requests
-        {
-            get
-            {
-                if ((_Requests == null))
-                {
-                    _Requests = base.CreateObjectSet<Request>("Requests");
-                }
-                return _Requests;
-            }
-        }
-        private ObjectSet<Request> _Requests;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<CallBackML> CallBackMLs
-        {
-            get
-            {
-                if ((_CallBackMLs == null))
-                {
-                    _CallBackMLs = base.CreateObjectSet<CallBackML>("CallBackMLs");
-                }
-                return _CallBackMLs;
-            }
-        }
-        private ObjectSet<CallBackML> _CallBackMLs;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ML_Question> ML_Question
-        {
-            get
-            {
-                if ((_ML_Question == null))
-                {
-                    _ML_Question = base.CreateObjectSet<ML_Question>("ML_Question");
-                }
-                return _ML_Question;
-            }
-        }
-        private ObjectSet<ML_Question> _ML_Question;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Caixa> Caixas
-        {
-            get
-            {
-                if ((_Caixas == null))
-                {
-                    _Caixas = base.CreateObjectSet<Caixa>("Caixas");
-                }
-                return _Caixas;
-            }
-        }
-        private ObjectSet<Caixa> _Caixas;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<categoria> categorias
-        {
-            get
-            {
-                if ((_categorias == null))
-                {
-                    _categorias = base.CreateObjectSet<categoria>("categorias");
-                }
-                return _categorias;
-            }
-        }
-        private ObjectSet<categoria> _categorias;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<cliente> clientes
-        {
-            get
-            {
-                if ((_clientes == null))
-                {
-                    _clientes = base.CreateObjectSet<cliente>("clientes");
-                }
-                return _clientes;
-            }
-        }
-        private ObjectSet<cliente> _clientes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<item> items
-        {
-            get
-            {
-                if ((_items == null))
-                {
-                    _items = base.CreateObjectSet<item>("items");
-                }
-                return _items;
-            }
-        }
-        private ObjectSet<item> _items;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Loja> Lojas
-        {
-            get
-            {
-                if ((_Lojas == null))
-                {
-                    _Lojas = base.CreateObjectSet<Loja>("Lojas");
-                }
-                return _Lojas;
-            }
-        }
-        private ObjectSet<Loja> _Lojas;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<LojaProduto> LojaProdutoes
-        {
-            get
-            {
-                if ((_LojaProdutoes == null))
-                {
-                    _LojaProdutoes = base.CreateObjectSet<LojaProduto>("LojaProdutoes");
-                }
-                return _LojaProdutoes;
-            }
-        }
-        private ObjectSet<LojaProduto> _LojaProdutoes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<produto> produtoes
         {
             get
@@ -577,6 +582,22 @@ namespace ServidorWeb.BD
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<UsuarioAdm> UsuarioAdms
+        {
+            get
+            {
+                if ((_UsuarioAdms == null))
+                {
+                    _UsuarioAdms = base.CreateObjectSet<UsuarioAdm>("UsuarioAdms");
+                }
+                return _UsuarioAdms;
+            }
+        }
+        private ObjectSet<UsuarioAdm> _UsuarioAdms;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<venda> vendas
         {
             get
@@ -593,21 +614,157 @@ namespace ServidorWeb.BD
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<DadosML> DadosMLs
+        public ObjectSet<ML_City> ML_City
         {
             get
             {
-                if ((_DadosMLs == null))
+                if ((_ML_City == null))
                 {
-                    _DadosMLs = base.CreateObjectSet<DadosML>("DadosMLs");
+                    _ML_City = base.CreateObjectSet<ML_City>("ML_City");
                 }
-                return _DadosMLs;
+                return _ML_City;
             }
         }
-        private ObjectSet<DadosML> _DadosMLs;
+        private ObjectSet<ML_City> _ML_City;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_Country> ML_Country
+        {
+            get
+            {
+                if ((_ML_Country == null))
+                {
+                    _ML_Country = base.CreateObjectSet<ML_Country>("ML_Country");
+                }
+                return _ML_Country;
+            }
+        }
+        private ObjectSet<ML_Country> _ML_Country;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_ReceiverAddress> ML_ReceiverAddress
+        {
+            get
+            {
+                if ((_ML_ReceiverAddress == null))
+                {
+                    _ML_ReceiverAddress = base.CreateObjectSet<ML_ReceiverAddress>("ML_ReceiverAddress");
+                }
+                return _ML_ReceiverAddress;
+            }
+        }
+        private ObjectSet<ML_ReceiverAddress> _ML_ReceiverAddress;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_Shipping> ML_Shipping
+        {
+            get
+            {
+                if ((_ML_Shipping == null))
+                {
+                    _ML_Shipping = base.CreateObjectSet<ML_Shipping>("ML_Shipping");
+                }
+                return _ML_Shipping;
+            }
+        }
+        private ObjectSet<ML_Shipping> _ML_Shipping;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ML_State> ML_State
+        {
+            get
+            {
+                if ((_ML_State == null))
+                {
+                    _ML_State = base.CreateObjectSet<ML_State>("ML_State");
+                }
+                return _ML_State;
+            }
+        }
+        private ObjectSet<ML_State> _ML_State;
 
         #endregion
         #region AddTo Methods
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Caixas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCaixas(Caixa caixa)
+        {
+            base.AddObject("Caixas", caixa);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CallBackMLs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCallBackMLs(CallBackML callBackML)
+        {
+            base.AddObject("CallBackMLs", callBackML);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CallBackMLs1 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCallBackMLs1(CallBackML1 callBackML1)
+        {
+            base.AddObject("CallBackMLs1", callBackML1);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the categorias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTocategorias(categoria categoria)
+        {
+            base.AddObject("categorias", categoria);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the clientes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToclientes(cliente cliente)
+        {
+            base.AddObject("clientes", cliente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the DadosMLs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDadosMLs(DadosML dadosML)
+        {
+            base.AddObject("DadosMLs", dadosML);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the items EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToitems(item item)
+        {
+            base.AddObject("items", item);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Lojas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLojas(Loja loja)
+        {
+            base.AddObject("Lojas", loja);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the LojaProdutoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToLojaProdutoes(LojaProduto lojaProduto)
+        {
+            base.AddObject("LojaProdutoes", lojaProduto);
+        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the ML_BuyerReputation EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -615,6 +772,22 @@ namespace ServidorWeb.BD
         public void AddToML_BuyerReputation(ML_BuyerReputation mL_BuyerReputation)
         {
             base.AddObject("ML_BuyerReputation", mL_BuyerReputation);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_FeedbackBuyer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_FeedbackBuyer(ML_FeedbackBuyer mL_FeedbackBuyer)
+        {
+            base.AddObject("ML_FeedbackBuyer", mL_FeedbackBuyer);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_FeedbackSeller EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_FeedbackSeller(ML_FeedbackSeller mL_FeedbackSeller)
+        {
+            base.AddObject("ML_FeedbackSeller", mL_FeedbackSeller);
         }
     
         /// <summary>
@@ -631,6 +804,14 @@ namespace ServidorWeb.BD
         public void AddToML_Item(ML_Item mL_Item)
         {
             base.AddObject("ML_Item", mL_Item);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_ItemOrganizacao EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_ItemOrganizacao(ML_ItemOrganizacao mL_ItemOrganizacao)
+        {
+            base.AddObject("ML_ItemOrganizacao", mL_ItemOrganizacao);
         }
     
         /// <summary>
@@ -663,6 +844,14 @@ namespace ServidorWeb.BD
         public void AddToML_Phone(ML_Phone mL_Phone)
         {
             base.AddObject("ML_Phone", mL_Phone);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_Question EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_Question(ML_Question mL_Question)
+        {
+            base.AddObject("ML_Question", mL_Question);
         }
     
         /// <summary>
@@ -722,110 +911,6 @@ namespace ServidorWeb.BD
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the UsuarioAdms EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUsuarioAdms(UsuarioAdm usuarioAdm)
-        {
-            base.AddObject("UsuarioAdms", usuarioAdm);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ML_FeedbackBuyer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToML_FeedbackBuyer(ML_FeedbackBuyer mL_FeedbackBuyer)
-        {
-            base.AddObject("ML_FeedbackBuyer", mL_FeedbackBuyer);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ML_FeedbackSeller EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToML_FeedbackSeller(ML_FeedbackSeller mL_FeedbackSeller)
-        {
-            base.AddObject("ML_FeedbackSeller", mL_FeedbackSeller);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ML_ItemOrganizacao EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToML_ItemOrganizacao(ML_ItemOrganizacao mL_ItemOrganizacao)
-        {
-            base.AddObject("ML_ItemOrganizacao", mL_ItemOrganizacao);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Requests EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToRequests(Request request)
-        {
-            base.AddObject("Requests", request);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the CallBackMLs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToCallBackMLs(CallBackML callBackML)
-        {
-            base.AddObject("CallBackMLs", callBackML);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ML_Question EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToML_Question(ML_Question mL_Question)
-        {
-            base.AddObject("ML_Question", mL_Question);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Caixas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToCaixas(Caixa caixa)
-        {
-            base.AddObject("Caixas", caixa);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the categorias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTocategorias(categoria categoria)
-        {
-            base.AddObject("categorias", categoria);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the clientes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToclientes(cliente cliente)
-        {
-            base.AddObject("clientes", cliente);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the items EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToitems(item item)
-        {
-            base.AddObject("items", item);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Lojas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLojas(Loja loja)
-        {
-            base.AddObject("Lojas", loja);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the LojaProdutoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLojaProdutoes(LojaProduto lojaProduto)
-        {
-            base.AddObject("LojaProdutoes", lojaProduto);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the produtoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToprodutoes(produto produto)
@@ -850,6 +935,14 @@ namespace ServidorWeb.BD
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the UsuarioAdms EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsuarioAdms(UsuarioAdm usuarioAdm)
+        {
+            base.AddObject("UsuarioAdms", usuarioAdm);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the vendas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTovendas(venda venda)
@@ -858,11 +951,43 @@ namespace ServidorWeb.BD
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the DadosMLs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ML_City EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToDadosMLs(DadosML dadosML)
+        public void AddToML_City(ML_City mL_City)
         {
-            base.AddObject("DadosMLs", dadosML);
+            base.AddObject("ML_City", mL_City);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_Country EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_Country(ML_Country mL_Country)
+        {
+            base.AddObject("ML_Country", mL_Country);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_ReceiverAddress EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_ReceiverAddress(ML_ReceiverAddress mL_ReceiverAddress)
+        {
+            base.AddObject("ML_ReceiverAddress", mL_ReceiverAddress);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_Shipping EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_Shipping(ML_Shipping mL_Shipping)
+        {
+            base.AddObject("ML_Shipping", mL_Shipping);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ML_State EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToML_State(ML_State mL_State)
+        {
+            base.AddObject("ML_State", mL_State);
         }
 
         #endregion
@@ -1098,6 +1223,181 @@ namespace ServidorWeb.BD
             CallBackML callBackML = new CallBackML();
             callBackML.id = id;
             return callBackML;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String userID
+        {
+            get
+            {
+                return _userID;
+            }
+            set
+            {
+                OnuserIDChanging(value);
+                ReportPropertyChanging("userID");
+                _userID = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("userID");
+                OnuserIDChanged();
+            }
+        }
+        private global::System.String _userID;
+        partial void OnuserIDChanging(global::System.String value);
+        partial void OnuserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String resource
+        {
+            get
+            {
+                return _resource;
+            }
+            set
+            {
+                OnresourceChanging(value);
+                ReportPropertyChanging("resource");
+                _resource = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("resource");
+                OnresourceChanged();
+            }
+        }
+        private global::System.String _resource;
+        partial void OnresourceChanging(global::System.String value);
+        partial void OnresourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String topic
+        {
+            get
+            {
+                return _topic;
+            }
+            set
+            {
+                OntopicChanging(value);
+                ReportPropertyChanging("topic");
+                _topic = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("topic");
+                OntopicChanged();
+            }
+        }
+        private global::System.String _topic;
+        partial void OntopicChanging(global::System.String value);
+        partial void OntopicChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> received
+        {
+            get
+            {
+                return _received;
+            }
+            set
+            {
+                OnreceivedChanging(value);
+                ReportPropertyChanging("received");
+                _received = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("received");
+                OnreceivedChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _received;
+        partial void OnreceivedChanging(Nullable<global::System.DateTime> value);
+        partial void OnreceivedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> sent
+        {
+            get
+            {
+                return _sent;
+            }
+            set
+            {
+                OnsentChanging(value);
+                ReportPropertyChanging("sent");
+                _sent = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("sent");
+                OnsentChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _sent;
+        partial void OnsentChanging(Nullable<global::System.DateTime> value);
+        partial void OnsentChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="CallBackML1")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CallBackML1 : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CallBackML1 object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static CallBackML1 CreateCallBackML1(global::System.Decimal id)
+        {
+            CallBackML1 callBackML1 = new CallBackML1();
+            callBackML1.id = id;
+            return callBackML1;
         }
 
         #endregion
@@ -2369,6 +2669,218 @@ namespace ServidorWeb.BD
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="ML_City")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ML_City : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ML_City object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="name">Initial value of the name property.</param>
+        public static ML_City CreateML_City(global::System.String id, global::System.String name)
+        {
+            ML_City mL_City = new ML_City();
+            mL_City.id = id;
+            mL_City.name = name;
+            return mL_City;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.String _id;
+        partial void OnidChanging(global::System.String value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_City", "ML_ReceiverAddress")]
+        public EntityCollection<ML_ReceiverAddress> ML_ReceiverAddress
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ML_ReceiverAddress>("NSAADMModel.FK_ML_ReceiverAddress_ML_City", "ML_ReceiverAddress");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_ReceiverAddress>("NSAADMModel.FK_ML_ReceiverAddress_ML_City", "ML_ReceiverAddress", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="ML_Country")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ML_Country : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ML_Country object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="name">Initial value of the name property.</param>
+        public static ML_Country CreateML_Country(global::System.String id, global::System.String name)
+        {
+            ML_Country mL_Country = new ML_Country();
+            mL_Country.id = id;
+            mL_Country.name = name;
+            return mL_Country;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.String _id;
+        partial void OnidChanging(global::System.String value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_Country", "ML_ReceiverAddress")]
+        public EntityCollection<ML_ReceiverAddress> ML_ReceiverAddress
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ML_ReceiverAddress>("NSAADMModel.FK_ML_ReceiverAddress_ML_Country", "ML_ReceiverAddress");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_ReceiverAddress>("NSAADMModel.FK_ML_ReceiverAddress_ML_Country", "ML_ReceiverAddress", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="ML_FeedbackBuyer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -3059,28 +3571,6 @@ namespace ServidorWeb.BD
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_OrderItem_ML_Item", "ML_OrderItem")]
-        public EntityCollection<ML_OrderItem> ML_OrderItem
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ML_OrderItem>("NSAADMModel.FK_ML_OrderItem_ML_Item", "ML_OrderItem");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_OrderItem>("NSAADMModel.FK_ML_OrderItem_ML_Item", "ML_OrderItem", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_Item_ML_ItemOrganizacao", "ML_ItemOrganizacao")]
         public ML_ItemOrganizacao ML_ItemOrganizacao
         {
@@ -3109,6 +3599,28 @@ namespace ServidorWeb.BD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ML_ItemOrganizacao>("NSAADMModel.FK_ML_Item_ML_ItemOrganizacao", "ML_ItemOrganizacao", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_OrderItem_ML_Item", "ML_OrderItem")]
+        public EntityCollection<ML_OrderItem> ML_OrderItem
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ML_OrderItem>("NSAADMModel.FK_ML_OrderItem_ML_Item", "ML_OrderItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_OrderItem>("NSAADMModel.FK_ML_OrderItem_ML_Item", "ML_OrderItem", value);
                 }
             }
         }
@@ -3629,6 +4141,28 @@ namespace ServidorWeb.BD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_FeedbackSeller>("NSAADMModel.FK_ML_FeedbackSeller_ML_Order", "ML_FeedbackSeller", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_Shipping_ML_Order", "ML_Shipping")]
+        public EntityCollection<ML_Shipping> ML_Shipping
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ML_Shipping>("NSAADMModel.FK_ML_Shipping_ML_Order", "ML_Shipping");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_Shipping>("NSAADMModel.FK_ML_Shipping_ML_Order", "ML_Shipping", value);
                 }
             }
         }
@@ -4507,6 +5041,30 @@ namespace ServidorWeb.BD
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> id_from
+        {
+            get
+            {
+                return _id_from;
+            }
+            set
+            {
+                Onid_fromChanging(value);
+                ReportPropertyChanging("id_from");
+                _id_from = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_from");
+                Onid_fromChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _id_from;
+        partial void Onid_fromChanging(Nullable<global::System.Decimal> value);
+        partial void Onid_fromChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public Nullable<global::System.Decimal> answered_questions
         {
             get
@@ -4621,30 +5179,6 @@ namespace ServidorWeb.BD
         private Nullable<global::System.Decimal> _id_question;
         partial void Onid_questionChanging(Nullable<global::System.Decimal> value);
         partial void Onid_questionChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> id_from
-        {
-            get
-            {
-                return _id_from;
-            }
-            set
-            {
-                Onid_fromChanging(value);
-                ReportPropertyChanging("id_from");
-                _id_from = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("id_from");
-                Onid_fromChanged();
-            }
-        }
-        private Nullable<global::System.Decimal> _id_from;
-        partial void Onid_fromChanging(Nullable<global::System.Decimal> value);
-        partial void Onid_fromChanged();
 
         #endregion
     
@@ -4835,6 +5369,392 @@ namespace ServidorWeb.BD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ML_TransactionsSeller>("NSAADMModel.FK_ML_Ratings_ML_TransactionsSeller", "ML_TransactionsSeller", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="ML_ReceiverAddress")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ML_ReceiverAddress : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ML_ReceiverAddress object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static ML_ReceiverAddress CreateML_ReceiverAddress(global::System.Decimal id)
+        {
+            ML_ReceiverAddress mL_ReceiverAddress = new ML_ReceiverAddress();
+            mL_ReceiverAddress.ID = id;
+            return mL_ReceiverAddress;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Decimal _ID;
+        partial void OnIDChanging(global::System.Decimal value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String address_line
+        {
+            get
+            {
+                return _address_line;
+            }
+            set
+            {
+                Onaddress_lineChanging(value);
+                ReportPropertyChanging("address_line");
+                _address_line = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("address_line");
+                Onaddress_lineChanged();
+            }
+        }
+        private global::System.String _address_line;
+        partial void Onaddress_lineChanging(global::System.String value);
+        partial void Onaddress_lineChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String zip_code
+        {
+            get
+            {
+                return _zip_code;
+            }
+            set
+            {
+                Onzip_codeChanging(value);
+                ReportPropertyChanging("zip_code");
+                _zip_code = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("zip_code");
+                Onzip_codeChanged();
+            }
+        }
+        private global::System.String _zip_code;
+        partial void Onzip_codeChanging(global::System.String value);
+        partial void Onzip_codeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String comment
+        {
+            get
+            {
+                return _comment;
+            }
+            set
+            {
+                OncommentChanging(value);
+                ReportPropertyChanging("comment");
+                _comment = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("comment");
+                OncommentChanged();
+            }
+        }
+        private global::System.String _comment;
+        partial void OncommentChanging(global::System.String value);
+        partial void OncommentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String idCity
+        {
+            get
+            {
+                return _idCity;
+            }
+            set
+            {
+                OnidCityChanging(value);
+                ReportPropertyChanging("idCity");
+                _idCity = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("idCity");
+                OnidCityChanged();
+            }
+        }
+        private global::System.String _idCity;
+        partial void OnidCityChanging(global::System.String value);
+        partial void OnidCityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String idState
+        {
+            get
+            {
+                return _idState;
+            }
+            set
+            {
+                OnidStateChanging(value);
+                ReportPropertyChanging("idState");
+                _idState = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("idState");
+                OnidStateChanged();
+            }
+        }
+        private global::System.String _idState;
+        partial void OnidStateChanging(global::System.String value);
+        partial void OnidStateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String idCountry
+        {
+            get
+            {
+                return _idCountry;
+            }
+            set
+            {
+                OnidCountryChanging(value);
+                ReportPropertyChanging("idCountry");
+                _idCountry = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("idCountry");
+                OnidCountryChanged();
+            }
+        }
+        private global::System.String _idCountry;
+        partial void OnidCountryChanging(global::System.String value);
+        partial void OnidCountryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String latitude
+        {
+            get
+            {
+                return _latitude;
+            }
+            set
+            {
+                OnlatitudeChanging(value);
+                ReportPropertyChanging("latitude");
+                _latitude = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("latitude");
+                OnlatitudeChanged();
+            }
+        }
+        private global::System.String _latitude;
+        partial void OnlatitudeChanging(global::System.String value);
+        partial void OnlatitudeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String longitude
+        {
+            get
+            {
+                return _longitude;
+            }
+            set
+            {
+                OnlongitudeChanging(value);
+                ReportPropertyChanging("longitude");
+                _longitude = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("longitude");
+                OnlongitudeChanged();
+            }
+        }
+        private global::System.String _longitude;
+        partial void OnlongitudeChanging(global::System.String value);
+        partial void OnlongitudeChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_City", "ML_City")]
+        public ML_City ML_City
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_City>("NSAADMModel.FK_ML_ReceiverAddress_ML_City", "ML_City").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_City>("NSAADMModel.FK_ML_ReceiverAddress_ML_City", "ML_City").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ML_City> ML_CityReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_City>("NSAADMModel.FK_ML_ReceiverAddress_ML_City", "ML_City");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ML_City>("NSAADMModel.FK_ML_ReceiverAddress_ML_City", "ML_City", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_Country", "ML_Country")]
+        public ML_Country ML_Country
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_Country>("NSAADMModel.FK_ML_ReceiverAddress_ML_Country", "ML_Country").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_Country>("NSAADMModel.FK_ML_ReceiverAddress_ML_Country", "ML_Country").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ML_Country> ML_CountryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_Country>("NSAADMModel.FK_ML_ReceiverAddress_ML_Country", "ML_Country");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ML_Country>("NSAADMModel.FK_ML_ReceiverAddress_ML_Country", "ML_Country", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_State", "ML_State")]
+        public ML_State ML_State
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_State>("NSAADMModel.FK_ML_ReceiverAddress_ML_State", "ML_State").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_State>("NSAADMModel.FK_ML_ReceiverAddress_ML_State", "ML_State").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ML_State> ML_StateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_State>("NSAADMModel.FK_ML_ReceiverAddress_ML_State", "ML_State");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ML_State>("NSAADMModel.FK_ML_ReceiverAddress_ML_State", "ML_State", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_Shipping_ML_ReceiverAddress", "ML_Shipping")]
+        public EntityCollection<ML_Shipping> ML_Shipping
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ML_Shipping>("NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress", "ML_Shipping");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_Shipping>("NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress", "ML_Shipping", value);
                 }
             }
         }
@@ -5221,6 +6141,414 @@ namespace ServidorWeb.BD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_TransactionsSeller>("NSAADMModel.FK_ML_TransactionsSeller_ML_SellerReputation", "ML_TransactionsSeller", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="ML_Shipping")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ML_Shipping : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ML_Shipping object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        public static ML_Shipping CreateML_Shipping(global::System.Decimal id)
+        {
+            ML_Shipping mL_Shipping = new ML_Shipping();
+            mL_Shipping.id = id;
+            return mL_Shipping;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                OnstatusChanging(value);
+                ReportPropertyChanging("status");
+                _status = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("status");
+                OnstatusChanged();
+            }
+        }
+        private global::System.String _status;
+        partial void OnstatusChanging(global::System.String value);
+        partial void OnstatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String shipment_type
+        {
+            get
+            {
+                return _shipment_type;
+            }
+            set
+            {
+                Onshipment_typeChanging(value);
+                ReportPropertyChanging("shipment_type");
+                _shipment_type = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("shipment_type");
+                Onshipment_typeChanged();
+            }
+        }
+        private global::System.String _shipment_type;
+        partial void Onshipment_typeChanging(global::System.String value);
+        partial void Onshipment_typeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> date_created
+        {
+            get
+            {
+                return _date_created;
+            }
+            set
+            {
+                Ondate_createdChanging(value);
+                ReportPropertyChanging("date_created");
+                _date_created = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("date_created");
+                Ondate_createdChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _date_created;
+        partial void Ondate_createdChanging(Nullable<global::System.DateTime> value);
+        partial void Ondate_createdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String currency_id
+        {
+            get
+            {
+                return _currency_id;
+            }
+            set
+            {
+                Oncurrency_idChanging(value);
+                ReportPropertyChanging("currency_id");
+                _currency_id = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("currency_id");
+                Oncurrency_idChanged();
+            }
+        }
+        private global::System.String _currency_id;
+        partial void Oncurrency_idChanging(global::System.String value);
+        partial void Oncurrency_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> cost
+        {
+            get
+            {
+                return _cost;
+            }
+            set
+            {
+                OncostChanging(value);
+                ReportPropertyChanging("cost");
+                _cost = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cost");
+                OncostChanged();
+            }
+        }
+        private Nullable<global::System.Double> _cost;
+        partial void OncostChanging(Nullable<global::System.Double> value);
+        partial void OncostChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> idReceiverAddress
+        {
+            get
+            {
+                return _idReceiverAddress;
+            }
+            set
+            {
+                OnidReceiverAddressChanging(value);
+                ReportPropertyChanging("idReceiverAddress");
+                _idReceiverAddress = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idReceiverAddress");
+                OnidReceiverAddressChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _idReceiverAddress;
+        partial void OnidReceiverAddressChanging(Nullable<global::System.Decimal> value);
+        partial void OnidReceiverAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> idOrder
+        {
+            get
+            {
+                return _idOrder;
+            }
+            set
+            {
+                OnidOrderChanging(value);
+                ReportPropertyChanging("idOrder");
+                _idOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idOrder");
+                OnidOrderChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _idOrder;
+        partial void OnidOrderChanging(Nullable<global::System.Decimal> value);
+        partial void OnidOrderChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_Shipping_ML_Order", "ML_Order")]
+        public ML_Order ML_Order
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_Order>("NSAADMModel.FK_ML_Shipping_ML_Order", "ML_Order").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_Order>("NSAADMModel.FK_ML_Shipping_ML_Order", "ML_Order").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ML_Order> ML_OrderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_Order>("NSAADMModel.FK_ML_Shipping_ML_Order", "ML_Order");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ML_Order>("NSAADMModel.FK_ML_Shipping_ML_Order", "ML_Order", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_Shipping_ML_ReceiverAddress", "ML_ReceiverAddress")]
+        public ML_ReceiverAddress ML_ReceiverAddress
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_ReceiverAddress>("NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress", "ML_ReceiverAddress").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_ReceiverAddress>("NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress", "ML_ReceiverAddress").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ML_ReceiverAddress> ML_ReceiverAddressReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ML_ReceiverAddress>("NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress", "ML_ReceiverAddress");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ML_ReceiverAddress>("NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress", "ML_ReceiverAddress", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="ML_State")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ML_State : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ML_State object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="name">Initial value of the name property.</param>
+        public static ML_State CreateML_State(global::System.String id, global::System.String name)
+        {
+            ML_State mL_State = new ML_State();
+            mL_State.id = id;
+            mL_State.name = name;
+            return mL_State;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.String _id;
+        partial void OnidChanging(global::System.String value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_State", "ML_ReceiverAddress")]
+        public EntityCollection<ML_ReceiverAddress> ML_ReceiverAddress
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ML_ReceiverAddress>("NSAADMModel.FK_ML_ReceiverAddress_ML_State", "ML_ReceiverAddress");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ML_ReceiverAddress>("NSAADMModel.FK_ML_ReceiverAddress_ML_State", "ML_ReceiverAddress", value);
                 }
             }
         }
@@ -7151,87 +8479,6 @@ namespace ServidorWeb.BD
         }
 
         #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="Request")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Request : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Request object.
-        /// </summary>
-        /// <param name="id">Initial value of the id property.</param>
-        /// <param name="request1">Initial value of the Request1 property.</param>
-        public static Request CreateRequest(global::System.Decimal id, global::System.String request1)
-        {
-            Request request = new Request();
-            request.id = id;
-            request.Request1 = request1;
-            return request;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Decimal id
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                if (_id != value)
-                {
-                    OnidChanging(value);
-                    ReportPropertyChanging("id");
-                    _id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("id");
-                    OnidChanged();
-                }
-            }
-        }
-        private global::System.Decimal _id;
-        partial void OnidChanging(global::System.Decimal value);
-        partial void OnidChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Request1
-        {
-            get
-            {
-                return _Request1;
-            }
-            set
-            {
-                OnRequest1Changing(value);
-                ReportPropertyChanging("Request1");
-                _Request1 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Request1");
-                OnRequest1Changed();
-            }
-        }
-        private global::System.String _Request1;
-        partial void OnRequest1Changing(global::System.String value);
-        partial void OnRequest1Changed();
-
-        #endregion
-    
     }
     
     /// <summary>

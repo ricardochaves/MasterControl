@@ -302,6 +302,17 @@ namespace ServidorWeb
             return b.RetornaItensEnchantInscr(Real, Faccao);
 
         }
+        [WebMethod]
+        public List<BotItemEstoque> RetornaItensEnchant(string Real, string Faccao, string key)
+        {
+            if (key != "3kl4j3lk5n3lk3j43kl4j34n3,m4n34k34hj3l4h34nm3,.n43")
+            {
+                throw new Exception("Chave inválida");
+            }
+
+            BotControlaEstoque b = new BotControlaEstoque();
+            return b.RetornaItensEnchant(Real, Faccao);
+        }
 
         #region APIBlizzard
 

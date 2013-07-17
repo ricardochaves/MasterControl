@@ -8,6 +8,7 @@
         <EntityContainer Name="NSAADMModelStoreContainer">
           <EntitySet Name="Caixa" EntityType="NSAADMModel.Store.Caixa" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CallBackML" EntityType="NSAADMModel.Store.CallBackML" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CallBackMLs" EntityType="NSAADMModel.Store.CallBackMLs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="categoria" EntityType="NSAADMModel.Store.categoria" store:Type="Tables" store:Schema="dbo" store:Name="categoria">
             <DefiningQuery>SELECT 
       [categoria].[cod_categ] AS [cod_categ], 
@@ -20,6 +21,8 @@
           <EntitySet Name="Loja" EntityType="NSAADMModel.Store.Loja" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LojaProduto" EntityType="NSAADMModel.Store.LojaProduto" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_BuyerReputation" EntityType="NSAADMModel.Store.ML_BuyerReputation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_City" EntityType="NSAADMModel.Store.ML_City" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Country" EntityType="NSAADMModel.Store.ML_Country" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_FeedbackBuyer" EntityType="NSAADMModel.Store.ML_FeedbackBuyer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_FeedbackSeller" EntityType="NSAADMModel.Store.ML_FeedbackSeller" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_Identification" EntityType="NSAADMModel.Store.ML_Identification" store:Type="Tables" Schema="dbo" />
@@ -31,14 +34,16 @@
           <EntitySet Name="ML_Phone" EntityType="NSAADMModel.Store.ML_Phone" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_Question" EntityType="NSAADMModel.Store.ML_Question" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_Ratings" EntityType="NSAADMModel.Store.ML_Ratings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_ReceiverAddress" EntityType="NSAADMModel.Store.ML_ReceiverAddress" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_ResumoTransBuyer" EntityType="NSAADMModel.Store.ML_ResumoTransBuyer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_SellerReputation" EntityType="NSAADMModel.Store.ML_SellerReputation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_Shipping" EntityType="NSAADMModel.Store.ML_Shipping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ML_State" EntityType="NSAADMModel.Store.ML_State" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_TransactionsBuyer" EntityType="NSAADMModel.Store.ML_TransactionsBuyer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_TransactionsSeller" EntityType="NSAADMModel.Store.ML_TransactionsSeller" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ML_Usuario" EntityType="NSAADMModel.Store.ML_Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MP_Payments" EntityType="NSAADMModel.Store.MP_Payments" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="produto" EntityType="NSAADMModel.Store.produto" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Requests" EntityType="NSAADMModel.Store.Requests" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="taxa" EntityType="NSAADMModel.Store.taxa" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TipoCaixa" EntityType="NSAADMModel.Store.TipoCaixa" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioAdm" EntityType="NSAADMModel.Store.UsuarioAdm" store:Type="Tables" Schema="dbo" />
@@ -66,6 +71,14 @@
           <AssociationSet Name="FK_ML_BuyerReputation_ML_Usuario" Association="NSAADMModel.Store.FK_ML_BuyerReputation_ML_Usuario">
             <End Role="ML_Usuario" EntitySet="ML_Usuario" />
             <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_FeedbackBuyer_ML_Order" Association="NSAADMModel.Store.FK_ML_FeedbackBuyer_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_FeedbackBuyer" EntitySet="ML_FeedbackBuyer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_FeedbackSeller_ML_Order" Association="NSAADMModel.Store.FK_ML_FeedbackSeller_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_FeedbackSeller" EntitySet="ML_FeedbackSeller" />
           </AssociationSet>
           <AssociationSet Name="FK_ML_Identification_ML_Usuario" Association="NSAADMModel.Store.FK_ML_Identification_ML_Usuario">
             <End Role="ML_Usuario" EntitySet="ML_Usuario" />
@@ -103,9 +116,29 @@
             <End Role="ML_TransactionsSeller" EntitySet="ML_TransactionsSeller" />
             <End Role="ML_Ratings" EntitySet="ML_Ratings" />
           </AssociationSet>
+          <AssociationSet Name="FK_ML_ReceiverAddress_ML_City" Association="NSAADMModel.Store.FK_ML_ReceiverAddress_ML_City">
+            <End Role="ML_City" EntitySet="ML_City" />
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_ReceiverAddress_ML_Country" Association="NSAADMModel.Store.FK_ML_ReceiverAddress_ML_Country">
+            <End Role="ML_Country" EntitySet="ML_Country" />
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_ReceiverAddress_ML_State" Association="NSAADMModel.Store.FK_ML_ReceiverAddress_ML_State">
+            <End Role="ML_State" EntitySet="ML_State" />
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
+          </AssociationSet>
           <AssociationSet Name="FK_ML_SellerReputation_ML_Usuario" Association="NSAADMModel.Store.FK_ML_SellerReputation_ML_Usuario">
             <End Role="ML_Usuario" EntitySet="ML_Usuario" />
             <End Role="ML_SellerReputation" EntitySet="ML_SellerReputation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Shipping_ML_Order" Association="NSAADMModel.Store.FK_ML_Shipping_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_Shipping" EntitySet="ML_Shipping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Shipping_ML_ReceiverAddress" Association="NSAADMModel.Store.FK_ML_Shipping_ML_ReceiverAddress">
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
+            <End Role="ML_Shipping" EntitySet="ML_Shipping" />
           </AssociationSet>
           <AssociationSet Name="FK_ML_TransactionsBuyer_ML_BuyerReputation" Association="NSAADMModel.Store.FK_ML_TransactionsBuyer_ML_BuyerReputation">
             <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
@@ -156,8 +189,19 @@
           <Property Name="received" Type="datetime" />
           <Property Name="sent" Type="datetime" />
         </EntityType>
+        <EntityType Name="CallBackMLs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="nvarchar" MaxLength="50" />
+          <Property Name="resource" Type="nvarchar" MaxLength="50" />
+          <Property Name="topic" Type="nvarchar" MaxLength="50" />
+          <Property Name="received" Type="datetime" />
+          <Property Name="sent" Type="datetime" />
+        </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'NSAADM.dbo.categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'NSAADM_HML.dbo.categoria' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="categoria">
           <Key>
@@ -180,11 +224,11 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="AccessToken" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClientId" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClientSecret" Type="nvarchar" MaxLength="50" />
-          <Property Name="RefreshToken" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="AccessToken" Type="nvarchar(max)" />
+          <Property Name="ClientId" Type="nvarchar(max)" />
+          <Property Name="ClientSecret" Type="nvarchar(max)" />
+          <Property Name="RefreshToken" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="item">
           <Key>
@@ -220,12 +264,26 @@
           <Property Name="canceled_transactions" Type="decimal" />
           <Property Name="id_Usuario" Type="decimal" Nullable="false" />
         </EntityType>
+        <EntityType Name="ML_City">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ML_Country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="ML_FeedbackBuyer">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="id_order" Type="numeric" Nullable="false" />
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_order" Type="decimal" Nullable="false" />
           <Property Name="date_created" Type="datetime" />
           <Property Name="fulfilled" Type="nvarchar(max)" />
           <Property Name="rating" Type="nvarchar(max)" />
@@ -234,8 +292,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="id_order" Type="numeric" Nullable="false" />
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_order" Type="decimal" Nullable="false" />
           <Property Name="date_created" Type="datetime" />
           <Property Name="fulfilled" Type="nvarchar(max)" />
           <Property Name="rating" Type="nvarchar(max)" />
@@ -256,13 +314,13 @@
           <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="variation_id" Type="nvarchar(max)" />
-          <Property Name="id_org" Type="numeric" />
+          <Property Name="id_org" Type="decimal" />
         </EntityType>
         <EntityType Name="ML_ItemOrganizacao">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ML_Order">
@@ -317,18 +375,18 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="decimal" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="date_created" Type="datetime" />
           <Property Name="item_id" Type="nvarchar" MaxLength="50" />
-          <Property Name="seller_id" Type="numeric" />
+          <Property Name="seller_id" Type="decimal" />
           <Property Name="status" Type="nvarchar" MaxLength="50" />
-          <Property Name="text" Type="nvarchar(max)" />
-          <Property Name="id_from" Type="numeric" />
-          <Property Name="answered_questions" Type="numeric" />
+          <Property Name="text" Type="nvarchar" MaxLength="50" />
+          <Property Name="answered_questions" Type="decimal" />
           <Property Name="Answer_date_created" Type="datetime" />
           <Property Name="Answer_status" Type="nvarchar" MaxLength="50" />
-          <Property Name="Answer_text" Type="nvarchar(max)" />
-          <Property Name="id_question" Type="numeric" />
+          <Property Name="Answer_text" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_question" Type="decimal" />
+          <Property Name="id_from" Type="decimal" />
         </EntityType>
         <EntityType Name="ML_Ratings">
           <Key>
@@ -339,6 +397,20 @@
           <Property Name="negative" Type="float" />
           <Property Name="neutral" Type="float" />
           <Property Name="id_TransactionsSeller" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_ReceiverAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Nullable="false" />
+          <Property Name="address_line" Type="nvarchar(max)" />
+          <Property Name="zip_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="comment" Type="nvarchar(max)" />
+          <Property Name="idCity" Type="nvarchar" MaxLength="100" />
+          <Property Name="idState" Type="nvarchar" MaxLength="100" />
+          <Property Name="idCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="latitude" Type="nvarchar(max)" />
+          <Property Name="longitude" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ML_ResumoTransBuyer">
           <Key>
@@ -357,6 +429,26 @@
           <Property Name="level_id" Type="nvarchar" MaxLength="50" />
           <Property Name="power_seller_status" Type="nvarchar" MaxLength="50" />
           <Property Name="id_Usuario" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_Shipping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" />
+          <Property Name="shipment_type" Type="nvarchar(max)" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="currency_id" Type="nvarchar(max)" />
+          <Property Name="cost" Type="float" />
+          <Property Name="idReceiverAddress" Type="numeric" />
+          <Property Name="idOrder" Type="decimal" />
+        </EntityType>
+        <EntityType Name="ML_State">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ML_TransactionsBuyer">
           <Key>
@@ -405,26 +497,26 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="numeric" Nullable="false" />
+          <Property Name="id" Type="decimal" Nullable="false" />
           <Property Name="site_id" Type="nvarchar" MaxLength="50" />
           <Property Name="date_created" Type="datetime" />
           <Property Name="date_approved" Type="datetime" />
           <Property Name="last_modified" Type="datetime" />
           <Property Name="money_release_date" Type="datetime" />
           <Property Name="operation_type" Type="nvarchar" MaxLength="50" />
-          <Property Name="collector_id" Type="numeric" />
+          <Property Name="collector_id" Type="decimal" />
           <Property Name="sponsor_id" Type="nvarchar" MaxLength="50" />
-          <Property Name="id_usuario" Type="numeric" />
-          <Property Name="external_reference" Type="numeric" />
+          <Property Name="id_usuario" Type="decimal" />
+          <Property Name="external_reference" Type="decimal" />
           <Property Name="reason" Type="nvarchar(max)" />
-          <Property Name="currency_id" Type="numeric" />
-          <Property Name="transaction_amount" Type="money" />
-          <Property Name="total_paid_amount" Type="money" />
-          <Property Name="shipping_cost" Type="money" />
-          <Property Name="account_money_amount" Type="money" />
-          <Property Name="mercadopago_fee" Type="money" />
-          <Property Name="net_received_amount" Type="money" />
-          <Property Name="marketplace_fee" Type="money" />
+          <Property Name="currency_id" Type="decimal" />
+          <Property Name="transaction_amount" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="total_paid_amount" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="shipping_cost" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="account_money_amount" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="mercadopago_fee" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="net_received_amount" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="marketplace_fee" Type="decimal" Precision="19" Scale="4" />
           <Property Name="status" Type="nvarchar" MaxLength="50" />
           <Property Name="status_detail" Type="nvarchar" MaxLength="50" />
           <Property Name="status_code" Type="nvarchar" MaxLength="50" />
@@ -439,13 +531,6 @@
           </Key>
           <Property Name="cod_produto" Type="int" Nullable="false" />
           <Property Name="nome" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="Requests">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Request" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="taxa">
           <Key>
@@ -553,6 +638,30 @@
             </Principal>
             <Dependent Role="ML_BuyerReputation">
               <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_FeedbackBuyer_ML_Order">
+          <End Role="ML_Order" Type="NSAADMModel.Store.ML_Order" Multiplicity="1" />
+          <End Role="ML_FeedbackBuyer" Type="NSAADMModel.Store.ML_FeedbackBuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_FeedbackBuyer">
+              <PropertyRef Name="id_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_FeedbackSeller_ML_Order">
+          <End Role="ML_Order" Type="NSAADMModel.Store.ML_Order" Multiplicity="1" />
+          <End Role="ML_FeedbackSeller" Type="NSAADMModel.Store.ML_FeedbackSeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_FeedbackSeller">
+              <PropertyRef Name="id_order" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -664,6 +773,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ML_ReceiverAddress_ML_City">
+          <End Role="ML_City" Type="NSAADMModel.Store.ML_City" Multiplicity="0..1" />
+          <End Role="ML_ReceiverAddress" Type="NSAADMModel.Store.ML_ReceiverAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_City">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_ReceiverAddress">
+              <PropertyRef Name="idCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_ReceiverAddress_ML_Country">
+          <End Role="ML_Country" Type="NSAADMModel.Store.ML_Country" Multiplicity="0..1" />
+          <End Role="ML_ReceiverAddress" Type="NSAADMModel.Store.ML_ReceiverAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_ReceiverAddress">
+              <PropertyRef Name="idCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_ReceiverAddress_ML_State">
+          <End Role="ML_State" Type="NSAADMModel.Store.ML_State" Multiplicity="0..1" />
+          <End Role="ML_ReceiverAddress" Type="NSAADMModel.Store.ML_ReceiverAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_State">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_ReceiverAddress">
+              <PropertyRef Name="idState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ML_SellerReputation_ML_Usuario">
           <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="0..1" />
           <End Role="ML_SellerReputation" Type="NSAADMModel.Store.ML_SellerReputation" Multiplicity="*" />
@@ -673,6 +818,30 @@
             </Principal>
             <Dependent Role="ML_SellerReputation">
               <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Shipping_ML_Order">
+          <End Role="ML_Order" Type="NSAADMModel.Store.ML_Order" Multiplicity="0..1" />
+          <End Role="ML_Shipping" Type="NSAADMModel.Store.ML_Shipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Shipping">
+              <PropertyRef Name="idOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Shipping_ML_ReceiverAddress">
+          <End Role="ML_ReceiverAddress" Type="NSAADMModel.Store.ML_ReceiverAddress" Multiplicity="0..1" />
+          <End Role="ML_Shipping" Type="NSAADMModel.Store.ML_Shipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ReceiverAddress">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ML_Shipping">
+              <PropertyRef Name="idReceiverAddress" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -765,13 +934,26 @@
     <edmx:ConceptualModels>
       <Schema Namespace="NSAADMModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="NSAADMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Caixas" EntityType="NSAADMModel.Caixa" />
+          <EntitySet Name="CallBackMLs" EntityType="NSAADMModel.CallBackML" />
+          <EntitySet Name="CallBackMLs1" EntityType="NSAADMModel.CallBackML1" />
+          <EntitySet Name="categorias" EntityType="NSAADMModel.categoria" />
+          <EntitySet Name="clientes" EntityType="NSAADMModel.cliente" />
+          <EntitySet Name="DadosMLs" EntityType="NSAADMModel.DadosML" />
+          <EntitySet Name="items" EntityType="NSAADMModel.item" />
+          <EntitySet Name="Lojas" EntityType="NSAADMModel.Loja" />
+          <EntitySet Name="LojaProdutoes" EntityType="NSAADMModel.LojaProduto" />
           <EntitySet Name="ML_BuyerReputation" EntityType="NSAADMModel.ML_BuyerReputation" />
+          <EntitySet Name="ML_FeedbackBuyer" EntityType="NSAADMModel.ML_FeedbackBuyer" />
+          <EntitySet Name="ML_FeedbackSeller" EntityType="NSAADMModel.ML_FeedbackSeller" />
           <EntitySet Name="ML_Identification" EntityType="NSAADMModel.ML_Identification" />
           <EntitySet Name="ML_Item" EntityType="NSAADMModel.ML_Item" />
+          <EntitySet Name="ML_ItemOrganizacao" EntityType="NSAADMModel.ML_ItemOrganizacao" />
           <EntitySet Name="ML_Order" EntityType="NSAADMModel.ML_Order" />
           <EntitySet Name="ML_OrderItem" EntityType="NSAADMModel.ML_OrderItem" />
           <EntitySet Name="ML_Payment" EntityType="NSAADMModel.ML_Payment" />
           <EntitySet Name="ML_Phone" EntityType="NSAADMModel.ML_Phone" />
+          <EntitySet Name="ML_Question" EntityType="NSAADMModel.ML_Question" />
           <EntitySet Name="ML_Ratings" EntityType="NSAADMModel.ML_Ratings" />
           <EntitySet Name="ML_ResumoTransBuyer" EntityType="NSAADMModel.ML_ResumoTransBuyer" />
           <EntitySet Name="ML_SellerReputation" EntityType="NSAADMModel.ML_SellerReputation" />
@@ -779,6 +961,39 @@
           <EntitySet Name="ML_TransactionsSeller" EntityType="NSAADMModel.ML_TransactionsSeller" />
           <EntitySet Name="ML_Usuario" EntityType="NSAADMModel.ML_Usuario" />
           <EntitySet Name="MP_Payments" EntityType="NSAADMModel.MP_Payments" />
+          <EntitySet Name="produtoes" EntityType="NSAADMModel.produto" />
+          <EntitySet Name="taxas" EntityType="NSAADMModel.taxa" />
+          <EntitySet Name="TipoCaixas" EntityType="NSAADMModel.TipoCaixa" />
+          <EntitySet Name="UsuarioAdms" EntityType="NSAADMModel.UsuarioAdm" />
+          <EntitySet Name="vendas" EntityType="NSAADMModel.venda" />
+          <AssociationSet Name="FK_Caixa_categoria" Association="NSAADMModel.FK_Caixa_categoria">
+            <End Role="categoria" EntitySet="categorias" />
+            <End Role="Caixa" EntitySet="Caixas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Caixa_TipoCaixa" Association="NSAADMModel.FK_Caixa_TipoCaixa">
+            <End Role="TipoCaixa" EntitySet="TipoCaixas" />
+            <End Role="Caixa" EntitySet="Caixas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_venda_cliente" Association="NSAADMModel.fk_venda_cliente">
+            <End Role="cliente" EntitySet="clientes" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_item_produto" Association="NSAADMModel.fk_item_produto">
+            <End Role="produto" EntitySet="produtoes" />
+            <End Role="item" EntitySet="items" />
+          </AssociationSet>
+          <AssociationSet Name="fk_venda_item" Association="NSAADMModel.fk_venda_item">
+            <End Role="item" EntitySet="items" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LojaProduto_loja" Association="NSAADMModel.FK_LojaProduto_loja">
+            <End Role="Loja" EntitySet="Lojas" />
+            <End Role="LojaProduto" EntitySet="LojaProdutoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LojaProduto_produto" Association="NSAADMModel.FK_LojaProduto_produto">
+            <End Role="produto" EntitySet="produtoes" />
+            <End Role="LojaProduto" EntitySet="LojaProdutoes" />
+          </AssociationSet>
           <AssociationSet Name="FK_ML_BuyerReputation_ML_Usuario" Association="NSAADMModel.FK_ML_BuyerReputation_ML_Usuario">
             <End Role="ML_Usuario" EntitySet="ML_Usuario" />
             <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
@@ -790,6 +1005,10 @@
           <AssociationSet Name="FK_ML_Identification_ML_Usuario" Association="NSAADMModel.FK_ML_Identification_ML_Usuario">
             <End Role="ML_Usuario" EntitySet="ML_Usuario" />
             <End Role="ML_Identification" EntitySet="ML_Identification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_Item_ML_ItemOrganizacao" Association="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao">
+            <End Role="ML_ItemOrganizacao" EntitySet="ML_ItemOrganizacao" />
+            <End Role="ML_Item" EntitySet="ML_Item" />
           </AssociationSet>
           <AssociationSet Name="FK_ML_OrderItem_ML_Item" Association="NSAADMModel.FK_ML_OrderItem_ML_Item">
             <End Role="ML_Item" EntitySet="ML_Item" />
@@ -839,9 +1058,19 @@
             <End Role="ML_SellerReputation" EntitySet="ML_SellerReputation" />
             <End Role="ML_TransactionsSeller" EntitySet="ML_TransactionsSeller" />
           </AssociationSet>
-          <EntitySet Name="UsuarioAdms" EntityType="NSAADMModel.UsuarioAdm" />
-          <EntitySet Name="ML_FeedbackBuyer" EntityType="NSAADMModel.ML_FeedbackBuyer" />
-          <EntitySet Name="ML_FeedbackSeller" EntityType="NSAADMModel.ML_FeedbackSeller" />
+          <EntitySet Name="ML_City" EntityType="NSAADMModel.ML_City" />
+          <EntitySet Name="ML_Country" EntityType="NSAADMModel.ML_Country" />
+          <EntitySet Name="ML_ReceiverAddress" EntityType="NSAADMModel.ML_ReceiverAddress" />
+          <EntitySet Name="ML_Shipping" EntityType="NSAADMModel.ML_Shipping" />
+          <EntitySet Name="ML_State" EntityType="NSAADMModel.ML_State" />
+          <AssociationSet Name="FK_ML_ReceiverAddress_ML_City" Association="NSAADMModel.FK_ML_ReceiverAddress_ML_City">
+            <End Role="ML_City" EntitySet="ML_City" />
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML_ReceiverAddress_ML_Country" Association="NSAADMModel.FK_ML_ReceiverAddress_ML_Country">
+            <End Role="ML_Country" EntitySet="ML_Country" />
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
+          </AssociationSet>
           <AssociationSet Name="FK_ML_FeedbackBuyer_ML_Order" Association="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order">
             <End Role="ML_Order" EntitySet="ML_Order" />
             <End Role="ML_FeedbackBuyer" EntitySet="ML_FeedbackBuyer" />
@@ -850,54 +1079,112 @@
             <End Role="ML_Order" EntitySet="ML_Order" />
             <End Role="ML_FeedbackSeller" EntitySet="ML_FeedbackSeller" />
           </AssociationSet>
-          <EntitySet Name="ML_ItemOrganizacao" EntityType="NSAADMModel.ML_ItemOrganizacao" />
-          <AssociationSet Name="FK_ML_Item_ML_ItemOrganizacao" Association="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao">
-            <End Role="ML_ItemOrganizacao" EntitySet="ML_ItemOrganizacao" />
-            <End Role="ML_Item" EntitySet="ML_Item" />
+          <AssociationSet Name="FK_ML_Shipping_ML_Order" Association="NSAADMModel.FK_ML_Shipping_ML_Order">
+            <End Role="ML_Order" EntitySet="ML_Order" />
+            <End Role="ML_Shipping" EntitySet="ML_Shipping" />
           </AssociationSet>
-          <EntitySet Name="Requests" EntityType="NSAADMModel.Request" />
-          <EntitySet Name="CallBackMLs" EntityType="NSAADMModel.CallBackML" />
-          <EntitySet Name="ML_Question" EntityType="NSAADMModel.ML_Question" />
-          <EntitySet Name="Caixas" EntityType="NSAADMModel.Caixa" />
-          <EntitySet Name="categorias" EntityType="NSAADMModel.categoria" />
-          <EntitySet Name="clientes" EntityType="NSAADMModel.cliente" />
-          <EntitySet Name="items" EntityType="NSAADMModel.item" />
-          <EntitySet Name="Lojas" EntityType="NSAADMModel.Loja" />
-          <EntitySet Name="LojaProdutoes" EntityType="NSAADMModel.LojaProduto" />
-          <EntitySet Name="produtoes" EntityType="NSAADMModel.produto" />
-          <EntitySet Name="taxas" EntityType="NSAADMModel.taxa" />
-          <EntitySet Name="TipoCaixas" EntityType="NSAADMModel.TipoCaixa" />
-          <EntitySet Name="vendas" EntityType="NSAADMModel.venda" />
-          <AssociationSet Name="FK_Caixa_categoria" Association="NSAADMModel.FK_Caixa_categoria">
-            <End Role="categoria" EntitySet="categorias" />
-            <End Role="Caixa" EntitySet="Caixas" />
+          <AssociationSet Name="FK_ML_ReceiverAddress_ML_State" Association="NSAADMModel.FK_ML_ReceiverAddress_ML_State">
+            <End Role="ML_State" EntitySet="ML_State" />
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
           </AssociationSet>
-          <AssociationSet Name="FK_Caixa_TipoCaixa" Association="NSAADMModel.FK_Caixa_TipoCaixa">
-            <End Role="TipoCaixa" EntitySet="TipoCaixas" />
-            <End Role="Caixa" EntitySet="Caixas" />
+          <AssociationSet Name="FK_ML_Shipping_ML_ReceiverAddress" Association="NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress">
+            <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
+            <End Role="ML_Shipping" EntitySet="ML_Shipping" />
           </AssociationSet>
-          <AssociationSet Name="fk_venda_cliente" Association="NSAADMModel.fk_venda_cliente">
-            <End Role="cliente" EntitySet="clientes" />
-            <End Role="venda" EntitySet="vendas" />
-          </AssociationSet>
-          <AssociationSet Name="fk_item_produto" Association="NSAADMModel.fk_item_produto">
-            <End Role="produto" EntitySet="produtoes" />
-            <End Role="item" EntitySet="items" />
-          </AssociationSet>
-          <AssociationSet Name="fk_venda_item" Association="NSAADMModel.fk_venda_item">
-            <End Role="item" EntitySet="items" />
-            <End Role="venda" EntitySet="vendas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LojaProduto_loja" Association="NSAADMModel.FK_LojaProduto_loja">
-            <End Role="Loja" EntitySet="Lojas" />
-            <End Role="LojaProduto" EntitySet="LojaProdutoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LojaProduto_produto" Association="NSAADMModel.FK_LojaProduto_produto">
-            <End Role="produto" EntitySet="produtoes" />
-            <End Role="LojaProduto" EntitySet="LojaProdutoes" />
-          </AssociationSet>
-          <EntitySet Name="DadosMLs" EntityType="NSAADMModel.DadosML" />
         </EntityContainer>
+        <EntityType Name="Caixa">
+          <Key>
+            <PropertyRef Name="Cod_Mov" />
+          </Key>
+          <Property Name="Cod_Mov" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_Caixa" Type="Int32" />
+          <Property Name="Cod_Categ" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="valor" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="categoria" Relationship="NSAADMModel.FK_Caixa_categoria" FromRole="Caixa" ToRole="categoria" />
+          <NavigationProperty Name="TipoCaixa" Relationship="NSAADMModel.FK_Caixa_TipoCaixa" FromRole="Caixa" ToRole="TipoCaixa" />
+        </EntityType>
+        <EntityType Name="CallBackML">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="resource" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="topic" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="received" Type="DateTime" />
+          <Property Name="sent" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="CallBackML1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="resource" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="topic" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="received" Type="DateTime" />
+          <Property Name="sent" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="cod_categ" />
+          </Key>
+          <Property Name="cod_categ" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="descr_categ" Type="String" MaxLength="250" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Caixas" Relationship="NSAADMModel.FK_Caixa_categoria" FromRole="categoria" ToRole="Caixa" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="cod_cliente" />
+          </Key>
+          <Property Name="cod_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="telefone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="endereco" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="vendas" Relationship="NSAADMModel.fk_venda_cliente" FromRole="cliente" ToRole="venda" />
+        </EntityType>
+        <EntityType Name="DadosML">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AccessToken" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ClientId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ClientSecret" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RefreshToken" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="item">
+          <Key>
+            <PropertyRef Name="cod_item" />
+          </Key>
+          <Property Name="cod_item" Type="Int32" Nullable="false" />
+          <Property Name="cod_produto" Type="Int32" Nullable="false" />
+          <Property Name="dt_compra" Type="DateTime" Nullable="false" />
+          <Property Name="preco" Type="Single" />
+          <NavigationProperty Name="produto" Relationship="NSAADMModel.fk_item_produto" FromRole="item" ToRole="produto" />
+          <NavigationProperty Name="vendas" Relationship="NSAADMModel.fk_venda_item" FromRole="item" ToRole="venda" />
+        </EntityType>
+        <EntityType Name="Loja">
+          <Key>
+            <PropertyRef Name="Cod_Loja" />
+          </Key>
+          <Property Name="Cod_Loja" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="LojaProdutoes" Relationship="NSAADMModel.FK_LojaProduto_loja" FromRole="Loja" ToRole="LojaProduto" />
+        </EntityType>
+        <EntityType Name="LojaProduto">
+          <Key>
+            <PropertyRef Name="Cod_Produto" />
+            <PropertyRef Name="Cod_Loja" />
+          </Key>
+          <Property Name="Cod_Produto" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Loja" Type="Int32" Nullable="false" />
+          <Property Name="Preco" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Tarifa" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Loja" Relationship="NSAADMModel.FK_LojaProduto_loja" FromRole="LojaProduto" ToRole="Loja" />
+          <NavigationProperty Name="produto" Relationship="NSAADMModel.FK_LojaProduto_produto" FromRole="LojaProduto" ToRole="produto" />
+        </EntityType>
         <EntityType Name="ML_BuyerReputation">
           <Key>
             <PropertyRef Name="id" />
@@ -907,6 +1194,28 @@
           <Property Name="id_Usuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <NavigationProperty Name="ML_Usuario" Relationship="NSAADMModel.FK_ML_BuyerReputation_ML_Usuario" FromRole="ML_BuyerReputation" ToRole="ML_Usuario" />
           <NavigationProperty Name="ML_TransactionsBuyer" Relationship="NSAADMModel.FK_ML_TransactionsBuyer_ML_BuyerReputation" FromRole="ML_BuyerReputation" ToRole="ML_TransactionsBuyer" />
+        </EntityType>
+        <EntityType Name="ML_FeedbackBuyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_order" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="date_created" Type="DateTime" />
+          <Property Name="fulfilled" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="rating" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order" FromRole="ML_FeedbackBuyer" ToRole="ML_Order" />
+        </EntityType>
+        <EntityType Name="ML_FeedbackSeller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_order" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="date_created" Type="DateTime" />
+          <Property Name="fulfilled" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="rating" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_FeedbackSeller_ML_Order" FromRole="ML_FeedbackSeller" ToRole="ML_Order" />
         </EntityType>
         <EntityType Name="ML_Identification">
           <Key>
@@ -925,9 +1234,17 @@
           <Property Name="id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="variation_id" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="ML_OrderItem" Relationship="NSAADMModel.FK_ML_OrderItem_ML_Item" FromRole="ML_Item" ToRole="ML_OrderItem" />
-          <Property Type="Decimal" Name="id_org" Precision="18" Scale="0" />
+          <Property Name="id_org" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="ML_ItemOrganizacao" Relationship="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" FromRole="ML_Item" ToRole="ML_ItemOrganizacao" />
+          <NavigationProperty Name="ML_OrderItem" Relationship="NSAADMModel.FK_ML_OrderItem_ML_Item" FromRole="ML_Item" ToRole="ML_OrderItem" />
+        </EntityType>
+        <EntityType Name="ML_ItemOrganizacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ML_Item" Relationship="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" FromRole="ML_ItemOrganizacao" ToRole="ML_Item" />
         </EntityType>
         <EntityType Name="ML_Order">
           <Key>
@@ -948,6 +1265,7 @@
           <NavigationProperty Name="ML_Payment" Relationship="NSAADMModel.FK_ML_Payment_ML_Order" FromRole="ML_Order" ToRole="ML_Payment" />
           <NavigationProperty Name="ML_FeedbackBuyer" Relationship="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order" FromRole="ML_Order" ToRole="ML_FeedbackBuyer" />
           <NavigationProperty Name="ML_FeedbackSeller" Relationship="NSAADMModel.FK_ML_FeedbackSeller_ML_Order" FromRole="ML_Order" ToRole="ML_FeedbackSeller" />
+          <NavigationProperty Name="ML_Shipping" Relationship="NSAADMModel.FK_ML_Shipping_ML_Order" FromRole="ML_Order" ToRole="ML_Shipping" />
         </EntityType>
         <EntityType Name="ML_OrderItem">
           <Key>
@@ -986,6 +1304,23 @@
           <Property Name="extension" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="varified" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="ML_Usuario" Relationship="NSAADMModel.FK_ML_Phone_ML_Usuario" FromRole="ML_Phone" ToRole="ML_Usuario" />
+        </EntityType>
+        <EntityType Name="ML_Question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_created" Type="DateTime" />
+          <Property Name="item_id" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="seller_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="text" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="id_from" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="answered_questions" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Answer_date_created" Type="DateTime" />
+          <Property Name="Answer_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Answer_text" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="id_question" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="ML_Ratings">
           <Key>
@@ -1108,6 +1443,139 @@
           <Property Name="installments" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="marketplace" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
         </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="cod_produto" />
+          </Key>
+          <Property Name="cod_produto" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="items" Relationship="NSAADMModel.fk_item_produto" FromRole="produto" ToRole="item" />
+          <NavigationProperty Name="LojaProdutoes" Relationship="NSAADMModel.FK_LojaProduto_produto" FromRole="produto" ToRole="LojaProduto" />
+        </EntityType>
+        <EntityType Name="taxa">
+          <Key>
+            <PropertyRef Name="preco_kg" />
+            <PropertyRef Name="icms" />
+            <PropertyRef Name="paypal" />
+            <PropertyRef Name="DARJ" />
+          </Key>
+          <Property Name="preco_kg" Type="Single" Nullable="false" />
+          <Property Name="icms" Type="Single" Nullable="false" />
+          <Property Name="paypal" Type="Single" Nullable="false" />
+          <Property Name="DARJ" Type="Single" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCaixa">
+          <Key>
+            <PropertyRef Name="Cod_Caixa" />
+          </Key>
+          <Property Name="Cod_Caixa" Type="Int32" Nullable="false" />
+          <Property Name="Desc_Caixa" Type="String" MaxLength="250" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Caixas" Relationship="NSAADMModel.FK_Caixa_TipoCaixa" FromRole="TipoCaixa" ToRole="Caixa" />
+        </EntityType>
+        <EntityType Name="UsuarioAdm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="senha" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="venda">
+          <Key>
+            <PropertyRef Name="cod_venda" />
+            <PropertyRef Name="cod_item" />
+          </Key>
+          <Property Name="cod_venda" Type="Int32" Nullable="false" />
+          <Property Name="cod_item" Type="Int32" Nullable="false" />
+          <Property Name="cod_cliente" Type="Int32" />
+          <Property Name="dt_venda" Type="DateTime" />
+          <NavigationProperty Name="cliente" Relationship="NSAADMModel.fk_venda_cliente" FromRole="venda" ToRole="cliente" />
+          <NavigationProperty Name="item" Relationship="NSAADMModel.fk_venda_item" FromRole="venda" ToRole="item" />
+        </EntityType>
+        <Association Name="FK_Caixa_categoria">
+          <End Role="categoria" Type="NSAADMModel.categoria" Multiplicity="0..1" />
+          <End Role="Caixa" Type="NSAADMModel.Caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="cod_categ" />
+            </Principal>
+            <Dependent Role="Caixa">
+              <PropertyRef Name="Cod_Categ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Caixa_TipoCaixa">
+          <End Role="TipoCaixa" Type="NSAADMModel.TipoCaixa" Multiplicity="0..1" />
+          <End Role="Caixa" Type="NSAADMModel.Caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCaixa">
+              <PropertyRef Name="Cod_Caixa" />
+            </Principal>
+            <Dependent Role="Caixa">
+              <PropertyRef Name="Cod_Caixa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_venda_cliente">
+          <End Role="cliente" Type="NSAADMModel.cliente" Multiplicity="0..1" />
+          <End Role="venda" Type="NSAADMModel.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="cod_cliente" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="cod_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_item_produto">
+          <End Role="produto" Type="NSAADMModel.produto" Multiplicity="1" />
+          <End Role="item" Type="NSAADMModel.item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="cod_produto" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="cod_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_venda_item">
+          <End Role="item" Type="NSAADMModel.item" Multiplicity="1" />
+          <End Role="venda" Type="NSAADMModel.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="item">
+              <PropertyRef Name="cod_item" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="cod_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LojaProduto_loja">
+          <End Role="Loja" Type="NSAADMModel.Loja" Multiplicity="1" />
+          <End Role="LojaProduto" Type="NSAADMModel.LojaProduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loja">
+              <PropertyRef Name="Cod_Loja" />
+            </Principal>
+            <Dependent Role="LojaProduto">
+              <PropertyRef Name="Cod_Loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LojaProduto_produto">
+          <End Role="produto" Type="NSAADMModel.produto" Multiplicity="1" />
+          <End Role="LojaProduto" Type="NSAADMModel.LojaProduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="cod_produto" />
+            </Principal>
+            <Dependent Role="LojaProduto">
+              <PropertyRef Name="Cod_Produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ML_BuyerReputation_ML_Usuario">
           <End Role="ML_Usuario" Type="NSAADMModel.ML_Usuario" Multiplicity="1" />
           <End Role="ML_BuyerReputation" Type="NSAADMModel.ML_BuyerReputation" Multiplicity="*" />
@@ -1141,6 +1609,18 @@
             </Principal>
             <Dependent Role="ML_Identification">
               <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_Item_ML_ItemOrganizacao">
+          <End Role="ML_ItemOrganizacao" Type="NSAADMModel.ML_ItemOrganizacao" Multiplicity="0..1" />
+          <End Role="ML_Item" Type="NSAADMModel.ML_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_ItemOrganizacao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_Item">
+              <PropertyRef Name="id_org" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1288,36 +1768,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="UsuarioAdm">
+        <EntityType Name="ML_City">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nome" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="senha" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="id" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ML_ReceiverAddress" Relationship="NSAADMModel.FK_ML_ReceiverAddress_ML_City" FromRole="ML_City" ToRole="ML_ReceiverAddress" />
         </EntityType>
-        <EntityType Name="ML_FeedbackBuyer">
+        <EntityType Name="ML_Country">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Decimal" Name="id_order" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="id" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ML_ReceiverAddress" Relationship="NSAADMModel.FK_ML_ReceiverAddress_ML_Country" FromRole="ML_Country" ToRole="ML_ReceiverAddress" />
+        </EntityType>
+        <EntityType Name="ML_ReceiverAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="address_line" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="zip_code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="comment" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="idCity" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="idState" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="idCountry" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="latitude" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="longitude" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ML_City" Relationship="NSAADMModel.FK_ML_ReceiverAddress_ML_City" FromRole="ML_ReceiverAddress" ToRole="ML_City" />
+          <NavigationProperty Name="ML_Country" Relationship="NSAADMModel.FK_ML_ReceiverAddress_ML_Country" FromRole="ML_ReceiverAddress" ToRole="ML_Country" />
+          <NavigationProperty Name="ML_State" Relationship="NSAADMModel.FK_ML_ReceiverAddress_ML_State" FromRole="ML_ReceiverAddress" ToRole="ML_State" />
+          <NavigationProperty Name="ML_Shipping" Relationship="NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress" FromRole="ML_ReceiverAddress" ToRole="ML_Shipping" />
+        </EntityType>
+        <EntityType Name="ML_Shipping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="status" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="shipment_type" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="date_created" />
-          <Property Type="String" Name="fulfilled" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="rating" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order" FromRole="ML_FeedbackBuyer" ToRole="ML_Order" />
+          <Property Type="String" Name="currency_id" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="cost" />
+          <Property Type="Decimal" Name="idReceiverAddress" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="idOrder" Precision="18" Scale="0" />
+          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_Shipping_ML_Order" FromRole="ML_Shipping" ToRole="ML_Order" />
+          <NavigationProperty Name="ML_ReceiverAddress" Relationship="NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress" FromRole="ML_Shipping" ToRole="ML_ReceiverAddress" />
         </EntityType>
-        <EntityType Name="ML_FeedbackSeller">
+        <EntityType Name="ML_State">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Decimal" Name="id_order" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="DateTime" Name="date_created" />
-          <Property Type="String" Name="fulfilled" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="rating" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ML_Order" Relationship="NSAADMModel.FK_ML_FeedbackSeller_ML_Order" FromRole="ML_FeedbackSeller" ToRole="ML_Order" />
+          <Property Type="String" Name="id" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ML_ReceiverAddress" Relationship="NSAADMModel.FK_ML_ReceiverAddress_ML_State" FromRole="ML_State" ToRole="ML_ReceiverAddress" />
         </EntityType>
+        <Association Name="FK_ML_ReceiverAddress_ML_City">
+          <End Type="NSAADMModel.ML_City" Role="ML_City" Multiplicity="0..1" />
+          <End Type="NSAADMModel.ML_ReceiverAddress" Role="ML_ReceiverAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_City">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_ReceiverAddress">
+              <PropertyRef Name="idCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML_ReceiverAddress_ML_Country">
+          <End Type="NSAADMModel.ML_Country" Role="ML_Country" Multiplicity="0..1" />
+          <End Type="NSAADMModel.ML_ReceiverAddress" Role="ML_ReceiverAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ML_Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ML_ReceiverAddress">
+              <PropertyRef Name="idCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ML_FeedbackBuyer_ML_Order">
           <End Type="NSAADMModel.ML_Order" Role="ML_Order" Multiplicity="1" />
           <End Type="NSAADMModel.ML_FeedbackBuyer" Role="ML_FeedbackBuyer" Multiplicity="*" />
@@ -1342,267 +1873,122 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ML_ItemOrganizacao">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ML_Item" Relationship="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" FromRole="ML_ItemOrganizacao" ToRole="ML_Item" />
-        </EntityType>
-        <Association Name="FK_ML_Item_ML_ItemOrganizacao">
-          <End Type="NSAADMModel.ML_ItemOrganizacao" Role="ML_ItemOrganizacao" Multiplicity="0..1" />
-          <End Type="NSAADMModel.ML_Item" Role="ML_Item" Multiplicity="*" />
+        <Association Name="FK_ML_Shipping_ML_Order">
+          <End Type="NSAADMModel.ML_Order" Role="ML_Order" Multiplicity="0..1" />
+          <End Type="NSAADMModel.ML_Shipping" Role="ML_Shipping" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ML_ItemOrganizacao">
+            <Principal Role="ML_Order">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="ML_Item">
-              <PropertyRef Name="id_org" />
+            <Dependent Role="ML_Shipping">
+              <PropertyRef Name="idOrder" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Request">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Request1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="CallBackML">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="userID" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="resource" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="topic" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="received" />
-          <Property Type="DateTime" Name="sent" />
-        </EntityType>
-        <EntityType Name="ML_Question">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="date_created" />
-          <Property Type="String" Name="item_id" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="seller_id" Precision="18" Scale="0" />
-          <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="text" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="answered_questions" Precision="18" Scale="0" />
-          <Property Type="DateTime" Name="Answer_date_created" />
-          <Property Type="String" Name="Answer_status" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Answer_text" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="id_question" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="id_from" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="Caixa">
-          <Key>
-            <PropertyRef Name="Cod_Mov" />
-          </Key>
-          <Property Type="Int32" Name="Cod_Mov" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="Cod_Caixa" />
-          <Property Type="Decimal" Name="Cod_Categ" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="valor" Precision="19" Scale="4" />
-          <NavigationProperty Name="categoria" Relationship="NSAADMModel.FK_Caixa_categoria" FromRole="Caixa" ToRole="categoria" />
-          <NavigationProperty Name="TipoCaixa" Relationship="NSAADMModel.FK_Caixa_TipoCaixa" FromRole="Caixa" ToRole="TipoCaixa" />
-        </EntityType>
-        <EntityType Name="categoria">
-          <Key>
-            <PropertyRef Name="cod_categ" />
-          </Key>
-          <Property Type="Decimal" Name="cod_categ" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="descr_categ" MaxLength="250" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Caixas" Relationship="NSAADMModel.FK_Caixa_categoria" FromRole="categoria" ToRole="Caixa" />
-        </EntityType>
-        <EntityType Name="cliente">
-          <Key>
-            <PropertyRef Name="cod_cliente" />
-          </Key>
-          <Property Type="Int32" Name="cod_cliente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nome" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="email" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="telefone" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="endereco" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="vendas" Relationship="NSAADMModel.fk_venda_cliente" FromRole="cliente" ToRole="venda" />
-        </EntityType>
-        <EntityType Name="item">
-          <Key>
-            <PropertyRef Name="cod_item" />
-          </Key>
-          <Property Type="Int32" Name="cod_item" Nullable="false" />
-          <Property Type="Int32" Name="cod_produto" Nullable="false" />
-          <Property Type="DateTime" Name="dt_compra" Nullable="false" />
-          <Property Type="Single" Name="preco" />
-          <NavigationProperty Name="produto" Relationship="NSAADMModel.fk_item_produto" FromRole="item" ToRole="produto" />
-          <NavigationProperty Name="vendas" Relationship="NSAADMModel.fk_venda_item" FromRole="item" ToRole="venda" />
-        </EntityType>
-        <EntityType Name="Loja">
-          <Key>
-            <PropertyRef Name="Cod_Loja" />
-          </Key>
-          <Property Type="Int32" Name="Cod_Loja" Nullable="false" />
-          <Property Type="String" Name="Nome" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LojaProdutoes" Relationship="NSAADMModel.FK_LojaProduto_loja" FromRole="Loja" ToRole="LojaProduto" />
-        </EntityType>
-        <EntityType Name="LojaProduto">
-          <Key>
-            <PropertyRef Name="Cod_Produto" />
-            <PropertyRef Name="Cod_Loja" />
-          </Key>
-          <Property Type="Int32" Name="Cod_Produto" Nullable="false" />
-          <Property Type="Int32" Name="Cod_Loja" Nullable="false" />
-          <Property Type="Decimal" Name="Preco" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="Tarifa" Precision="18" Scale="0" />
-          <NavigationProperty Name="Loja" Relationship="NSAADMModel.FK_LojaProduto_loja" FromRole="LojaProduto" ToRole="Loja" />
-          <NavigationProperty Name="produto" Relationship="NSAADMModel.FK_LojaProduto_produto" FromRole="LojaProduto" ToRole="produto" />
-        </EntityType>
-        <EntityType Name="produto">
-          <Key>
-            <PropertyRef Name="cod_produto" />
-          </Key>
-          <Property Type="Int32" Name="cod_produto" Nullable="false" />
-          <Property Type="String" Name="nome" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="items" Relationship="NSAADMModel.fk_item_produto" FromRole="produto" ToRole="item" />
-          <NavigationProperty Name="LojaProdutoes" Relationship="NSAADMModel.FK_LojaProduto_produto" FromRole="produto" ToRole="LojaProduto" />
-        </EntityType>
-        <EntityType Name="taxa">
-          <Key>
-            <PropertyRef Name="preco_kg" />
-            <PropertyRef Name="icms" />
-            <PropertyRef Name="paypal" />
-            <PropertyRef Name="DARJ" />
-          </Key>
-          <Property Type="Single" Name="preco_kg" Nullable="false" />
-          <Property Type="Single" Name="icms" Nullable="false" />
-          <Property Type="Single" Name="paypal" Nullable="false" />
-          <Property Type="Single" Name="DARJ" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TipoCaixa">
-          <Key>
-            <PropertyRef Name="Cod_Caixa" />
-          </Key>
-          <Property Type="Int32" Name="Cod_Caixa" Nullable="false" />
-          <Property Type="String" Name="Desc_Caixa" MaxLength="250" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Caixas" Relationship="NSAADMModel.FK_Caixa_TipoCaixa" FromRole="TipoCaixa" ToRole="Caixa" />
-        </EntityType>
-        <EntityType Name="venda">
-          <Key>
-            <PropertyRef Name="cod_venda" />
-            <PropertyRef Name="cod_item" />
-          </Key>
-          <Property Type="Int32" Name="cod_venda" Nullable="false" />
-          <Property Type="Int32" Name="cod_item" Nullable="false" />
-          <Property Type="Int32" Name="cod_cliente" />
-          <Property Type="DateTime" Name="dt_venda" />
-          <NavigationProperty Name="cliente" Relationship="NSAADMModel.fk_venda_cliente" FromRole="venda" ToRole="cliente" />
-          <NavigationProperty Name="item" Relationship="NSAADMModel.fk_venda_item" FromRole="venda" ToRole="item" />
-        </EntityType>
-        <Association Name="FK_Caixa_categoria">
-          <End Type="NSAADMModel.categoria" Role="categoria" Multiplicity="0..1" />
-          <End Type="NSAADMModel.Caixa" Role="Caixa" Multiplicity="*" />
+        <Association Name="FK_ML_ReceiverAddress_ML_State">
+          <End Type="NSAADMModel.ML_State" Role="ML_State" Multiplicity="0..1" />
+          <End Type="NSAADMModel.ML_ReceiverAddress" Role="ML_ReceiverAddress" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="categoria">
-              <PropertyRef Name="cod_categ" />
+            <Principal Role="ML_State">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Caixa">
-              <PropertyRef Name="Cod_Categ" />
+            <Dependent Role="ML_ReceiverAddress">
+              <PropertyRef Name="idState" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Caixa_TipoCaixa">
-          <End Type="NSAADMModel.TipoCaixa" Role="TipoCaixa" Multiplicity="0..1" />
-          <End Type="NSAADMModel.Caixa" Role="Caixa" Multiplicity="*" />
+        <Association Name="FK_ML_Shipping_ML_ReceiverAddress">
+          <End Type="NSAADMModel.ML_ReceiverAddress" Role="ML_ReceiverAddress" Multiplicity="0..1" />
+          <End Type="NSAADMModel.ML_Shipping" Role="ML_Shipping" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TipoCaixa">
-              <PropertyRef Name="Cod_Caixa" />
+            <Principal Role="ML_ReceiverAddress">
+              <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Caixa">
-              <PropertyRef Name="Cod_Caixa" />
+            <Dependent Role="ML_Shipping">
+              <PropertyRef Name="idReceiverAddress" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_venda_cliente">
-          <End Type="NSAADMModel.cliente" Role="cliente" Multiplicity="0..1" />
-          <End Type="NSAADMModel.venda" Role="venda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cliente">
-              <PropertyRef Name="cod_cliente" />
-            </Principal>
-            <Dependent Role="venda">
-              <PropertyRef Name="cod_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_item_produto">
-          <End Type="NSAADMModel.produto" Role="produto" Multiplicity="1" />
-          <End Type="NSAADMModel.item" Role="item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="produto">
-              <PropertyRef Name="cod_produto" />
-            </Principal>
-            <Dependent Role="item">
-              <PropertyRef Name="cod_produto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_venda_item">
-          <End Type="NSAADMModel.item" Role="item" Multiplicity="1" />
-          <End Type="NSAADMModel.venda" Role="venda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="item">
-              <PropertyRef Name="cod_item" />
-            </Principal>
-            <Dependent Role="venda">
-              <PropertyRef Name="cod_item" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LojaProduto_loja">
-          <End Type="NSAADMModel.Loja" Role="Loja" Multiplicity="1" />
-          <End Type="NSAADMModel.LojaProduto" Role="LojaProduto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Loja">
-              <PropertyRef Name="Cod_Loja" />
-            </Principal>
-            <Dependent Role="LojaProduto">
-              <PropertyRef Name="Cod_Loja" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LojaProduto_produto">
-          <End Type="NSAADMModel.produto" Role="produto" Multiplicity="1" />
-          <End Type="NSAADMModel.LojaProduto" Role="LojaProduto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="produto">
-              <PropertyRef Name="cod_produto" />
-            </Principal>
-            <Dependent Role="LojaProduto">
-              <PropertyRef Name="Cod_Produto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="DadosML">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="String" Name="id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AccessToken" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ClientId" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ClientSecret" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="RefreshToken" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="NSAADMModelStoreContainer" CdmEntityContainer="NSAADMEntities">
+          <EntitySetMapping Name="Caixas"><EntityTypeMapping TypeName="NSAADMModel.Caixa"><MappingFragment StoreEntitySet="Caixa">
+            <ScalarProperty Name="Cod_Mov" ColumnName="Cod_Mov" />
+            <ScalarProperty Name="Cod_Caixa" ColumnName="Cod_Caixa" />
+            <ScalarProperty Name="Cod_Categ" ColumnName="Cod_Categ" />
+            <ScalarProperty Name="valor" ColumnName="valor" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CallBackMLs"><EntityTypeMapping TypeName="NSAADMModel.CallBackML"><MappingFragment StoreEntitySet="CallBackML">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="userID" ColumnName="userID" />
+            <ScalarProperty Name="resource" ColumnName="resource" />
+            <ScalarProperty Name="topic" ColumnName="topic" />
+            <ScalarProperty Name="received" ColumnName="received" />
+            <ScalarProperty Name="sent" ColumnName="sent" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CallBackMLs1"><EntityTypeMapping TypeName="NSAADMModel.CallBackML1"><MappingFragment StoreEntitySet="CallBackMLs">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="userID" ColumnName="userID" />
+            <ScalarProperty Name="resource" ColumnName="resource" />
+            <ScalarProperty Name="topic" ColumnName="topic" />
+            <ScalarProperty Name="received" ColumnName="received" />
+            <ScalarProperty Name="sent" ColumnName="sent" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="categorias"><EntityTypeMapping TypeName="NSAADMModel.categoria"><MappingFragment StoreEntitySet="categoria">
+            <ScalarProperty Name="cod_categ" ColumnName="cod_categ" />
+            <ScalarProperty Name="descr_categ" ColumnName="descr_categ" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="clientes"><EntityTypeMapping TypeName="NSAADMModel.cliente"><MappingFragment StoreEntitySet="cliente">
+            <ScalarProperty Name="cod_cliente" ColumnName="cod_cliente" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="telefone" ColumnName="telefone" />
+            <ScalarProperty Name="endereco" ColumnName="endereco" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DadosMLs"><EntityTypeMapping TypeName="NSAADMModel.DadosML"><MappingFragment StoreEntitySet="DadosML">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+            <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+            <ScalarProperty Name="ClientSecret" ColumnName="ClientSecret" />
+            <ScalarProperty Name="RefreshToken" ColumnName="RefreshToken" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="items"><EntityTypeMapping TypeName="NSAADMModel.item"><MappingFragment StoreEntitySet="item">
+            <ScalarProperty Name="cod_item" ColumnName="cod_item" />
+            <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
+            <ScalarProperty Name="dt_compra" ColumnName="dt_compra" />
+            <ScalarProperty Name="preco" ColumnName="preco" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Lojas"><EntityTypeMapping TypeName="NSAADMModel.Loja"><MappingFragment StoreEntitySet="Loja">
+            <ScalarProperty Name="Cod_Loja" ColumnName="Cod_Loja" />
+            <ScalarProperty Name="Nome" ColumnName="Nome" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LojaProdutoes"><EntityTypeMapping TypeName="NSAADMModel.LojaProduto"><MappingFragment StoreEntitySet="LojaProduto">
+            <ScalarProperty Name="Cod_Produto" ColumnName="Cod_Produto" />
+            <ScalarProperty Name="Cod_Loja" ColumnName="Cod_Loja" />
+            <ScalarProperty Name="Preco" ColumnName="Preco" />
+            <ScalarProperty Name="Tarifa" ColumnName="Tarifa" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ML_BuyerReputation"><EntityTypeMapping TypeName="NSAADMModel.ML_BuyerReputation"><MappingFragment StoreEntitySet="ML_BuyerReputation">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="canceled_transactions" ColumnName="canceled_transactions" />
             <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_FeedbackBuyer"><EntityTypeMapping TypeName="NSAADMModel.ML_FeedbackBuyer"><MappingFragment StoreEntitySet="ML_FeedbackBuyer">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="id_order" ColumnName="id_order" />
+            <ScalarProperty Name="date_created" ColumnName="date_created" />
+            <ScalarProperty Name="fulfilled" ColumnName="fulfilled" />
+            <ScalarProperty Name="rating" ColumnName="rating" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_FeedbackSeller"><EntityTypeMapping TypeName="NSAADMModel.ML_FeedbackSeller"><MappingFragment StoreEntitySet="ML_FeedbackSeller">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="id_order" ColumnName="id_order" />
+            <ScalarProperty Name="date_created" ColumnName="date_created" />
+            <ScalarProperty Name="fulfilled" ColumnName="fulfilled" />
+            <ScalarProperty Name="rating" ColumnName="rating" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ML_Identification"><EntityTypeMapping TypeName="NSAADMModel.ML_Identification"><MappingFragment StoreEntitySet="ML_Identification">
             <ScalarProperty Name="id" ColumnName="id" />
@@ -1611,10 +1997,14 @@
             <ScalarProperty Name="number" ColumnName="number" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ML_Item"><EntityTypeMapping TypeName="NSAADMModel.ML_Item"><MappingFragment StoreEntitySet="ML_Item">
-            <ScalarProperty Name="id_org" ColumnName="id_org" />
-                <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="title" ColumnName="title" />
             <ScalarProperty Name="variation_id" ColumnName="variation_id" />
+            <ScalarProperty Name="id_org" ColumnName="id_org" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_ItemOrganizacao"><EntityTypeMapping TypeName="NSAADMModel.ML_ItemOrganizacao"><MappingFragment StoreEntitySet="ML_ItemOrganizacao">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="Descricao" ColumnName="Descricao" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ML_Order"><EntityTypeMapping TypeName="NSAADMModel.ML_Order"><MappingFragment StoreEntitySet="ML_Order">
             <ScalarProperty Name="id" ColumnName="id" />
@@ -1650,6 +2040,20 @@
             <ScalarProperty Name="number" ColumnName="number" />
             <ScalarProperty Name="extension" ColumnName="extension" />
             <ScalarProperty Name="varified" ColumnName="varified" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_Question"><EntityTypeMapping TypeName="NSAADMModel.ML_Question"><MappingFragment StoreEntitySet="ML_Question">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="date_created" ColumnName="date_created" />
+            <ScalarProperty Name="item_id" ColumnName="item_id" />
+            <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+            <ScalarProperty Name="status" ColumnName="status" />
+            <ScalarProperty Name="text" ColumnName="text" />
+            <ScalarProperty Name="id_from" ColumnName="id_from" />
+            <ScalarProperty Name="answered_questions" ColumnName="answered_questions" />
+            <ScalarProperty Name="Answer_date_created" ColumnName="Answer_date_created" />
+            <ScalarProperty Name="Answer_status" ColumnName="Answer_status" />
+            <ScalarProperty Name="Answer_text" ColumnName="Answer_text" />
+            <ScalarProperty Name="id_question" ColumnName="id_question" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ML_Ratings"><EntityTypeMapping TypeName="NSAADMModel.ML_Ratings"><MappingFragment StoreEntitySet="ML_Ratings">
             <ScalarProperty Name="id" ColumnName="id" />
@@ -1733,183 +2137,80 @@
             <ScalarProperty Name="installments" ColumnName="installments" />
             <ScalarProperty Name="marketplace" ColumnName="marketplace" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="UsuarioAdms">
-            <EntityTypeMapping TypeName="NSAADMModel.UsuarioAdm">
-              <MappingFragment StoreEntitySet="UsuarioAdm">
-                <ScalarProperty Name="senha" ColumnName="senha" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
+          <EntitySetMapping Name="produtoes"><EntityTypeMapping TypeName="NSAADMModel.produto"><MappingFragment StoreEntitySet="produto">
+            <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="taxas"><EntityTypeMapping TypeName="NSAADMModel.taxa"><MappingFragment StoreEntitySet="taxa">
+            <ScalarProperty Name="preco_kg" ColumnName="preco_kg" />
+            <ScalarProperty Name="icms" ColumnName="icms" />
+            <ScalarProperty Name="paypal" ColumnName="paypal" />
+            <ScalarProperty Name="DARJ" ColumnName="DARJ" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TipoCaixas"><EntityTypeMapping TypeName="NSAADMModel.TipoCaixa"><MappingFragment StoreEntitySet="TipoCaixa">
+            <ScalarProperty Name="Cod_Caixa" ColumnName="Cod_Caixa" />
+            <ScalarProperty Name="Desc_Caixa" ColumnName="Desc_Caixa" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UsuarioAdms"><EntityTypeMapping TypeName="NSAADMModel.UsuarioAdm"><MappingFragment StoreEntitySet="UsuarioAdm">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="nome" ColumnName="nome" />
+            <ScalarProperty Name="senha" ColumnName="senha" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="vendas"><EntityTypeMapping TypeName="NSAADMModel.venda"><MappingFragment StoreEntitySet="venda">
+            <ScalarProperty Name="cod_venda" ColumnName="cod_venda" />
+            <ScalarProperty Name="cod_item" ColumnName="cod_item" />
+            <ScalarProperty Name="cod_cliente" ColumnName="cod_cliente" />
+            <ScalarProperty Name="dt_venda" ColumnName="dt_venda" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ML_City">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_City">
+              <MappingFragment StoreEntitySet="ML_City">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ML_FeedbackBuyer">
-            <EntityTypeMapping TypeName="NSAADMModel.ML_FeedbackBuyer">
-              <MappingFragment StoreEntitySet="ML_FeedbackBuyer">
-                <ScalarProperty Name="rating" ColumnName="rating" />
-                <ScalarProperty Name="fulfilled" ColumnName="fulfilled" />
+          <EntitySetMapping Name="ML_Country">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_Country">
+              <MappingFragment StoreEntitySet="ML_Country">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ML_ReceiverAddress">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_ReceiverAddress">
+              <MappingFragment StoreEntitySet="ML_ReceiverAddress">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+                <ScalarProperty Name="idState" ColumnName="idState" />
+                <ScalarProperty Name="idCity" ColumnName="idCity" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="address_line" ColumnName="address_line" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ML_Shipping">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_Shipping">
+              <MappingFragment StoreEntitySet="ML_Shipping">
+                <ScalarProperty Name="idOrder" ColumnName="idOrder" />
+                <ScalarProperty Name="idReceiverAddress" ColumnName="idReceiverAddress" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
                 <ScalarProperty Name="date_created" ColumnName="date_created" />
-                <ScalarProperty Name="id_order" ColumnName="id_order" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ML_FeedbackSeller">
-            <EntityTypeMapping TypeName="NSAADMModel.ML_FeedbackSeller">
-              <MappingFragment StoreEntitySet="ML_FeedbackSeller">
-                <ScalarProperty Name="rating" ColumnName="rating" />
-                <ScalarProperty Name="fulfilled" ColumnName="fulfilled" />
-                <ScalarProperty Name="date_created" ColumnName="date_created" />
-                <ScalarProperty Name="id_order" ColumnName="id_order" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ML_ItemOrganizacao">
-            <EntityTypeMapping TypeName="NSAADMModel.ML_ItemOrganizacao">
-              <MappingFragment StoreEntitySet="ML_ItemOrganizacao">
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Requests">
-            <EntityTypeMapping TypeName="NSAADMModel.Request">
-              <MappingFragment StoreEntitySet="Requests">
-                <ScalarProperty Name="Request1" ColumnName="Request" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CallBackMLs">
-            <EntityTypeMapping TypeName="NSAADMModel.CallBackML">
-              <MappingFragment StoreEntitySet="CallBackML">
-                <ScalarProperty Name="sent" ColumnName="sent" />
-                <ScalarProperty Name="received" ColumnName="received" />
-                <ScalarProperty Name="topic" ColumnName="topic" />
-                <ScalarProperty Name="resource" ColumnName="resource" />
-                <ScalarProperty Name="userID" ColumnName="userID" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ML_Question">
-            <EntityTypeMapping TypeName="NSAADMModel.ML_Question">
-              <MappingFragment StoreEntitySet="ML_Question">
-                <ScalarProperty Name="id_from" ColumnName="id_from" />
-                <ScalarProperty Name="id_question" ColumnName="id_question" />
-                <ScalarProperty Name="Answer_text" ColumnName="Answer_text" />
-                <ScalarProperty Name="Answer_status" ColumnName="Answer_status" />
-                <ScalarProperty Name="Answer_date_created" ColumnName="Answer_date_created" />
-                <ScalarProperty Name="answered_questions" ColumnName="answered_questions" />
-                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="shipment_type" ColumnName="shipment_type" />
                 <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="seller_id" ColumnName="seller_id" />
-                <ScalarProperty Name="item_id" ColumnName="item_id" />
-                <ScalarProperty Name="date_created" ColumnName="date_created" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Caixas">
-            <EntityTypeMapping TypeName="NSAADMModel.Caixa">
-              <MappingFragment StoreEntitySet="Caixa">
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="Cod_Categ" ColumnName="Cod_Categ" />
-                <ScalarProperty Name="Cod_Caixa" ColumnName="Cod_Caixa" />
-                <ScalarProperty Name="Cod_Mov" ColumnName="Cod_Mov" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="categorias">
-            <EntityTypeMapping TypeName="NSAADMModel.categoria">
-              <MappingFragment StoreEntitySet="categoria">
-                <ScalarProperty Name="descr_categ" ColumnName="descr_categ" />
-                <ScalarProperty Name="cod_categ" ColumnName="cod_categ" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="clientes">
-            <EntityTypeMapping TypeName="NSAADMModel.cliente">
-              <MappingFragment StoreEntitySet="cliente">
-                <ScalarProperty Name="endereco" ColumnName="endereco" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="cod_cliente" ColumnName="cod_cliente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="items">
-            <EntityTypeMapping TypeName="NSAADMModel.item">
-              <MappingFragment StoreEntitySet="item">
-                <ScalarProperty Name="preco" ColumnName="preco" />
-                <ScalarProperty Name="dt_compra" ColumnName="dt_compra" />
-                <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
-                <ScalarProperty Name="cod_item" ColumnName="cod_item" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Lojas">
-            <EntityTypeMapping TypeName="NSAADMModel.Loja">
-              <MappingFragment StoreEntitySet="Loja">
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Cod_Loja" ColumnName="Cod_Loja" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LojaProdutoes">
-            <EntityTypeMapping TypeName="NSAADMModel.LojaProduto">
-              <MappingFragment StoreEntitySet="LojaProduto">
-                <ScalarProperty Name="Tarifa" ColumnName="Tarifa" />
-                <ScalarProperty Name="Preco" ColumnName="Preco" />
-                <ScalarProperty Name="Cod_Loja" ColumnName="Cod_Loja" />
-                <ScalarProperty Name="Cod_Produto" ColumnName="Cod_Produto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="produtoes">
-            <EntityTypeMapping TypeName="NSAADMModel.produto">
-              <MappingFragment StoreEntitySet="produto">
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="taxas">
-            <EntityTypeMapping TypeName="NSAADMModel.taxa">
-              <MappingFragment StoreEntitySet="taxa">
-                <ScalarProperty Name="DARJ" ColumnName="DARJ" />
-                <ScalarProperty Name="paypal" ColumnName="paypal" />
-                <ScalarProperty Name="icms" ColumnName="icms" />
-                <ScalarProperty Name="preco_kg" ColumnName="preco_kg" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoCaixas">
-            <EntityTypeMapping TypeName="NSAADMModel.TipoCaixa">
-              <MappingFragment StoreEntitySet="TipoCaixa">
-                <ScalarProperty Name="Desc_Caixa" ColumnName="Desc_Caixa" />
-                <ScalarProperty Name="Cod_Caixa" ColumnName="Cod_Caixa" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vendas">
-            <EntityTypeMapping TypeName="NSAADMModel.venda">
-              <MappingFragment StoreEntitySet="venda">
-                <ScalarProperty Name="dt_venda" ColumnName="dt_venda" />
-                <ScalarProperty Name="cod_cliente" ColumnName="cod_cliente" />
-                <ScalarProperty Name="cod_item" ColumnName="cod_item" />
-                <ScalarProperty Name="cod_venda" ColumnName="cod_venda" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DadosMLs">
-            <EntityTypeMapping TypeName="NSAADMModel.DadosML">
-              <MappingFragment StoreEntitySet="DadosML">
-                <ScalarProperty Name="RefreshToken" ColumnName="RefreshToken" />
-                <ScalarProperty Name="ClientSecret" ColumnName="ClientSecret" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <EntitySetMapping Name="ML_State">
+            <EntityTypeMapping TypeName="NSAADMModel.ML_State">
+              <MappingFragment StoreEntitySet="ML_State">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1934,186 +2235,209 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="ModelML" ZoomLevel="75">
-        <EntityTypeShape EntityType="NSAADMModel.ML_BuyerReputation" Width="1.5" PointX="3" PointY="4" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Identification" Width="1.5" PointX="3" PointY="6.625" Height="1.9802864583333344" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Item" Width="1.5" PointX="3" PointY="20.25" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Order" Width="1.5" PointX="3" PointY="9.375" Height="3.5186979166666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_OrderItem" Width="1.5" PointX="5.25" PointY="9" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Payment" Width="1.5" PointX="5.25" PointY="13" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Phone" Width="1.5" PointX="3" PointY="13.625" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Ratings" Width="1.5" PointX="7.5" PointY="17" Height="2.172587890624996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_ResumoTransBuyer" Width="1.5" PointX="3" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_SellerReputation" Width="1.5" PointX="3" PointY="17" Height="2.172587890624996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_TransactionsBuyer" Width="1.5" PointX="5.25" PointY="3.125" Height="3.5186979166666745" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_TransactionsSeller" Width="1.5" PointX="5.25" PointY="16.75" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Usuario" Width="1.5" PointX="0.75" PointY="9.25" Height="4.6725065104166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.MP_Payments" Width="1.5" PointX="7.75" PointY="1.125" Height="6.2109179687500031" IsExpanded="true" />
+      <Diagram Name="ModelML">
+        <EntityTypeShape EntityType="NSAADMModel.Caixa" Width="1.5" PointX="10" PointY="10.125" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.CallBackML" Width="1.5" PointX="12.75" PointY="7" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.CallBackML1" Width="1.5" PointX="7.75" PointY="14" Height="2.1725878906250014" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.categoria" Width="1.5" PointX="7.75" PointY="10.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.cliente" Width="1.5" PointX="10" PointY="6.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.DadosML" Width="1.5" PointX="12.75" PointY="10" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.item" Width="1.5" PointX="10" PointY="3.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.Loja" Width="1.5" PointX="7.75" PointY="1.125" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.LojaProduto" Width="1.5" PointX="10" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_BuyerReputation" Width="1.5" PointX="3" PointY="4.875" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_FeedbackBuyer" Width="1.5" PointX="9.75" PointY="14" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_FeedbackSeller" Width="1.5" PointX="12.75" PointY="13" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Identification" Width="1.5" PointX="3" PointY="7.625" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Item" Width="1.5" PointX="3" PointY="21" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_ItemOrganizacao" Width="1.5" PointX="0.75" PointY="21.25" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Order" Width="1.5" PointX="3" PointY="10.25" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_OrderItem" Width="1.5" PointX="5.25" PointY="9.875" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Payment" Width="1.5" PointX="5.25" PointY="13.875" Height="2.5571907552083371" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Phone" Width="1.5" PointX="3" PointY="14.625" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Question" Width="1.5" PointX="14.75" PointY="2" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Ratings" Width="1.5" PointX="7.5" PointY="17.875" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_ResumoTransBuyer" Width="1.5" PointX="3" PointY="1.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_SellerReputation" Width="1.5" PointX="3" PointY="17.875" Height="2.1725878906250102" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_TransactionsBuyer" Width="1.5" PointX="5.25" PointY="4.125" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_TransactionsSeller" Width="1.5" PointX="5.25" PointY="17.625" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Usuario" Width="1.5" PointX="0.75" PointY="10.25" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.MP_Payments" Width="1.5" PointX="14.75" PointY="7" Height="6.21091796875001" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.produto" Width="1.5" PointX="7.75" PointY="4" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.taxa" Width="1.5" PointX="14.75" PointY="14" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.TipoCaixa" Width="1.5" PointX="7.75" PointY="7.375" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.UsuarioAdm" Width="1.5" PointX="13.75" PointY="17" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.venda" Width="1.5" PointX="12.25" PointY="3.75" Height="2.1725878906250102" IsExpanded="true" />
+        <AssociationConnector Association="NSAADMModel.FK_Caixa_categoria" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="11.172841796875" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="11.172841796875" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="11.172841796875" />
+          <ConnectorPoint PointX="10" PointY="11.172841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_Caixa_TipoCaixa" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="8.970683593749996" />
+          <ConnectorPoint PointX="9.625" PointY="9.345683593749996" />
+          <ConnectorPoint PointX="9.625" PointY="11.766466843749999" />
+          <ConnectorPoint PointX="10" PointY="11.766466843749999" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.fk_venda_cliente" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.5" PointY="6.84375" />
+          <ConnectorPoint PointX="12.46875" PointY="6.84375" />
+          <ConnectorPoint PointX="12.46875" PointY="5.92258789062501" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.fk_item_produto" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="4.8939925130208337" />
+          <ConnectorPoint PointX="10" PointY="4.8939925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.fk_venda_item" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.5" PointY="4.8362939453125" />
+          <ConnectorPoint PointX="12.25" PointY="4.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_LojaProduto_loja" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="1.9228417968749998" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="1.9228417968749991" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="1.9228417968749998" />
+          <ConnectorPoint PointX="10" PointY="1.9228417968749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_LojaProduto_produto" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="4" />
+          <ConnectorPoint PointX="9.625" PointY="3.625" />
+          <ConnectorPoint PointX="9.625" PointY="1.3051688984374992" />
+          <ConnectorPoint PointX="10" PointY="1.3051688984374992" />
+        </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_BuyerReputation_ML_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="9.25" />
-          <ConnectorPoint PointX="1.5" PointY="4.9901432291666667" />
-          <ConnectorPoint PointX="3" PointY="4.9901432291666667" />
+          <ConnectorPoint PointX="1.5" PointY="10.25" />
+          <ConnectorPoint PointX="1.5" PointY="5.8651432291666659" />
+          <ConnectorPoint PointX="3" PointY="5.8651432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_BuyerReputation" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="5.96108072916667" />
-          <ConnectorPoint PointX="4.822916666666667" PointY="5.9610807291666692" />
-          <ConnectorPoint PointX="4.989583333333333" PointY="5.96108072916667" />
-          <ConnectorPoint PointX="5.25" PointY="5.96108072916667" />
+          <ConnectorPoint PointX="4.5" PointY="5.8651432291666659" />
+          <ConnectorPoint PointX="5.25" PointY="5.8651432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_Identification_ML_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.9062525" PointY="9.25" />
-          <ConnectorPoint PointX="1.9062525" PointY="7.6151432291666676" />
-          <ConnectorPoint PointX="3" PointY="7.6151432291666676" />
+          <ConnectorPoint PointX="1.9062525" PointY="10.25" />
+          <ConnectorPoint PointX="1.9062525" PointY="8.61514322916667" />
+          <ConnectorPoint PointX="3" PointY="8.61514322916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="22.047841796875" />
+          <ConnectorPoint PointX="3" PointY="22.047841796875" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_OrderItem_ML_Item" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="20.251152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="19.876152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="9.7336187158203114" />
-          <ConnectorPoint PointX="5.25" PointY="9.7336187158203114" />
+          <ConnectorPoint PointX="4.5" PointY="21.001152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="20.626152846153843" />
+          <ConnectorPoint PointX="4.875" PointY="11.057444661458334" />
+          <ConnectorPoint PointX="5.25" PointY="11.057444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_Order_ML_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="11.797737630208333" />
-          <ConnectorPoint PointX="3" PointY="11.797737630208333" />
+          <ConnectorPoint PointX="2.25" PointY="12.768888346354167" />
+          <ConnectorPoint PointX="3" PointY="12.768888346354167" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_Order_ML_Usuario1" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="10.523868815104166" />
-          <ConnectorPoint PointX="3" PointY="10.523868815104166" />
+          <ConnectorPoint PointX="2.25" PointY="11.446944173177084" />
+          <ConnectorPoint PointX="3" PointY="11.446944173177084" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_OrderItem_ML_Order" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.529741431640625" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="10.529741431640625" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="10.529741431640625" />
-          <ConnectorPoint PointX="5.25" PointY="10.529741431640625" />
+          <ConnectorPoint PointX="4.5" PointY="11.7111669921875" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="11.7111669921875" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="11.7111669921875" />
+          <ConnectorPoint PointX="5.25" PointY="11.7111669921875" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_Payment_ML_Order" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="13.252915165865385" />
-          <ConnectorPoint PointX="4.8160744349011217" PointY="13.568989600766505" />
-          <ConnectorPoint PointX="4.9339255650988791" PointY="13.686840730964264" />
-          <ConnectorPoint PointX="5.03125" PointY="13.784165165865385" />
-          <ConnectorPoint PointX="5.03125" PointY="12.780097153846153" />
-          <ConnectorPoint PointX="5.2511528461538459" PointY="13" />
+          <ConnectorPoint PointX="4.5" PointY="14.110301106770834" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="14.110301106770834" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="14.110301106770834" />
+          <ConnectorPoint PointX="5.25" PointY="14.110301106770834" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_Phone_ML_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="13.922506510416667" />
-          <ConnectorPoint PointX="1.5" PointY="14.956198416666666" />
-          <ConnectorPoint PointX="1.8229191666666667" PointY="14.956198416666666" />
-          <ConnectorPoint PointX="1.9895858333333332" PointY="14.956198416666666" />
-          <ConnectorPoint PointX="3" PointY="14.956198416666666" />
+          <ConnectorPoint PointX="1.5" PointY="14.922506510416667" />
+          <ConnectorPoint PointX="1.5" PointY="15.956198416666666" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="15.956198416666666" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="15.956198416666666" />
+          <ConnectorPoint PointX="3" PointY="15.956198416666666" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_Ratings_ML_TransactionsSeller" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="18.086293945312498" />
-          <ConnectorPoint PointX="7.5" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="6.75" PointY="18.9612939453125" />
+          <ConnectorPoint PointX="7.5" PointY="18.9612939453125" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="3.0779652459935902" />
-          <ConnectorPoint PointX="4.8473244349011217" PointY="3.4252896808947106" />
-          <ConnectorPoint PointX="4.9651755650988791" PointY="3.5431408110924694" />
-          <ConnectorPoint PointX="5.125" PointY="3.7029652459935902" />
-          <ConnectorPoint PointX="5.125" PointY="2.9630779230769235" />
-          <ConnectorPoint PointX="5.2869220769230765" PointY="3.125" />
+          <ConnectorPoint PointX="4.5" PointY="2.8074446614583337" />
+          <ConnectorPoint PointX="6" PointY="2.8074446614583337" />
+          <ConnectorPoint PointX="6" PointY="4.125" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer1" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="3.1148893229166674" />
-          <ConnectorPoint PointX="4.8473244349011217" PointY="3.4622137578177878" />
-          <ConnectorPoint PointX="4.9651755650988791" PointY="3.5800648880155466" />
-          <ConnectorPoint PointX="4.96875" PointY="3.5836393229166674" />
-          <ConnectorPoint PointX="4.96875" PointY="2.84375" />
-          <ConnectorPoint PointX="5.25" PointY="3.125" />
+          <ConnectorPoint PointX="4.5" PointY="3.4299194921874943" />
+          <ConnectorPoint PointX="5.5937475" PointY="3.4299194921874943" />
+          <ConnectorPoint PointX="5.5937475" PointY="4.125" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsBuyer_ML_ResumoTransBuyer2" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.4630769230769234" PointY="3.1148893229166674" />
-          <ConnectorPoint PointX="4.875" PointY="3.526812399839744" />
-          <ConnectorPoint PointX="4.875" PointY="2.7869230769230771" />
-          <ConnectorPoint PointX="5.25" PointY="3.1619230769230771" />
+          <ConnectorPoint PointX="4.5" PointY="2.1849698307291732" />
+          <ConnectorPoint PointX="6.4062525" PointY="2.1849698307291732" />
+          <ConnectorPoint PointX="6.4062525" PointY="4.125" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_SellerReputation_ML_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.9062525" PointY="13.922506510416667" />
-          <ConnectorPoint PointX="1.9062525" PointY="18.086293945312498" />
-          <ConnectorPoint PointX="3" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="1.9062525" PointY="14.922506510416667" />
+          <ConnectorPoint PointX="1.9062525" PointY="18.961293945312505" />
+          <ConnectorPoint PointX="3" PointY="18.961293945312505" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_TransactionsSeller_ML_SellerReputation" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="18.086293945312498" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="18.086293945312498" />
-          <ConnectorPoint PointX="5.052083333333333" PointY="18.086293945312498" />
-          <ConnectorPoint PointX="5.25" PointY="18.086293945312498" />
+          <ConnectorPoint PointX="4.5" PointY="18.961293945312505" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="18.961293945312505" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="18.961293945312505" />
+          <ConnectorPoint PointX="5.25" PointY="18.961293945312505" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="NSAADMModel.UsuarioAdm" Width="1.5" PointX="7.375" PointY="8.75" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_FeedbackBuyer" Width="1.5" PointX="5.25" PointY="0.75" Height="2.1725878906250031" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_FeedbackSeller" Width="1.5" PointX="5.25" PointY="21.625" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_City" Width="1.5" PointX="16.375" PointY="18" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Country" Width="1.5" PointX="16.375" PointY="20.75" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_ReceiverAddress" Width="1.5" PointX="18.625" PointY="17" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_Shipping" Width="1.5" PointX="20.875" PointY="13.875" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="NSAADMModel.ML_State" Width="1.5" PointX="16.375" PointY="23.125" Height="1.595683593749996" />
+        <AssociationConnector Association="NSAADMModel.FK_ML_ReceiverAddress_ML_City" >
+          <ConnectorPoint PointX="17.875" PointY="18.797841796874998" />
+          <ConnectorPoint PointX="18.625" PointY="18.797841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="NSAADMModel.FK_ML_ReceiverAddress_ML_Country" >
+          <ConnectorPoint PointX="17.875" PointY="21.547841796874998" />
+          <ConnectorPoint PointX="18.885414166666667" PointY="21.547841796874998" />
+          <ConnectorPoint PointX="19.052080833333331" PointY="21.547841796874998" />
+          <ConnectorPoint PointX="19.375" PointY="21.547841796874998" />
+          <ConnectorPoint PointX="19.375" PointY="20.518697916666667" />
+        </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_FeedbackBuyer_ML_Order" >
-          <ConnectorPoint PointX="4.5" PointY="9.407306692307694" />
-          <ConnectorPoint PointX="4.90625" PointY="9.001056692307694" />
-          <ConnectorPoint PointX="4.90625" PointY="1.8362939453125016" />
-          <ConnectorPoint PointX="5.25" PointY="1.8362939453125016" />
+          <ConnectorPoint PointX="4.5" PointY="13.0862939453125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="13.0862939453125" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="13.0862939453125" />
+          <ConnectorPoint PointX="9.84375" PointY="13.0862939453125" />
+          <ConnectorPoint PointX="9.84375" PointY="14" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_ML_FeedbackSeller_ML_Order" >
-          <ConnectorPoint PointX="4.5" PointY="13.271376704326922" />
-          <ConnectorPoint PointX="4.8160744349011217" PointY="13.587451139228042" />
-          <ConnectorPoint PointX="4.9339255650988791" PointY="13.7053022694258" />
-          <ConnectorPoint PointX="4.96875" PointY="13.740126704326922" />
-          <ConnectorPoint PointX="4.96875" PointY="22.7112939453125" />
-          <ConnectorPoint PointX="5.25" PointY="22.7112939453125" />
+          <ConnectorPoint PointX="4.5" PointY="13.511896972656249" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="13.511896972656249" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="13.511896972656249" />
+          <ConnectorPoint PointX="9.7604166666666661" PointY="13.511896972656249" />
+          <ConnectorPoint PointX="9.9270833333333339" PointY="13.511896972656249" />
+          <ConnectorPoint PointX="12.75" PointY="13.511896972656249" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="NSAADMModel.ML_ItemOrganizacao" Width="1.5" PointX="0.75" PointY="20.5" Height="1.5956835937500031" />
-        <AssociationConnector Association="NSAADMModel.FK_ML_Item_ML_ItemOrganizacao" >
-          <ConnectorPoint PointX="2.25" PointY="21.297841796875" />
-          <ConnectorPoint PointX="3" PointY="21.297841796875" />
+        <AssociationConnector Association="NSAADMModel.FK_ML_Shipping_ML_Order" >
+          <ConnectorPoint PointX="4.5" PointY="12.398730468749994" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="12.398730468749994" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="12.398730468749994" />
+          <ConnectorPoint PointX="5" PointY="12.398730468749994" />
+          <ConnectorPoint PointX="5" PointY="12.547587890625" />
+          <ConnectorPoint PointX="14.5" PointY="12.547587890625" />
+          <ConnectorPoint PointX="14.5" PointY="13.46091796875001" />
+          <ConnectorPoint PointX="21.625" PointY="13.46091796875001" />
+          <ConnectorPoint PointX="21.625" PointY="13.875" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="NSAADMModel.Request" Width="1.5" PointX="9.375" PointY="8.75" Height="1.4033821614583388" />
-        <EntityTypeShape EntityType="NSAADMModel.CallBackML" Width="1.5" PointX="10.375" PointY="0.75" Height="2.1725878906250031" />
-        <EntityTypeShape EntityType="NSAADMModel.ML_Question" Width="1.5" PointX="10.375" PointY="3.75" Height="3.3263964843749996" />
-        <EntityTypeShape EntityType="NSAADMModel.Caixa" Width="1.5" PointX="14.625" PointY="0.875" Height="2.1725878906250067" />
-        <EntityTypeShape EntityType="NSAADMModel.categoria" Width="1.5" PointX="12.375" PointY="1.25" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="NSAADMModel.cliente" Width="1.5" PointX="13.625" PointY="13.5" Height="2.172587890624996" />
-        <EntityTypeShape EntityType="NSAADMModel.item" Width="1.5" PointX="13.625" PointY="10.5" Height="2.1725878906250102" />
-        <EntityTypeShape EntityType="NSAADMModel.Loja" Width="1.5" PointX="11.375" PointY="13.875" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="NSAADMModel.LojaProduto" Width="1.5" PointX="13.625" PointY="7.5" Height="2.1725878906250102" />
-        <EntityTypeShape EntityType="NSAADMModel.produto" Width="1.5" PointX="11.375" PointY="10.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="NSAADMModel.taxa" Width="1.5" PointX="7.375" PointY="11.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="NSAADMModel.TipoCaixa" Width="1.5" PointX="12.375" PointY="17.25" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="NSAADMModel.venda" Width="1.5" PointX="15.875" PointY="10.5" Height="2.1725878906250102" />
-        <AssociationConnector Association="NSAADMModel.FK_Caixa_categoria" >
-          <ConnectorPoint PointX="13.875" PointY="2.047841796874998" />
-          <ConnectorPoint PointX="14.625" PointY="2.047841796874998" />
+        <AssociationConnector Association="NSAADMModel.FK_ML_ReceiverAddress_ML_State" >
+          <ConnectorPoint PointX="17.875" PointY="23.922841796874998" />
+          <ConnectorPoint PointX="18.9687475" PointY="23.922841796874998" />
+          <ConnectorPoint PointX="18.9687475" PointY="20.518697916666667" />
         </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.FK_Caixa_TipoCaixa" >
-          <ConnectorPoint PointX="13.875" PointY="18.047841796874998" />
-          <ConnectorPoint PointX="15.5" PointY="18.047841796874998" />
-          <ConnectorPoint PointX="15.5" PointY="3.0475878906250067" />
+        <AssociationConnector Association="NSAADMModel.FK_ML_Shipping_ML_ReceiverAddress" >
+          <ConnectorPoint PointX="20.125" PointY="18.759348958333334" />
+          <ConnectorPoint PointX="21.625" PointY="18.759348958333334" />
+          <ConnectorPoint PointX="21.625" PointY="16.816793619791667" />
         </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.fk_venda_cliente" >
-          <ConnectorPoint PointX="15.125" PointY="14.586293945312498" />
-          <ConnectorPoint PointX="15.416666666666666" PointY="14.586293945312498" />
-          <ConnectorPoint PointX="15.583333333333334" PointY="14.586293945312498" />
-          <ConnectorPoint PointX="16.625" PointY="14.586293945312498" />
-          <ConnectorPoint PointX="16.625" PointY="12.67258789062501" />
-        </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.fk_item_produto" >
-          <ConnectorPoint PointX="12.875" PointY="11.643992513020834" />
-          <ConnectorPoint PointX="13.166666666666666" PointY="11.643992513020834" />
-          <ConnectorPoint PointX="13.333333333333334" PointY="11.643992513020834" />
-          <ConnectorPoint PointX="13.625" PointY="11.643992513020834" />
-        </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.fk_venda_item" >
-          <ConnectorPoint PointX="15.125" PointY="11.586293945312505" />
-          <ConnectorPoint PointX="15.416666666666666" PointY="11.586293945312505" />
-          <ConnectorPoint PointX="15.583333333333334" PointY="11.586293945312505" />
-          <ConnectorPoint PointX="15.875" PointY="11.586293945312505" />
-        </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.FK_LojaProduto_loja" >
-          <ConnectorPoint PointX="12.875" PointY="13.875" />
-          <ConnectorPoint PointX="13.25" PointY="13.5" />
-          <ConnectorPoint PointX="13.25" PointY="8.5862939453125051" />
-          <ConnectorPoint PointX="13.625" PointY="8.5862939453125051" />
-        </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.FK_LojaProduto_produto" >
-          <ConnectorPoint PointX="12.125" PointY="10.75" />
-          <ConnectorPoint PointX="12.125" PointY="9.1606934179687514" />
-          <ConnectorPoint PointX="13.166666666666666" PointY="9.1606934179687514" />
-          <ConnectorPoint PointX="13.333333333333334" PointY="9.1606934179687514" />
-          <ConnectorPoint PointX="13.625" PointY="9.1606934179687514" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="NSAADMModel.DadosML" Width="1.5" PointX="12.375" PointY="4.75" Height="1.9802864583333246" />
       </Diagram>
     </Diagrams>
   </Designer>
