@@ -9,8 +9,8 @@ namespace ServidorWeb.ML.Classes
     public class ConverterObjetoMLparaEF
     {
 
-        //NSAADMEntities n;
-
+        
+#region Corretos
    
         public void AtualizaOrdem(ML_Order o, Order oML, NSAADMEntities n1)
         {
@@ -37,16 +37,21 @@ namespace ServidorWeb.ML.Classes
                     o.status = oML.status;
                 }
 
-
                 if (oML.status_detail != null)
                 {
                     o.status_detail = oML.status_detail.description;
                 }
 
+                
                 AtualizaFeedBackBuyer(o, oML, n1);
                 AtualizaFeedBackSeller(o, oML, n1);
+                ML_Payment p = o.ML_Payment.First();
+                AtualizaPagamento(p, oML.payments.First(), n1);
 
-                n1.SaveChanges();
+
+                
+
+
             }
             catch (Exception ex)
             {
@@ -152,9 +157,25 @@ namespace ServidorWeb.ML.Classes
 
         }
 
-       
+        private void AtualizaPagamento(ML_Payment p, Payment py, NSAADMEntities n)
+        {
+            try
+            {
+                p.currency_id = py.currency_id;
+                p.date_created = py.date_created;
+                p.date_last_updated = py.date_last_updated;
+                p.status = py.status;
+                p.transaction_amount = py.transaction_amount;
+                p.id = py.id;
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception("Erro na rotina AtualziaPagamento.",ex);
+            }
 
-        #region Corretos
+
+        }
 
         public ML_Question ConverteQuestion(Question q)
         {
@@ -350,65 +371,66 @@ namespace ServidorWeb.ML.Classes
                             ord.ML_FeedbackSeller.Add(fees);
                         }
                     }
-
-
                 }
 
-                if (o.shipping.id != null)
-                {
-                    //IMPLEMENTAR ENDERECO
-                    ML_Shipping s = new ML_Shipping();
-                    s.cost = o.shipping.cost;
-                    s.currency_id = o.shipping.currency_id;
-                    if (o.shipping.date_created != null)
-                    {
-                        s.date_created = Convert.ToDateTime(o.shipping.date_created);
-                    }
-                    s.id = Convert.ToDecimal(o.shipping.id);
-                    s.shipment_type = o.shipping.shipment_type;
-                    s.status = o.shipping.status;
+                ML_Shipping s = new ML_Shipping();
+                s = ConverteShipping(o, n);
+                ord.ML_Shipping.Add(s);
 
-                     if (o.shipping.receiver_address != null && o.shipping.receiver_address.id != null)
-                    {
+                //if (o.shipping.id != null)
+                //{
+                //    //IMPLEMENTAR ENDERECO
+                //    s.cost = o.shipping.cost;
+                //    s.currency_id = o.shipping.currency_id;
+                //    if (o.shipping.date_created != null)
+                //    {
+                //        s.date_created = Convert.ToDateTime(o.shipping.date_created);
+                //    }
+                //    s.id = Convert.ToDecimal(o.shipping.id);
+                //    s.shipment_type = o.shipping.shipment_type;
+                //    s.status = o.shipping.status;
 
-                        ML_ReceiverAddress rc;
-                        decimal d = Convert.ToDecimal(o.shipping.receiver_address.id);
-                        rc = (from p in n.ML_ReceiverAddress where p.ID == d select p).FirstOrDefault();
-                        if (rc == null)
-                        {
-                            rc = new ML_ReceiverAddress();
-                            rc.address_line = o.shipping.receiver_address.address_line;
-                            rc.comment = o.shipping.receiver_address.comment;
-                            rc.ID = Convert.ToDecimal(o.shipping.receiver_address.id.ToString());
-                            //rc.latitude = o.shipping.receiver_address.latitude.ToString(); Todos vem Null
-                            //rc.longitude = o.shipping.receiver_address.longitude.ToString();
-                            rc.zip_code = o.shipping.receiver_address.zip_code;
+                //     if (o.shipping.receiver_address != null && o.shipping.receiver_address.id != null)
+                //    {
+
+                //        ML_ReceiverAddress rc;
+                //        decimal d = Convert.ToDecimal(o.shipping.receiver_address.id);
+                //        rc = (from p in n.ML_ReceiverAddress where p.ID == d select p).FirstOrDefault();
+                //        if (rc == null)
+                //        {
+                //            rc = new ML_ReceiverAddress();
+                //            rc.address_line = o.shipping.receiver_address.address_line;
+                //            rc.comment = o.shipping.receiver_address.comment;
+                //            rc.ID = Convert.ToDecimal(o.shipping.receiver_address.id.ToString());
+                //            //rc.latitude = o.shipping.receiver_address.latitude.ToString(); Todos vem Null
+                //            //rc.longitude = o.shipping.receiver_address.longitude.ToString();
+                //            rc.zip_code = o.shipping.receiver_address.zip_code;
 
 
-                            rc.ML_State = ControlEnd.RetonarStado(o.shipping.receiver_address.state.id, n);
-                            if (rc.ML_State == null && o.shipping.receiver_address.state.id != null)
-                            {
-                                rc.ML_State = ConverteState(o.shipping.receiver_address.state);
-                            }
+                //            rc.ML_State = ControlEnd.RetonarStado(o.shipping.receiver_address.state.id, n);
+                //            if (rc.ML_State == null && o.shipping.receiver_address.state.id != null)
+                //            {
+                //                rc.ML_State = ConverteState(o.shipping.receiver_address.state);
+                //            }
 
-                            rc.ML_City = ControlEnd.RetonarCidade(o.shipping.receiver_address.city.id, n);
-                            if (rc.ML_City == null && o.shipping.receiver_address.city.id != null)
-                            {
-                                rc.ML_City = ConverteCity(o.shipping.receiver_address.city);
-                            }
+                //            rc.ML_City = ControlEnd.RetonarCidade(o.shipping.receiver_address.city.id, n);
+                //            if (rc.ML_City == null && o.shipping.receiver_address.city.id != null)
+                //            {
+                //                rc.ML_City = ConverteCity(o.shipping.receiver_address.city);
+                //            }
 
-                            rc.ML_Country = ControlEnd.RetonarPais(o.shipping.receiver_address.country.id, n);
-                            if (rc.ML_Country == null && o.shipping.receiver_address.country.id != null)
-                            {
-                                rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
-                            }
-                        }
+                //            rc.ML_Country = ControlEnd.RetonarPais(o.shipping.receiver_address.country.id, n);
+                //            if (rc.ML_Country == null && o.shipping.receiver_address.country.id != null)
+                //            {
+                //                rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
+                //            }
+                //        }
 
-                        s.ML_ReceiverAddress = rc;
-                    }
+                //        s.ML_ReceiverAddress = rc;
+                //    }
 
-                    ord.ML_Shipping.Add(s);
-                }
+                //    ord.ML_Shipping.Add(s);
+                //}
 
 
                 //DADOS DA ORDEM
@@ -425,12 +447,8 @@ namespace ServidorWeb.ML.Classes
             }
             catch (Exception ex)
             {
-
                 throw new Exception(string.Format("Erro na rotina de ConverteOrdem2. OrdemID: {0}",o.id), ex);
             }
-
-
-
         }
 
         public ML_Usuario ConverteUsuario(Usuario us)
@@ -650,9 +668,70 @@ namespace ServidorWeb.ML.Classes
 
             }
         }
-    
-    
+        public ML_Shipping ConverteShipping(Order o, NSAADMEntities n)
+        {
+            ML_Shipping ship = new ML_Shipping();
+            ControlaEndereco ControlEnd = new ControlaEndereco();
+
+            if (o.shipping.id != null)
+            {
+                //IMPLEMENTAR ENDERECO
+                ML_Shipping s = new ML_Shipping();
+                s.cost = o.shipping.cost;
+                s.currency_id = o.shipping.currency_id;
+                if (o.shipping.date_created != null)
+                {
+                    s.date_created = Convert.ToDateTime(o.shipping.date_created);
+                }
+                s.id = Convert.ToDecimal(o.shipping.id);
+                s.shipment_type = o.shipping.shipment_type;
+                s.status = o.shipping.status;
+
+                if (o.shipping.receiver_address != null && o.shipping.receiver_address.id != null)
+                {
+
+                    ML_ReceiverAddress rc;
+                    decimal d = Convert.ToDecimal(o.shipping.receiver_address.id);
+                    rc = (from p in n.ML_ReceiverAddress where p.ID == d select p).FirstOrDefault();
+                    if (rc == null)
+                    {
+                        rc = new ML_ReceiverAddress();
+                        rc.address_line = o.shipping.receiver_address.address_line;
+                        rc.comment = o.shipping.receiver_address.comment;
+                        rc.ID = Convert.ToDecimal(o.shipping.receiver_address.id.ToString());
+                        //rc.latitude = o.shipping.receiver_address.latitude.ToString(); Todos vem Null
+                        //rc.longitude = o.shipping.receiver_address.longitude.ToString();
+                        rc.zip_code = o.shipping.receiver_address.zip_code;
+
+
+                        rc.ML_State = ControlEnd.RetonarStado(o.shipping.receiver_address.state.id, n);
+                        if (rc.ML_State == null && o.shipping.receiver_address.state.id != null)
+                        {
+                            rc.ML_State = ConverteState(o.shipping.receiver_address.state);
+                        }
+
+                        rc.ML_City = ControlEnd.RetonarCidade(o.shipping.receiver_address.city.id, n);
+                        if (rc.ML_City == null && o.shipping.receiver_address.city.id != null)
+                        {
+                            rc.ML_City = ConverteCity(o.shipping.receiver_address.city);
+                        }
+
+                        rc.ML_Country = ControlEnd.RetonarPais(o.shipping.receiver_address.country.id, n);
+                        if (rc.ML_Country == null && o.shipping.receiver_address.country.id != null)
+                        {
+                            rc.ML_Country = ConverteCountry(o.shipping.receiver_address.country);
+                        }
+                    }
+
+                    s.ML_ReceiverAddress = rc;
+                }
+                return ship;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
         #endregion
-    
 }
