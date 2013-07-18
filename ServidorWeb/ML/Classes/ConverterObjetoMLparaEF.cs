@@ -45,8 +45,8 @@ namespace ServidorWeb.ML.Classes
                 
                 AtualizaFeedBackBuyer(o, oML, n1);
                 AtualizaFeedBackSeller(o, oML, n1);
-                ML_Payment p = o.ML_Payment.First();
-                AtualizaPagamento(p, oML.payments.First(), n1);
+                ML_Payment p = o.ML_Payment.FirstOrDefault();
+                if (p != null) AtualizaPagamento(p, oML.payments.First(), n1);
 
 
                 
@@ -166,7 +166,7 @@ namespace ServidorWeb.ML.Classes
                 p.date_last_updated = py.date_last_updated;
                 p.status = py.status;
                 p.transaction_amount = py.transaction_amount;
-                p.id = py.id;
+                if (p.id == 0) p.id = py.id;
             }
             catch (Exception ex)
             {
