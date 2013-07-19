@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -70,29 +70,7 @@ namespace ServidorWeb.ML.Classes
         /// <param name="n">Objeto NSAADMEntities que vai ser usado para fazer a inclusão ou alteração.</param>
         public void GravaOrdem(ML_Order o, NSAADMEntities n)
         {
-            try
-            {
-                var or = (from p in n.ML_Order where p.id == o.id select p).First();
 
-                or.status = o.status;
-                or.date_closed = o.date_closed;
-                or.status_detail = o.status_detail;
-
-                //or.ML_Payment.Load();
-
-                //if (o.ML_Payment != null)
-                //{
-
-                //}
-
-                n.SaveChanges();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception("Erro na rotina GravaOrdem.", ex);
-            }
         }
 
         /// <summary>
@@ -100,21 +78,31 @@ namespace ServidorWeb.ML.Classes
         /// </summary>
         /// <param name="o"></param>
         /// <param name="n"></param>
-        private void GravaOrdem(Order o, NSAADMEntities n)
+        public void GravaOrdem(Order o, NSAADMEntities n)
         {
             try
             {
+                ML_Order Ordem;
+                ConverterObjetoMLparaEF cf = new ConverterObjetoMLparaEF();
 
+                Ordem = (from p in n.ML_Order where p.id == o.id select p).FirstOrDefault();
+                if (Ordem == null)
+                {
+                    Ordem = cf.ConverteOrdem(o, n);
+                    n.ML_Order.AddObject(Ordem);
+                }
+                else
+                {
+                    cf.AtualizaOrdem(Ordem, o, n);
+                }
+
+                n.SaveChanges();
             }
             catch (Exception ex)
             {
-
                 throw new Exception("Erro na rotina GravaOrdem.", ex);
             }
         }
-
-
-
     }
 
     public enum TipoRetonaOrdens
