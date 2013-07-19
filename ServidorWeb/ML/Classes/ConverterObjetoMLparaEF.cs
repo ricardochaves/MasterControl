@@ -10,7 +10,6 @@ namespace ServidorWeb.ML.Classes
     {
 
         
-#region Corretos
    
         public void AtualizaOrdem(ML_Order o, Order oML, NSAADMEntities n1)
         {
@@ -41,28 +40,51 @@ namespace ServidorWeb.ML.Classes
                 {
                     o.status_detail = oML.status_detail.description;
                 }
-
                 
                 AtualizaFeedBackBuyer(o, oML, n1);
                 AtualizaFeedBackSeller(o, oML, n1);
+                AtualizaShipping(o, oML, n1);
                 ML_Payment p = o.ML_Payment.FirstOrDefault();
                 if (p != null) AtualizaPagamento(p, oML.payments.First(), n1);
-
-
-                
-
 
             }
             catch (Exception ex)
             {
-
                 throw new Exception("Erro na rotina AtualizaOrdem(ML_Order o, Order oML)", ex);
             }
-
-
         }
 
-        private void AtualizaFeedBackBuyer(ML_Order o, Order oML, NSAADMEntities n1)
+        private void AtualizaShipping(ML_Order o, Order oML, NSAADMEntities n)
+        {
+            if (oML.shipping.id != null)
+            {
+                o.ML_Shipping.Load();
+
+                ML_Shipping ship;
+                
+                ship = o.ML_Shipping.FirstOrDefault();
+
+                if (ship == null)
+                {
+
+                    ship = ConverteShipping(oML, n);
+                    o.ML_Shipping.Add(ship);
+
+                }
+                else
+                {
+                    ship.status = oML.shipping.status;
+                    ship.shipment_type = oML.shipping.shipment_type;
+                    ship.currency_id = oML.shipping.currency_id;
+                    ship.cost = oML.shipping.cost;
+
+                }
+
+
+            }
+        }
+
+        private void AtualizaFeedBackBuyer(ML_Order o, Order oML, NSAADMEntities n)
         {
             try
             {
@@ -93,7 +115,7 @@ namespace ServidorWeb.ML.Classes
                         b1.rating = p1.rating;
                         b1.id_order = o.id;
 
-                        n1.ML_FeedbackBuyer.AddObject(b1);
+                        n.ML_FeedbackBuyer.AddObject(b1);
                         o.ML_FeedbackBuyer.Add(b1);
 
                     }
@@ -109,11 +131,18 @@ namespace ServidorWeb.ML.Classes
 
         }
 
-        private void AtualizaFeedBackSeller(ML_Order o, Order oML, NSAADMEntities n1)
+        private void AtualizaFeedBackSeller(ML_Order o, Order oML, NSAADMEntities n)
         {
 
             try
             {
+
+
+                if (o.id == 777585100)
+                {
+                    string a;
+                }
+
                 if (o.ML_FeedbackSeller.Count > 0)
                 {
                     if (RetornaFeedBackSeller(oML) != null)
@@ -124,9 +153,8 @@ namespace ServidorWeb.ML.Classes
                         MLs.date_created = s.date_created;
                         MLs.fulfilled = s.fulfilled.ToString();
                         MLs.rating = s.rating;
-
+                        o.ML_FeedbackSeller.Add(MLs);
                     }
-
                 }
                 else
                 {
@@ -141,12 +169,9 @@ namespace ServidorWeb.ML.Classes
                         MLs1.rating = s1.rating;
                         MLs1.id_order = o.id;
 
-                        n1.ML_FeedbackSeller.AddObject(MLs1);
+                        
                         o.ML_FeedbackSeller.Add(MLs1);
-
                     }
-
-
                 }
             }
             catch (Exception ex)
@@ -170,11 +195,8 @@ namespace ServidorWeb.ML.Classes
             }
             catch (Exception ex)
             {
-                
                 throw new Exception("Erro na rotina AtualziaPagamento.",ex);
             }
-
-
         }
 
         public ML_Question ConverteQuestion(Question q)
@@ -208,7 +230,6 @@ namespace ServidorWeb.ML.Classes
             return mlq;
 
         }
-
         public ML_Item ConverteItemParaML_Item(Item i)
         {
             ML_Item it = new ML_Item();
@@ -230,7 +251,6 @@ namespace ServidorWeb.ML.Classes
             }
 
         }
-
         private Purchase RetornaFeedBackPurchase(Order o)
         {
             if (o.feedback != null)
@@ -249,7 +269,6 @@ namespace ServidorWeb.ML.Classes
                 return null;
             }
         }
-
         private Sale RetornaFeedBackSeller(Order o)
         {
             if (o.feedback != null)
@@ -268,7 +287,6 @@ namespace ServidorWeb.ML.Classes
                 return null;
             }
         }
-
         public ML_Order ConverteOrdem(Order o, NSAADMEntities n)
         {
 
@@ -394,7 +412,6 @@ namespace ServidorWeb.ML.Classes
                 throw new Exception(string.Format("Erro na rotina de ConverteOrdem. OrdemID: {0}",o.id), ex);
             }
         }
-
         public ML_Usuario ConverteUsuario(Usuario us)
         {
 
@@ -677,5 +694,4 @@ namespace ServidorWeb.ML.Classes
             }
         }
     }
-        #endregion
 }
