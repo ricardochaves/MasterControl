@@ -59,6 +59,11 @@ namespace ServidorWeb.ML.Paginas
                         {
                             Ordem = cf.ConverteOrdem(or, n);
                             n.ML_Order.AddObject(Ordem);
+
+                            SistemaFinal s = new SistemaFinal();
+                            s.FazerVenda(Ordem);
+
+                            
                         }
                         else
                         {
@@ -66,6 +71,7 @@ namespace ServidorWeb.ML.Paginas
                         }
                         
                         n.SaveChanges();
+                        
                     }
                 } while (o.results.Count == 50);
      
