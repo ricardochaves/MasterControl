@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -32,13 +32,13 @@ namespace ServidorWeb.ML.Paginas
 
             try
             {
-                CallBackML teste = (from p in n.CallBackMLs where p.resource == c.resource select p).First();
+                CallBackMLs teste = (from p in n.CallBackMLs where p.resource == c.resource select p).First();
 
             }
             catch (Exception)
             {
                 
-                CallBackML call = new CallBackML();
+                CallBackMLs call = new CallBackMLs();
                 call.received = c.received;
                 call.resource = c.resource;
                 call.sent = c.sent;
@@ -57,6 +57,14 @@ namespace ServidorWeb.ML.Paginas
                     ControlaPerguntas cp = new ControlaPerguntas();
 
                     cp.GravaPergunta(cm.RetonarQuestion(c.resource), cm.n);
+                }
+                if (c.topic == "orders")
+                {
+                    ControlaMeli cm = new ControlaMeli();
+                    ControlaOrdens co = new ControlaOrdens();
+                    ConverterObjetoMLparaEF conv = new ConverterObjetoMLparaEF();
+                    co.GravaOrdem(cm.RetornaOrder(c.resource),cm.n);
+
                 }
             }
         }
