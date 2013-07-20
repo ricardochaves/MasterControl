@@ -165,9 +165,9 @@ namespace ServidorWeb.PgBot
                          isp in n.SpellItems on i.id equals isp.idItem
                      join
                          est in n.Estoques on isp.idItem equals est.idItem
-                     where i.itemClass == 3 && est.Qtd < 10
+                     where i.itemClass == 3 && est.Qtd < 15
                            && est.dtFabricado < est.dtAtualizado
-                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (10 - est.Qtd), nome = est.NomePersonagem });
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (18 - est.Qtd), nome = est.NomePersonagem });
 
             foreach (var item in a)
             {
