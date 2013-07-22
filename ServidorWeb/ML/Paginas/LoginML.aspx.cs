@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,14 +34,15 @@ namespace ServidorWeb.ML.Paginas
 
                 if (Session["M"] == null)
                 {
-                    m = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
+                    //m = new Meli(5971480328026573, "HvQavElFhrbqlGCaTMWIrtQklsqnwlIM");
+                    m = new Meli(AplicacaoML.RetornaIDAplicacaoML(), AplicacaoML.RetornaKeyAplicacaoML());
                 }
                 else
                 {
                     m = (Meli)Session["M"];
                 }
-            
-                string redirectUrl = ServidorWeb.Properties.Settings.Default.URL_Login;
+
+                string redirectUrl = AplicacaoML.RetornaURLLoginAplicacaoML();// ServidorWeb.Properties.Settings.Default.URL_Login;
                 m.Authorize(codigo, redirectUrl);
 
                 Session["M"] = m;
@@ -50,11 +51,11 @@ namespace ServidorWeb.ML.Paginas
                 NSAADMEntities n;
                 ConstruirEF cf = new ConstruirEF();
                 n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
-                DadosML d;
+                DadosMLs d;
 
                 d = (from p in n.DadosMLs where p.id == "Meli" select p).First();
 
-                d.ClientSecret = m.ClientSecret;
+                d.ClientSecret = AplicacaoML.RetornaKeyAplicacaoML(); // m.ClientSecret;
                 d.ClientId = m.ClientId.ToString();
                 d.AccessToken = m.AccessToken;
                 d.RefreshToken = m.RefreshToken;
