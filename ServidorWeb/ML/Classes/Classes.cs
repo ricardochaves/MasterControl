@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,7 +24,7 @@ namespace ServidorWeb.ML.Classes
     public class Ratings
     {
         public double positive { get; set; }
-        public int negative { get; set; }
+        public double negative { get; set; }
         public double neutral { get; set; }
     }
 
@@ -101,14 +101,40 @@ namespace ServidorWeb.ML.Classes
 
     public class Usuario
     {
+        //public int id { get; set; }
+        //public string nickname { get; set; }
+        //public DateTime registration_date { get; set; }
+        //public string first_name { get; set; }
+        //public string last_name { get; set; }
+        //public string country_id { get; set; }
+        //public string email { get; set; }
+        //public Identification identification { get; set; }
+        //public Phone phone { get; set; }
+        //public Phone alternative_phone { get; set; }
+        //public string user_type { get; set; }
+        //public List<string> tags { get; set; }
+        //public string logo { get; set; }
+        //public int points { get; set; }
+        //public string site_id { get; set; }
+        //public string permalink { get; set; }
+        //public List<string> shipping_modes { get; set; }
+        //public string seller_experience { get; set; }
+        //public SellerReputation seller_reputation { get; set; }
+        //public BuyerReputation buyer_reputation { get; set; }
+        //public Status status { get; set; }
+        //public Credit credit { get; set; }
+        //public BillingInfo billing_info { get; set; }
+
+
         public int id { get; set; }
         public string nickname { get; set; }
-        public DateTime registration_date { get; set; }
+        public string registration_date { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
         public string country_id { get; set; }
         public string email { get; set; }
         public Identification identification { get; set; }
+        public Address address { get; set; }
         public Phone phone { get; set; }
         public Phone alternative_phone { get; set; }
         public string user_type { get; set; }
@@ -119,12 +145,23 @@ namespace ServidorWeb.ML.Classes
         public string permalink { get; set; }
         public List<string> shipping_modes { get; set; }
         public string seller_experience { get; set; }
-        public SellerReputation seller_reputation { get; set; }
-        public BuyerReputation buyer_reputation { get; set; }
+        //public SellerReputation seller_reputation { get; set; }
+        //public BuyerReputation buyer_reputation { get; set; }
         public Status status { get; set; }
         public Credit credit { get; set; }
-        public BillingInfo billing_info { get; set; }
+
+
     }
+
+    public class Address
+    {
+        public string state { get; set; }
+        public string city { get; set; }
+        public string address { get; set; }
+        public string zip_code { get; set; }
+    }
+
+
 
     public class Paging
     {
