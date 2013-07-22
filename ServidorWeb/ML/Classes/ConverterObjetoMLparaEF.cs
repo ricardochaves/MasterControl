@@ -449,13 +449,13 @@ namespace ServidorWeb.ML.Classes
                     u.ML_Identification.Add(ident);
                 }
 
-                if (us.billing_info != null)
-                {
-                    ML_Identification ident = new ML_Identification();
-                    ident.type = us.billing_info.doc_type;
-                    ident.number = us.billing_info.doc_number;
-                    u.ML_Identification.Add(ident);
-                }
+                //if (us.billing_info != null)
+                //{
+                //    ML_Identification ident = new ML_Identification();
+                //    ident.type = us.billing_info.doc_type;
+                //    ident.number = us.billing_info.doc_number;
+                //    u.ML_Identification.Add(ident);
+                //}
 
 
                 if (us.phone != null)
@@ -479,61 +479,61 @@ namespace ServidorWeb.ML.Classes
                 }
 
                 //TRATANDO REPUTAÇÃO DE VENDEDOR
-                if (us.seller_reputation != null)
-                {
-                    ML_SellerReputation sr = new ML_SellerReputation();
-                    sr.power_seller_status = us.seller_reputation.power_seller_status;
-                    sr.level_id = us.seller_reputation.level_id;
-                    u.ML_SellerReputation.Add(sr);
+                //if (us.seller_reputation != null)
+                //{
+                //    ML_SellerReputation sr = new ML_SellerReputation();
+                //    sr.power_seller_status = us.seller_reputation.power_seller_status;
+                //    sr.level_id = us.seller_reputation.level_id;
+                //    u.ML_SellerReputation.Add(sr);
 
-                    ML_TransactionsSeller ts = new ML_TransactionsSeller();
-                    ts.canceled = us.seller_reputation.transactions.canceled;
-                    ts.completed = us.seller_reputation.transactions.completed;
-                    ts.period = us.seller_reputation.transactions.period;
-                    ts.total = us.seller_reputation.transactions.total;
-                    ts.ML_SellerReputation = sr;
-                    sr.ML_TransactionsSeller.Add(ts);
+                //    ML_TransactionsSeller ts = new ML_TransactionsSeller();
+                //    ts.canceled = us.seller_reputation.transactions.canceled;
+                //    ts.completed = us.seller_reputation.transactions.completed;
+                //    ts.period = us.seller_reputation.transactions.period;
+                //    ts.total = us.seller_reputation.transactions.total;
+                //    ts.ML_SellerReputation = sr;
+                //    sr.ML_TransactionsSeller.Add(ts);
 
-                    ML_Ratings rt = new ML_Ratings();
-                    rt.ML_TransactionsSeller = ts;
-                    rt.negative = us.seller_reputation.transactions.ratings.negative;
-                    rt.neutral = us.seller_reputation.transactions.ratings.neutral;
-                    rt.positive = us.seller_reputation.transactions.ratings.positive;
-                    ts.ML_Ratings.Add(rt);
-                }
+                //    ML_Ratings rt = new ML_Ratings();
+                //    rt.ML_TransactionsSeller = ts;
+                //    rt.negative = us.seller_reputation.transactions.ratings.negative;
+                //    rt.neutral = us.seller_reputation.transactions.ratings.neutral;
+                //    rt.positive = us.seller_reputation.transactions.ratings.positive;
+                //    ts.ML_Ratings.Add(rt);
+                //}
 
 
                 //TRATANDO REPUTAÇÃO COMPRADOR
-                if (us.buyer_reputation != null)
-                {
-                    ML_BuyerReputation mb = new ML_BuyerReputation();
-                    mb.canceled_transactions = us.buyer_reputation.canceled_transactions;
-                    u.ML_BuyerReputation.Add(mb);
+                //if (us.buyer_reputation != null)
+                //{
+                //    ML_BuyerReputation mb = new ML_BuyerReputation();
+                //    mb.canceled_transactions = us.buyer_reputation.canceled_transactions;
+                //    u.ML_BuyerReputation.Add(mb);
 
-                    ML_TransactionsBuyer tb = new ML_TransactionsBuyer();
-                    tb.completed = us.buyer_reputation.transactions.completed;
-                    tb.period = us.buyer_reputation.transactions.period;
-                    tb.total = us.buyer_reputation.transactions.total;
-                    tb.ML_BuyerReputation = mb;
+                //    ML_TransactionsBuyer tb = new ML_TransactionsBuyer();
+                //    tb.completed = us.buyer_reputation.transactions.completed;
+                //    tb.period = us.buyer_reputation.transactions.period;
+                //    tb.total = us.buyer_reputation.transactions.total;
+                //    tb.ML_BuyerReputation = mb;
 
-                    ML_ResumoTransBuyer canceled = new ML_ResumoTransBuyer();
-                    canceled.paid = us.buyer_reputation.transactions.canceled.paid;
-                    canceled.total = us.buyer_reputation.transactions.canceled.total;
-                    canceled.units = us.buyer_reputation.transactions.canceled.units;
-                    tb.ML_ResumoTransBuyer2 = canceled;
+                //    ML_ResumoTransBuyer canceled = new ML_ResumoTransBuyer();
+                //    canceled.paid = us.buyer_reputation.transactions.canceled.paid;
+                //    canceled.total = us.buyer_reputation.transactions.canceled.total;
+                //    canceled.units = us.buyer_reputation.transactions.canceled.units;
+                //    tb.ML_ResumoTransBuyer2 = canceled;
 
-                    ML_ResumoTransBuyer unrated = new ML_ResumoTransBuyer();
-                    unrated.paid = us.buyer_reputation.transactions.unrated.paid;
-                    unrated.total = us.buyer_reputation.transactions.unrated.total;
-                    unrated.units = us.buyer_reputation.transactions.unrated.units;
-                    tb.ML_ResumoTransBuyer1 = unrated;
+                //    ML_ResumoTransBuyer unrated = new ML_ResumoTransBuyer();
+                //    unrated.paid = us.buyer_reputation.transactions.unrated.paid;
+                //    unrated.total = us.buyer_reputation.transactions.unrated.total;
+                //    unrated.units = us.buyer_reputation.transactions.unrated.units;
+                //    tb.ML_ResumoTransBuyer1 = unrated;
 
-                    ML_ResumoTransBuyer not_yet_rated = new ML_ResumoTransBuyer();
-                    not_yet_rated.paid = us.buyer_reputation.transactions.not_yet_rated.paid;
-                    not_yet_rated.total = us.buyer_reputation.transactions.not_yet_rated.total;
-                    not_yet_rated.units = us.buyer_reputation.transactions.not_yet_rated.units;
-                    tb.ML_ResumoTransBuyer = not_yet_rated;
-                }
+                //    ML_ResumoTransBuyer not_yet_rated = new ML_ResumoTransBuyer();
+                //    not_yet_rated.paid = us.buyer_reputation.transactions.not_yet_rated.paid;
+                //    not_yet_rated.total = us.buyer_reputation.transactions.not_yet_rated.total;
+                //    not_yet_rated.units = us.buyer_reputation.transactions.not_yet_rated.units;
+                //    tb.ML_ResumoTransBuyer = not_yet_rated;
+                //}
 
 
                 return u;
