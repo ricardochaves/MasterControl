@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MercadoLibre.SDK;
+using ServidorWeb.ML.Classes;
 
 namespace ServidorWeb.ML.Paginas
 {
@@ -102,9 +103,9 @@ namespace ServidorWeb.ML.Paginas
         {
             Session["pagina"] = "InicioML.aspx";
 
-            //m = new Meli(AplicacaoML.RetornaIDAplicacaoML(), AplicacaoML.RetornaKeyAplicacaoML());
+            m = new Meli(AplicacaoML.RetornaIDAplicacaoML(), AplicacaoML.RetornaKeyAplicacaoML());
 
-            //Response.Redirect(m.GetAuthUrl(AplicacaoML.RetornaURLLoginAplicacaoML()));
+            Response.Redirect(m.GetAuthUrl(AplicacaoML.RetornaURLLoginAplicacaoML()));
 
 
 
