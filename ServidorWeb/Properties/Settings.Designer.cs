@@ -76,5 +76,15 @@ namespace ServidorWeb.Properties {
                 return ((string)(this["URL_Login_HML"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://sexypages.com.br/NerdMoney.asmx")]
+        public string ServidorWeb_WSTIAGO_NerdMoney {
+            get {
+                return ((string)(this["ServidorWeb_WSTIAGO_NerdMoney"]));
+            }
+        }
     }
 }
