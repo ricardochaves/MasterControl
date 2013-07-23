@@ -51,7 +51,7 @@ namespace ServidorWeb.ML.Paginas
                 NSAADMEntities n;
                 ConstruirEF cf = new ConstruirEF();
                 n = (NSAADMEntities)cf.RecuperaEntity(Entities.MercadoLivre);
-                DadosMLs d;
+                DadosML d;
 
                 d = (from p in n.DadosMLs where p.id == "Meli" select p).First();
 

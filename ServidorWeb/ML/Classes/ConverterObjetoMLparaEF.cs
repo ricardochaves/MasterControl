@@ -56,32 +56,42 @@ namespace ServidorWeb.ML.Classes
 
         private void AtualizaShipping(ML_Order o, Order oML, NSAADMEntities n)
         {
-            if (oML.shipping.id != null)
+
+            try
             {
-                o.ML_Shipping.Load();
+                if (oML.shipping.id != null)
+                {
+                    o.ML_Shipping.Load();
 
-                ML_Shipping ship;
+                    ML_Shipping ship;
                 
-                ship = o.ML_Shipping.FirstOrDefault();
+                    ship = o.ML_Shipping.FirstOrDefault();
 
-                if (ship == null)
-                {
+                    if (ship == null)
+                    {
+                        
+                        ship = ConverteShipping(oML, n);
+                        o.ML_Shipping.Add(ship);
 
-                    ship = ConverteShipping(oML, n);
-                    o.ML_Shipping.Add(ship);
+                    }
+                    else
+                    {
+                        ship.status = oML.shipping.status;
+                        ship.shipment_type = oML.shipping.shipment_type;
+                        ship.currency_id = oML.shipping.currency_id;
+                        ship.cost = oML.shipping.cost;
+
+                    }
+
 
                 }
-                else
-                {
-                    ship.status = oML.shipping.status;
-                    ship.shipment_type = oML.shipping.shipment_type;
-                    ship.currency_id = oML.shipping.currency_id;
-                    ship.cost = oML.shipping.cost;
-
-                }
-
-
             }
+            catch (Exception ex)
+            {
+
+                throw new Exception(String.Format("Erro na rotina AtualizaShipping. {0} oML.id = {1} {0}", Environment.NewLine, oML.id), ex);
+            }
+            
         }
 
         private void AtualizaFeedBackBuyer(ML_Order o, Order oML, NSAADMEntities n)

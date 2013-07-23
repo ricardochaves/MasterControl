@@ -32,13 +32,13 @@ namespace ServidorWeb.ML.Paginas
 
             try
             {
-                CallBackMLs teste = (from p in n.CallBackMLs where p.resource == c.resource select p).First();
+                CallBackML teste = (from p in n.CallBackMLs where p.resource == c.resource select p).First();
 
             }
             catch (Exception)
             {
                 
-                CallBackMLs call = new CallBackMLs();
+                CallBackML call = new CallBackML();
                 call.received = c.received;
                 call.resource = c.resource;
                 call.sent = c.sent;
