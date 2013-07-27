@@ -84,7 +84,8 @@ namespace ServidorWeb.PgBot
         public List<BotItemEstoque> RetornaGrupoGlphy(string nome)
         {
             List<BotItemEstoque> l = new List<BotItemEstoque>();
-
+            const int VALOR_EM_ESTOQUE = 12;
+            const decimal VALOR_MINIMO_AH = 179999;
             BotWoWEntities n = new BotWoWEntities();
             BotWoWEntities n1 = new BotWoWEntities();
 
@@ -93,10 +94,10 @@ namespace ServidorWeb.PgBot
                          isp in n.SpellItems on i.id equals isp.idItem
                      join
                          est in n.Estoques on isp.idItem equals est.idItem
-                     where i.itemClass == 16 && est.Qtd < 5 && est.NomePersonagem == nome
+                     where i.itemClass == 16 && est.Qtd < VALOR_EM_ESTOQUE && est.NomePersonagem == nome
                            && est.dtFabricado < est.dtAtualizado
-                           && i.ValorMinnaAH > 199999
-                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (7 - est.Qtd) });
+                           && i.ValorMinnaAH > VALOR_MINIMO_AH
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (VALOR_EM_ESTOQUE - est.Qtd) });
 
             foreach (var item in a)
             {
@@ -120,7 +121,8 @@ namespace ServidorWeb.PgBot
         public List<BotItemEstoque> RetornaGrupoGemas(string nome)
         {
             List<BotItemEstoque> l = new List<BotItemEstoque>();
-
+            const int VALOR_EM_ESTOQUE = 18;
+            const decimal VALOR_MINIMO_AH = 249999;
             BotWoWEntities n = new BotWoWEntities();
             BotWoWEntities n1 = new BotWoWEntities();
 
@@ -129,10 +131,10 @@ namespace ServidorWeb.PgBot
                          isp in n.SpellItems on i.id equals isp.idItem
                      join
                          est in n.Estoques on isp.idItem equals est.idItem
-                     where i.itemClass == 3 && est.Qtd < 18 && est.NomePersonagem == nome
+                     where i.itemClass == 3 && est.Qtd < VALOR_EM_ESTOQUE && est.NomePersonagem == nome
                            && est.dtFabricado < est.dtAtualizado
-                           && i.ValorMinnaAH > 299999
-                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (18 - est.Qtd) });
+                           && i.ValorMinnaAH > VALOR_MINIMO_AH
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (VALOR_EM_ESTOQUE - est.Qtd) });
           
 
             foreach (var item in a)
@@ -156,7 +158,8 @@ namespace ServidorWeb.PgBot
         public List<BotItemEstoque> RetornaGrupoGemas()
         {
             List<BotItemEstoque> l = new List<BotItemEstoque>();
-
+            const int VALOR_EM_ESTOQUE = 18;
+            const decimal VALOR_MINIMO_AH = 249999;
             BotWoWEntities n = new BotWoWEntities();
             BotWoWEntities n1 = new BotWoWEntities();
 
@@ -165,9 +168,10 @@ namespace ServidorWeb.PgBot
                          isp in n.SpellItems on i.id equals isp.idItem
                      join
                          est in n.Estoques on isp.idItem equals est.idItem
-                     where i.itemClass == 3 && est.Qtd < 18
+                     where i.itemClass == 3 && est.Qtd < VALOR_EM_ESTOQUE
+                           && i.ValorMinnaAH > VALOR_MINIMO_AH
                            && est.dtFabricado < est.dtAtualizado
-                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (18 - est.Qtd), nome = est.NomePersonagem });
+                     select new { idItem = i.id, idSpell = isp.idSpell, qtd = (VALOR_EM_ESTOQUE - est.Qtd), nome = est.NomePersonagem });
 
             foreach (var item in a)
             {
