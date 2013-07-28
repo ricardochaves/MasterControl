@@ -40,4 +40,7 @@
     <asp:Button ID="Button7" runat="server" onclick="Button7_Click" Text="Logar" />
     <br />
     <br />
+    <asp:Button ID="Button9" runat="server" onclick="Button9_Click" Text="Button" />
+    <br />
+    <br />
     </asp:Content>

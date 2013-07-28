@@ -116,6 +116,23 @@ namespace ServidorWeb.ML.Paginas
             Response.Redirect("ResumodePerda.aspx");
         }
 
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ControlaMeli cm = new ControlaMeli();
+                ControlaOrdens co = new ControlaOrdens();
+                ConverterObjetoMLparaEF conv = new ConverterObjetoMLparaEF();
+                co.GravaOrdem(cm.RetornaOrder("/orders/779622738"), cm.n);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro no Button9_Click.", ex);
+            }
+
+        }
+
  
     }
 }

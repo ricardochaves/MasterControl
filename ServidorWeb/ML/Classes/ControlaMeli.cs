@@ -167,21 +167,16 @@ namespace ServidorWeb.ML.Classes
 
                 Order q;
                 Parameter at = new Parameter();
-                Parameter OrdID = new Parameter();
                 List<Parameter> param = new List<Parameter>();
 
                 //Alimentando parametros
                 at.Name = "access_token";
                 at.Value = m.AccessToken;
 
-                OrdID.Name = "order_id";
-                OrdID.Value = codigo;
-
                 //Adicionando na lista
-                param.Add(OrdID);
                 param.Add(at);
 
-                RestResponse resp = (RestResponse)m.Get("orders/order_id", param);
+                RestResponse resp = (RestResponse)m.Get(codigo, param);
 
                 if (resp.StatusCode == System.Net.HttpStatusCode.OK)
                 {
