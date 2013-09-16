@@ -20,8 +20,5 @@
     <Setting Name="URL_Login_HML" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://localhost:45506/ML/Paginas/LoginML.aspx</Value>
     </Setting>
-    <Setting Name="ServidorWeb_WSTIAGO_NerdMoney" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://sexypages.com.br/NerdMoney.asmx</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
