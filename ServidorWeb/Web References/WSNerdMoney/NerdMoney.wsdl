@@ -2,17 +2,6 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="IncluiProduto">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="n" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="qtd" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="IncluiProdutoResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="consultaTodosProdutos">
         <s:complexType />
       </s:element>
@@ -35,6 +24,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="cod_produto" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="quantidade" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="cod_produto_ML" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -77,7 +67,7 @@
       <s:element name="consultaProdutoResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="consultaProdutoResult" type="tns:ArrayOfProduto" />
+            <s:element minOccurs="0" maxOccurs="1" name="consultaProdutoResult" type="tns:produto" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -266,35 +256,63 @@
       <s:element name="realizaVenda">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="codProd" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="caixa" type="tns:tipoCaixa" />
-            <s:element minOccurs="1" maxOccurs="1" name="codLoja" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="c" type="tns:cliente" />
+            <s:element minOccurs="0" maxOccurs="1" name="v" type="tns:vendas" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:simpleType name="tipoCaixa">
-        <s:restriction base="s:string">
-          <s:enumeration value="Tiago" />
-          <s:enumeration value="Ricardo" />
-          <s:enumeration value="NerdSa" />
-        </s:restriction>
-      </s:simpleType>
-      <s:complexType name="cliente">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityObject">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="cod_cliente" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="telefone" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="endereco" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="cod_cliente_ML" type="s:int" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
+      <s:complexType name="vendas">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cod_item" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="cod_venda" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="qtd" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="data" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="prod" type="tns:Produto" />
+          <s:element minOccurs="1" maxOccurs="1" name="data_pagto" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="cli" type="tns:Cliente" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Produto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="preco" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="loja" type="tns:ArrayOfTipoLoja" />
+          <s:element minOccurs="1" maxOccurs="1" name="qtd" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="id_ML" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTipoLoja">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tipoLoja" nillable="true" type="tns:tipoLoja" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tipoLoja">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="tarifa" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="_email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_endereco" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_telefone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_cod_cliente_ML" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="_cod_cliente" type="s:int" />
+        </s:sequence>
       </s:complexType>
       <s:element name="realizaVendaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="refactorProdutoNovo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="tns:Produto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="refactorProdutoNovoResponse">
         <s:complexType />
       </s:element>
       <s:element name="Deposito">
@@ -306,6 +324,13 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:simpleType name="tipoCaixa">
+        <s:restriction base="s:string">
+          <s:enumeration value="Tiago" />
+          <s:enumeration value="Ricardo" />
+          <s:enumeration value="NerdSa" />
+        </s:restriction>
+      </s:simpleType>
       <s:simpleType name="categ">
         <s:restriction base="s:string">
           <s:enumeration value="Correios" />
@@ -369,7 +394,7 @@
       <s:element name="incluiCliente">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="cc" type="tns:cliente" />
+            <s:element minOccurs="0" maxOccurs="1" name="cc" type="tns:Cliente" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -414,6 +439,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="cliente">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="cod_cliente" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="telefone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="endereco" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cod_cliente_ML" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:element name="consultaTodosCliente">
         <s:complexType />
       </s:element>
@@ -430,18 +469,13 @@
         </s:complexType>
       </s:element>
       <s:element name="ArrayOfProduto" nillable="true" type="tns:ArrayOfProduto" />
+      <s:element name="produto" nillable="true" type="tns:produto" />
       <s:element name="ArrayOfLoja" nillable="true" type="tns:ArrayOfLoja" />
       <s:element name="ArrayOfLojaProduto" nillable="true" type="tns:ArrayOfLojaProduto" />
       <s:element name="cliente" nillable="true" type="tns:cliente" />
       <s:element name="ArrayOfCliente" nillable="true" type="tns:ArrayOfCliente" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="IncluiProdutoSoapIn">
-    <wsdl:part name="parameters" element="tns:IncluiProduto" />
-  </wsdl:message>
-  <wsdl:message name="IncluiProdutoSoapOut">
-    <wsdl:part name="parameters" element="tns:IncluiProdutoResponse" />
-  </wsdl:message>
   <wsdl:message name="consultaTodosProdutosSoapIn">
     <wsdl:part name="parameters" element="tns:consultaTodosProdutos" />
   </wsdl:message>
@@ -526,6 +560,12 @@
   <wsdl:message name="realizaVendaSoapOut">
     <wsdl:part name="parameters" element="tns:realizaVendaResponse" />
   </wsdl:message>
+  <wsdl:message name="refactorProdutoNovoSoapIn">
+    <wsdl:part name="parameters" element="tns:refactorProdutoNovo" />
+  </wsdl:message>
+  <wsdl:message name="refactorProdutoNovoSoapOut">
+    <wsdl:part name="parameters" element="tns:refactorProdutoNovoResponse" />
+  </wsdl:message>
   <wsdl:message name="DepositoSoapIn">
     <wsdl:part name="parameters" element="tns:Deposito" />
   </wsdl:message>
@@ -592,11 +632,6 @@
   <wsdl:message name="consultaTodosClienteSoapOut">
     <wsdl:part name="parameters" element="tns:consultaTodosClienteResponse" />
   </wsdl:message>
-  <wsdl:message name="IncluiProdutoHttpGetIn">
-    <wsdl:part name="n" type="s:string" />
-    <wsdl:part name="qtd" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="IncluiProdutoHttpGetOut" />
   <wsdl:message name="consultaTodosProdutosHttpGetIn" />
   <wsdl:message name="consultaTodosProdutosHttpGetOut">
     <wsdl:part name="Body" element="tns:ArrayOfProduto" />
@@ -605,7 +640,7 @@
     <wsdl:part name="codProduto" type="s:string" />
   </wsdl:message>
   <wsdl:message name="consultaProdutoHttpGetOut">
-    <wsdl:part name="Body" element="tns:ArrayOfProduto" />
+    <wsdl:part name="Body" element="tns:produto" />
   </wsdl:message>
   <wsdl:message name="alteraProdutoHttpGetIn">
     <wsdl:part name="codProduto" type="s:string" />
@@ -713,11 +748,6 @@
   <wsdl:message name="consultaTodosClienteHttpGetOut">
     <wsdl:part name="Body" element="tns:ArrayOfCliente" />
   </wsdl:message>
-  <wsdl:message name="IncluiProdutoHttpPostIn">
-    <wsdl:part name="n" type="s:string" />
-    <wsdl:part name="qtd" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="IncluiProdutoHttpPostOut" />
   <wsdl:message name="consultaTodosProdutosHttpPostIn" />
   <wsdl:message name="consultaTodosProdutosHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfProduto" />
@@ -726,7 +756,7 @@
     <wsdl:part name="codProduto" type="s:string" />
   </wsdl:message>
   <wsdl:message name="consultaProdutoHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfProduto" />
+    <wsdl:part name="Body" element="tns:produto" />
   </wsdl:message>
   <wsdl:message name="alteraProdutoHttpPostIn">
     <wsdl:part name="codProduto" type="s:string" />
@@ -835,10 +865,6 @@
     <wsdl:part name="Body" element="tns:ArrayOfCliente" />
   </wsdl:message>
   <wsdl:portType name="NerdMoneySoap">
-    <wsdl:operation name="IncluiProduto">
-      <wsdl:input message="tns:IncluiProdutoSoapIn" />
-      <wsdl:output message="tns:IncluiProdutoSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="consultaTodosProdutos">
       <wsdl:input message="tns:consultaTodosProdutosSoapIn" />
       <wsdl:output message="tns:consultaTodosProdutosSoapOut" />
@@ -895,6 +921,10 @@
       <wsdl:input message="tns:realizaVendaSoapIn" />
       <wsdl:output message="tns:realizaVendaSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="refactorProdutoNovo">
+      <wsdl:input message="tns:refactorProdutoNovoSoapIn" />
+      <wsdl:output message="tns:refactorProdutoNovoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Deposito">
       <wsdl:input message="tns:DepositoSoapIn" />
       <wsdl:output message="tns:DepositoSoapOut" />
@@ -941,10 +971,6 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="NerdMoneyHttpGet">
-    <wsdl:operation name="IncluiProduto">
-      <wsdl:input message="tns:IncluiProdutoHttpGetIn" />
-      <wsdl:output message="tns:IncluiProdutoHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="consultaTodosProdutos">
       <wsdl:input message="tns:consultaTodosProdutosHttpGetIn" />
       <wsdl:output message="tns:consultaTodosProdutosHttpGetOut" />
@@ -1039,10 +1065,6 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="NerdMoneyHttpPost">
-    <wsdl:operation name="IncluiProduto">
-      <wsdl:input message="tns:IncluiProdutoHttpPostIn" />
-      <wsdl:output message="tns:IncluiProdutoHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="consultaTodosProdutos">
       <wsdl:input message="tns:consultaTodosProdutosHttpPostIn" />
       <wsdl:output message="tns:consultaTodosProdutosHttpPostOut" />
@@ -1138,15 +1160,6 @@
   </wsdl:portType>
   <wsdl:binding name="NerdMoneySoap" type="tns:NerdMoneySoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="IncluiProduto">
-      <soap:operation soapAction="http://tempuri.org/IncluiProduto" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="consultaTodosProdutos">
       <soap:operation soapAction="http://tempuri.org/consultaTodosProdutos" style="document" />
       <wsdl:input>
@@ -1273,6 +1286,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="refactorProdutoNovo">
+      <soap:operation soapAction="http://tempuri.org/refactorProdutoNovo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Deposito">
       <soap:operation soapAction="http://tempuri.org/Deposito" style="document" />
       <wsdl:input>
@@ -1375,15 +1397,6 @@
   </wsdl:binding>
   <wsdl:binding name="NerdMoneySoap12" type="tns:NerdMoneySoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="IncluiProduto">
-      <soap12:operation soapAction="http://tempuri.org/IncluiProduto" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="consultaTodosProdutos">
       <soap12:operation soapAction="http://tempuri.org/consultaTodosProdutos" style="document" />
       <wsdl:input>
@@ -1510,6 +1523,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="refactorProdutoNovo">
+      <soap12:operation soapAction="http://tempuri.org/refactorProdutoNovo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Deposito">
       <soap12:operation soapAction="http://tempuri.org/Deposito" style="document" />
       <wsdl:input>
@@ -1612,13 +1634,6 @@
   </wsdl:binding>
   <wsdl:binding name="NerdMoneyHttpGet" type="tns:NerdMoneyHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="IncluiProduto">
-      <http:operation location="/IncluiProduto" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
     <wsdl:operation name="consultaTodosProdutos">
       <http:operation location="/consultaTodosProdutos" />
       <wsdl:input>
@@ -1797,13 +1812,6 @@
   </wsdl:binding>
   <wsdl:binding name="NerdMoneyHttpPost" type="tns:NerdMoneyHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="IncluiProduto">
-      <http:operation location="/IncluiProduto" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
     <wsdl:operation name="consultaTodosProdutos">
       <http:operation location="/consultaTodosProdutos" />
       <wsdl:input>

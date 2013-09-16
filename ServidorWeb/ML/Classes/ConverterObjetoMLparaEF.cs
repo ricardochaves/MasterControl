@@ -146,13 +146,6 @@ namespace ServidorWeb.ML.Classes
 
             try
             {
-
-
-                if (o.id == 777585100)
-                {
-                    string a;
-                }
-
                 if (o.ML_FeedbackSeller.Count > 0)
                 {
                     if (RetornaFeedBackSeller(oML) != null)

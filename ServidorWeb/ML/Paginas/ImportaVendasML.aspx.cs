@@ -61,14 +61,14 @@ namespace ServidorWeb.ML.Paginas
                             n.ML_Order.AddObject(Ordem);
 
                             
-                            //s.FazerVenda(Ordem);
+                            s.FazerVenda(Ordem);
 
                             
                         }
                         else
                         {
                             cf.AtualizaOrdem(Ordem, or, n);
-                            //s.FazerVenda(Ordem);
+                            s.FazerVenda(Ordem);
                         }
                         
                         n.SaveChanges();

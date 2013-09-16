@@ -33,8 +33,6 @@ namespace ServidorWeb.WSNerdMoney {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityKeyMember[]))]
     public partial class NerdMoney : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback IncluiProdutoOperationCompleted;
-        
         private System.Threading.SendOrPostCallback consultaTodosProdutosOperationCompleted;
         
         private System.Threading.SendOrPostCallback consultaProdutoOperationCompleted;
@@ -62,6 +60,8 @@ namespace ServidorWeb.WSNerdMoney {
         private System.Threading.SendOrPostCallback alteraLojaProdutosOperationCompleted;
         
         private System.Threading.SendOrPostCallback realizaVendaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback refactorProdutoNovoOperationCompleted;
         
         private System.Threading.SendOrPostCallback DepositoOperationCompleted;
         
@@ -124,9 +124,6 @@ namespace ServidorWeb.WSNerdMoney {
         }
         
         /// <remarks/>
-        public event IncluiProdutoCompletedEventHandler IncluiProdutoCompleted;
-        
-        /// <remarks/>
         public event consultaTodosProdutosCompletedEventHandler consultaTodosProdutosCompleted;
         
         /// <remarks/>
@@ -169,6 +166,9 @@ namespace ServidorWeb.WSNerdMoney {
         public event realizaVendaCompletedEventHandler realizaVendaCompleted;
         
         /// <remarks/>
+        public event refactorProdutoNovoCompletedEventHandler refactorProdutoNovoCompleted;
+        
+        /// <remarks/>
         public event DepositoCompletedEventHandler DepositoCompleted;
         
         /// <remarks/>
@@ -202,36 +202,6 @@ namespace ServidorWeb.WSNerdMoney {
         public event consultaTodosClienteCompletedEventHandler consultaTodosClienteCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IncluiProduto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void IncluiProduto(string n, int qtd) {
-            this.Invoke("IncluiProduto", new object[] {
-                        n,
-                        qtd});
-        }
-        
-        /// <remarks/>
-        public void IncluiProdutoAsync(string n, int qtd) {
-            this.IncluiProdutoAsync(n, qtd, null);
-        }
-        
-        /// <remarks/>
-        public void IncluiProdutoAsync(string n, int qtd, object userState) {
-            if ((this.IncluiProdutoOperationCompleted == null)) {
-                this.IncluiProdutoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIncluiProdutoOperationCompleted);
-            }
-            this.InvokeAsync("IncluiProduto", new object[] {
-                        n,
-                        qtd}, this.IncluiProdutoOperationCompleted, userState);
-        }
-        
-        private void OnIncluiProdutoOperationCompleted(object arg) {
-            if ((this.IncluiProdutoCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.IncluiProdutoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/consultaTodosProdutos", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public produto[] consultaTodosProdutos() {
             object[] results = this.Invoke("consultaTodosProdutos", new object[0]);
@@ -260,10 +230,10 @@ namespace ServidorWeb.WSNerdMoney {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/consultaProduto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public produto[] consultaProduto(int codProduto) {
+        public produto consultaProduto(int codProduto) {
             object[] results = this.Invoke("consultaProduto", new object[] {
                         codProduto});
-            return ((produto[])(results[0]));
+            return ((produto)(results[0]));
         }
         
         /// <remarks/>
@@ -618,35 +588,57 @@ namespace ServidorWeb.WSNerdMoney {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/realizaVenda", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void realizaVenda(int codProd, tipoCaixa caixa, int codLoja, cliente c) {
+        public void realizaVenda(vendas v) {
             this.Invoke("realizaVenda", new object[] {
-                        codProd,
-                        caixa,
-                        codLoja,
-                        c});
+                        v});
         }
         
         /// <remarks/>
-        public void realizaVendaAsync(int codProd, tipoCaixa caixa, int codLoja, cliente c) {
-            this.realizaVendaAsync(codProd, caixa, codLoja, c, null);
+        public void realizaVendaAsync(vendas v) {
+            this.realizaVendaAsync(v, null);
         }
         
         /// <remarks/>
-        public void realizaVendaAsync(int codProd, tipoCaixa caixa, int codLoja, cliente c, object userState) {
+        public void realizaVendaAsync(vendas v, object userState) {
             if ((this.realizaVendaOperationCompleted == null)) {
                 this.realizaVendaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnrealizaVendaOperationCompleted);
             }
             this.InvokeAsync("realizaVenda", new object[] {
-                        codProd,
-                        caixa,
-                        codLoja,
-                        c}, this.realizaVendaOperationCompleted, userState);
+                        v}, this.realizaVendaOperationCompleted, userState);
         }
         
         private void OnrealizaVendaOperationCompleted(object arg) {
             if ((this.realizaVendaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.realizaVendaCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/refactorProdutoNovo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void refactorProdutoNovo(Produto p) {
+            this.Invoke("refactorProdutoNovo", new object[] {
+                        p});
+        }
+        
+        /// <remarks/>
+        public void refactorProdutoNovoAsync(Produto p) {
+            this.refactorProdutoNovoAsync(p, null);
+        }
+        
+        /// <remarks/>
+        public void refactorProdutoNovoAsync(Produto p, object userState) {
+            if ((this.refactorProdutoNovoOperationCompleted == null)) {
+                this.refactorProdutoNovoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnrefactorProdutoNovoOperationCompleted);
+            }
+            this.InvokeAsync("refactorProdutoNovo", new object[] {
+                        p}, this.refactorProdutoNovoOperationCompleted, userState);
+        }
+        
+        private void OnrefactorProdutoNovoOperationCompleted(object arg) {
+            if ((this.refactorProdutoNovoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.refactorProdutoNovoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -826,18 +818,18 @@ namespace ServidorWeb.WSNerdMoney {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/incluiCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void incluiCliente(cliente cc) {
+        public void incluiCliente(Cliente cc) {
             this.Invoke("incluiCliente", new object[] {
                         cc});
         }
         
         /// <remarks/>
-        public void incluiClienteAsync(cliente cc) {
+        public void incluiClienteAsync(Cliente cc) {
             this.incluiClienteAsync(cc, null);
         }
         
         /// <remarks/>
-        public void incluiClienteAsync(cliente cc, object userState) {
+        public void incluiClienteAsync(Cliente cc, object userState) {
             if ((this.incluiClienteOperationCompleted == null)) {
                 this.incluiClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnincluiClienteOperationCompleted);
             }
@@ -1005,6 +997,8 @@ namespace ServidorWeb.WSNerdMoney {
         
         private System.Nullable<int> quantidadeField;
         
+        private string cod_produto_MLField;
+        
         /// <remarks/>
         public int cod_produto {
             get {
@@ -1033,6 +1027,16 @@ namespace ServidorWeb.WSNerdMoney {
             }
             set {
                 this.quantidadeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string cod_produto_ML {
+            get {
+                return this.cod_produto_MLField;
+            }
+            set {
+                this.cod_produto_MLField = value;
             }
         }
     }
@@ -1141,6 +1145,295 @@ namespace ServidorWeb.WSNerdMoney {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Cliente {
+        
+        private string _emailField;
+        
+        private string _enderecoField;
+        
+        private string _nomeField;
+        
+        private string _telefoneField;
+        
+        private string _cod_cliente_MLField;
+        
+        private int _cod_clienteField;
+        
+        /// <remarks/>
+        public string _email {
+            get {
+                return this._emailField;
+            }
+            set {
+                this._emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string _endereco {
+            get {
+                return this._enderecoField;
+            }
+            set {
+                this._enderecoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string _nome {
+            get {
+                return this._nomeField;
+            }
+            set {
+                this._nomeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string _telefone {
+            get {
+                return this._telefoneField;
+            }
+            set {
+                this._telefoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string _cod_cliente_ML {
+            get {
+                return this._cod_cliente_MLField;
+            }
+            set {
+                this._cod_cliente_MLField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int _cod_cliente {
+            get {
+                return this._cod_clienteField;
+            }
+            set {
+                this._cod_clienteField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class tipoLoja {
+        
+        private string nomeField;
+        
+        private decimal tarifaField;
+        
+        /// <remarks/>
+        public string nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal tarifa {
+            get {
+                return this.tarifaField;
+            }
+            set {
+                this.tarifaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Produto {
+        
+        private int idField;
+        
+        private string nomeField;
+        
+        private double precoField;
+        
+        private tipoLoja[] lojaField;
+        
+        private int qtdField;
+        
+        private string id_MLField;
+        
+        /// <remarks/>
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double preco {
+            get {
+                return this.precoField;
+            }
+            set {
+                this.precoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public tipoLoja[] loja {
+            get {
+                return this.lojaField;
+            }
+            set {
+                this.lojaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int qtd {
+            get {
+                return this.qtdField;
+            }
+            set {
+                this.qtdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string id_ML {
+            get {
+                return this.id_MLField;
+            }
+            set {
+                this.id_MLField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class vendas {
+        
+        private int cod_itemField;
+        
+        private int cod_vendaField;
+        
+        private int qtdField;
+        
+        private System.DateTime dataField;
+        
+        private Produto prodField;
+        
+        private System.Nullable<System.DateTime> data_pagtoField;
+        
+        private Cliente cliField;
+        
+        /// <remarks/>
+        public int cod_item {
+            get {
+                return this.cod_itemField;
+            }
+            set {
+                this.cod_itemField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int cod_venda {
+            get {
+                return this.cod_vendaField;
+            }
+            set {
+                this.cod_vendaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int qtd {
+            get {
+                return this.qtdField;
+            }
+            set {
+                this.qtdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Produto prod {
+            get {
+                return this.prodField;
+            }
+            set {
+                this.prodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> data_pagto {
+            get {
+                return this.data_pagtoField;
+            }
+            set {
+                this.data_pagtoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Cliente cli {
+            get {
+                return this.cliField;
+            }
+            set {
+                this.cliField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReference))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfproduto))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfLoja))]
@@ -1225,7 +1518,7 @@ namespace ServidorWeb.WSNerdMoney {
         
         private string enderecoField;
         
-        private int cod_cliente_MLField;
+        private string cod_cliente_MLField;
         
         /// <remarks/>
         public int cod_cliente {
@@ -1278,7 +1571,7 @@ namespace ServidorWeb.WSNerdMoney {
         }
         
         /// <remarks/>
-        public int cod_cliente_ML {
+        public string cod_cliente_ML {
             get {
                 return this.cod_cliente_MLField;
             }
@@ -1443,10 +1736,6 @@ namespace ServidorWeb.WSNerdMoney {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void IncluiProdutoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void consultaTodosProdutosCompletedEventHandler(object sender, consultaTodosProdutosCompletedEventArgs e);
     
     /// <remarks/>
@@ -1489,10 +1778,10 @@ namespace ServidorWeb.WSNerdMoney {
         }
         
         /// <remarks/>
-        public produto[] Result {
+        public produto Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((produto[])(this.results[0]));
+                return ((produto)(this.results[0]));
             }
         }
     }
@@ -1610,6 +1899,10 @@ namespace ServidorWeb.WSNerdMoney {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void realizaVendaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void refactorProdutoNovoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
