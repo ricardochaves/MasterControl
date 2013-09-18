@@ -41,6 +41,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Shipping_ML_Order", "ML_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_Order), "ML_Shipping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Shipping), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_ReceiverAddress_ML_State", "ML_State", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_State), "ML_ReceiverAddress", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_ReceiverAddress), true)]
 [assembly: EdmRelationshipAttribute("NSAADMModel", "FK_ML_Shipping_ML_ReceiverAddress", "ML_ReceiverAddress", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.ML_ReceiverAddress), "ML_Shipping", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.ML_Shipping), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_Venda_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.Cliente), "Venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Venda), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_VendaProduto_Produto", "Produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Produto), "VendaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.VendaProduto), true)]
+[assembly: EdmRelationshipAttribute("NSAADMModel", "FK_VendaProduto_Venda", "Venda", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Venda), "VendaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.VendaProduto), true)]
 
 #endregion
 
@@ -523,6 +526,70 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<ML_State> _ML_State;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Cliente> Clientes
+        {
+            get
+            {
+                if ((_Clientes == null))
+                {
+                    _Clientes = base.CreateObjectSet<Cliente>("Clientes");
+                }
+                return _Clientes;
+            }
+        }
+        private ObjectSet<Cliente> _Clientes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Produto> Produtoes
+        {
+            get
+            {
+                if ((_Produtoes == null))
+                {
+                    _Produtoes = base.CreateObjectSet<Produto>("Produtoes");
+                }
+                return _Produtoes;
+            }
+        }
+        private ObjectSet<Produto> _Produtoes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Venda> Vendas
+        {
+            get
+            {
+                if ((_Vendas == null))
+                {
+                    _Vendas = base.CreateObjectSet<Venda>("Vendas");
+                }
+                return _Vendas;
+            }
+        }
+        private ObjectSet<Venda> _Vendas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<VendaProduto> VendaProdutoes
+        {
+            get
+            {
+                if ((_VendaProdutoes == null))
+                {
+                    _VendaProdutoes = base.CreateObjectSet<VendaProduto>("VendaProdutoes");
+                }
+                return _VendaProdutoes;
+            }
+        }
+        private ObjectSet<VendaProduto> _VendaProdutoes;
 
         #endregion
         #region AddTo Methods
@@ -741,6 +808,38 @@ namespace ServidorWeb.BD
         public void AddToML_State(ML_State mL_State)
         {
             base.AddObject("ML_State", mL_State);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Clientes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToClientes(Cliente cliente)
+        {
+            base.AddObject("Clientes", cliente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Produtoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProdutoes(Produto produto)
+        {
+            base.AddObject("Produtoes", produto);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Vendas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToVendas(Venda venda)
+        {
+            base.AddObject("Vendas", venda);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the VendaProdutoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToVendaProdutoes(VendaProduto vendaProduto)
+        {
+            base.AddObject("VendaProdutoes", vendaProduto);
         }
 
         #endregion
@@ -1099,6 +1198,160 @@ namespace ServidorWeb.BD
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="Cliente")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Cliente : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Cliente object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="nome">Initial value of the nome property.</param>
+        public static Cliente CreateCliente(global::System.Decimal id, global::System.String nome)
+        {
+            Cliente cliente = new Cliente();
+            cliente.id = id;
+            cliente.nome = nome;
+            return cliente;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nome
+        {
+            get
+            {
+                return _nome;
+            }
+            set
+            {
+                OnnomeChanging(value);
+                ReportPropertyChanging("nome");
+                _nome = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nome");
+                OnnomeChanged();
+            }
+        }
+        private global::System.String _nome;
+        partial void OnnomeChanging(global::System.String value);
+        partial void OnnomeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                OnemailChanging(value);
+                ReportPropertyChanging("email");
+                _email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("email");
+                OnemailChanged();
+            }
+        }
+        private global::System.String _email;
+        partial void OnemailChanging(global::System.String value);
+        partial void OnemailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String idML
+        {
+            get
+            {
+                return _idML;
+            }
+            set
+            {
+                OnidMLChanging(value);
+                ReportPropertyChanging("idML");
+                _idML = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("idML");
+                OnidMLChanged();
+            }
+        }
+        private global::System.String _idML;
+        partial void OnidMLChanging(global::System.String value);
+        partial void OnidMLChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_Venda_Cliente", "Venda")]
+        public EntityCollection<Venda> Vendas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Venda>("NSAADMModel.FK_Venda_Cliente", "Venda");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Venda>("NSAADMModel.FK_Venda_Cliente", "Venda", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -7112,6 +7365,138 @@ namespace ServidorWeb.BD
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="Produto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Produto : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Produto object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="descr">Initial value of the Descr property.</param>
+        /// <param name="qtd">Initial value of the qtd property.</param>
+        public static Produto CreateProduto(global::System.Decimal id, global::System.String descr, global::System.Decimal qtd)
+        {
+            Produto produto = new Produto();
+            produto.id = id;
+            produto.Descr = descr;
+            produto.qtd = qtd;
+            return produto;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Descr
+        {
+            get
+            {
+                return _Descr;
+            }
+            set
+            {
+                OnDescrChanging(value);
+                ReportPropertyChanging("Descr");
+                _Descr = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Descr");
+                OnDescrChanged();
+            }
+        }
+        private global::System.String _Descr;
+        partial void OnDescrChanging(global::System.String value);
+        partial void OnDescrChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal qtd
+        {
+            get
+            {
+                return _qtd;
+            }
+            set
+            {
+                OnqtdChanging(value);
+                ReportPropertyChanging("qtd");
+                _qtd = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("qtd");
+                OnqtdChanged();
+            }
+        }
+        private global::System.Decimal _qtd;
+        partial void OnqtdChanging(global::System.Decimal value);
+        partial void OnqtdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_VendaProduto_Produto", "VendaProduto")]
+        public EntityCollection<VendaProduto> VendaProdutoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VendaProduto>("NSAADMModel.FK_VendaProduto_Produto", "VendaProduto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VendaProduto>("NSAADMModel.FK_VendaProduto_Produto", "VendaProduto", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="UsuarioAdm")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -7214,6 +7599,508 @@ namespace ServidorWeb.BD
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="Venda")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Venda : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Venda object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="data_venda">Initial value of the data_venda property.</param>
+        /// <param name="valor_venda">Initial value of the valor_venda property.</param>
+        public static Venda CreateVenda(global::System.Decimal id, global::System.DateTime data_venda, global::System.Decimal valor_venda)
+        {
+            Venda venda = new Venda();
+            venda.id = id;
+            venda.data_venda = data_venda;
+            venda.valor_venda = valor_venda;
+            return venda;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime data_venda
+        {
+            get
+            {
+                return _data_venda;
+            }
+            set
+            {
+                Ondata_vendaChanging(value);
+                ReportPropertyChanging("data_venda");
+                _data_venda = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("data_venda");
+                Ondata_vendaChanged();
+            }
+        }
+        private global::System.DateTime _data_venda;
+        partial void Ondata_vendaChanging(global::System.DateTime value);
+        partial void Ondata_vendaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal valor_venda
+        {
+            get
+            {
+                return _valor_venda;
+            }
+            set
+            {
+                Onvalor_vendaChanging(value);
+                ReportPropertyChanging("valor_venda");
+                _valor_venda = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("valor_venda");
+                Onvalor_vendaChanged();
+            }
+        }
+        private global::System.Decimal _valor_venda;
+        partial void Onvalor_vendaChanging(global::System.Decimal value);
+        partial void Onvalor_vendaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> valor_desconto
+        {
+            get
+            {
+                return _valor_desconto;
+            }
+            set
+            {
+                Onvalor_descontoChanging(value);
+                ReportPropertyChanging("valor_desconto");
+                _valor_desconto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("valor_desconto");
+                Onvalor_descontoChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _valor_desconto;
+        partial void Onvalor_descontoChanging(Nullable<global::System.Decimal> value);
+        partial void Onvalor_descontoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> valor_frete
+        {
+            get
+            {
+                return _valor_frete;
+            }
+            set
+            {
+                Onvalor_freteChanging(value);
+                ReportPropertyChanging("valor_frete");
+                _valor_frete = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("valor_frete");
+                Onvalor_freteChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _valor_frete;
+        partial void Onvalor_freteChanging(Nullable<global::System.Decimal> value);
+        partial void Onvalor_freteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> id_cliente
+        {
+            get
+            {
+                return _id_cliente;
+            }
+            set
+            {
+                Onid_clienteChanging(value);
+                ReportPropertyChanging("id_cliente");
+                _id_cliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_cliente");
+                Onid_clienteChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _id_cliente;
+        partial void Onid_clienteChanging(Nullable<global::System.Decimal> value);
+        partial void Onid_clienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String id_ML
+        {
+            get
+            {
+                return _id_ML;
+            }
+            set
+            {
+                Onid_MLChanging(value);
+                ReportPropertyChanging("id_ML");
+                _id_ML = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("id_ML");
+                Onid_MLChanged();
+            }
+        }
+        private global::System.String _id_ML;
+        partial void Onid_MLChanging(global::System.String value);
+        partial void Onid_MLChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_Venda_Cliente", "Cliente")]
+        public Cliente Cliente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("NSAADMModel.FK_Venda_Cliente", "Cliente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("NSAADMModel.FK_Venda_Cliente", "Cliente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Cliente> ClienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Cliente>("NSAADMModel.FK_Venda_Cliente", "Cliente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Cliente>("NSAADMModel.FK_Venda_Cliente", "Cliente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_VendaProduto_Venda", "VendaProduto")]
+        public EntityCollection<VendaProduto> VendaProdutoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<VendaProduto>("NSAADMModel.FK_VendaProduto_Venda", "VendaProduto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VendaProduto>("NSAADMModel.FK_VendaProduto_Venda", "VendaProduto", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADMModel", Name="VendaProduto")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class VendaProduto : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new VendaProduto object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="id_Venda">Initial value of the id_Venda property.</param>
+        /// <param name="id_Produto">Initial value of the id_Produto property.</param>
+        /// <param name="qtd">Initial value of the qtd property.</param>
+        public static VendaProduto CreateVendaProduto(global::System.Decimal id, global::System.Decimal id_Venda, global::System.Decimal id_Produto, global::System.Decimal qtd)
+        {
+            VendaProduto vendaProduto = new VendaProduto();
+            vendaProduto.id = id;
+            vendaProduto.id_Venda = id_Venda;
+            vendaProduto.id_Produto = id_Produto;
+            vendaProduto.qtd = qtd;
+            return vendaProduto;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id_Venda
+        {
+            get
+            {
+                return _id_Venda;
+            }
+            set
+            {
+                Onid_VendaChanging(value);
+                ReportPropertyChanging("id_Venda");
+                _id_Venda = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_Venda");
+                Onid_VendaChanged();
+            }
+        }
+        private global::System.Decimal _id_Venda;
+        partial void Onid_VendaChanging(global::System.Decimal value);
+        partial void Onid_VendaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id_Produto
+        {
+            get
+            {
+                return _id_Produto;
+            }
+            set
+            {
+                Onid_ProdutoChanging(value);
+                ReportPropertyChanging("id_Produto");
+                _id_Produto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_Produto");
+                Onid_ProdutoChanged();
+            }
+        }
+        private global::System.Decimal _id_Produto;
+        partial void Onid_ProdutoChanging(global::System.Decimal value);
+        partial void Onid_ProdutoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal qtd
+        {
+            get
+            {
+                return _qtd;
+            }
+            set
+            {
+                OnqtdChanging(value);
+                ReportPropertyChanging("qtd");
+                _qtd = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("qtd");
+                OnqtdChanged();
+            }
+        }
+        private global::System.Decimal _qtd;
+        partial void OnqtdChanging(global::System.Decimal value);
+        partial void OnqtdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> valorUni
+        {
+            get
+            {
+                return _valorUni;
+            }
+            set
+            {
+                OnvalorUniChanging(value);
+                ReportPropertyChanging("valorUni");
+                _valorUni = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("valorUni");
+                OnvalorUniChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _valorUni;
+        partial void OnvalorUniChanging(Nullable<global::System.Decimal> value);
+        partial void OnvalorUniChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_VendaProduto_Produto", "Produto")]
+        public Produto Produto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produto>("NSAADMModel.FK_VendaProduto_Produto", "Produto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produto>("NSAADMModel.FK_VendaProduto_Produto", "Produto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Produto> ProdutoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Produto>("NSAADMModel.FK_VendaProduto_Produto", "Produto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Produto>("NSAADMModel.FK_VendaProduto_Produto", "Produto", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADMModel", "FK_VendaProduto_Venda", "Venda")]
+        public Venda Venda
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Venda>("NSAADMModel.FK_VendaProduto_Venda", "Venda").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Venda>("NSAADMModel.FK_VendaProduto_Venda", "Venda").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Venda> VendaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Venda>("NSAADMModel.FK_VendaProduto_Venda", "Venda");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Venda>("NSAADMModel.FK_VendaProduto_Venda", "Venda", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion

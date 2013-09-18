@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 using MercadoLibre.SDK;
 using ServidorWeb.ML.Classes;
 using ServidorWeb.BD;
-
+using ServidorWeb.Sistema;
+using ServidorWeb.Sistema.conversores;
 
 namespace ServidorWeb.ML.Paginas
 {
@@ -45,6 +46,9 @@ namespace ServidorWeb.ML.Paginas
                 ListOrder o;
                 ML_Order Ordem;
 
+                ConverteVendas cv = new ConverteVendas();
+                GerenciarVendas gv = new GerenciarVendas();
+
                 do
                 {
                     o = cm.RetornarOrdens(u, cont);
@@ -57,8 +61,9 @@ namespace ServidorWeb.ML.Paginas
                         {
                             Ordem = cf.ConverteOrdem(or, n);
                             n.ML_Order.AddObject(Ordem);
-                            
-                            
+
+                            gv.IncluirVenda(cv.ConverteMLVendaEmVenda(Ordem), n);
+
                         }
                         else
                         {
