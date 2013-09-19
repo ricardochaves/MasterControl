@@ -145,6 +145,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelML.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BD\ModelSistema.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSistema.edmx</DependentUpon>
+    </Compile>
     <Compile Include="EntityContext\EntityContextBot.cs" />
     <Compile Include="Estruturas\estDados.cs" />
     <Compile Include="Estruturas\estDetalhe.cs" />
@@ -388,6 +393,10 @@
     <EntityDeploy Include="BD\ModelML.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelML.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="BD\ModelSistema.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSistema.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

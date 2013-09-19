@@ -9,7 +9,7 @@ namespace ServidorWeb.Sistema.conversores
     public class ConverteVendas
     {
 
-        NSAADMEntities e = new NSAADMEntities();
+        NSAADM_HMLEntities e = new NSAADM_HMLEntities();
 
         public Venda ConverteMLVendaEmVenda(ML_Order o)
         {

@@ -33,10 +33,6 @@
           <EntitySet Name="ML_Usuario" EntityType="NSAADMModel.Store.ML_Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MP_Payments" EntityType="NSAADMModel.Store.MP_Payments" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioAdm" EntityType="NSAADMModel.Store.UsuarioAdm" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Cliente" EntityType="NSAADMModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Produto" EntityType="NSAADMModel.Store.Produto" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Venda" EntityType="NSAADMModel.Store.Venda" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="VendaProduto" EntityType="NSAADMModel.Store.VendaProduto" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ML_BuyerReputation_ML_Usuario" Association="NSAADMModel.Store.FK_ML_BuyerReputation_ML_Usuario">
             <End Role="ML_Usuario" EntitySet="ML_Usuario" />
             <End Role="ML_BuyerReputation" EntitySet="ML_BuyerReputation" />
@@ -129,19 +125,7 @@
             <End Role="ML_SellerReputation" EntitySet="ML_SellerReputation" />
             <End Role="ML_TransactionsSeller" EntitySet="ML_TransactionsSeller" />
           </AssociationSet>
-          <AssociationSet Name="FK_Venda_Cliente" Association="NSAADMModel.Store.FK_Venda_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Venda" EntitySet="Venda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VendaProduto_Produto" Association="NSAADMModel.Store.FK_VendaProduto_Produto">
-            <End Role="Produto" EntitySet="Produto" />
-            <End Role="VendaProduto" EntitySet="VendaProduto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VendaProduto_Venda" Association="NSAADMModel.Store.FK_VendaProduto_Venda">
-            <End Role="Venda" EntitySet="Venda" />
-            <End Role="VendaProduto" EntitySet="VendaProduto" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="CallBackML">
           <Key>
             <PropertyRef Name="id" />
@@ -451,45 +435,6 @@
           <Property Name="nome" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="senha" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="email" Type="nvarchar" MaxLength="150" />
-          <Property Name="idML" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Produto">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Descr" Type="nvarchar" Nullable="false" MaxLength="300" />
-          <Property Name="qtd" Type="numeric" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Venda">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="data_venda" Type="datetime" Nullable="false" />
-          <Property Name="valor_venda" Type="money" Nullable="false" />
-          <Property Name="valor_desconto" Type="money" />
-          <Property Name="valor_frete" Type="money" />
-          <Property Name="id_cliente" Type="numeric" />
-          <Property Name="id_ML" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="VendaProduto">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="id_Venda" Type="numeric" Nullable="false" />
-          <Property Name="id_Produto" Type="numeric" Nullable="false" />
-          <Property Name="qtd" Type="numeric" Nullable="false" />
-          <Property Name="valorUni" Type="numeric" />
-        </EntityType>
         <Association Name="FK_ML_BuyerReputation_ML_Usuario">
           <End Role="ML_Usuario" Type="NSAADMModel.Store.ML_Usuario" Multiplicity="1" />
           <End Role="ML_BuyerReputation" Type="NSAADMModel.Store.ML_BuyerReputation" Multiplicity="*" />
@@ -766,43 +711,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Venda_Cliente">
-          <End Role="Cliente" Type="NSAADMModel.Store.Cliente" Multiplicity="0..1" />
-          <End Role="Venda" Type="NSAADMModel.Store.Venda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Venda">
-              <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VendaProduto_Produto">
-          <End Role="Produto" Type="NSAADMModel.Store.Produto" Multiplicity="1" />
-          <End Role="VendaProduto" Type="NSAADMModel.Store.VendaProduto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produto">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="VendaProduto">
-              <PropertyRef Name="id_Produto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VendaProduto_Venda">
-          <End Role="Venda" Type="NSAADMModel.Store.Venda" Multiplicity="1" />
-          <End Role="VendaProduto" Type="NSAADMModel.Store.VendaProduto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Venda">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="VendaProduto">
-              <PropertyRef Name="id_Venda" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema></edmx:StorageModels>
+        </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NSAADMModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -926,23 +835,7 @@
             <End Role="ML_ReceiverAddress" EntitySet="ML_ReceiverAddress" />
             <End Role="ML_Shipping" EntitySet="ML_Shipping" />
           </AssociationSet>
-          <EntitySet Name="Clientes" EntityType="NSAADMModel.Cliente" />
-          <EntitySet Name="Produtoes" EntityType="NSAADMModel.Produto" />
-          <EntitySet Name="Vendas" EntityType="NSAADMModel.Venda" />
-          <EntitySet Name="VendaProdutoes" EntityType="NSAADMModel.VendaProduto" />
-          <AssociationSet Name="FK_Venda_Cliente" Association="NSAADMModel.FK_Venda_Cliente">
-            <End Role="Cliente" EntitySet="Clientes" />
-            <End Role="Venda" EntitySet="Vendas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VendaProduto_Produto" Association="NSAADMModel.FK_VendaProduto_Produto">
-            <End Role="Produto" EntitySet="Produtoes" />
-            <End Role="VendaProduto" EntitySet="VendaProdutoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VendaProduto_Venda" Association="NSAADMModel.FK_VendaProduto_Venda">
-            <End Role="Venda" EntitySet="Vendas" />
-            <End Role="VendaProduto" EntitySet="VendaProdutoes" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="CallBackML">
           <Key>
             <PropertyRef Name="id" />
@@ -1574,88 +1467,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nome" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="email" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="idML" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Vendas" Relationship="NSAADMModel.FK_Venda_Cliente" FromRole="Cliente" ToRole="Venda" />
-        </EntityType>
-        <EntityType Name="Produto">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Descr" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="qtd" Nullable="false" Precision="18" Scale="0" />
-          <NavigationProperty Name="VendaProdutoes" Relationship="NSAADMModel.FK_VendaProduto_Produto" FromRole="Produto" ToRole="VendaProduto" />
-        </EntityType>
-        <EntityType Name="Venda">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="data_venda" Nullable="false" />
-          <Property Type="Decimal" Name="valor_venda" Nullable="false" Precision="19" Scale="4" />
-          <Property Type="Decimal" Name="valor_desconto" Precision="19" Scale="4" />
-          <Property Type="Decimal" Name="valor_frete" Precision="19" Scale="4" />
-          <Property Type="Decimal" Name="id_cliente" Precision="18" Scale="0" />
-          <Property Type="String" Name="id_ML" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cliente" Relationship="NSAADMModel.FK_Venda_Cliente" FromRole="Venda" ToRole="Cliente" />
-          <NavigationProperty Name="VendaProdutoes" Relationship="NSAADMModel.FK_VendaProduto_Venda" FromRole="Venda" ToRole="VendaProduto" />
-        </EntityType>
-        <EntityType Name="VendaProduto">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Decimal" Name="id_Venda" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="id_Produto" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="qtd" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="valorUni" Precision="18" Scale="0" />
-          <NavigationProperty Name="Produto" Relationship="NSAADMModel.FK_VendaProduto_Produto" FromRole="VendaProduto" ToRole="Produto" />
-          <NavigationProperty Name="Venda" Relationship="NSAADMModel.FK_VendaProduto_Venda" FromRole="VendaProduto" ToRole="Venda" />
-        </EntityType>
-        <Association Name="FK_Venda_Cliente">
-          <End Type="NSAADMModel.Cliente" Role="Cliente" Multiplicity="0..1" />
-          <End Type="NSAADMModel.Venda" Role="Venda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Venda">
-              <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VendaProduto_Produto">
-          <End Type="NSAADMModel.Produto" Role="Produto" Multiplicity="1" />
-          <End Type="NSAADMModel.VendaProduto" Role="VendaProduto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produto">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="VendaProduto">
-              <PropertyRef Name="id_Produto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VendaProduto_Venda">
-          <End Type="NSAADMModel.Venda" Role="Venda" Multiplicity="1" />
-          <End Type="NSAADMModel.VendaProduto" Role="VendaProduto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Venda">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="VendaProduto">
-              <PropertyRef Name="id_Venda" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1908,50 +1720,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="NSAADMModel.Cliente">
-              <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="idML" ColumnName="idML" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Produtoes">
-            <EntityTypeMapping TypeName="NSAADMModel.Produto">
-              <MappingFragment StoreEntitySet="Produto">
-                <ScalarProperty Name="qtd" ColumnName="qtd" />
-                <ScalarProperty Name="Descr" ColumnName="Descr" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vendas">
-            <EntityTypeMapping TypeName="NSAADMModel.Venda">
-              <MappingFragment StoreEntitySet="Venda">
-                <ScalarProperty Name="id_ML" ColumnName="id_ML" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-                <ScalarProperty Name="valor_frete" ColumnName="valor_frete" />
-                <ScalarProperty Name="valor_desconto" ColumnName="valor_desconto" />
-                <ScalarProperty Name="valor_venda" ColumnName="valor_venda" />
-                <ScalarProperty Name="data_venda" ColumnName="data_venda" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VendaProdutoes">
-            <EntityTypeMapping TypeName="NSAADMModel.VendaProduto">
-              <MappingFragment StoreEntitySet="VendaProduto">
-                <ScalarProperty Name="valorUni" ColumnName="valorUni" />
-                <ScalarProperty Name="qtd" ColumnName="qtd" />
-                <ScalarProperty Name="id_Produto" ColumnName="id_Produto" />
-                <ScalarProperty Name="id_Venda" ColumnName="id_Venda" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -2127,24 +1896,7 @@
           <ConnectorPoint PointX="21.625" PointY="18.759348958333334" />
           <ConnectorPoint PointX="21.625" PointY="16.816793619791667" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="NSAADMModel.Cliente" Width="1.5" PointX="17.375" PointY="1.375" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="NSAADMModel.Produto" Width="1.5" PointX="19.625" PointY="5.5" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="NSAADMModel.Venda" Width="1.5" PointX="19.625" PointY="1" Height="2.7494921875000102" />
-        <EntityTypeShape EntityType="NSAADMModel.VendaProduto" Width="1.5" PointX="21.875" PointY="1.125" Height="2.3648893229166674" />
-        <AssociationConnector Association="NSAADMModel.FK_Venda_Cliente" >
-          <ConnectorPoint PointX="18.875" PointY="2.3651432291666623" />
-          <ConnectorPoint PointX="19.625" PointY="2.3651432291666623" />
-        </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.FK_VendaProduto_Produto" >
-          <ConnectorPoint PointX="21.125" PointY="6.3939925130208337" />
-          <ConnectorPoint PointX="22.625" PointY="6.3939925130208337" />
-          <ConnectorPoint PointX="22.625" PointY="3.4898893229166674" />
-        </AssociationConnector>
-        <AssociationConnector Association="NSAADMModel.FK_VendaProduto_Venda" >
-          <ConnectorPoint PointX="21.125" PointY="2.3074446614583337" />
-          <ConnectorPoint PointX="21.875" PointY="2.3074446614583337" />
-        </AssociationConnector>
-      </Diagram>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

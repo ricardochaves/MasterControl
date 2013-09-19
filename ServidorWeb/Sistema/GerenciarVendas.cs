@@ -9,9 +9,10 @@ namespace ServidorWeb.Sistema
     public class GerenciarVendas
     {
 
-        public void IncluirVenda(Venda v, NSAADMEntities e)
+        public void IncluirVenda(Venda v, NSAADM_HMLEntities e)
         {
             e.Vendas.AddObject(v);
+            e.SaveChanges();
         }
     }
 }

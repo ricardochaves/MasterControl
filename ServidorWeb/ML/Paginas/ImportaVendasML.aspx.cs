@@ -48,6 +48,7 @@ namespace ServidorWeb.ML.Paginas
 
                 ConverteVendas cv = new ConverteVendas();
                 GerenciarVendas gv = new GerenciarVendas();
+                NSAADM_HMLEntities ent = new NSAADM_HMLEntities();
 
                 do
                 {
@@ -62,7 +63,7 @@ namespace ServidorWeb.ML.Paginas
                             Ordem = cf.ConverteOrdem(or, n);
                             n.ML_Order.AddObject(Ordem);
 
-                            gv.IncluirVenda(cv.ConverteMLVendaEmVenda(Ordem), n);
+                            gv.IncluirVenda(cv.ConverteMLVendaEmVenda(Ordem), ent);
 
                         }
                         else
