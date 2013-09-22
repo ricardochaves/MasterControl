@@ -85,7 +85,7 @@ namespace ServidorWeb.PgBot
         {
             List<BotItemEstoque> l = new List<BotItemEstoque>();
             const int VALOR_EM_ESTOQUE = 12;
-            const decimal VALOR_MINIMO_AH = 139999;
+            const decimal VALOR_MINIMO_AH = 119999;
             BotWoWEntities n = new BotWoWEntities();
             BotWoWEntities n1 = new BotWoWEntities();
 
