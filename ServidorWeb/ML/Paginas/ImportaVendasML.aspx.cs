@@ -63,12 +63,16 @@ namespace ServidorWeb.ML.Paginas
                             Ordem = cf.ConverteOrdem(or, n);
                             n.ML_Order.AddObject(Ordem);
 
-                            gv.IncluirVenda(cv.ConverteMLVendaEmVenda(Ordem), ent);
+                            gv.IncluirVenda(cv.ConverteMLVendaEmVenda(Ordem, ent), ent);
 
                         }
                         else
                         {
                             cf.AtualizaOrdem(Ordem, or, n);
+
+                            gv.IncluirVenda(cv.ConverteMLVendaEmVenda(Ordem, ent), ent);
+
+
                         }
                         
                         n.SaveChanges();
