@@ -14,6 +14,7 @@ namespace ServidorWeb.Sistema.conversores
 
             String id;
             id = o.id.ToString();
+
             ML_Shipping mS = o.ML_Shipping.FirstOrDefault();
 
             Venda v = new Venda();
@@ -24,13 +25,9 @@ namespace ServidorWeb.Sistema.conversores
 
             if (mS != null)
             {
-                v.valor_frete = (decimal)mS.cost;
+                v.valor_frete = Convert.ToDecimal(mS.cost);
+                //v.valor_frete = 0;
             }
-            else
-            {
-                v.valor_frete = 0;
-            }
-
             v.id_ML = id;
 
             Cliente c = (from p in e.Clientes where p.idML == id select p).FirstOrDefault();
