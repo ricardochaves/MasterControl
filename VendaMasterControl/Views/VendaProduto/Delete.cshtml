@@ -1,0 +1,38 @@
+﻿@model VendaMasterControl.Models.VendaProduto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>VendaProduto</legend>
+
+    <div class="display-label">Venda</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Venda.id_ML)
+    </div>
+
+    <div class="display-label">Produto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Produto.Descr)
+    </div>
+
+    <div class="display-label">qtd</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.qtd)
+    </div>
+
+    <div class="display-label">valorUni</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.valorUni)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

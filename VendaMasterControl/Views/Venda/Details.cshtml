@@ -1,0 +1,45 @@
+﻿@model VendaMasterControl.Models.Venda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Venda</legend>
+
+    <div class="display-label">data_venda</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.data_venda)
+    </div>
+
+    <div class="display-label">valor_venda</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.valor_venda)
+    </div>
+
+    <div class="display-label">valor_desconto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.valor_desconto)
+    </div>
+
+    <div class="display-label">valor_frete</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.valor_frete)
+    </div>
+
+    <div class="display-label">Cliente</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cliente.nome)
+    </div>
+
+    <div class="display-label">id_ML</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_ML)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

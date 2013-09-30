@@ -1,0 +1,25 @@
+﻿@model VendaMasterControl.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Produto</legend>
+
+    <div class="display-label">Descr</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descr)
+    </div>
+
+    <div class="display-label">qtd</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.qtd)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
