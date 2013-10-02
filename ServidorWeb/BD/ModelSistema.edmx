@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NSAADM_HMLModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="NSAADM_HMLModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="NSAADM_HMLModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="NSAADM_HMLModel.Store.Cliente" store:Type="Tables" Schema="mestre_hml" />
           <EntitySet Name="Produto" EntityType="NSAADM_HMLModel.Store.Produto" store:Type="Tables" Schema="mestre_hml" />
@@ -31,6 +31,8 @@
           <Property Name="nome" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="email" Type="nvarchar" MaxLength="150" />
           <Property Name="idML" Type="nvarchar" MaxLength="50" />
+          <Property Name="ultimoNome" Type="nvarchar" MaxLength="100" />
+          <Property Name="nicknName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
@@ -51,6 +53,8 @@
           <Property Name="valor_frete" Type="money" />
           <Property Name="id_cliente" Type="numeric" />
           <Property Name="id_ML" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="numeric" />
+          <Property Name="data_final" Type="datetime" />
         </EntityType>
         <EntityType Name="VendaProduto">
           <Key>
@@ -98,8 +102,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NSAADM_HMLModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -130,6 +133,8 @@
           <Property Name="email" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
           <Property Name="idML" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Vendas" Relationship="NSAADM_HMLModel.FK_Venda_Cliente" FromRole="Cliente" ToRole="Venda" />
+          <Property Type="String" Name="ultimoNome" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="nicknName" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
@@ -153,6 +158,8 @@
           <Property Name="id_ML" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Cliente" Relationship="NSAADM_HMLModel.FK_Venda_Cliente" FromRole="Venda" ToRole="Cliente" />
           <NavigationProperty Name="VendaProdutoes" Relationship="NSAADM_HMLModel.FK_VendaProduto_Venda" FromRole="Venda" ToRole="VendaProduto" />
+          <Property Type="Decimal" Name="status" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="data_final" />
         </EntityType>
         <EntityType Name="VendaProduto">
           <Key>
@@ -209,7 +216,9 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="NSAADM_HMLModelStoreContainer" CdmEntityContainer="NSAADM_HMLEntities">
           <EntitySetMapping Name="Clientes"><EntityTypeMapping TypeName="NSAADM_HMLModel.Cliente"><MappingFragment StoreEntitySet="Cliente">
-            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="nicknName" ColumnName="nicknName" />
+                <ScalarProperty Name="ultimoNome" ColumnName="ultimoNome" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="nome" ColumnName="nome" />
             <ScalarProperty Name="email" ColumnName="email" />
             <ScalarProperty Name="idML" ColumnName="idML" />
@@ -220,7 +229,9 @@
             <ScalarProperty Name="qtd" ColumnName="qtd" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Vendas"><EntityTypeMapping TypeName="NSAADM_HMLModel.Venda"><MappingFragment StoreEntitySet="Venda">
-            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="data_final" ColumnName="data_final" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="data_venda" ColumnName="data_venda" />
             <ScalarProperty Name="valor_venda" ColumnName="valor_venda" />
             <ScalarProperty Name="valor_desconto" ColumnName="valor_desconto" />

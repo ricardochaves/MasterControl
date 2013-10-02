@@ -22,6 +22,7 @@ namespace ServidorWeb.Sistema.conversores
             v.data_venda = Convert.ToDateTime(o.date_created);
             v.valor_venda = (decimal)o.total_amount;
             v.valor_desconto = 0;
+            v.data_final = Convert.ToDateTime(o.date_closed);
 
             if (mS != null)
             {
@@ -37,7 +38,8 @@ namespace ServidorWeb.Sistema.conversores
                 c.email = o.ML_Usuario1.email;
                 c.nome = o.ML_Usuario1.first_name;
                 c.idML = o.id.ToString();
-                
+                c.nicknName = o.ML_Usuario1.nickname;
+                c.ultimoNome = o.ML_Usuario1.last_name;
             }
             v.Cliente = c;
 

@@ -303,6 +303,54 @@ namespace ServidorWeb.BD
         private global::System.String _idML;
         partial void OnidMLChanging(global::System.String value);
         partial void OnidMLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ultimoNome
+        {
+            get
+            {
+                return _ultimoNome;
+            }
+            set
+            {
+                OnultimoNomeChanging(value);
+                ReportPropertyChanging("ultimoNome");
+                _ultimoNome = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ultimoNome");
+                OnultimoNomeChanged();
+            }
+        }
+        private global::System.String _ultimoNome;
+        partial void OnultimoNomeChanging(global::System.String value);
+        partial void OnultimoNomeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nicknName
+        {
+            get
+            {
+                return _nicknName;
+            }
+            set
+            {
+                OnnicknNameChanging(value);
+                ReportPropertyChanging("nicknName");
+                _nicknName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nicknName");
+                OnnicknNameChanged();
+            }
+        }
+        private global::System.String _nicknName;
+        partial void OnnicknNameChanging(global::System.String value);
+        partial void OnnicknNameChanged();
 
         #endregion
     
@@ -663,6 +711,54 @@ namespace ServidorWeb.BD
         private global::System.String _id_ML;
         partial void Onid_MLChanging(global::System.String value);
         partial void Onid_MLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                OnstatusChanging(value);
+                ReportPropertyChanging("status");
+                _status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("status");
+                OnstatusChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _status;
+        partial void OnstatusChanging(Nullable<global::System.Decimal> value);
+        partial void OnstatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> data_final
+        {
+            get
+            {
+                return _data_final;
+            }
+            set
+            {
+                Ondata_finalChanging(value);
+                ReportPropertyChanging("data_final");
+                _data_final = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("data_final");
+                Ondata_finalChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _data_final;
+        partial void Ondata_finalChanging(Nullable<global::System.DateTime> value);
+        partial void Ondata_finalChanged();
 
         #endregion
     
