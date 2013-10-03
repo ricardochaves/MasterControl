@@ -7,9 +7,14 @@
     <Schema Namespace="NSAADM_HMLModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="NSAADM_HMLModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="NSAADM_HMLModel.Store.Cliente" store:Type="Tables" Schema="mestre_hml" />
+          <EntitySet Name="PagamentoVenda" EntityType="NSAADM_HMLModel.Store.PagamentoVenda" store:Type="Tables" Schema="mestre_hml" />
           <EntitySet Name="Produto" EntityType="NSAADM_HMLModel.Store.Produto" store:Type="Tables" Schema="mestre_hml" />
           <EntitySet Name="Venda" EntityType="NSAADM_HMLModel.Store.Venda" store:Type="Tables" Schema="mestre_hml" />
           <EntitySet Name="VendaProduto" EntityType="NSAADM_HMLModel.Store.VendaProduto" store:Type="Tables" Schema="mestre_hml" />
+          <AssociationSet Name="FK_PagamentoVenda_Venda" Association="NSAADM_HMLModel.Store.FK_PagamentoVenda_Venda">
+            <End Role="Venda" EntitySet="Venda" />
+            <End Role="PagamentoVenda" EntitySet="PagamentoVenda" />
+          </AssociationSet>
           <AssociationSet Name="FK_Venda_Cliente" Association="NSAADM_HMLModel.Store.FK_Venda_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Venda" EntitySet="Venda" />
@@ -33,6 +38,17 @@
           <Property Name="idML" Type="nvarchar" MaxLength="50" />
           <Property Name="ultimoNome" Type="nvarchar" MaxLength="100" />
           <Property Name="nicknName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PagamentoVenda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="datetime" Nullable="false" />
+          <Property Name="valor" Type="money" Nullable="false" />
+          <Property Name="caixa" Type="numeric" Nullable="false" />
+          <Property Name="categoria" Type="numeric" Nullable="false" />
+          <Property Name="id_Venda" Type="numeric" Nullable="false" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
@@ -66,6 +82,18 @@
           <Property Name="qtd" Type="numeric" Nullable="false" />
           <Property Name="valorUni" Type="numeric" />
         </EntityType>
+        <Association Name="FK_PagamentoVenda_Venda">
+          <End Role="Venda" Type="NSAADM_HMLModel.Store.Venda" Multiplicity="1" />
+          <End Role="PagamentoVenda" Type="NSAADM_HMLModel.Store.PagamentoVenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PagamentoVenda">
+              <PropertyRef Name="id_Venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Venda_Cliente">
           <End Role="Cliente" Type="NSAADM_HMLModel.Store.Cliente" Multiplicity="0..1" />
           <End Role="Venda" Type="NSAADM_HMLModel.Store.Venda" Multiplicity="*" />
@@ -123,6 +151,11 @@
             <End Role="Venda" EntitySet="Vendas" />
             <End Role="VendaProduto" EntitySet="VendaProdutoes" />
           </AssociationSet>
+          <EntitySet Name="PagamentoVendas" EntityType="NSAADM_HMLModel.PagamentoVenda" />
+          <AssociationSet Name="FK_PagamentoVenda_Venda" Association="NSAADM_HMLModel.FK_PagamentoVenda_Venda">
+            <End Role="Venda" EntitySet="Vendas" />
+            <End Role="PagamentoVenda" EntitySet="PagamentoVendas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cliente">
           <Key>
@@ -160,6 +193,7 @@
           <NavigationProperty Name="VendaProdutoes" Relationship="NSAADM_HMLModel.FK_VendaProduto_Venda" FromRole="Venda" ToRole="VendaProduto" />
           <Property Type="Decimal" Name="status" Precision="18" Scale="0" />
           <Property Type="DateTime" Name="data_final" />
+          <NavigationProperty Name="PagamentoVendas" Relationship="NSAADM_HMLModel.FK_PagamentoVenda_Venda" FromRole="Venda" ToRole="PagamentoVenda" />
         </EntityType>
         <EntityType Name="VendaProduto">
           <Key>
@@ -209,6 +243,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PagamentoVenda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="data" Nullable="false" />
+          <Property Type="Decimal" Name="valor" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="caixa" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="categoria" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="id_Venda" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Venda" Relationship="NSAADM_HMLModel.FK_PagamentoVenda_Venda" FromRole="PagamentoVenda" ToRole="Venda" />
+        </EntityType>
+        <Association Name="FK_PagamentoVenda_Venda">
+          <End Type="NSAADM_HMLModel.Venda" Role="Venda" Multiplicity="1" />
+          <End Type="NSAADM_HMLModel.PagamentoVenda" Role="PagamentoVenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PagamentoVenda">
+              <PropertyRef Name="id_Venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -246,6 +304,18 @@
             <ScalarProperty Name="qtd" ColumnName="qtd" />
             <ScalarProperty Name="valorUni" ColumnName="valorUni" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PagamentoVendas">
+            <EntityTypeMapping TypeName="NSAADM_HMLModel.PagamentoVenda">
+              <MappingFragment StoreEntitySet="PagamentoVenda">
+                <ScalarProperty Name="id_Venda" ColumnName="id_Venda" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="caixa" ColumnName="caixa" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -272,8 +342,8 @@
         <EntityTypeShape EntityType="NSAADM_HMLModel.Venda" Width="1.5" PointX="3" PointY="1" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="NSAADM_HMLModel.VendaProduto" Width="1.5" PointX="5.25" PointY="1.125" Height="2.3648893229166656" IsExpanded="true" />
         <AssociationConnector Association="NSAADM_HMLModel.FK_Venda_Cliente" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.3651432291666667" />
-          <ConnectorPoint PointX="3" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="2.25" PointY="2.5574446614583337" />
+          <ConnectorPoint PointX="3" PointY="2.5574446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADM_HMLModel.FK_VendaProduto_Produto" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="6.3939925130208337" />
@@ -281,8 +351,14 @@
           <ConnectorPoint PointX="6" PointY="3.4898893229166656" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADM_HMLModel.FK_VendaProduto_Venda" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.3074446614583328" />
-          <ConnectorPoint PointX="5.25" PointY="2.3074446614583328" />
+          <ConnectorPoint PointX="4.5" PointY="1.96495949609375" />
+          <ConnectorPoint PointX="5.25" PointY="1.96495949609375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NSAADM_HMLModel.PagamentoVenda" Width="1.5" PointX="0.625" PointY="5" Height="2.3648893229166656" />
+        <AssociationConnector Association="NSAADM_HMLModel.FK_PagamentoVenda_Venda" >
+          <ConnectorPoint PointX="3" PointY="4.0643929036458335" />
+          <ConnectorPoint PointX="0.65625" PointY="4.0643929036458335" />
+          <ConnectorPoint PointX="0.65625" PointY="5" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

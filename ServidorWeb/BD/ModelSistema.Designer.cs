@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("NSAADM_HMLModel", "FK_Venda_Cliente", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServidorWeb.BD.Cliente), "Venda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.Venda), true)]
 [assembly: EdmRelationshipAttribute("NSAADM_HMLModel", "FK_VendaProduto_Produto", "Produto", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Produto), "VendaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.VendaProduto), true)]
 [assembly: EdmRelationshipAttribute("NSAADM_HMLModel", "FK_VendaProduto_Venda", "Venda", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Venda), "VendaProduto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.VendaProduto), true)]
+[assembly: EdmRelationshipAttribute("NSAADM_HMLModel", "FK_PagamentoVenda_Venda", "Venda", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServidorWeb.BD.Venda), "PagamentoVenda", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServidorWeb.BD.PagamentoVenda), true)]
 
 #endregion
 
@@ -135,6 +136,22 @@ namespace ServidorWeb.BD
             }
         }
         private ObjectSet<VendaProduto> _VendaProdutoes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PagamentoVenda> PagamentoVendas
+        {
+            get
+            {
+                if ((_PagamentoVendas == null))
+                {
+                    _PagamentoVendas = base.CreateObjectSet<PagamentoVenda>("PagamentoVendas");
+                }
+                return _PagamentoVendas;
+            }
+        }
+        private ObjectSet<PagamentoVenda> _PagamentoVendas;
 
         #endregion
         #region AddTo Methods
@@ -169,6 +186,14 @@ namespace ServidorWeb.BD
         public void AddToVendaProdutoes(VendaProduto vendaProduto)
         {
             base.AddObject("VendaProdutoes", vendaProduto);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PagamentoVendas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPagamentoVendas(PagamentoVenda pagamentoVenda)
+        {
+            base.AddObject("PagamentoVendas", pagamentoVenda);
         }
 
         #endregion
@@ -374,6 +399,232 @@ namespace ServidorWeb.BD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Venda>("NSAADM_HMLModel.FK_Venda_Cliente", "Venda", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NSAADM_HMLModel", Name="PagamentoVenda")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PagamentoVenda : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PagamentoVenda object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="data">Initial value of the data property.</param>
+        /// <param name="valor">Initial value of the valor property.</param>
+        /// <param name="caixa">Initial value of the caixa property.</param>
+        /// <param name="categoria">Initial value of the categoria property.</param>
+        /// <param name="id_Venda">Initial value of the id_Venda property.</param>
+        public static PagamentoVenda CreatePagamentoVenda(global::System.Decimal id, global::System.DateTime data, global::System.Decimal valor, global::System.Decimal caixa, global::System.Decimal categoria, global::System.Decimal id_Venda)
+        {
+            PagamentoVenda pagamentoVenda = new PagamentoVenda();
+            pagamentoVenda.id = id;
+            pagamentoVenda.data = data;
+            pagamentoVenda.valor = valor;
+            pagamentoVenda.caixa = caixa;
+            pagamentoVenda.categoria = categoria;
+            pagamentoVenda.id_Venda = id_Venda;
+            return pagamentoVenda;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Decimal _id;
+        partial void OnidChanging(global::System.Decimal value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime data
+        {
+            get
+            {
+                return _data;
+            }
+            set
+            {
+                OndataChanging(value);
+                ReportPropertyChanging("data");
+                _data = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("data");
+                OndataChanged();
+            }
+        }
+        private global::System.DateTime _data;
+        partial void OndataChanging(global::System.DateTime value);
+        partial void OndataChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal valor
+        {
+            get
+            {
+                return _valor;
+            }
+            set
+            {
+                OnvalorChanging(value);
+                ReportPropertyChanging("valor");
+                _valor = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("valor");
+                OnvalorChanged();
+            }
+        }
+        private global::System.Decimal _valor;
+        partial void OnvalorChanging(global::System.Decimal value);
+        partial void OnvalorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal caixa
+        {
+            get
+            {
+                return _caixa;
+            }
+            set
+            {
+                OncaixaChanging(value);
+                ReportPropertyChanging("caixa");
+                _caixa = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("caixa");
+                OncaixaChanged();
+            }
+        }
+        private global::System.Decimal _caixa;
+        partial void OncaixaChanging(global::System.Decimal value);
+        partial void OncaixaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal categoria
+        {
+            get
+            {
+                return _categoria;
+            }
+            set
+            {
+                OncategoriaChanging(value);
+                ReportPropertyChanging("categoria");
+                _categoria = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("categoria");
+                OncategoriaChanged();
+            }
+        }
+        private global::System.Decimal _categoria;
+        partial void OncategoriaChanging(global::System.Decimal value);
+        partial void OncategoriaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal id_Venda
+        {
+            get
+            {
+                return _id_Venda;
+            }
+            set
+            {
+                Onid_VendaChanging(value);
+                ReportPropertyChanging("id_Venda");
+                _id_Venda = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_Venda");
+                Onid_VendaChanged();
+            }
+        }
+        private global::System.Decimal _id_Venda;
+        partial void Onid_VendaChanging(global::System.Decimal value);
+        partial void Onid_VendaChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADM_HMLModel", "FK_PagamentoVenda_Venda", "Venda")]
+        public Venda Venda
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Venda>("NSAADM_HMLModel.FK_PagamentoVenda_Venda", "Venda").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Venda>("NSAADM_HMLModel.FK_PagamentoVenda_Venda", "Venda").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Venda> VendaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Venda>("NSAADM_HMLModel.FK_PagamentoVenda_Venda", "Venda");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Venda>("NSAADM_HMLModel.FK_PagamentoVenda_Venda", "Venda", value);
                 }
             }
         }
@@ -820,6 +1071,28 @@ namespace ServidorWeb.BD
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<VendaProduto>("NSAADM_HMLModel.FK_VendaProduto_Venda", "VendaProduto", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NSAADM_HMLModel", "FK_PagamentoVenda_Venda", "PagamentoVenda")]
+        public EntityCollection<PagamentoVenda> PagamentoVendas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PagamentoVenda>("NSAADM_HMLModel.FK_PagamentoVenda_Venda", "PagamentoVenda");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PagamentoVenda>("NSAADM_HMLModel.FK_PagamentoVenda_Venda", "PagamentoVenda", value);
                 }
             }
         }

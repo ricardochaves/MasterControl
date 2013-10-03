@@ -16,6 +16,7 @@ namespace ServidorWeb.Sistema.conversores
             id = o.id.ToString();
 
             ML_Shipping mS = o.ML_Shipping.FirstOrDefault();
+            ML_FeedbackSeller Fb = o.ML_FeedbackSeller.FirstOrDefault();
 
             Venda v = new Venda();
 
@@ -24,11 +25,21 @@ namespace ServidorWeb.Sistema.conversores
             v.valor_desconto = 0;
             v.data_final = Convert.ToDateTime(o.date_closed);
 
+            if (Fb != null)
+            {
+                v.status = ConvertStatus(o.status, Fb.rating);
+            }
+            else
+            {
+                v.status = ConvertStatus(o.status, "");
+            }
+            
+
             if (mS != null)
             {
                 v.valor_frete = Convert.ToDecimal(mS.cost);
-                //v.valor_frete = 0;
             }
+
             v.id_ML = id;
 
             Cliente c = (from p in e.Clientes where p.idML == id select p).FirstOrDefault();
@@ -52,13 +63,47 @@ namespace ServidorWeb.Sistema.conversores
                 pr.qtd = (decimal)mo.quantity;
             }
 
+            
             VendaProduto vp = new VendaProduto();
             vp.Produto = pr;
             vp.Venda = v;
+            vp.qtd = (decimal)mo.quantity;
 
             v.VendaProdutoes.Add(vp);
 
             return v;
+        }
+
+        /// <summary>
+        /// Convente o Status que vem do Mercado Livre utilizando o rating da qualificação e o status da venda
+        /// </summary>
+        /// <param name="status">Status do Objeto Ordem</param>
+        /// <param name="rating">Rating do Objeto FeedbackBuyer</param>
+        /// <returns>1 - Pago; 2 - Cancelada; 3 - Aguardando Pagamento; 99 - Erro</returns>
+        public decimal ConvertStatus(string status, string rating)
+        {
+
+            if (status == "paid")
+            {
+                return 1; 
+            }
+            else if (status == "confirmed" && rating == "positive")
+            {
+                return 1;
+            }
+            else if (status == "confirmed" && rating == "")
+            {
+                return 3;
+            }
+            else if (status == "confirmed" && rating != "positive")
+            {
+                return 2; 
+            }
+            else
+            {
+                return 99;
+            }
+
         }
     }
 }
