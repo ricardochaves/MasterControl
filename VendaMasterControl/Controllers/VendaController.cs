@@ -77,6 +77,12 @@ namespace VendaMasterControl.Controllers
             {
                 db.Vendas.Attach(venda);
                 db.ObjectStateManager.ChangeObjectState(venda, EntityState.Modified);
+
+                ///*--------------------------------------*/
+                //Session["Venda"] = venda;
+                //return RedirectToAction("Create", "VendaProduto");
+                ///*--------------------------------------*/
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

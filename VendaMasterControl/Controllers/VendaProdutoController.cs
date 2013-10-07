@@ -38,6 +38,16 @@ namespace VendaMasterControl.Controllers
         {
             ViewBag.id_Produto = new SelectList(db.Produtoes, "id", "Descr");
             ViewBag.id_Venda = new SelectList(db.Vendas, "id", "id_ML");
+            
+            ///*--------------------------------------*/
+            //Venda v = (Venda)(Session["Venda"]);
+            //ViewBag.id_Venda = v.id;
+            //VendaProduto vp = new VendaProduto();
+            //vp.id_Venda = v.id;
+            //v.VendaProdutoes.Add(vp);
+            //return View(vp);
+            ///*--------------------------------------*/
+
             return View();
         } 
 
