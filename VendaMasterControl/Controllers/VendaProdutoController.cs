@@ -18,7 +18,8 @@ namespace VendaMasterControl.Controllers
 
         public ViewResult Index()
         {
-            var vendaprodutoes = db.VendaProdutoes.Include("Produto").Include("Venda");
+            Venda v = (Venda)Session["Venda"];
+            var vendaprodutoes = db.VendaProdutoes.Include("Produto").Include("Venda").Select(p => p.id == v.id);
             return View(vendaprodutoes.ToList());
         }
 

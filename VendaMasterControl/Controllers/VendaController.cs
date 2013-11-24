@@ -48,9 +48,14 @@ namespace VendaMasterControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Vendas.AddObject(venda);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+
+
+                Session["Venda"] = venda;
+                RedirectToAction("Index", "VendaProduto");
+                
+                //db.Vendas.AddObject(venda);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");  
             }
 
             ViewBag.id_cliente = new SelectList(db.Clientes, "id", "nome", venda.id_cliente);
@@ -75,16 +80,16 @@ namespace VendaMasterControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Vendas.Attach(venda);
-                db.ObjectStateManager.ChangeObjectState(venda, EntityState.Modified);
+                //db.Vendas.Attach(venda);
+                //db.ObjectStateManager.ChangeObjectState(venda, EntityState.Modified);
 
                 ///*--------------------------------------*/
-                //Session["Venda"] = venda;
-                //return RedirectToAction("Create", "VendaProduto");
+                Session["Venda"] = venda;
+                return RedirectToAction("Index", "VendaProduto");
                 ///*--------------------------------------*/
 
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
             }
             ViewBag.id_cliente = new SelectList(db.Clientes, "id", "nome", venda.id_cliente);
             return View(venda);

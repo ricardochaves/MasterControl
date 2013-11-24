@@ -256,22 +256,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="NSAADMModel.Cliente" Width="1.5" PointX="0.75" PointY="1.375" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.Produto" Width="1.5" PointX="3" PointY="5.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.Venda" Width="1.5" PointX="3" PointY="1" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NSAADMModel.VendaProduto" Width="1.5" PointX="5.25" PointY="1.125" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.Cliente" Width="1.5" PointX="0.5" PointY="0.875" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.Produto" Width="1.5" PointX="2.75" PointY="3.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.Venda" Width="1.5" PointX="2.75" PointY="0.5" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="NSAADMModel.VendaProduto" Width="1.5" PointX="5" PointY="0.625" Height="2.3648893229166656" IsExpanded="true" />
         <AssociationConnector Association="NSAADMModel.FK_Venda_Cliente" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.3651432291666667" />
-          <ConnectorPoint PointX="3" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="2" PointY="1.8651432291666668" />
+          <ConnectorPoint PointX="2.75" PointY="1.8651432291666668" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_VendaProduto_Produto" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="6.3939925130208337" />
-          <ConnectorPoint PointX="6" PointY="6.3939925130208337" />
-          <ConnectorPoint PointX="6" PointY="3.4898893229166656" />
+          <ConnectorPoint PointX="4.25" PointY="4.6439925130208337" />
+          <ConnectorPoint PointX="5.75" PointY="4.6439925130208337" />
+          <ConnectorPoint PointX="5.75" PointY="2.9898893229166656" />
         </AssociationConnector>
         <AssociationConnector Association="NSAADMModel.FK_VendaProduto_Venda" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.3074446614583328" />
-          <ConnectorPoint PointX="5.25" PointY="2.3074446614583328" />
+          <ConnectorPoint PointX="4.25" PointY="1.8074446614583328" />
+          <ConnectorPoint PointX="5" PointY="1.8074446614583328" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

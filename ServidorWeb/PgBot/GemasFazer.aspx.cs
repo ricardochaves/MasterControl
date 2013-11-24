@@ -10,7 +10,7 @@ namespace ServidorWeb.PgBot
 {
     public partial class GemasFazer : System.Web.UI.Page
     {
-        BotWoWEntities n = new BotWoWEntities();
+        BotWoWEntities n = EntityContextBot.GetContext;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,8 +19,10 @@ namespace ServidorWeb.PgBot
 
             if (!Page.IsPostBack)
             {
+                BotWoWEntities n1 = EntityContextBot.GetContext;
+
                 DropDownList1.Items.Clear();
-                var nomes = n.Estoques.Select(m => m.NomePersonagem).Distinct();
+                var nomes = n1.Estoques.Select(m => m.NomePersonagem).Distinct();
 
                 foreach (string item in nomes)
                 {
